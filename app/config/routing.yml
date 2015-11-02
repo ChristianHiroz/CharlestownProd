@@ -1,0 +1,36 @@
+charlestown_collaborator:
+    resource: "@CharlestownCollaboratorBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+charlestown_customer:
+    resource: "@CharlestownCustomerBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+charlestown_agency:
+    resource: "@CharlestownAgencyBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+charlestown_core:
+    resource: "@CharlestownCoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+charlestown_user:
+    resource: "@CharlestownUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
