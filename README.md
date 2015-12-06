@@ -1,4 +1,4 @@
-CharlestownNew
+Charlestown
 ==============
 
-A Symfony project created on October 31, 2015, 11:45 am.
+Symfony 2 project for Charlestown Company
