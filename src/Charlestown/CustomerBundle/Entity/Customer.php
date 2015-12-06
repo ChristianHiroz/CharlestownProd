@@ -27,14 +27,14 @@ class Customer extends User
      *
      * @ORM\Column(name="companyName", type="string")
      */
-    public $companyName;
+    private $companyName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="siret", type="string")
      */
-    public $siret;
+    private $siret;
 
     public function __construct(){
         parent::__construct();

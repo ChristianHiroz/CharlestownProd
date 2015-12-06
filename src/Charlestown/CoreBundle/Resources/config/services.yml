@@ -1,16 +1,46 @@
 services:
     admin.customer:
         class: Charlestown\CoreBundle\Admin\CustomerAdmin
-        arguments: [~, Charlestown\UserBundle\Entity\Customer, ~]
+        arguments: [~, Charlestown\CustomerBundle\Entity\Customer, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Client, group: Utilisateurs }
     admin.businessSupport:
         class: Charlestown\CoreBundle\Admin\BusinessSupportAdmin
-        arguments: [~, Charlestown\UserBundle\Entity\BusinessSupport, ~]
+        arguments: [~, Charlestown\CollaboratorBundle\Entity\BusinessSupport, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Accueil Entreprise, group: Utilisateurs }
     admin.event:
         class: Charlestown\CoreBundle\Admin\EventAdmin
-        arguments: [~, Charlestown\UserBundle\Entity\Event, ~]
+        arguments: [~, Charlestown\CollaboratorBundle\Entity\Event, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Event, group: Utilisateurs }
+    admin.agency:
+        class: Charlestown\CoreBundle\Admin\AgencyAdmin
+        arguments: [~, Charlestown\AgencyBundle\Entity\Agency, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Agence, group: Divers }
+    admin.file:
+        class: Charlestown\CoreBundle\Admin\FileAdmin
+        arguments: [~, Charlestown\FileBundle\Entity\File, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Fichier, group: Divers }
+    admin.demand_formation:
+        class: Charlestown\CoreBundle\Admin\DemandFormationAdmin
+        arguments: [~, Charlestown\DemandBundle\Entity\DemandFormation, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Formation, group: Demande }
+    admin.demand_meeting:
+        class: Charlestown\CoreBundle\Admin\DemandMeetingAdmin
+        arguments: [~, Charlestown\DemandBundle\Entity\DemandMeeting, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Rendez-vous, group: Demande }
+    admin.demand_vacancy:
+        class: Charlestown\CoreBundle\Admin\DemandVacancyAdmin
+        arguments: [~, Charlestown\DemandBundle\Entity\DemandVacancy, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Congés, group: Demande }
+    admin.demand_mobility:
+        class: Charlestown\CoreBundle\Admin\DemandMobilityAdmin
+        arguments: [~, Charlestown\DemandBundle\Entity\DemandMobility, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Mobilité, group: Demande }

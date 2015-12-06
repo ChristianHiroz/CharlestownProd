@@ -1,0 +1,52 @@
+.p{
+    font-family: "Roboto",arial,sans-serif !important;
+}
+/* MENU */
+.firstNav{width:37%; top:50px; left:125px; border:medium none;z-index:2; }
+.secondNav{width:90%;border:medium none; z-index:1;}
+/*.secondNav * {height:25px;}*/
+.container-fluid{ background-color:#000000; opacity: 0.8; border: medium none; border-radius:10px; margin:0px; padding:0px; }
+.logo_header{ width:auto; height:55px; margin-top:-18px; }
+.dropdown-menu{ background-color: black; }
+.navbar-default{ background-color: transparent; background-image: none; box-shadow: none; }
+.dropdown-menu > li > a { color: white; }
+.dropdown-toggle{ color:white !important; }
+.divider-vertical{ border-left: 1px solid #606060; border-right: 1px solid #464646; height: 50px; }
+.divider-vertical-second{ border-left: 1px solid #F00; border-right: 1px solid #ff3651; height: 50px; }
+.navbar-collapse{ margin:0px; padding:0px; }
+.navbar-default .navbar-nav > li > a{color:white;}
+.espace{position: absolute; top: 21px; right: 175px; z-index: 1;}
+/* FINMENU */
+
+/* MODALS */
+.modal-dialog{ width:70%; top:100px; }
+.modal-content{ background-color: black; color:white; }
+.modal-header > button{ opacity: 1; color:white; text-shadow: none;}
+.modal-header{border: none;}
+.modal-footer{border: none;}
+/* FINMODALS */
+
+/* COMMONS */
+body{
+    background-image: url("../../../images/slide/bg1.jpg");
+    background-color: #FFF;
+    background-position: center center;
+    background-size:cover;
+}
+
+hr{
+    border-color: rgb(255, 0, 0);
+    border-width: 1px;
+    margin-top:-20px;
+}
+td a {
+    color:#F00;
+}
+.btn-danger{
+    background-color: #F00;
+}
+/* ENCOMMONS */
+
+/* DEMANDS */
+.half{width:50%;display:inline-block;}
+/* ENDDEMANDS */

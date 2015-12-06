@@ -1,0 +1,78 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <nav class="navbar navbar-default secondNav">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nouvelle demande <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li class="" role="presentation"><a href="{{ path('demand_meeting_new') }}">Rendez-vous</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="" role="presentation"><a href="{{ path('demand_mobility_new') }}">Mobilité</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="" role="presentation"><a href="{{ path('demand_formation_new') }}">Formation</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="" role="presentation"><a href="{{ path('demand_vacancy_new') }}">Congés</a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider-vertical-second"></li>
+                                <li class="active" role="presentation"><a>Vos demandes</a></li>
+                                <li class="divider-vertical-second"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <hr/>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Motif</th>
+                                <th>Etat</th>
+                                <th>Date de la demande</th>
+                                <th>Date de réponse</th>
+                                <th>Réponse</th>
+                                <th>Etat de la réponse</th>
+                                <th>Commentaire</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for entity in entities %}
+                                <tr>
+                                    <td>{{ entity.reason }}</td>
+                                    <td>{{ entity.status }}</td>
+                                    <td>{% if entity.dateDemand %}{{ entity.dateDemand|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                    <td>{% if entity.dateResponse %}{{ entity.dateResponse|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                    <td>{{ entity.response }}</td>
+                                    <td>{{ entity.responseStatus }}</td>
+                                    <td>{{ entity.comment }}</td>
+                                    <td>
+                                        {% if entity.getClassName == "DemandMeeting" %}
+                                            <a class="btn btn-danger" href="{{ path('demand_meeting_edit', { 'id': entity.id }) }}">modifier</a>
+                                        {% elseif entity.getClassName == "DemandFormation" %}
+                                            <a class="btn btn-danger" href="{{ path('demand_formation_edit', { 'id': entity.id }) }}">modifier</a>
+                                        {% elseif entity.getClassName == "DemandMobility" %}
+                                            <a class="btn btn-danger" href="{{ path('demand_mobility_edit', { 'id': entity.id }) }}">modifier</a>
+                                        {% elseif entity.getClassName == "DemandVacancy" %}
+                                            <a class="btn btn-danger" href="{{ path('demand_vacancy_edit', { 'id': entity.id }) }}">modifier</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    {% endblock %}

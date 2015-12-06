@@ -9,11 +9,28 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
-     * @Template()
+     * @Route("/", name="index")
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return array('name' => $name);
+        $user = $this->getUser();
+        if($user == null){
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+        if($user->hasRole('ROLE_EVENT')){
+            return $this->redirect($this->generateUrl('index_event'));
+        }
+        elseif($user->hasRole('ROLE_AE')){
+            return $this->redirect($this->generateUrl('index_ae'));
+        }
+        elseif($user->hasRole('ROLE_CLIENT')){
+            return $this->redirect($this->generateUrl('index_client'));
+        }
+        elseif($user->hasRole('ROLE_ANONYMOUS')){
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+        else {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
     }
 }

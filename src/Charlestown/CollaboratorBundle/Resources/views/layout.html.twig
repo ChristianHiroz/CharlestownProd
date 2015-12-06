@@ -1,0 +1,367 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {% block header %}
+        <div class="modal fade" id="formationModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+                        <div id="player" style="width:100%;"></div>
+
+                        <script>
+                            // 2. This code loads the IFrame Player API code asynchronously.
+                            var tag = document.createElement('script');
+
+                            tag.src = "https://www.youtube.com/iframe_api";
+                            var firstScriptTag = document.getElementsByTagName('script')[0];
+                            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                            // 3. This function creates an <iframe> (and YouTube player)
+                            //    after the API code downloads.
+                            var player;
+                            function onYouTubeIframeAPIReady() {
+                                player = new YT.Player('player', {
+                                    height: '390',
+                                    width: '640',
+                                    videoId: 'lWFJxhFy_Rw',
+                                    events: {
+                                        'onReady': onPlayerReady,
+                                        'onStateChange': onPlayerStateChange
+                                    }
+                                });
+                            }
+
+                            // 4. The API will call this function when the video player is ready.
+                            function onPlayerReady(event) {
+                            }
+
+                            // 5. The API calls this function when the player's state changes.
+                            //    The function indicates that when playing a video (state=1),
+                            //    the player should play for six seconds and then stop.
+                            var done = false;
+                            function onPlayerStateChange(event) {
+                                if (event.data == YT.PlayerState.PLAYING && !done) {
+                                    done = true;
+                                }
+                            }
+                            function stopVideo() {
+                                player.stopVideo();
+                            }
+                        </script>
+                        <script src="https://apis.google.com/js/platform.js"></script>
+
+                        <div class="g-ytsubscribe" data-channel="charlestownaccueil" data-layout="full" data-theme="dark" data-count="default"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div class="modal fade" id="presentationModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <nav class="navbar navbar-default secondNav">
+                            <div class="container-fluid">
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active" role="presentation"><a href="#implantation" aria-controls="implantation" role="tab" data-toggle="tab">Nos implantations</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#ae" aria-controls="ae" role="tab" data-toggle="tab">Accueil en Entreprise</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#event" aria-controls="event" role="tab" data-toggle="tab">Accueil Evénementiel</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#promotion" aria-controls="promotion" role="tab" data-toggle="tab">Promotion des ventes</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <hr/>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="implantation">
+                                <h3>Nous sommes implantés sur toute la France dont voici leur localisation :</h3><br/><br/><br/>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <p>
+                                            Agence de Lille <br/>
+                                            3, rue Esquermoise 59000 Lille <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 03.59.81.00.60 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 03.72.27.18.24 <br/>
+                                            Agence de Paris <br/>
+                                            55, rue Fondary Paris 15ème <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 01.70.91.22.22 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 01.83.71.16.61 <br/>
+                                            Agence de Nantes <br/>
+                                            3, place saint Pierre 44000 Nantes <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 02.72.24.05.05 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 02.34.88.19.28
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{ asset('images/carte_presentation.png') }}"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p>
+                                            Agence de Lyon <br/>
+                                            16, rue Crillon 69006 Lyon <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.26.83.80.00 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.84.88.17.88 <br/>
+                                            Agence de Marseille <br/>
+                                            3, place aux huiles 13001 Marseille <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.91.59.85.85 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.91.59.85.86 <br/>
+                                            Agence de Bordeaux <br/>
+                                            20, rue du 19 Mars 1962 33320 Eysines <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 05.40.25.00.70 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 05.32.00.18.87 <br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="ae">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('images/bienvenue_ae_1.jpg') }}"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('images/bienvenue_ae_2.jpg') }}"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('images/bienvenue_ae_3.jpg') }}"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        Le sourire, la courtoisie, la présentation, le comportement et les compétences des hôte(sse)s d’accueil sont stratégiques pour l’image de marque de nos clients. <br/> <br/>
+
+                                        Parmi nos domaines d’expertise, nous comptons : <br/> <br/> <br/>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>Accueil visiteurs</li>
+                                            <li>Accueil VIP</li>
+                                            <li>Accueil Présidence</li>
+                                            <li>Gestion du standard</li>
+                                            <li>Standard déporté</li>
+                                            <li>Gestion du courrier</li>
+                                            <li>Gestion des salles de réunion</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>Gestion des agendas</li>
+                                            <li>Réception des plis et colis</li>
+                                            <li>Gestion des coursiers</li>
+                                            <li>Gestion des voyages</li>
+                                            <li>Tâches administratives</li>
+                                            <li>Gestion des consommables</li>
+                                            <li>Services aux occupants</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="event">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('images/bienvenue_event_1.jpg') }}"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('images/bienvenue_event_2.jpg') }}"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('images/bienvenue_event_3.jpg') }}"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        Pour en faire un moment inoubliable, nous sélectionnons des équipes élégantes, dynamiques et professionnelles qui offrent à nos clients un service personnalisé. Souplesse, sérénité, sens du service et haute qualité organisationnelle sont des atouts qui font la différence pour la réussite de nos événements. <br/><br/>
+
+                                        Parmi nos domaines d’expertise, nous comptons :  <br/> <br/> <br/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <ul>
+                                            <li>Accueil, Orientation</li>
+                                            <li>Contrôle des invitations</li>
+                                            <li>Pointage listing</li>
+                                            <li>Gestion des flux</li>
+                                            <li>Placement salle/diner</li>
+                                            <li>Vestiaire</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul>
+                                            <li>Accueil protocolaire</li>
+                                            <li>Gestion des intervenants</li>
+                                            <li>Remise de badges</li>
+                                            <li>Emargement</li>
+                                            <li>Remise de boitiers de vote</li>
+                                            <li>Remise de casque de traduction</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul>
+                                            <li>Voiturier</li>
+                                            <li>Gestion des cars / navettes</li>
+                                            <li>Prise en charge gares/aéroports</li>
+                                            <li>Distribution de cadeaux</li>
+                                            <li>Accueil Presse</li>
+                                            <li>Accompagnement VIP</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="promotion">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('images/bienvenue_promotion_1.jpg') }}"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('images/bienvenue_promotion_2.jpg') }}"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('images/bienvenue_promotion_3.jpg') }}"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        Les campagnes d’animation sont uniques : leur réussite doit être totale et immédiate. Pour en faire des moments forts, nous sélectionnons des équipes élégantes, homogènes, expérimentées, consciencieuses et mobiles qui assurent des missions de haute qualité. <br/><br/>
+
+                                        Parmi nos domaines d’expertise, nous comptons :  <br/> <br/> <br/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>Accueil</li>
+                                            <li>Conseil clientèle</li>
+                                            <li>Présentation produit</li>
+                                            <li>Démonstration produit</li>
+                                            <li>Dégustation produit</li>
+                                            <li>Vente produit</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul>
+                                            <li>Distribution de goodies</li>
+                                            <li>Distribution de cadeaux</li>
+                                            <li>Distribution de flyers</li>
+                                            <li>Animation in-store</li>
+                                            <li>Animation out-store</li>
+                                            <li>Service boissons</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div id="espace" style="top: 21px; right: 175px; z-index: 3; position: absolute; background-color: black;">
+            <ul class="nav navbar-nav">
+                <li class="dropdown" style="border-radius: 15px;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Espace perso<span class="caret"></span></a>
+                    <ul class="dropdown-menu ">
+                        <li><a id="vos_informations" data-id="vos_informations" href="/Charlestown/web/app_dev.php/collaborateur/vos_informations">Vos informations</a></li>
+                        <li><a id="heae" data-id="heae" href="/Charlestown/web/app_dev.php/collaborateur/historiqueEntretiens">L'historique de vos entretiens annuel</a></li>
+                        <li class="dropdown">
+                            <a id="demande"  href="{{ path('demand') }}">Mes demandes></a>
+                        </li>
+                        <li><a id="covoiturage" data-id="covoiturage" href="/Charlestown/web/app_dev.php/collaborateur/covoiturage">Le covoiturage </a></li>
+                        <li><a id="bourse_competence" data-id="bourse_competence" href="/Charlestown/web/app_dev.php/collaborateur/bourse_aux_competences">Bourse aux compétences </a></li>
+                        <li class="dropdown"><a href="/Charlestown/web/app_dev.php/logout"> Déconnexion </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-default firstNav">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#"><img class="logo_header" src="{{ asset('images/logo_charlestown.png') }}"/></a>
+                            {#<a class="navbar-brand" href="#"><img class="logo_header_bis" src="{{ asset('favicon.ico') }}"/></a>#}
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="divider-vertical"></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-toggle="modal" data-target="#presentationModal">Présentation</a></li>
+                                        <li><a href="#">Infos utiles</a></li>
+                                        <li><a href="#">Fonctionnement</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Procédure</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Règlement intérieur</a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider-vertical"></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mission <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Mon affectation</a></li>
+                                        <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
+                                        <li><a href="#">Ma prise de poste</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Mes contacts</a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider-vertical"></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Politique <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Soutien Eleas</a></li>
+                                        <li><a href="#">1% logement</a></li>
+                                        <li><a href="#">C.E</a></li>
+                                    </ul>
+                                </li>
+                                <li class="divider-vertical"></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utile <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="https://illicoffre.safe-access.com/">Illicoffre</a></li>
+                                        <li><a href="#">Coordonnées</a></li>
+                                        <li><a href="#">Procès verbaux</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            </div>
+        </div>
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+{% endblock %}

@@ -4,8 +4,8 @@ security:
 
     role_hierarchy:
         ROLE_EVENT: ROLE_EVENT
-        ROLE_BS: ROLE_AE
-        ROLE_CUSTOMER: ROLE_CLIENT
+        ROLE_AE: ROLE_AE
+        ROLE_CUSTOMER: ROLE_CUSTOMER
         ROLE_ADMIN: ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 

@@ -30,21 +30,35 @@ abstract class User extends FOSUser
      *
      * @ORM\Column(name="address", type="string")
      */
-    public $address;
+    private $address;
 
     /**
      * @var string
      *
      * @ORM\Column(name="town", type="string")
      */
-    public $town;
+    private $town;
 
     /**
      * @var string
      *
      * @ORM\Column(name="pc", type="string")
      */
-    public $pc;
+    private $pc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phoneNumber", type="string")
+     */
+    private $phoneNumber;
+
+     /**
+      * @var \Agency
+      *
+      * @ORM\OneToOne(targetEntity="Charlestown\AgencyBundle\Entity\Agency")
+      */
+    private $agency;
 
     public function __construct()
     {
@@ -111,6 +125,38 @@ abstract class User extends FOSUser
     public function setPc($pc)
     {
         $this->pc = $pc;
+    }
+
+    /**
+     * @return string
+     */
+    public function getphoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param string $phoneNumber
+     */
+    public function setphoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return \Agency
+    */
+    public function getAgency()
+    {
+        return $this->agency;
+    }
+
+    /**
+     * @param \Agency $agency
+     */
+    public function setAgency($agency)
+    {
+        $this->agency = $agency;
     }
 }
 

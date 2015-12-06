@@ -1,3 +1,13 @@
+charlestown_file:
+    resource: "@CharlestownFileBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+charlestown_new_demand:
+    resource: "@CharlestownDemandBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 charlestown_collaborator:
     resource: "@CharlestownCollaboratorBundle/Controller/"
     type:     annotation

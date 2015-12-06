@@ -3,11 +3,37 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+            {% stylesheets 'bundles/charlestowncore/css/*' filter='cssrewrite' %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block body %}
+        <div class="container">
+
+        </div>
+        {% endblock %}
+        {% block javascripts %}
+            <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+            <script src="{{ asset('bundles/charlestowncore/js/vegas.min.js.map') }}"></script>
+            <script src="{{ asset('bundles/charlestowncore/js/vegas.js') }}"></script>
+            <script src="{{ asset('bundles/charlestowncore/js/vegas.min.js') }}"></script>
+            {#<script>$("body").vegas({#}
+                    {#delay: 7000,#}
+                    {#timer: false,#}
+                    {#shuffle: true,#}
+                    {#transition: 'zoomOut2',#}
+                    {#transitionDuration: 2000,#}
+                    {#slides: [#}
+                        {#{ src: "../images/slide/bg1.jpg" },#}
+                    {#]#}
+                {#});</script>#}
+        {% endblock %}
     </body>
 </html>

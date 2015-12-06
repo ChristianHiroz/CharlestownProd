@@ -31,6 +31,12 @@ class CustomerAdmin extends Admin
                     'multiple' => true
                 )
             )
+            ->add('companyName', 'text', array('label' => 'Nom de la société'))
+            ->add('siret', 'text', array('label' => 'Numéro SIRET'))
+            ->add('address', 'text', array('label' => 'Adresse'))
+            ->add('town', 'text', array('label' => 'Ville'))
+            ->add('pc', 'text', array('label' => 'Code postal'))
+            ->add('phoneNumber', 'text', array('label' => 'Téléphone'))
         ;
     }
 

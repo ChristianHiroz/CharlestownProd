@@ -25,12 +25,21 @@ class BusinessSupportAdmin extends Admin
                 'second_options' => array('label' => 'Confirmation du mot de passe'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
-            ->add('email', 'email', array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
+            ->add('email', 'email', array('label' => 'Adresse email'))
             ->add('roles', 'choice', array(
                     'choices'  => $rolesChoices,
                     'multiple' => true
                 )
             )
+            ->add('firstName', 'text', array('label' => 'Prénom'))
+            ->add('lastName', 'text', array('label' => 'Nom'))
+            ->add('gender', 'choice', array('label' => "Sexe", 'choices' => array('H' => 'H', 'F'=>'F')))
+            ->add('position', 'text', array('label' => 'Poste'))
+            ->add('address', 'text', array('label' => 'Adresse'))
+            ->add('town', 'text', array('label' => 'Ville'))
+            ->add('pc', 'text', array('label' => 'Code postal'))
+            ->add('phoneNumber', 'text', array('label' => 'Téléphone'))
+            ->add('agency', 'sonata_type_model', array('property'=>'localisation'))
         ;
     }
 
@@ -39,6 +48,9 @@ class BusinessSupportAdmin extends Admin
         $datagridMapper
             ->add('id', null, array('label' => 'Identifiant'))
             ->add('username',null, array('label' => 'Nom d\'utilisateur'))
+            ->add('firstName',null, array('label' => 'Nom'))
+            ->add('lastName',null, array('label' => 'Prénom'))
+            ->add('position',null, array('label' => 'Poste'))
             ->add('email', null, array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
         ;
     }
@@ -48,6 +60,9 @@ class BusinessSupportAdmin extends Admin
         $listMapper
             ->addIdentifier('id', null , array('label' => 'Identifiant'))
             ->add('username', null, array('label' => 'Nom d\'utilisateur'))
+            ->add('firstName',null, array('label' => 'Nom'))
+            ->add('lastName',null, array('label' => 'Prénom'))
+            ->add('position',null, array('label' => 'Poste'))
             ->add('email', null, array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
         ;
     }

@@ -28,6 +28,8 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Charlestown\CustomerBundle\CharlestownCustomerBundle(),
             new Charlestown\CollaboratorBundle\CharlestownCollaboratorBundle(),
+            new Charlestown\DemandBundle\CharlestownDemandBundle(),
+            new Charlestown\FileBundle\CharlestownFileBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
