@@ -1,0 +1,31 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig'%}
+
+{% block content %}
+    {{ parent() }}
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Procès Verbaux</h2>
+        </div>
+        <div class="modal-body">
+            <table class="table table-condensed">
+                <thead>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Fichier</th>
+                </thead>
+                <tbody>
+                {% for pv in pvs %}
+                    <tr>
+                        <td>{{ pv.nameShow }}</td>
+                        <td>{{ pv.date | date }}</td>
+                        <td><a href="{{ asset(pv.uploadRootDir  ~ pv.id ~ '.' ~ pv.alt) }}"  download="{{pv.nameShow ~ '.' ~ pv.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -2,6 +2,9 @@
 
 namespace Charlestown\CollaboratorBundle\Entity;
 
+use Charlestown\CarpoolingBundle\Entity\Carpooling;
+use Charlestown\CustomerBundle\Entity\Customer;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Charlestown\UserBundle\Entity\User as User;
 
@@ -53,9 +56,55 @@ abstract class Collaborator extends User
      */
     private $position;
 
+    /**
+     * @var \Customer
+     *
+     * @ORM\ManyToOne(targetEntity="Charlestown\CustomerBundle\Entity\Customer")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", nullable=true)
+     */
+    private $customer;
+
+    /**
+     * @var \Customer
+     *
+     * @ORM\OneToMany(targetEntity="Charlestown\CarpoolingBundle\Entity\Carpooling", mappedBy="driver")
+     */
+    private $myCarpoolings;
+
+    /**
+     * @var \Customer
+     *
+     * @ORM\ManyToMany(targetEntity="Charlestown\CarpoolingBundle\Entity\Carpooling", mappedBy="applicants")
+     */
+    private $myCarpoolingsApplication;
+
+    /**
+     * @var \Customer
+     *
+     * @ORM\ManyToMany(targetEntity="Charlestown\CarpoolingBundle\Entity\Carpooling", mappedBy="selected")
+     */
+    private $myCarpoolingsSelection;
+
     public function __construct()
     {
+        $this->myCarpoolings = new ArrayCollection();
+        $this->myCarpoolingsApplication = new ArrayCollection();
+        $this->myCarpoolingsSelection = new ArrayCollection();
         parent::__construct();
+    }
+
+    /**
+     * @return Customer
+     */
+    public function getCustomer(){
+        return $this->customer;
+    }
+
+    /**
+     * @param Customer $customer
+     */
+    public function setCustomer(Customer $customer = null){
+        $this->customer = $customer;
     }
 
     /**
@@ -121,5 +170,76 @@ abstract class Collaborator extends User
     {
         $this->position = $position;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMyCarpoolings()
+    {
+        return $this->myCarpoolings;
+    }
+
+    /**
+     * @param ArrayCollection $myCarpoolings
+     */
+    public function setMyCarpoolings($myCarpoolings)
+    {
+        $this->myCarpoolings = $myCarpoolings;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMyCarpoolingsApplication()
+    {
+        return $this->myCarpoolingsApplication;
+    }
+
+    /**
+     * @param ArrayCollection $myCarpoolingsApplication
+     */
+    public function setMyCarpoolingsApplication($myCarpoolingsApplication)
+    {
+        $this->myCarpoolingsApplication = $myCarpoolingsApplication;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMyCarpoolingsSelection()
+    {
+        return $this->myCarpoolingsSelection;
+    }
+
+    /**
+     * @param ArrayCollection $myCarpoolingsSelection
+     */
+    public function setMyCarpoolingsSelection($myCarpoolingsSelection)
+    {
+        $this->myCarpoolingsSelection = $myCarpoolingsSelection;
+    }
+
+    /**
+     * @param Carpooling $carpooling
+     */
+    public function addMyCarpooling(Carpooling $carpooling){
+        $this->myCarpoolings[] = $carpooling;
+    }
+
+    /**
+     * @param Carpooling $carpooling
+     */
+    public function addMyCarpoolingApplication(Carpooling $carpooling){
+        $this->myCarpoolings[] = $carpooling;
+    }
+
+    /**
+     * @param Carpooling $carpooling
+     */
+    public function addMyCarpoolingSelection(Carpooling $carpooling){
+        $this->myCarpoolings[] = $carpooling;
+    }
+
+
 }
 

@@ -17,6 +17,7 @@ class AgencyAdmin extends Admin
             ->add('customerManager', 'sonata_type_model', array('label' => 'Responsable client','property' => 'username'))
             ->add('eventCustomerManager', 'sonata_type_model', array('label' => 'Responsable client event','property' => 'username'))
             ->add('planningCoordinator', 'sonata_type_model', array('label' => 'Coordinateur planning','property' => 'username'))
+            ->add('numeroUrgence')
         ;
     }
 
@@ -25,6 +26,7 @@ class AgencyAdmin extends Admin
         $datagridMapper
             ->add('id', null, array('label' => 'Identifiant'))
             ->add('localisation', null, array('label' => 'Ville'))
+            ->add('numeroUrgence')
         ;
     }
 
@@ -33,6 +35,7 @@ class AgencyAdmin extends Admin
         $listMapper
             ->addIdentifier('id', null, array('label' => 'Identifiant'))
             ->add('localisation', null, array('label' => 'Ville'))
+            ->add('numeroUrgence')
         ;
     }
 

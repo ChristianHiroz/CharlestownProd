@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * File
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Charlestown\FileBundle\Entity\FileRepository")
  * @ORM\Table()
  * @ORM\HasLifecycleCallbacks
  */
@@ -35,10 +35,34 @@ class File
      */
     private $name;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_show", type="string", length=255, nullable=true)
+     */
+    private $nameShow;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * @var \FileType
+     *
+     * @ORM\ManyToOne(targetEntity="Charlestown\FileBundle\Entity\FileType")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=true)
+     */
+    private $fileType;
 
     private $file;
     private $tempFilenom;
 
+    public function __construct(){
+        $this->date = new \DateTime();
+    }
 
     /**
      * Get id
@@ -96,6 +120,32 @@ class File
         return $this->name;
     }
 
+    /**
+     * Set nameShow
+     *
+     * @param string $nameShow
+     * @return File
+     */
+    public function setNameShow($nameShow)
+    {
+        $this->nameShow = $nameShow;
+
+        return $this;
+    }
+
+    /**
+     * Get nameShow
+     *
+     * @return string
+     */
+    public function getNameShow()
+    {
+        if($this->nameShow == null){
+            return $this->name;
+        }
+        return $this->nameShow;
+    }
+
 
     /**
      * Set file
@@ -116,6 +166,29 @@ class File
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Get fileType
+     *
+     * @return FileType
+     */
+    public function getFileType(){
+        return $this->fileType;
+    }
+
+    /**
+     * Set fileType
+     *
+     * @param FileType $fileType
+     */
+    public function setFileType(FileType $fileType = null){
+        $this->fileType = $fileType;
+    }
+
+
+    public function getDate(){
+        return $this->date;
     }
 
     //Final render : supportId- supportNom/ficheClass/ficheId- ficheNom, FichePrenom/fileId.fileAlt

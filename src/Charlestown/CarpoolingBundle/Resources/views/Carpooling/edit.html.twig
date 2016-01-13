@@ -1,0 +1,35 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom: 0px;">
+                <nav class="navbar navbar-default secondNav">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav" style="width:100%;">
+                                <li class="" role="presentation"><a href="{{ path('carpooling') }}">Covoiturages</a></li>
+                                <li class="divider-vertical-second"></li>
+                                <li class="" role="presentation"><a href="{{ path('mycarpoolings') }}">Mes covoiturages</a></li>
+                                <li class="divider-vertical-second"></li>
+                                <li class="" role="presentation"><a href="{{ path('myapplications') }}">Mes demandes</a></li>
+                                <li class="divider-vertical-second"></li>
+                                <li class="" role="presentation"><a href="{{ path('myselections') }}">Mes voyages</a></li>
+                                <li class="divider-vertical-second"></li>
+                                <li class="active" role="presentation"><a>Modification</a></li>
+                                <li class="divider-vertical-second"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <hr/>
+            </div>
+            <div class="modal-body" style="padding-top: 0px; color:black;">
+                <div style="text-align:center;">
+                {{ form(edit_form) }}
+                {{ form(delete_form) }}
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+{% endblock %}

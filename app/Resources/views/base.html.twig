@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%;">
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Charlestown{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
@@ -12,7 +12,7 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body style="height: 100%;  ">
         {% block body %}
         <div class="container">
 
@@ -24,16 +24,17 @@
             <script src="{{ asset('bundles/charlestowncore/js/vegas.min.js.map') }}"></script>
             <script src="{{ asset('bundles/charlestowncore/js/vegas.js') }}"></script>
             <script src="{{ asset('bundles/charlestowncore/js/vegas.min.js') }}"></script>
-            {#<script>$("body").vegas({#}
-                    {#delay: 7000,#}
-                    {#timer: false,#}
-                    {#shuffle: true,#}
-                    {#transition: 'zoomOut2',#}
-                    {#transitionDuration: 2000,#}
-                    {#slides: [#}
-                        {#{ src: "../images/slide/bg1.jpg" },#}
-                    {#]#}
-                {#});</script>#}
+            <script src="{{ asset('bundles/charlestowncore/js/main.js') }}"></script>
+            <script>$("body").vegas({
+                    delay: 7000,
+                    timer: false,
+                    shuffle: true,
+                    transition: 'zoomOut2',
+                    transitionDuration: 2000,
+                    slides: [
+                        { src: "../images/slide/bg1.jpg" },
+                    ]
+                });</script>
         {% endblock %}
     </body>
 </html>

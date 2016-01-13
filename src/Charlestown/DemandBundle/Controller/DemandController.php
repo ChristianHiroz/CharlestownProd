@@ -40,6 +40,7 @@ class DemandController extends Controller
 
         return array(
             'entities' => $entities,
+            'user' => $this->getUser()
         );
     }
 
@@ -69,6 +70,7 @@ class DemandController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -106,6 +108,7 @@ class DemandController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -133,6 +136,7 @@ class DemandController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -186,6 +190,7 @@ class DemandController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -260,6 +265,7 @@ class DemandController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -297,6 +303,7 @@ class DemandController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -324,6 +331,7 @@ class DemandController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -377,6 +385,7 @@ class DemandController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -450,6 +459,7 @@ class DemandController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -487,6 +497,7 @@ class DemandController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -514,6 +525,7 @@ class DemandController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -567,6 +579,7 @@ class DemandController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -640,6 +653,7 @@ class DemandController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -677,6 +691,7 @@ class DemandController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -704,6 +719,7 @@ class DemandController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'user' => $this->getUser()
         );
     }
 
@@ -757,6 +773,7 @@ class DemandController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'user' => $this->getUser()
         );
     }
 

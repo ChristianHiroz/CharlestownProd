@@ -2,6 +2,7 @@
 
 namespace Charlestown\UserBundle\Entity;
 
+use Charlestown\FileBundle\Entity\File;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as FOSUser;
 
@@ -60,9 +61,17 @@ abstract class User extends FOSUser
       */
     private $agency;
 
+    /**
+      * @var \File
+      *
+      * @ORM\OneToOne(targetEntity="Charlestown\FileBundle\Entity\File")
+      */
+    private $picture;
+
     public function __construct()
     {
         parent::__construct();
+        $this->enabled = true;
     }
 
     /**
@@ -157,6 +166,22 @@ abstract class User extends FOSUser
     public function setAgency($agency)
     {
         $this->agency = $agency;
+    }
+
+    /**
+     * @return \File
+    */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * @param \File $picture
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
     }
 }
 

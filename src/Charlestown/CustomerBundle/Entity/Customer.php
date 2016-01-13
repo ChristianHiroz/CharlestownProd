@@ -35,10 +35,58 @@ class Customer extends User
      * @ORM\Column(name="siret", type="string")
      */
     private $siret;
+//
+//    /**
+//     * @var \respPlanning
+//     *
+//     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Collaborator")
+//     * @ORM\JoinColumn(name="respPlanning_id", referencedColumnName="id", nullable=true)
+//     */
+//    private $respPlanning;
+//
+//    /**
+//     * @var \respCustomer
+//     *
+//     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Collaborator")
+//     * @ORM\JoinColumn(name="respCustomer_id", referencedColumnName="id", nullable=true)
+//     */
+//    private $respCustomer;
 
     public function __construct(){
         parent::__construct();
     }
+
+//    /**
+//     * @return \respPlanning
+//     */
+//    public function getRespPlanning()
+//    {
+//        return $this->respPlanning;
+//    }
+//
+//    /**
+//     * @param \respPlanning $respPlanning
+//     */
+//    public function setRespPlanning($respPlanning)
+//    {
+//        $this->respPlanning = $respPlanning;
+//    }
+//
+//    /**
+//     * @return \respCustomer
+//     */
+//    public function getRespCustomer()
+//    {
+//        return $this->respCustomer;
+//    }
+//
+//    /**
+//     * @param \respCustomer $respCustomer
+//     */
+//    public function setRespCustomer($respCustomer)
+//    {
+//        $this->respCustomer = $respCustomer;
+//    }
 
     /**
      * @return string

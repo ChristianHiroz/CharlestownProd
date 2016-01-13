@@ -27,7 +27,7 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/event/, role: ROLE_EVENT }
-        - { path: ^/ae/, role: ROLE_BS }
-        - { path: ^/client/, role: ROLE_CUSTOMER }
+        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/event, role: ROLE_EVENT }
+        - { path: ^/ae, role: ROLE_AE }
+        - { path: ^/client, role: ROLE_CUSTOMER }

@@ -24,6 +24,11 @@ services:
         arguments: [~, Charlestown\FileBundle\Entity\File, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Fichier, group: Divers }
+    admin.file_type:
+        class: Charlestown\CoreBundle\Admin\FileTypeAdmin
+        arguments: [~, Charlestown\FileBundle\Entity\FileType, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Type de fichier, group: Divers }
     admin.demand_formation:
         class: Charlestown\CoreBundle\Admin\DemandFormationAdmin
         arguments: [~, Charlestown\DemandBundle\Entity\DemandFormation, ~]

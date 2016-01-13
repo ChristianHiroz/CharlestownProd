@@ -2,6 +2,7 @@
 
 namespace Charlestown\CollaboratorBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,9 +22,65 @@ class BusinessSupport extends Collaborator
      */
     protected $id;
 
+    /**
+     * @var \Files
+     *
+     * @ORM\ManyToMany(targetEntity="Charlestown\FileBundle\Entity\File")
+     */
+    private $evaluations;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="syndicat", type="string", nullable=true)
+     */
+    private $syndicat;
+
     public function __construct()
     {
+        $this->evaluations = new ArrayCollection();
         parent::__construct();
+    }
+
+
+    /**
+     * @return \Files
+     */
+    public function getEvaluations()
+    {
+        return $this->evaluations;
+    }
+
+    /**
+     * @param \Files $evaluations
+     */
+    public function setEvaluations($evaluations)
+    {
+        $this->evaluations = $evaluations;
+    }
+
+    /**
+     * @param File $evaluation
+     */
+    public function addEvaluation(File $evaluation)
+    {
+        $this->evaluations[] = $evaluation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSyndicat()
+    {
+        return $this->syndicat;
+    }
+
+    /**
+     * @param string $syndicat
+     */
+    public function setSyndicat($syndicat)
+    {
+        $this->syndicat = $syndicat;
     }
 }
 

@@ -10,4 +10,16 @@ namespace Charlestown\CollaboratorBundle\Entity;
  */
 class BusinessSupportRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getSyndicat(){
+        $empty = "";
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'Select b
+                    From CharlestownCollaboratorBundle:BusinessSupport b
+                    WHERE b.syndicat != ?1 ');
+
+        $query->setParameter(1,$empty);
+
+        return $query->getResult();
+    }
 }

@@ -1,0 +1,27 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig'%}
+
+{% block content %}
+    {{ parent() }}
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Mon client</h2>
+        </div>
+        <div class="modal-body">
+            {% if user.customer %}
+            <div style="text-align: center;">
+                <img class="rounded-image" style="width:150px; height:150px; float:none; border-style: solid; border-color:white; border-width:2px;" src="{{ asset(user.customer.picture.uploadRootDir  ~ user.customer.picture.id ~ '.' ~ user.customer.picture.alt) }}"/><br/>
+                {{ user.customer.companyName }}<br/>
+                {{ user.customer.email }}<br/>
+                {{ user.customer.address }}<br/>
+                {{ user.customer.town }} {{ user.customer.PC }} <br/>
+                {{ user.customer.phoneNumber }}
+            </div>
+            {% else %}
+                <p>Vous n'avez pas d'affectation, contactez Charlestown.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

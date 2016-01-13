@@ -2,7 +2,7 @@
     font-family: "Roboto",arial,sans-serif !important;
 }
 /* MENU */
-.firstNav{width:37%; top:50px; left:125px; border:medium none;z-index:2; }
+.firstNav{width:50%; top:50px; left:125px; border:medium none;z-index:2; }
 .secondNav{width:90%;border:medium none; z-index:1;}
 /*.secondNav * {height:25px;}*/
 .container-fluid{ background-color:#000000; opacity: 0.8; border: medium none; border-radius:10px; margin:0px; padding:0px; }
@@ -16,6 +16,11 @@
 .navbar-collapse{ margin:0px; padding:0px; }
 .navbar-default .navbar-nav > li > a{color:white;}
 .espace{position: absolute; top: 21px; right: 175px; z-index: 1;}
+
+.menubutton{  width:24%;  text-align: center; }
+.menubutton:hover, .menubutton:focus { background-color: white;}
+.menuheader{ width:26%; }
+.menucontainer{ width:74%; }
 /* FINMENU */
 
 /* MODALS */
@@ -42,11 +47,39 @@ hr{
 td a {
     color:#F00;
 }
+
+.table-condensed > tbody > tr > td{
+    text-align:center;
+}
+
+.table-condensed > thead > tr > th {
+    text-align: center;
+    background-color: black;
+    color:white;
+}
+
+.table-condensed {
+    background-color: white;
+    color:black;
+}
 .btn-danger{
     background-color: #F00;
 }
 /* ENCOMMONS */
 
+/*SPACE MENU*/
+.space-menu{top: 50px; right: 12%; position: absolute; width:150px; height:50px; z-index:2;background-color:black; border-radius:30px 10px 10px 30px;}
+.rounded-image{display: block;  margin: 0 auto;  width: 50px;  height: 50px;  -webkit-border-radius: 50%;  -moz-border-radius: 50%;  border-radius: 50%; float:left; }
+.space-menu-txt{width:95px; float:right; line-height:50px;}
+.space-menu-txt:focus{color:white;}
+.space-menu-txt:hover{color:white;}
+.space-menu-link{padding:0; width:150px;}
+.space-menu-der{z-index:1;margin-left:50px;margin-top:-61px;position:unset;}
+/*ENDSPACE MENU*/
+
+.navbar-default .navbar-nav > .open > a { color: black !important; }
+.dropdown-toggle:focus { color: black !important; }
+.dropdown-toggle:hover { color: black !important; }
 /* DEMANDS */
 .half{width:50%;display:inline-block;}
 /* ENDDEMANDS */

@@ -17,14 +17,20 @@ class BusinessSupportAdmin extends Admin
 
         $rolesChoices = self::flattenRoles($roles);
         $formMapper
-            ->add('username', 'text', array('label' => 'Nom d\'utilisateur'))
-            ->add('plainPassword', 'repeated', array(
+            ->add('username', 'text', array('label' => 'Nom d\'utilisateur'));
+
+        $subject = $this->getSubject();
+        if ($subject->getId() == null) {
+            // The thumbnail field will only be added when the edited item is created
+            $formMapper->add('plainPassword', 'repeated', array(
                 'type' => 'password',
                 'options' => array('translation_domain' => 'FOSUserBundle'),
                 'first_options' => array('label' => 'Mot de passe'),
                 'second_options' => array('label' => 'Confirmation du mot de passe'),
                 'invalid_message' => 'fos_user.password.mismatch',
-            ))
+            ));
+        }
+        $formMapper
             ->add('email', 'email', array('label' => 'Adresse email'))
             ->add('roles', 'choice', array(
                     'choices'  => $rolesChoices,
@@ -40,6 +46,9 @@ class BusinessSupportAdmin extends Admin
             ->add('pc', 'text', array('label' => 'Code postal'))
             ->add('phoneNumber', 'text', array('label' => 'Téléphone'))
             ->add('agency', 'sonata_type_model', array('property'=>'localisation'))
+            ->add('picture', 'sonata_type_model')
+            ->add('evaluations')
+            ->add('syndicat')
         ;
     }
 
@@ -52,6 +61,7 @@ class BusinessSupportAdmin extends Admin
             ->add('lastName',null, array('label' => 'Prénom'))
             ->add('position',null, array('label' => 'Poste'))
             ->add('email', null, array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
+            ->add('syndicat')
         ;
     }
 

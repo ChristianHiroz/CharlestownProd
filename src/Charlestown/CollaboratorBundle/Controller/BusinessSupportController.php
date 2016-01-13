@@ -14,6 +14,33 @@ class BusinessSupportController extends Controller
      */
     public function indexAction()
     {
-        return array('name' => 'AE');
+        return array('name' => 'AE', 'user' => $this->getUser());
+    }
+
+    /**
+     * @Route("/ae/customer", name="my_customer")
+     * @Template()
+     */
+    public function myCustomerAction()
+    {
+        return array('user' => $this->getUser());
+    }
+
+    /**
+     * @Route("/ae/customer/contact", name="my_customer_contact")
+     * @Template()
+     */
+    public function myCustomerContactAction()
+    {
+        return array('user' => $this->getUser());
+    }
+
+    /**
+     * @Route("/ae/evaluations", name="evaluation")
+     * @Template()
+     */
+    public function evaluationAction()
+    {
+        return array('user' => $this->getUser());
     }
 }

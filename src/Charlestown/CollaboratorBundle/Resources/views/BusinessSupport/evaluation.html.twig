@@ -1,0 +1,31 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig'%}
+
+{% block content %}
+    {{ parent() }}
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Entretiens annuels</h2>
+        </div>
+        <div class="modal-body">
+            <table class="table table-condensed">
+                <thead>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Fichier</th>
+                </thead>
+                <tbody>
+                {% for evaluation in user.evaluations %}
+                    <tr>
+                        <td>{{ evaluation.nameShow }}</td>
+                        <td>{{ evaluation.date | date }}</td>
+                        <td><a href="{{ asset(evaluation.uploadRootDir  ~ evaluation.id ~ '.' ~ evaluation.alt) }}"  download="{{evaluation.nameShow ~ '.' ~ evaluation.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

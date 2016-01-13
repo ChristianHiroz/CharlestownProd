@@ -9,11 +9,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class EventController extends Controller
 {
     /**
-     * @Route("/ae", name="index_event")
+     * @Route("/event", name="index_event")
      * @Template()
      */
     public function indexAction()
     {
-        return array('name' => 'Event');
+        return array('name' => 'Event', 'user' => $this->getUser());
     }
 }

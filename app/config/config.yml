@@ -111,3 +111,9 @@ sonata_admin:
     title_logo: favicon.ico
     templates:
             layout:               ::standard_layout.html.twig
+
+services:
+    twig.extension.intl:
+       class: Twig_Extensions_Extension_Intl
+       tags:
+           - { name: twig.extension }

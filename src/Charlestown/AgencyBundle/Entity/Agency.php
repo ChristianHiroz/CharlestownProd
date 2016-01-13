@@ -29,6 +29,13 @@ class Agency
     private $localisation;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_urgence", type="string", length=10)
+     */
+    private $numeroUrgence;
+
+    /**
      * @var \BusinessSupport
      *
      * @ORM\OneToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\BusinessSupport")
@@ -155,5 +162,23 @@ class Agency
     {
         return $this->planningCoordinator;
     }
+
+    /**
+     * @return string
+     */
+    public function getNumeroUrgence()
+    {
+        return $this->numeroUrgence;
+    }
+
+    /**
+     * @param string $numeroUrgence
+     */
+    public function setNumeroUrgence($numeroUrgence)
+    {
+        $this->numeroUrgence = $numeroUrgence;
+    }
+
+
 }
 

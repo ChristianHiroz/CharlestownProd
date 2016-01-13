@@ -1,4 +1,5 @@
 {% extends "::base.html.twig" %}
+{% block title %} {{ parent() }} - Collaborateur{% endblock %}
 {% block body %}
     {% block header %}
         <div class="modal fade" id="formationModal" tabindex="-1" role="dialog">
@@ -54,6 +55,24 @@
                         <script src="https://apis.google.com/js/platform.js"></script>
 
                         <div class="g-ytsubscribe" data-channel="charlestownaccueil" data-layout="full" data-theme="dark" data-count="default"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div class="modal fade" id="eleasModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <img style="width:100%; height:auto;" src="{{ asset('images/bienvenue_eleas.png') }}"/>
+                        <div style="text-align: center; margin-top:15px;">
+                            <a class="btn btn-danger" href="{{ asset('images/bienvenue_eleas.pdf') }}">Télécharger la brochure</a>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
@@ -280,28 +299,470 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-        <div id="espace" style="top: 21px; right: 175px; z-index: 3; position: absolute; background-color: black;">
-            <ul class="nav navbar-nav">
-                <li class="dropdown" style="border-radius: 15px;">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Espace perso<span class="caret"></span></a>
-                    <ul class="dropdown-menu ">
-                        <li><a id="vos_informations" data-id="vos_informations" href="/Charlestown/web/app_dev.php/collaborateur/vos_informations">Vos informations</a></li>
-                        <li><a id="heae" data-id="heae" href="/Charlestown/web/app_dev.php/collaborateur/historiqueEntretiens">L'historique de vos entretiens annuel</a></li>
-                        <li class="dropdown">
-                            <a id="demande"  href="{{ path('demand') }}">Mes demandes></a>
-                        </li>
-                        <li><a id="covoiturage" data-id="covoiturage" href="/Charlestown/web/app_dev.php/collaborateur/covoiturage">Le covoiturage </a></li>
-                        <li><a id="bourse_competence" data-id="bourse_competence" href="/Charlestown/web/app_dev.php/collaborateur/bourse_aux_competences">Bourse aux compétences </a></li>
-                        <li class="dropdown"><a href="/Charlestown/web/app_dev.php/logout"> Déconnexion </a></li>
-                    </ul>
-                </li>
+        <div class="modal fade" id="infosModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <nav class="navbar navbar-default secondNav">
+                            <div class="container-fluid">
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active" role="presentation"><a href="#transport" aria-controls="transport" role="tab" data-toggle="tab">Titre de transport collectif</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#mutuelle" aria-controls="mutuelle" role="tab" data-toggle="tab">Indémnité de panier - mutuelle</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#paie" aria-controls="paie" role="tab" data-toggle="tab">La fiche de paie</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <hr/>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="transport">
+                                <h3>Le titre de transport collectif</h3><br/><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            Le titre de transport collectif hebdomadaire ou mensuel (correspondant au trajet du lieu d’habitation au lieu d’affectation) est remboursé à hauteur de 50% de son montant. <br/><br/>
+                                            Avant chaque dernier vendredi du mois, vous devrez fournir à votre responsable clients l’original du justificatif de paiement et une copie recto verso lisible de votre titre de transport. Il en est de même lorsque vous modifiez le nombre de zone de votre titre de transport. <br/><br/>
+                                            Les cartes annuelles vont sont remboursées sur les mêmes critères et justificatifs. <br/><br/>
+                                            Un collaborateur à temps partiel, travaillant moins de 75h50min par mois, a le droit à une prise en charge de son titre de transport au prorata du nombre d’heures travaillées.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="mutuelle">
+                                <h3>L'indemnité de panier</h3><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            {% if is_granted('ROLE_AE') %}
+                                            L’employeur prend en charge une indemnité de panier à hauteur de 5.57 € (montant stipulé sur votre contrat de travail) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
+                                            {% elseif is_granted('ROLE_EVENT') %}
+                                            L’employeur prend en charge une indemnité de panier à hauteur de 8 € (si la durée de la mission est supérieur à 5,99H) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <h3>La mutuelle</h3><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            {% if is_granted('ROLE_AE') %}
+                                                <p>
+                                                  Les collaborateurs en CDI embauchés après le 01/01/2016 sont automatiquement affiliés à la mutuelle proposée par Charlestown. Le coût de la cotisation pour le régime de base est de 17€ dont 50% pris en charge par Charlestown. Quel que soit le régime choisi par le collaborateur, la participation de l’employeur est de 8,50€.
+                                                  <br/>
+                                                  Seuls peuvent être exonérés de l’affiliation obligatoire les collaborateurs dans les cas suivants :
+                                                </p>
+                                                <ul>
+                                                    <li>Les salariés bénéficiaires de la CMU ou ACS (+ justificatifs à renouveler chaque année)</li>
+                                                    <li>les salariés à temps très partiel dont la cotisation représenterait au moins 10 % de leur rémunération brute</li>
+                                                    <li>les salariés et apprentis bénéficiaires d’un CDD < 12 mois, même s’ils ne bénéficient pas d’une couverture individuelle souscrite par ailleurs</li>
+                                                    <li>les salariés et apprentis bénéficiaires d’un CDD > 12 mois, bénéficiant d’une couverture individuelle souscrite par ailleurs (+ justificatif)</li>
+                                                    <li>l’un des salariés en couple travaillant dans la même entreprise</li>
+                                                    <li>les salariés à employeurs multiples bénéficiant déjà d’un régime de frais de santé obligatoire dans le cadre d’un autre emploi (+ justificatifs)</li>
+                                                    <li>les salariés qui bénéficient par ailleurs, y compris en tant qu’ayants droit, d’une couverture santé collective obligatoire relevant d’un des régimes visés par l’arrêté du 26 mars 2012 (+ justificatifs)</li>
+                                                </ul>
+                                                <p>Pour toute question relative à la mutuelle, nous vous remercions d’adresser un message à l’adresse suivante : communication-rh@charlestown.fr</p>
+                                            {% elseif is_granted('ROLE_EVENT') %}
+                                                <p>
+                                                    Pour les salariés réalisant des missions évènementielles et souhaitant être affiliés à la mutuelle de Charlestown, merci de bien vouloir faire un mail à l’adresse suivante : communication-rh@charlestown.fr. Par défaut, le salarié est réputé refuser la mutuelle comme indiqué dans les contrats de travail.
+                                                </p>
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="paie">
+                                <h3>La fiche de paie</h3><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            Le paiement de votre salaire se fera par l’émission d’un virement l’avant dernier jour de chaque mois, d’un acompte représentant 60% du montant brut (80% du net).<br/><br/>
+                                            Le solde de votre salaire et vos primes éventuelles seront virés le onzième jour du mois suivant (en cas de jour férié ou de 11 tombant un samedi ou dimanche, les salaires pourront n’être virés sur le compte que le 12 ou 13 du mois).<br/><br/>
+                                            Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace personnel illicoffre.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+            </div>
+        </div><!-- /.modal -->
+        <div class="modal fade" id="fonctionnementModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <nav class="navbar navbar-default secondNav">
+                            <div class="container-fluid">
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active" role="presentation"><a href="#poste" aria-controls="poste" role="tab" data-toggle="tab">Les prises de poste</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#absence" aria-controls="absence" role="tab" data-toggle="tab">La gestion des absences</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#presentation" aria-controls="presentation" role="tab" data-toggle="tab">La présentation</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#entretien" aria-controls="entretien" role="tab" data-toggle="tab">L'entretien annuel - les évolutions</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <hr/>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="poste">
+                                <h3>Les prises de poste</h3><br/><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            Le métier d’hôtesse et hôte d’accueil répond à un emploi dit « posté » nécessitant un respect rigoureux des horaires de travail. Notre engagement vis à vis de nos clients est d’assurer l’ouverture de leurs différents accueils ou les missions confiées à l’heure prévue par le contrat avec des collaborateurs formés à leurs procédures et autonomes. <br/>
+                                            <br/>
+                                            <span style="font-weight: bold">Pour l’activité « Accueil en Entreprise » de toutes les agences:</span> <br/>
+                                            <br/>
+                                            Un système de prise de poste par « badgeage » a été mis en place afin de nous confirmer votre présence sur site et de valider votre ponctualité quelque soit le lieu de votre prestation. La procédure prévoit d’appeler chaque jour à partir de votre poste du site client le pour composer votre matricule : (remis lors de votre embauche) En cas de retard ou de défaillance du système, prévenir directement la veille planning
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="absence">
+                                <h3>La gestion des absences</h3><br/><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                        Lors d’une absence, nous vous demandons de respecter les consignes suivantes car la continuité de service chez nos clients est notre priorité.
+                                        <br/>
+                                        Nous vous demandons :
+                                        <br/>
+                                        </p>
+                                        <ul>
+                                            <li>de prévenir votre responsable Charlestown® et/ou la coordination planning le plus tôt possible,</li>
+                                            <li>de fournir sous 48 heures le justificatif de votre absence à votre responsable hiérarchique</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="presentation">
+                                <h3>La présentation</h3><br/><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                        Les consignes de présentation Charlestown®, qui vous ont été transmises lors de votre recrutement et de la formation métier, devront être respectées impérativement.
+                                        <br/>
+                                        Certains clients exigent des tenues spécifiques que nous vous fournirons, vous devrez obligatoirement :
+                                        </p>
+                                        <ul>
+                                            <li>en respecter le port</li>
+                                            <li>les entretenir (état de propreté, recoudre les boutons, faire nettoyer les cravates par un professionnel, …)</li>
+                                        </ul>
+                                        <p>
+                                        Vous devrez restituer ces tenues à la fin de vos missions ou sur demande de votre responsable. Sauf cas de dispositions particulières au site ou à l’agence d’affectation nous vous remboursons vos frais de pressing sur justificatifs (original de la facture impérativement) dans la limite de 45 € par mois (équivalent au nettoyage d’un tailleur par semaine).
+                                        <br/>
+                                        <br/>
+                                        Tous les justificatifs devront être transmis à votre responsable clients avant le 20 de chaque mois.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="entretien">
+                                <h3>L'entretien annuel</h3><br/><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                        A la date anniversaire de votre entrée chez Charlestown®, vous pourrez demander un entretien annuel (à defaut, il vous sera imposé par votre Responsable Client).
+                                        <br/><br/>
+                                        L’entretien annuel est un moment privilégié d’écoute et d’échange. Il vous permet de faire le bilan de l’année écoulée, une projection de l’année à venir et d’évoquer vos attentes. Un compte rendu sera réalisé et signé par les deux parties. Une copie sera conservée dans votre dossier salarié chez Charlestown®.
+                                        </p>
+                                    </div>
+                                </div>
+                                <h3>Les évolutions</h3><br/><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                        Charlestown® encourage l’évolution interne. Vous pouvez aborder votre projet professionnel ou souhait d’évolution avec votre responsable clients, notamment lors de votre entretien annuel. Vous pourrez également être reçu(e) par l’équipe des ressources humaines dans le cadre d’un entretien d’évolution. Une réponse à votre candidature vous sera toujours apportée dans les meilleurs délais.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div class="modal fade" id="procedureModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <nav class="navbar navbar-default secondNav">
+                            <div class="container-fluid">
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active" role="conge"><a href="#conge" aria-controls="poste" role="tab" data-toggle="tab">Les congés</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#prise" aria-controls="prise" role="tab" data-toggle="tab">La prise de congés</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#eventfam" aria-controls="eventfam" role="tab" data-toggle="tab">Les congés pour les évènements familiaux</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <hr/>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="conge">
+                                <h3>Les congés</h3><br/><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                        Les jours de congés payés sont des jours ouvrés. Vous disposez donc chaque année de 25 jours de congés payés (soit 5 semaines). Vous pouvez consulter chaque mois votre solde de congés en cours sur votre bulletin de paie. (Voir congés, ligne « solde » sous rubrique cp sur la fiche de paie).
+                                        <br/><br/>
+                                        La période de référence des congés payés s’étend sur l’année civile, du 1er janvier au 31 décembre. Il en est de même pour la période d’acquisition des congés payés. L’ensemble des jours de congés payés doit être pris avant le 31 décembre de l’année d’acquisition.
+                                        <br/><br/>
+                                        Au 1er janvier de l’année suivante, votre compteur de congés payés redevient nul puisque tous les jours de congés de l’année non pris sont définitivement perdus au 31 décembre et ne seront pas indemnisés.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="prise">
+                                <h3>La prise de congé</h3><br/><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            Vous devrez remplir le formulaire de demande de congés que vous trouverez sur le lien suivant : demande de congés
+                                        </p>
+                                        <br/>
+                                        <ul>
+                                            <li>pour les congés hors saison estivale : au moins 1 mois avant la date de prise des congés</li>
+                                            <li>pour la période de juillet/août : avant le 1er mars de l’année en cours ou à défaut au moins 2 mois avant.</li>
+                                        </ul>
+                                        <br/>
+                                        <p>
+                                            Votre Responsable client bénéficie de 15 jours pour vous apporter une réponse, par écrit.
+                                        </p>
+                                        <ul>
+                                            <li><span style="font-style: italic">Congés prévus du 1er janvier au 30 juin et du 1er septembre au 31 décembre</span> : durée pouvant atteindre 2 semaines consécutives </li>
+                                            <li><span style="font-style: italic">Congés prévus du 1er juillet au 31 août</span> : durée pouvant atteindre 4 semaines consécutives. Les dates et durée de congés restent soumises à l’accord du Responsable hiérarchique, sur proposition du collaborateur.</li>
+                                        </ul>
+                                        <br/>
+                                        <p>
+                                            Au sein d’une équipe, les prises de congés devront s’effectuer par roulement afin de maintenir la présence opérationnelle d’un collaborateur Charlestown® titulaire sur chaque site client.
+                                            Le congé principal doit être au moins de 12 jours ouvrables continus compris entre deux jours de repos hebdomadaires. Ces jours doivent être pris entre le 1er mai et le 31 octobre de la même année
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="eventfam">
+                                <h3>Les congés pour évènements familiaux</h3><br/><br/>
+                                <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-9">
+                                            <table class="table table-condensed">
+                                                <thead>
+                                                <tr><th colspan="2">Mariage</th>
+                                                </tr></thead>
+                                                <tbody><tr>
+                                                    <td>Salarié</td>
+                                                    <td>4 jours (5 jours après 1 an d'ancienneté)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Enfant</td>
+                                                    <td>1 jour</td>
+                                                </tr>
+                                                </tbody><thead>
+                                                <tr><th colspan="2">Décès</th>
+                                                </tr></thead>
+                                                <tbody><tr>
+                                                    <td>Conjoint, enfant</td>
+                                                    <td>4 jours (5 jours après 1 an d'ancienneté)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Parents, beaux-parents</td>
+                                                    <td>2 jours</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Grands Parents</td>
+                                                    <td>1 jour</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Frère, soeur, beau-frère, belle-soeur...</td>
+                                                    <td>1 jour</td>
+                                                </tr>
+                                                </tbody><thead>
+                                                <tr><th colspan="2">Divers</th>
+                                                </tr></thead>
+                                                <tbody><tr>
+                                                    <td>Déménagement</td>
+                                                    <td>1 jour (tous les 3 ans)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Naissance d'un enfant</td>
+                                                    <td>3 jours</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Accueil au foyer en vue d'adoption</td>
+                                                    <td>3 jours</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Appel à la préparation à la défense</td>
+                                                    <td>1 jour</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div class="modal fade" id="reglementModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div style="text-align: center;">
+                            <a class="btn btn-danger" href="{{ asset('images/reglement/ri.pdf') }}" download="{{ asset('images/reglement/ri.pdf') }}">Télécharger</a>
+                        </div><br/>
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img alt="ri0" src="{{ asset('images/reglement/ri-0.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri1" src="{{ asset('images/reglement/ri-1.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri2" src="{{ asset('images/reglement/ri-2.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri3" src="{{ asset('images/reglement/ri-3.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri4" src="{{ asset('images/reglement/ri-4.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri5" src="{{ asset('images/reglement/ri-5.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri6" src="{{ asset('images/reglement/ri-6.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri7" src="{{ asset('images/reglement/ri-7.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri8" src="{{ asset('images/reglement/ri-8.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri9" src="{{ asset('images/reglement/ri-9.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri10" src="{{ asset('images/reglement/ri-10.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri11" src="{{ asset('images/reglement/ri-11.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri12" src="{{ asset('images/reglement/ri-12.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri13" src="{{ asset('images/reglement/ri-13.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri14" src="{{ asset('images/reglement/ri-14.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri15" src="{{ asset('images/reglement/ri-15.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri16" src="{{ asset('images/reglement/ri-16.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri17" src="{{ asset('images/reglement/ri-17.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri18" src="{{ asset('images/reglement/ri-18.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri19" src="{{ asset('images/reglement/ri-19.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri20" src="{{ asset('images/reglement/ri-20.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri21" src="{{ asset('images/reglement/ri-21.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri22" src="{{ asset('images/reglement/ri-22.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri23" src="{{ asset('images/reglement/ri-23.jpg') }}"/>
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="text-align:center;">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="dropdown space-menu">
+            <a class="dropdown-toggle space-menu-link" data-toggle="dropdown" href="#">
+                <img class="rounded-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
+                <p class="space-menu-txt">Mon compte<span class="caret"></span></p>
+                {#<span class="caret"></span>#}
+            </a>
+            <ul class="dropdown-menu space-menu-der">
+                <li><a id="vos_informations" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Vos informations</a></li>
+                {% if is_granted('ROLE_AE') %}
+                    <li><a id="heae" data-id="heae" href="{{ path('evaluation') }}">L'historique de vos entretiens annuel</a></li>
+                    <li><a id="demande"  href="{{ path('demand') }}">Mes demandes</a></li>
+                {% elseif is_granted('ROLE_EVENT') %}
+                    <li><a id="operation"  href="#">Mes opérations</a></li>
+                {% endif %}
+                <li><a id="covoiturage" data-id="covoiturage" href="{{ path('carpooling') }}">Le covoiturage </a></li>
+                {#<li><a id="bourse_competence" data-id="bourse_competence" href="/Charlestown/web/app_dev.php/collaborateur/bourse_aux_competences">Bourse aux compétences </a></li>#}
+                <li class="dropdown"><a href="{{ path('fos_user_security_logout') }}">Déconnexion </a></li>
             </ul>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-default firstNav">
                     <div class="container-fluid">
-                        <div class="navbar-header">
+                        <div class="navbar-header menuheader">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
@@ -312,47 +773,52 @@
                             {#<a class="navbar-brand" href="#"><img class="logo_header_bis" src="{{ asset('favicon.ico') }}"/></a>#}
                         </div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
+                            <ul class="nav navbar-nav menucontainer">
                                 <li class="divider-vertical"></li>
-                                <li class="dropdown">
+                                <li class="dropdown menubutton">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a data-toggle="modal" data-target="#presentationModal">Présentation</a></li>
-                                        <li><a href="#">Infos utiles</a></li>
-                                        <li><a href="#">Fonctionnement</a></li>
+                                        <li><a data-toggle="modal" data-target="#infosModal">Infos utiles</a></li>
+                                        <li><a data-toggle="modal" data-target="#fonctionnementModal">Fonctionnement</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="#">Procédure</a></li>
+                                        <li><a data-toggle="modal" data-target="#procedureModal">Procédure</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="#">Règlement intérieur</a></li>
+                                        <li><a data-toggle="modal" data-target="#reglementModal">Règlement intérieur</a></li>
                                     </ul>
                                 </li>
+                                {% if is_granted('ROLE_AE') %}
+                                    <li class="divider-vertical"></li>
+                                    <li class="dropdown menubutton">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mission <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ path('my_customer') }}">Mon affectation</a></li>
+                                            <li><a href="{{ path('my_customer_contact') }}">Mes contacts</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
                                 <li class="divider-vertical"></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mission <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Mon affectation</a></li>
-                                        <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
-                                        <li><a href="#">Ma prise de poste</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Mes contacts</a></li>
-                                    </ul>
-                                </li>
-                                <li class="divider-vertical"></li>
-                                <li class="dropdown">
+                                <li class="dropdown menubutton">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Politique <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Soutien Eleas</a></li>
-                                        <li><a href="#">1% logement</a></li>
-                                        <li><a href="#">C.E</a></li>
+                                        <li><a data-toggle="modal" data-target="#eleasModal">Soutien Eleas</a></li>
+                                        <li><a href="https://cecil.cilgere.fr/Cecil/jsp/login.jsp">1% logement</a></li>
+                                        <li><a href="http://www.ce-charlestown.fr/sommaire/auth_user_html.php">C.E</a></li>
                                     </ul>
                                 </li>
                                 <li class="divider-vertical"></li>
-                                <li class="dropdown">
+                                <li class="dropdown menubutton">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utile <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="https://illicoffre.safe-access.com/">Illicoffre</a></li>
-                                        <li><a href="#">Coordonnées</a></li>
-                                        <li><a href="#">Procès verbaux</a></li>
+                                        <li><a href="{{ path('contact_syndicat') }}">Coordonnées</a></li>
+                                        <li><a href="{{ path('ce') }}">Procès verbaux</a></li>
+                                        {% if is_granted('ROLE_EVENT') %}
+                                            <li role="separator" class="divider"></li>
+                                            <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
+                                        {% endif %}
                                     </ul>
                                 </li>
                             </ul>
@@ -365,3 +831,25 @@
     {% block content %}
     {% endblock %}
 {% endblock %}
+
+
+{#<div class="modal fade" id="infosModal" tabindex="-1" role="dialog">#}
+    {#<div class="modal-dialog">#}
+        {#<div class="modal-content">#}
+            {#<div class="modal-header">#}
+                {#<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
+                {#<h2>Infos utiles</h2><br/>#}
+                {#<hr/>#}
+            {#</div>#}
+            {#<div class="modal-body">#}
+                {#<p>Notre agence se trouve à Paris, au 55 rue Fondary (75015). On vous rappelle également que le dressing est ouvert de 9h30 à 18h sans interruption du lundi au vendredi. </p>#}
+                {#<p>Vous pouvez contacter notre équipe en charge des opérations évent ou animations des ventes par téléphone au numéro 06.07.14.19.34 ou également par émail </p>#}
+                {#<div style="float:left; margin-left:15%;"><a href="mailto:afonteny@charlestown.fr">afonteny@charlestown.fr</a></div>#}
+                {#<div style="float:right; margin-right:15%;"><a href="mailto:adominguez@charlestown.fr">adominguez@charlestown.fr</a></div>#}
+            {#</div>#}
+            {#<div class="modal-footer">#}
+                {#<button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>#}
+            {#</div>#}
+        {#</div><!-- /.modal-content -->#}
+    {#</div><!-- /.modal-dialog -->#}
+{#</div><!-- /.modal -->#}

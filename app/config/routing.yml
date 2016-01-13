@@ -1,3 +1,8 @@
+charlestown_carpooling:
+    resource: "@CharlestownCarpoolingBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 charlestown_file:
     resource: "@CharlestownFileBundle/Controller/"
     type:     annotation
@@ -35,6 +40,9 @@ charlestown_user:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@CharlestownUserBundle/Resources/config/routing/profile.xml"
 
 admin_area:
     resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"

@@ -19,6 +19,7 @@ class FileAdmin extends Admin
             ->add('id')
             ->add('alt')
             ->add('name')
+            ->add('fileType')
         ;
     }
 
@@ -31,7 +32,10 @@ class FileAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->add('name')
+            ->add('nameShow')
             ->add('alt')
+            ->add('date')
+            ->add('fileType')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -71,7 +75,9 @@ class FileAdmin extends Admin
             $fileFieldOptions['help'] = '<img src="'.$fullPath.'" class="admin-preview" />';
         }
 
-        $formMapper->add('file', 'file', $fileFieldOptions);
+        $formMapper->add('file', 'file', $fileFieldOptions)
+                    ->add('nameShow')
+                    ->add('fileType');
     }
 
     /**
