@@ -179,6 +179,10 @@ class Agency
         $this->numeroUrgence = $numeroUrgence;
     }
 
+    public function __toString(){
+        return $this->localisation;
+    }
+
 
 }
 

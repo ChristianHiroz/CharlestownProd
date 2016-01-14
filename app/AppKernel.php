@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Charlestown\DemandBundle\CharlestownDemandBundle(),
             new Charlestown\FileBundle\CharlestownFileBundle(),
             new Charlestown\CarpoolingBundle\CharlestownCarpoolingBundle(),
+            new Charlestown\OperationBundle\CharlestownOperationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -380,11 +380,18 @@
                                 <h3>La fiche de paie</h3><br/>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <p>
-                                            Le paiement de votre salaire se fera par l’émission d’un virement l’avant dernier jour de chaque mois, d’un acompte représentant 60% du montant brut (80% du net).<br/><br/>
-                                            Le solde de votre salaire et vos primes éventuelles seront virés le onzième jour du mois suivant (en cas de jour férié ou de 11 tombant un samedi ou dimanche, les salaires pourront n’être virés sur le compte que le 12 ou 13 du mois).<br/><br/>
-                                            Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace personnel illicoffre.
-                                        </p>
+                                        {% if is_granted('ROLE_AE') %}
+                                            <p>
+                                                Le paiement de votre salaire se fera par l’émission d’un virement l’avant dernier jour de chaque mois, d’un acompte représentant 60% du montant brut (80% du net).<br/><br/>
+                                                Le solde de votre salaire et vos primes éventuelles seront virés le onzième jour du mois suivant (en cas de jour férié ou de 11 tombant un samedi ou dimanche, les salaires pourront n’être virés sur le compte que le 12 ou 13 du mois).<br/><br/>
+                                                Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace personnel illicoffre.
+                                            </p>
+                                        {% elseif is_granted('ROLE_EVENT') %}
+                                            <p>
+                                                Le paiement de votre salaire se fera par l’émission d’un virement dans les cinqs jours suivant la mission.<br/><br/>
+                                                Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace personnel illicoffre.
+                                            </p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -751,7 +758,7 @@
                     <li><a id="heae" data-id="heae" href="{{ path('evaluation') }}">L'historique de vos entretiens annuel</a></li>
                     <li><a id="demande"  href="{{ path('demand') }}">Mes demandes</a></li>
                 {% elseif is_granted('ROLE_EVENT') %}
-                    <li><a id="operation"  href="#">Mes opérations</a></li>
+                    <li><a id="operation"  href="{{ path('operation') }}">Mes opérations</a></li>
                 {% endif %}
                 <li><a id="covoiturage" data-id="covoiturage" href="{{ path('carpooling') }}">Le covoiturage </a></li>
                 {#<li><a id="bourse_competence" data-id="bourse_competence" href="/Charlestown/web/app_dev.php/collaborateur/bourse_aux_competences">Bourse aux compétences </a></li>#}
@@ -775,7 +782,11 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav menucontainer">
                                 <li class="divider-vertical"></li>
+                                {% if is_granted('ROLE_AE') %}
                                 <li class="dropdown menubutton">
+                                {% elseif is_granted('ROLE_EVENT') %}
+                                <li class="dropdown menubuttonEvent">
+                                {% endif %}
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a data-toggle="modal" data-target="#presentationModal">Présentation</a></li>
@@ -800,7 +811,11 @@
                                     </li>
                                 {% endif %}
                                 <li class="divider-vertical"></li>
-                                <li class="dropdown menubutton">
+                                    {% if is_granted('ROLE_AE') %}
+                                    <li class="dropdown menubutton">
+                                    {% elseif is_granted('ROLE_EVENT') %}
+                                    <li class="dropdown menubuttonEvent">
+                                    {% endif %}
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Politique <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a data-toggle="modal" data-target="#eleasModal">Soutien Eleas</a></li>
@@ -809,7 +824,11 @@
                                     </ul>
                                 </li>
                                 <li class="divider-vertical"></li>
-                                <li class="dropdown menubutton">
+                                    {% if is_granted('ROLE_AE') %}
+                                    <li class="dropdown menubutton">
+                                    {% elseif is_granted('ROLE_EVENT') %}
+                                    <li class="dropdown menubuttonEvent">
+                                    {% endif %}
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utile <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="https://illicoffre.safe-access.com/">Illicoffre</a></li>

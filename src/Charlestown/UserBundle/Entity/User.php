@@ -57,7 +57,7 @@ abstract class User extends FOSUser
      /**
       * @var \Agency
       *
-      * @ORM\OneToOne(targetEntity="Charlestown\AgencyBundle\Entity\Agency")
+      * @ORM\ManyToOne(targetEntity="Charlestown\AgencyBundle\Entity\Agency")
       */
     private $agency;
 

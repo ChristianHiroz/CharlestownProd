@@ -49,3 +49,13 @@ services:
         arguments: [~, Charlestown\DemandBundle\Entity\DemandMobility, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Mobilité, group: Demande }
+    admin.operation:
+        class: Charlestown\CoreBundle\Admin\OperationAdmin
+        arguments: [~, Charlestown\OperationBundle\Entity\Operation, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Opération, group: Opérations }
+    admin.operation_appliance:
+        class: Charlestown\CoreBundle\Admin\OperationApplianceAdmin
+        arguments: [~, Charlestown\OperationBundle\Entity\OperationAppliance, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Candidatures, group: Opérations }

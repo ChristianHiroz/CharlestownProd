@@ -1,0 +1,44 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom: 0px;">
+                <nav class="navbar navbar-default secondNav">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav" style="width:100%;">
+                                <li class="" role="presentation"><a href="{{ path('operation') }}">Opérations</a></li>
+                                <li class="divider-vertical-second"></li>
+                                <li class="active" role="presentation"><a href="{{ path('my_operation_applications') }}">Mes candidatures</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <hr/>
+            </div>
+            <div class="modal-body" style="padding-top: 0px; color:black;">
+                {% for application in applications %}
+                    <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
+                            {% if application.accepted == true %}
+                                <div class="col-md-8 label label-success" style="height:100%; line-height: 50px;">
+                                    <a href="{{ path('operation_show', {'id':application.operation.id}) }}">{{ application.operation.dateStart | localizeddate('full', 'none') }} - {{ application.operation.localisation }} - {{ application.operation.customer.companyName }} -- ACCEPTER </a>
+                            {% else %}
+                                {% if application.dateResp == null %}
+                                <div class="col-md-8 label label-info" style="height:100%; line-height: 50px;">
+                                    <a href="{{ path('operation_show', {'id':application.operation.id}) }}">{{ application.operation.dateStart | localizeddate('full', 'none') }} - {{ application.operation.localisation }} - {{ application.operation.customer.companyName }} -- EN ATTENTE</a>
+                                {% else %}
+                                <div class="col-md-8 label label-danger" style="height:100%;  line-height: 50px;">
+                                    <a href="{{ path('operation_show', {'id':application.operation.id}) }}">{{ application.operation.dateStart | localizeddate('full', 'none') }} - {{ application.operation.localisation }} - {{ application.operation.customer.companyName }} -- REFUSER</a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        <div class="col-md-4" style="padding:0px; text-align: center; line-height: 50px; ">
+                            <a class="btn btn-success" href="{{ path('operation_apply_remove', {'id':application.id}) }}">Retirer</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+{% endblock %}

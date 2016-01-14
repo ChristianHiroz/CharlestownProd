@@ -18,7 +18,9 @@
 .espace{position: absolute; top: 21px; right: 175px; z-index: 1;}
 
 .menubutton{  width:24%;  text-align: center; }
+.menubuttonEvent{  width:33%;  text-align: center; }
 .menubutton:hover, .menubutton:focus { background-color: white;}
+.menubuttonEvent:hover, .menubutton:focus { background-color: white;}
 .menuheader{ width:26%; }
 .menucontainer{ width:74%; }
 /* FINMENU */
