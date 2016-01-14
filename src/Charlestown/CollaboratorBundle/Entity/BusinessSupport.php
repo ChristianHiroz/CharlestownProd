@@ -2,6 +2,7 @@
 
 namespace Charlestown\CollaboratorBundle\Entity;
 
+use Charlestown\FileBundle\Entity\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 

@@ -207,15 +207,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4873016" vertical-offset="12681" max-vertical-offset="14994">
+            <state vertical-scroll-proportion="-5.581818" vertical-offset="12681" max-vertical-offset="14994">
               <caret line="764" column="0" selection-start-line="764" selection-start-column="0" selection-end-line="764" selection-end-column="0" />
               <folding>
                 <element signature="e#56066#56075#0#Twig" expanded="true" />
                 <element signature="e#56211#56221#0#Twig" expanded="true" />
                 <element signature="e#56541#56563#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BusinessSupport.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/BusinessSupport.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.41815478" vertical-offset="909" max-vertical-offset="1581">
+              <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+              <folding>
+                <element signature="e#57#96#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -236,16 +248,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-15.076923" vertical-offset="152" max-vertical-offset="1258">
               <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OperationAppliance.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Charlestown/OperationBundle/Entity/OperationAppliance.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.653847" vertical-offset="459" max-vertical-offset="3434">
-              <caret line="54" column="66" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -300,7 +302,6 @@
         <option value="$PROJECT_DIR$/src/Charlestown/CarpoolingBundle/Resources/views/Carpooling/mySelections.html.twig" />
         <option value="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/Collaborator.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/views/BusinessSupport/myCustomerContact.html.twig" />
-        <option value="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/BusinessSupport.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/AgencyAdmin.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/EventAdmin.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/BusinessSupportAdmin.php" />
@@ -326,6 +327,7 @@
         <option value="$PROJECT_DIR$/src/Charlestown/OperationBundle/Resources/views/Operation/show.html.twig" />
         <option value="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Security/login.html.twig" />
         <option value="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/BusinessSupport.php" />
       </list>
     </option>
   </component>
@@ -912,13 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/BusinessSupport.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.0" vertical-offset="93" max-vertical-offset="1547">
-          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/AgencyAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-22.884615" vertical-offset="0" max-vertical-offset="748">
@@ -1187,12 +1182,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/views/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4873016" vertical-offset="12681" max-vertical-offset="14994">
+        <state vertical-scroll-proportion="-5.581818" vertical-offset="12681" max-vertical-offset="14994">
           <caret line="764" column="0" selection-start-line="764" selection-start-column="0" selection-end-line="764" selection-end-column="0" />
           <folding>
             <element signature="e#56066#56075#0#Twig" expanded="true" />
             <element signature="e#56211#56221#0#Twig" expanded="true" />
             <element signature="e#56541#56563#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/BusinessSupport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41815478" vertical-offset="909" max-vertical-offset="1581">
+          <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+          <folding>
+            <element signature="e#57#96#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
