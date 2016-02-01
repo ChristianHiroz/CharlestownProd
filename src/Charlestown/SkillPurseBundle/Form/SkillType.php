@@ -1,13 +1,12 @@
 <?php
 
-namespace Charlestown\DemandBundle\Form;
+namespace Charlestown\SkillPurseBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Charlestown\FileBundle\Form\FileType;
 
-class DemandMobilityType extends AbstractType
+class SkillType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,9 +15,8 @@ class DemandMobilityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('reason','text', array('label' => 'Motif'))
-            ->add('comment','text', array('label' => 'Commentaire'))
-            ->add('cV', new FileType(), array('label' => 'Votre CV'))
+            ->add('name')
+            ->add('level')
         ;
     }
     
@@ -28,7 +26,7 @@ class DemandMobilityType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Charlestown\DemandBundle\Entity\Demand'
+            'data_class' => 'Charlestown\SkillPurseBundle\Entity\Skill'
         ));
     }
 
@@ -37,6 +35,6 @@ class DemandMobilityType extends AbstractType
      */
     public function getName()
     {
-        return 'charlestown_demandbundle_demand';
+        return 'charlestown_skillpursebundle_skill';
     }
 }

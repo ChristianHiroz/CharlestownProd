@@ -9,51 +9,98 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-                        <div id="player" style="width:100%;"></div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div id="player1" style="width:100%; height: 100%;"></div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div id="player2" style="width:100%; height: 100%;"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div id="player3" style="width:100%; height: 100%;"></div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div id="player4" style="width:100%; height: 100%;"></div>
+                                </div>
+                            </div>
+                            <script>
+                                // 2. This code loads the IFrame Player API code asynchronously.
+                                var tag = document.createElement('script');
 
-                        <script>
-                            // 2. This code loads the IFrame Player API code asynchronously.
-                            var tag = document.createElement('script');
+                                tag.src = "https://www.youtube.com/iframe_api";
+                                var firstScriptTag = document.getElementsByTagName('script')[0];
+                                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-                            tag.src = "https://www.youtube.com/iframe_api";
-                            var firstScriptTag = document.getElementsByTagName('script')[0];
-                            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-                            // 3. This function creates an <iframe> (and YouTube player)
-                            //    after the API code downloads.
-                            var player;
-                            function onYouTubeIframeAPIReady() {
-                                player = new YT.Player('player', {
-                                    height: '390',
-                                    width: '640',
-                                    videoId: 'lWFJxhFy_Rw',
-                                    events: {
-                                        'onReady': onPlayerReady,
-                                        'onStateChange': onPlayerStateChange
-                                    }
-                                });
-                            }
-
-                            // 4. The API will call this function when the video player is ready.
-                            function onPlayerReady(event) {
-                            }
-
-                            // 5. The API calls this function when the player's state changes.
-                            //    The function indicates that when playing a video (state=1),
-                            //    the player should play for six seconds and then stop.
-                            var done = false;
-                            function onPlayerStateChange(event) {
-                                if (event.data == YT.PlayerState.PLAYING && !done) {
-                                    done = true;
+                                // 3. This function creates an <iframe> (and YouTube player)
+                                //    after the API code downloads.
+                                var player;
+                                var player2;
+                                var player3;
+                                var player4;
+                                function onYouTubeIframeAPIReady() {
+                                    player = new YT.Player('player1', {
+                                        height: '390',
+                                        width: '640',
+                                        videoId: 'lWFJxhFy_Rw',
+                                        events: {
+                                            'onReady': onPlayerReady,
+                                            'onStateChange': onPlayerStateChange
+                                        }
+                                    });
+                                    player2 = new YT.Player('player2', {
+                                        height: '390',
+                                        width: '640',
+                                        videoId: 'rEjNaEGPrZU',
+                                        events: {
+                                            'onReady': onPlayerReady,
+                                            'onStateChange': onPlayerStateChange
+                                        }
+                                    });
+                                    player3 = new YT.Player('player3', {
+                                        height: '390',
+                                        width: '640',
+                                        videoId: 'Pf-neYhm564',
+                                        events: {
+                                            'onReady': onPlayerReady,
+                                            'onStateChange': onPlayerStateChange
+                                        }
+                                    });
+                                    player4 = new YT.Player('player4', {
+                                        height: '390',
+                                        width: '640',
+                                        videoId: 'iFOmD2NkanA',
+                                        events: {
+                                            'onReady': onPlayerReady,
+                                            'onStateChange': onPlayerStateChange
+                                        }
+                                    });
                                 }
-                            }
-                            function stopVideo() {
-                                player.stopVideo();
-                            }
-                        </script>
-                        <script src="https://apis.google.com/js/platform.js"></script>
 
+                                // 4. The API will call this function when the video player is ready.
+                                function onPlayerReady(event) {
+                                }
+
+                                // 5. The API calls this function when the player's state changes.
+                                //    The function indicates that when playing a video (state=1),
+                                //    the player should play for six seconds and then stop.
+                                var done = false;
+                                function onPlayerStateChange(event) {
+                                    if (event.data == YT.PlayerState.PLAYING && !done) {
+                                        done = true;
+                                    }
+                                }
+                                function stopVideo() {
+                                    player.stopVideo();
+                                    player2.stopVideo();
+                                    player3.stopVideo();
+                                    player4.stopVideo();
+                                }
+                            </script>
+                            <script src="https://apis.google.com/js/platform.js"></script>
+                        </div>
                         <div class="g-ytsubscribe" data-channel="charlestownaccueil" data-layout="full" data-theme="dark" data-count="default"></div>
                     </div>
                     <div class="modal-footer">
@@ -89,9 +136,7 @@
                             <div class="container-fluid">
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
-                                        <li class="active" role="presentation"><a href="#implantation" aria-controls="implantation" role="tab" data-toggle="tab">Nos implantations</a></li>
-                                        <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#ae" aria-controls="ae" role="tab" data-toggle="tab">Accueil en Entreprise</a></li>
+                                        <li class="active" role="presentation"><a href="#ae" aria-controls="ae" role="tab" data-toggle="tab">Accueil en Entreprise</a></li>
                                         <li class="divider-vertical-second"></li>
                                         <li role="presentation"><a href="#event" aria-controls="event" role="tab" data-toggle="tab">Accueil Evénementiel</a></li>
                                         <li class="divider-vertical-second"></li>
@@ -104,47 +149,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="implantation">
-                                <h3>Nous sommes implantés sur toute la France dont voici leur localisation :</h3><br/><br/><br/>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <p>
-                                            Agence de Lille <br/>
-                                            3, rue Esquermoise 59000 Lille <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 03.59.81.00.60 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 03.72.27.18.24 <br/>
-                                            Agence de Paris <br/>
-                                            55, rue Fondary Paris 15ème <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 01.70.91.22.22 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 01.83.71.16.61 <br/>
-                                            Agence de Nantes <br/>
-                                            3, place saint Pierre 44000 Nantes <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 02.72.24.05.05 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 02.34.88.19.28
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="{{ asset('images/carte_presentation.png') }}"/>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <p>
-                                            Agence de Lyon <br/>
-                                            16, rue Crillon 69006 Lyon <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.26.83.80.00 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.84.88.17.88 <br/>
-                                            Agence de Marseille <br/>
-                                            3, place aux huiles 13001 Marseille <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.91.59.85.85 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.91.59.85.86 <br/>
-                                            Agence de Bordeaux <br/>
-                                            20, rue du 19 Mars 1962 33320 Eysines <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 05.40.25.00.70 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 05.32.00.18.87 <br/>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="ae">
+                            <div role="tabpanel" class="tab-pane active" id="ae">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <img src="{{ asset('images/bienvenue_ae_1.jpg') }}"/>
@@ -308,11 +313,11 @@
                             <div class="container-fluid">
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
-                                        <li class="active" role="presentation"><a href="#transport" aria-controls="transport" role="tab" data-toggle="tab">Titre de transport collectif</a></li>
+                                        <li class="active" role="presentation"><a href="#paie" aria-controls="paie" role="tab" data-toggle="tab">La fiche de paie</a></li>
                                         <li class="divider-vertical-second"></li>
                                         <li role="presentation"><a href="#mutuelle" aria-controls="mutuelle" role="tab" data-toggle="tab">Indémnité de panier - mutuelle</a></li>
                                         <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#paie" aria-controls="paie" role="tab" data-toggle="tab">La fiche de paie</a></li>
+                                        <li role="presentation"><a href="#transport" aria-controls="transport" role="tab" data-toggle="tab">Titre de transport collectif</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -321,7 +326,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="transport">
+                            <div role="tabpanel" class="tab-pane" id="transport">
                                 <h3>Le titre de transport collectif</h3><br/><br/>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -376,7 +381,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="paie">
+                            <div role="tabpanel" class="tab-pane active" id="paie">
                                 <h3>La fiche de paie</h3><br/>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -412,13 +417,15 @@
                             <div class="container-fluid">
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
-                                        <li class="active" role="presentation"><a href="#poste" aria-controls="poste" role="tab" data-toggle="tab">Les prises de poste</a></li>
+                                        <li class="active" role="presentation"><a href="#presentation" aria-controls="presentation" role="tab" data-toggle="tab">Consigne de présentation</a></li>
                                         <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#absence" aria-controls="absence" role="tab" data-toggle="tab">La gestion des absences</a></li>
+                                        <li role="presentation"><a href="#poste" aria-controls="poste" role="tab" data-toggle="tab">Prise de poste</a></li>
                                         <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#presentation" aria-controls="presentation" role="tab" data-toggle="tab">La présentation</a></li>
+                                        <li role="presentation"><a href="#absence" aria-controls="absence" role="tab" data-toggle="tab">En cas d'absence</a></li>
                                         <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#entretien" aria-controls="entretien" role="tab" data-toggle="tab">L'entretien annuel - les évolutions</a></li>
+                                        <li role="presentation"><a href="#conges" aria-controls="conges" role="tab" data-toggle="tab">Congés</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#entretien" aria-controls="entretien" role="tab" data-toggle="tab">Evolution professionnelle</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -427,7 +434,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="poste">
+                            <div role="tabpanel" class="tab-pane " id="poste">
                                 <h3>Les prises de poste</h3><br/><br/>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -458,7 +465,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="presentation">
+                            <div role="tabpanel" class="tab-pane active" id="presentation">
                                 <h3>La présentation</h3><br/><br/>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -500,51 +507,19 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        <div class="modal fade" id="procedureModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <nav class="navbar navbar-default secondNav">
-                            <div class="container-fluid">
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav">
-                                        <li class="active" role="conge"><a href="#conge" aria-controls="poste" role="tab" data-toggle="tab">Les congés</a></li>
-                                        <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#prise" aria-controls="prise" role="tab" data-toggle="tab">La prise de congés</a></li>
-                                        <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#eventfam" aria-controls="eventfam" role="tab" data-toggle="tab">Les congés pour les évènements familiaux</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                        <hr/>
-                    </div>
-                    <div class="modal-body">
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="conge">
+                            <div role="tabpanel" class="tab-pane" id="conges">
                                 <h3>Les congés</h3><br/><br/>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p>
-                                        Les jours de congés payés sont des jours ouvrés. Vous disposez donc chaque année de 25 jours de congés payés (soit 5 semaines). Vous pouvez consulter chaque mois votre solde de congés en cours sur votre bulletin de paie. (Voir congés, ligne « solde » sous rubrique cp sur la fiche de paie).
-                                        <br/><br/>
-                                        La période de référence des congés payés s’étend sur l’année civile, du 1er janvier au 31 décembre. Il en est de même pour la période d’acquisition des congés payés. L’ensemble des jours de congés payés doit être pris avant le 31 décembre de l’année d’acquisition.
-                                        <br/><br/>
-                                        Au 1er janvier de l’année suivante, votre compteur de congés payés redevient nul puisque tous les jours de congés de l’année non pris sont définitivement perdus au 31 décembre et ne seront pas indemnisés.
+                                            Les jours de congés payés sont des jours ouvrés. Vous disposez donc chaque année de 25 jours de congés payés (soit 5 semaines). Vous pouvez consulter chaque mois votre solde de congés en cours sur votre bulletin de paie. (Voir congés, ligne « solde » sous rubrique cp sur la fiche de paie).
+                                            <br/><br/>
+                                            La période de référence des congés payés s’étend sur l’année civile, du 1er janvier au 31 décembre. Il en est de même pour la période d’acquisition des congés payés. L’ensemble des jours de congés payés doit être pris avant le 31 décembre de l’année d’acquisition.
+                                            <br/><br/>
+                                            Au 1er janvier de l’année suivante, votre compteur de congés payés redevient nul puisque tous les jours de congés de l’année non pris sont définitivement perdus au 31 décembre et ne seront pas indemnisés.
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="prise">
                                 <h3>La prise de congé</h3><br/><br/>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -571,69 +546,121 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="eventfam">
                                 <h3>Les congés pour évènements familiaux</h3><br/><br/>
                                 <div class="row">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-9">
-                                            <table class="table table-condensed">
-                                                <thead>
-                                                <tr><th colspan="2">Mariage</th>
-                                                </tr></thead>
-                                                <tbody><tr>
-                                                    <td>Salarié</td>
-                                                    <td>4 jours (5 jours après 1 an d'ancienneté)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Enfant</td>
-                                                    <td>1 jour</td>
-                                                </tr>
-                                                </tbody><thead>
-                                                <tr><th colspan="2">Décès</th>
-                                                </tr></thead>
-                                                <tbody><tr>
-                                                    <td>Conjoint, enfant</td>
-                                                    <td>4 jours (5 jours après 1 an d'ancienneté)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Parents, beaux-parents</td>
-                                                    <td>2 jours</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Grands Parents</td>
-                                                    <td>1 jour</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Frère, soeur, beau-frère, belle-soeur...</td>
-                                                    <td>1 jour</td>
-                                                </tr>
-                                                </tbody><thead>
-                                                <tr><th colspan="2">Divers</th>
-                                                </tr></thead>
-                                                <tbody><tr>
-                                                    <td>Déménagement</td>
-                                                    <td>1 jour (tous les 3 ans)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Naissance d'un enfant</td>
-                                                    <td>3 jours</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Accueil au foyer en vue d'adoption</td>
-                                                    <td>3 jours</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Appel à la préparation à la défense</td>
-                                                    <td>1 jour</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                        <table class="table table-condensed">
+                                            <thead>
+                                            <tr><th colspan="2">Mariage</th>
+                                            </tr></thead>
+                                            <tbody><tr>
+                                                <td>Salarié</td>
+                                                <td>4 jours (5 jours après 1 an d'ancienneté)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Enfant</td>
+                                                <td>1 jour</td>
+                                            </tr>
+                                            </tbody><thead>
+                                            <tr><th colspan="2">Décès</th>
+                                            </tr></thead>
+                                            <tbody><tr>
+                                                <td>Conjoint, enfant</td>
+                                                <td>4 jours (5 jours après 1 an d'ancienneté)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Parents, beaux-parents</td>
+                                                <td>2 jours</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Grands Parents</td>
+                                                <td>1 jour</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Frère, soeur, beau-frère, belle-soeur...</td>
+                                                <td>1 jour</td>
+                                            </tr>
+                                            </tbody><thead>
+                                            <tr><th colspan="2">Divers</th>
+                                            </tr></thead>
+                                            <tbody><tr>
+                                                <td>Déménagement</td>
+                                                <td>1 jour (tous les 3 ans)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Naissance d'un enfant</td>
+                                                <td>3 jours</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Accueil au foyer en vue d'adoption</td>
+                                                <td>3 jours</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Appel à la préparation à la défense</td>
+                                                <td>1 jour</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <div class="col-md-2"></div>
-                                </div>
+                                    <div class="col-md-9">
+                                        <table class="table table-condensed">
+                                            <thead>
+                                            <tr><th colspan="2">Mariage</th>
+                                            </tr></thead>
+                                            <tbody><tr>
+                                                <td>Salarié</td>
+                                                <td>4 jours (5 jours après 1 an d'ancienneté)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Enfant</td>
+                                                <td>1 jour</td>
+                                            </tr>
+                                            </tbody><thead>
+                                            <tr><th colspan="2">Décès</th>
+                                            </tr></thead>
+                                            <tbody><tr>
+                                                <td>Conjoint, enfant</td>
+                                                <td>4 jours (5 jours après 1 an d'ancienneté)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Parents, beaux-parents</td>
+                                                <td>2 jours</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Grands Parents</td>
+                                                <td>1 jour</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Frère, soeur, beau-frère, belle-soeur...</td>
+                                                <td>1 jour</td>
+                                            </tr>
+                                            </tbody><thead>
+                                            <tr><th colspan="2">Divers</th>
+                                            </tr></thead>
+                                            <tbody><tr>
+                                                <td>Déménagement</td>
+                                                <td>1 jour (tous les 3 ans)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Naissance d'un enfant</td>
+                                                <td>3 jours</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Accueil au foyer en vue d'adoption</td>
+                                                <td>3 jours</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Appel à la préparation à la défense</td>
+                                                <td>1 jour</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                             </div>
                         </div>
+                            </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
@@ -745,23 +772,104 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+        <div class="modal fade" id="implantationModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <nav class="navbar navbar-default secondNav">
+                            <div class="container-fluid">
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active" role="presentation"><a href="#implantation" aria-controls="implantation" role="tab" data-toggle="tab">Nos implantations</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <hr/>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="implantation">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <p style="text-align:left; font-size: 16px;">
+                                            <span style="font-weight: bold">Agence de Lille</span> <br/>
+                                            3, rue Esquermoise 59000 <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 03.59.81.00.60 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 03.72.27.18.24 <br/><br/>
+                                            <span style="font-weight: bold">Agence de Paris</span> <br/>
+                                            55, rue Fondary 75015 <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 01.70.91.22.22 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 01.83.71.16.61 <br/><br/>
+                                            <span style="font-weight: bold">Agence de Nantes</span> <br/>
+                                            3, place saint Pierre 44000  <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 02.72.24.05.05 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 02.34.88.19.28<br/><br/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{ asset('images/carte_presentation.png') }}"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p style="text-align:right; font-size: 16px;">
+                                            <span style="font-weight: bold">Agence de Lyon</span> <br/>
+                                            16, rue Crillon 69006 <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.26.83.80.00 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.84.88.17.88 <br/><br/>
+                                            <span style="font-weight: bold">Agence de Marseille</span> <br/>
+                                            3, place aux huiles 13001 <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.91.59.85.85 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.91.59.85.86 <br/><br/>
+                                            <span style="font-weight: bold">Agence de Bordeaux</span> <br/>
+                                            20, rue du 19 Mars 1962 33320 <br/>
+                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 05.40.25.00.70 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 05.32.00.18.87 <br/><br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div class="modal fade" id="illicoffreModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Fiche de paie</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        ICI TEXTE ILLICOFFRE<br/>
+                        <a href="https://illicoffre.safe-access.com/accounts/employee/register/">Connectez vous</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <div class="dropdown space-menu">
             <a class="dropdown-toggle space-menu-link" data-toggle="dropdown" href="#">
                 <img class="rounded-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
                 <p class="space-menu-txt">Mon compte<span class="caret"></span></p>
-                {#<span class="caret"></span>#}
             </a>
             <ul class="dropdown-menu space-menu-der">
-                <li><a id="vos_informations" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Vos informations</a></li>
+                <li><a id="vos_informations" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Mes informations</a></li>
                 {% if is_granted('ROLE_AE') %}
-                    <li><a id="heae" data-id="heae" href="{{ path('evaluation') }}">L'historique de vos entretiens annuel</a></li>
                     <li><a id="demande"  href="{{ path('demand') }}">Mes demandes</a></li>
+                    <li><a id="heae" data-id="heae" href="{{ path('evaluation') }}">Mes entretiens</a></li>
                 {% elseif is_granted('ROLE_EVENT') %}
                     <li><a id="operation"  href="{{ path('operation') }}">Mes opérations</a></li>
                 {% endif %}
                 <li><a id="covoiturage" data-id="covoiturage" href="{{ path('carpooling') }}">Le covoiturage </a></li>
-                {#<li><a id="bourse_competence" data-id="bourse_competence" href="/Charlestown/web/app_dev.php/collaborateur/bourse_aux_competences">Bourse aux compétences </a></li>#}
+                <li><a id="bourse_competence" data-id="bourse_competence" href="{{ path('lesson') }}">Bourse aux compétences </a></li>
                 {% if is_granted('ROLE_ADMIN') %}
                     <li><a id="admin"  href="{{ path('sonata_admin_dashboard') }}">Interface administateur</a></li>
                 {% endif %}
@@ -779,8 +887,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#"><img class="logo_header" src="{{ asset('images/logo_charlestown.png') }}"/></a>
-                            {#<a class="navbar-brand" href="#"><img class="logo_header_bis" src="{{ asset('favicon.ico') }}"/></a>#}
+                            <a class="navbar-brand" href="http://www.charlestown.fr/"><img class="logo_header" src="{{ asset('images/logo_charlestown.png') }}"/></a>
                         </div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav menucontainer">
@@ -792,11 +899,11 @@
                                 {% endif %}
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a data-toggle="modal" data-target="#presentationModal">Présentation</a></li>
-                                        <li><a data-toggle="modal" data-target="#infosModal">Infos utiles</a></li>
-                                        <li><a data-toggle="modal" data-target="#fonctionnementModal">Fonctionnement</a></li>
+                                        <li><a data-toggle="modal" data-target="#presentationModal">Nos activités</a></li>
+                                        <li><a data-toggle="modal" data-target="#implantationModal">Nos implantations</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a data-toggle="modal" data-target="#procedureModal">Procédure</a></li>
+                                        <li><a data-toggle="modal" data-target="#infosModal">Politique salariale</a></li>
+                                        <li><a data-toggle="modal" data-target="#fonctionnementModal">Règles d'or</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a data-toggle="modal" data-target="#reglementModal">Règlement intérieur</a></li>
                                     </ul>
@@ -804,43 +911,49 @@
                                 {% if is_granted('ROLE_AE') %}
                                     <li class="divider-vertical"></li>
                                     <li class="dropdown menubutton">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mission <span class="caret"></span></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mes missions <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
+                                            <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
+                                            <li role="separator" class="divider"></li>
                                             <li><a href="{{ path('my_customer') }}">Mon affectation</a></li>
                                             <li><a href="{{ path('my_customer_contact') }}">Mes contacts</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
                                         </ul>
                                     </li>
                                 {% endif %}
                                 <li class="divider-vertical"></li>
-                                    {% if is_granted('ROLE_AE') %}
-                                    <li class="dropdown menubutton">
-                                    {% elseif is_granted('ROLE_EVENT') %}
-                                    <li class="dropdown menubuttonEvent">
-                                    {% endif %}
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Politique <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a data-toggle="modal" data-target="#eleasModal">Soutien Eleas</a></li>
-                                        <li><a href="https://cecil.cilgere.fr/Cecil/jsp/login.jsp">1% logement</a></li>
-                                        <li><a href="http://www.ce-charlestown.fr/sommaire/auth_user_html.php">C.E</a></li>
-                                    </ul>
-                                </li>
-                                <li class="divider-vertical"></li>
-                                    {% if is_granted('ROLE_AE') %}
-                                    <li class="dropdown menubutton">
-                                    {% elseif is_granted('ROLE_EVENT') %}
-                                    <li class="dropdown menubuttonEvent">
+                                {% if is_granted('ROLE_AE') %}
+                                <li class="dropdown menubutton">
+                            {% elseif is_granted('ROLE_EVENT') %}
+                                <li class="dropdown menubuttonEvent">
                                     {% endif %}
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utile <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="https://illicoffre.safe-access.com/">Illicoffre</a></li>
-                                        <li><a href="{{ path('contact_syndicat') }}">Coordonnées</a></li>
-                                        <li><a href="{{ path('ce') }}">Procès verbaux</a></li>
+                                        <li><a data-toggle="modal" data-target="#illicoffreModal">Fiche de paie</a></li>
+                                        <li><a href="{{ path('contact') }}">Coordonnées</a></li>
                                         {% if is_granted('ROLE_EVENT') %}
                                             <li role="separator" class="divider"></li>
                                             <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
                                         {% endif %}
+                                    </ul>
+                                </li>
+                                <li class="divider-vertical"></li>
+                                {% if is_granted('ROLE_AE') %}
+                                <li class="dropdown menubutton">
+                            {% elseif is_granted('ROLE_EVENT') %}
+                                <li class="dropdown menubuttonEvent">
+                                    {% endif %}
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Social <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-toggle="modal" data-target="#eleasModal">Soutien psychologique Eleas</a></li>
+                                        <li><a href="https://cecil.cilgere.fr/Cecil/jsp/login.jsp">1% logement</a></li>
+                                        <li class="dropdown">
+                                            <a href="#" id="dLabel" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Comité d'Entreprise<span class="caret"></span></a>
+                                            <ul style="margin-top:-27px; margin-left:200px;" class="dropdown-menu" id="dDrop" aria-labelledby="dLabel">
+                                                <li><a href="{{ path('ce') }}">Procès verbaux</a></li>
+                                                <li><a href="http://www.ce-charlestown.fr/sommaire/auth_user_html.php">Site internet</a></li>
+                                                <li><a href="{{ path('contact_syndicat') }}">Coordonnées</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -851,6 +964,23 @@
         </div>
     {% endblock %}
     {% block content %}
+    {% endblock %}
+    {% block footer %}
+        <footer style="position:fixed;left:0px;bottom:0px;height:30px;width:100%;background:black;opacity: 0.8;">
+            <div class="container">
+                <div class="row" style="margin-top:8px; text-align:center;">
+                    <div class="col-md-3">
+                        <a style="color:white;" href="#">CGU</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a style="color:white;" href='mailto:collaborateurs@charlestown.fr'>Contacter un administrateur</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a style="color:white;" href="#">Mentions légales</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     {% endblock %}
 {% endblock %}
 

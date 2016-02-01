@@ -49,21 +49,21 @@
                             {% for entity in entities %}
                                 <tr>
                                     <td>{{ entity.reason }}</td>
-                                    <td>{{ entity.status }}</td>
                                     <td>{% if entity.dateDemand %}{{ entity.dateDemand|date('Y-m-d H:i:s') }}{% endif %}</td>
                                     <td>{% if entity.dateResponse %}{{ entity.dateResponse|date('Y-m-d H:i:s') }}{% endif %}</td>
                                     <td>{{ entity.response }}</td>
                                     <td>{{ entity.responseStatus }}</td>
-                                    <td>{{ entity.comment }}</td>
                                     <td>
+                                        {% if entity.status == "EN COURS" %}
                                         {% if entity.getClassName == "DemandMeeting" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_meeting_edit', { 'id': entity.id }) }}">modifier</a>
+                                            <a class="btn btn-danger" href="{{ path('demand_meeting_delete', { 'id': entity.id }) }}">supprimer</a>
                                         {% elseif entity.getClassName == "DemandFormation" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_formation_edit', { 'id': entity.id }) }}">modifier</a>
+                                            <a class="btn btn-danger" href="{{ path('demand_formation_delete', { 'id': entity.id }) }}">supprimer</a>
                                         {% elseif entity.getClassName == "DemandMobility" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_mobility_edit', { 'id': entity.id }) }}">modifier</a>
+                                            <a class="btn btn-danger" href="{{ path('demand_mobility_delete', { 'id': entity.id }) }}">supprimer</a>
                                         {% elseif entity.getClassName == "DemandVacancy" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_vacancy_edit', { 'id': entity.id }) }}">modifier</a>
+                                            <a class="btn btn-danger" href="{{ path('demand_vacancy_delete', { 'id': entity.id }) }}">supprimer</a>
+                                        {% endif %}
                                         {% endif %}
                                     </td>
                                 </tr>

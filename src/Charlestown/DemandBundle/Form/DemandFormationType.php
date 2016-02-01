@@ -17,7 +17,6 @@ class DemandFormationType extends AbstractType
     {
         $builder
             ->add('reason','text', array('label' => 'Motif'))
-            ->add('status','text', array('label' => 'Statut'))
             ->add('comment','text', array('label' => 'Commentaire'))
         ;
     }

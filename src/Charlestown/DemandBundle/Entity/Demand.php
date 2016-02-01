@@ -82,6 +82,7 @@ abstract class Demand
 
     public function __construct(){
         $this->dateDemand = new \DateTime();
+        $this->status = "EN COURS";
     }
 
     /**

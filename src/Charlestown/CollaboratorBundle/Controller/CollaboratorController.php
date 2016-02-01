@@ -30,4 +30,12 @@ class CollaboratorController extends Controller
 
         return array('irp' => $irp, 'user' => $this->getUser());
     }
+    /**
+     * @Route("/contact", name="contact")
+     * @Template()
+     */
+    public function contactAction()
+    {
+        return array('user' => $this->getUser());
+    }
 }

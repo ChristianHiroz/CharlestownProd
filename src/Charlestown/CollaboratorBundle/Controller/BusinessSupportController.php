@@ -23,6 +23,9 @@ class BusinessSupportController extends Controller
      */
     public function myCustomerAction()
     {
+        if($this->getUser()->getCustomer() == null){
+            return $this->redirect($this->generateUrl('my_customer_contact'));
+        }
         return array('user' => $this->getUser());
     }
 

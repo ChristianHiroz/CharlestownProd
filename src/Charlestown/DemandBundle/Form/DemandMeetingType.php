@@ -16,7 +16,6 @@ class DemandMeetingType extends AbstractType
     {
         $builder
             ->add('reason','text', array('label' => 'Motif'))
-            ->add('status','text', array('label' => 'Statut'))
             ->add('comment','text', array('label' => 'Commentaire'))
             ->add('type','text', array('label' => 'Type'))
             ->add('disponibility','text', array('label' => 'Disponibilité'))
