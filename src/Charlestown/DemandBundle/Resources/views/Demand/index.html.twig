@@ -35,24 +35,24 @@
                         <table class="table table-condensed">
                             <thead>
                             <tr>
-                                <th>Motif</th>
-                                <th>Etat</th>
                                 <th>Date de la demande</th>
+                                <th>Motif</th>
                                 <th>Date de réponse</th>
                                 <th>Réponse</th>
-                                <th>Etat de la réponse</th>
                                 <th>Commentaire</th>
+                                <th>Etat</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for entity in entities %}
                                 <tr>
-                                    <td>{{ entity.reason }}</td>
                                     <td>{% if entity.dateDemand %}{{ entity.dateDemand|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                    <td>{{ entity.reason }}</td>
                                     <td>{% if entity.dateResponse %}{{ entity.dateResponse|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                    <td>{{ entity.response }}</td>
                                     <td>{{ entity.responseStatus }}</td>
+                                    <td>{{ entity.response }}</td>
+                                    <td>{{ entity.status }}</td>
                                     <td>
                                         {% if entity.status == "EN COURS" %}
                                         {% if entity.getClassName == "DemandMeeting" %}

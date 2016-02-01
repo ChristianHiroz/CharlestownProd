@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Charlestown\CarpoolingBundle\Entity\Carpooling;
 use Charlestown\CarpoolingBundle\Form\CarpoolingType;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Carpooling controller.
@@ -27,7 +29,7 @@ class CarpoolingController extends Controller
     {
         $carpoolings =  $this->getDoctrine()->getEntityManager()->getRepository('CharlestownCarpoolingBundle:Carpooling')->findAll();
 
-        return array('carpoolings' => $carpoolings, 'user' => $this->getUser());
+        return array('carpoolings' => $carpoolings, 'user' => $this->getUser(), 'now' => new \DateTime());
     }
 
     /**
@@ -41,23 +43,13 @@ class CarpoolingController extends Controller
     }
 
     /**
-     * @Route("/demandes", name="myapplications")
+     * @Route("/demandes", name="mycarpoolings_demand")
      * @Template()
      */
-    public function myApplicationsAction()
+    public function myDemandsAction()
     {
 
-        return array('carpoolings' => $this->getUser()->getMyCarpoolingsApplication(), 'user' => $this->getUser());
-    }
-
-    /**
-     * @Route("/voyages", name="myselections")
-     * @Template()
-     */
-    public function mySelectionsAction()
-    {
-
-        return array('carpoolings' => $this->getUser()->getMyCarpoolingsSelection(), 'user' => $this->getUser());
+        return array('applications' => $this->getUser()->getMyCarpoolingsApplication(), 'selections' => $this->getUser()->getMyCarpoolingsSelection(), 'user' => $this->getUser());
     }
 
     /**
