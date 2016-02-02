@@ -103,6 +103,7 @@ pugx_multi_user:
 sonata_block:
     default_contexts: [cms]
     blocks:
+        sonata.block.service.mailer:
         sonata.admin.block.admin_list:
             contexts: [admin]
 
@@ -111,6 +112,10 @@ sonata_admin:
     title_logo: favicon.ico
     templates:
             layout:               ::standard_layout.html.twig
+    dashboard:
+        blocks:
+            - { position: right, type: sonata.block.service.mailer }
+            - { position: left, type: sonata.admin.block.admin_list }
 
 services:
     twig.extension.intl:

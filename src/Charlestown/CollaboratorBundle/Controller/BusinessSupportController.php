@@ -23,6 +23,9 @@ class BusinessSupportController extends Controller
      */
     public function myCustomerAction()
     {
+        if($this->getUser()->getCustomer() == null){
+            return $this->redirect($this->generateUrl('my_customer_contact'));
+        }
         return array('user' => $this->getUser());
     }
 
@@ -42,5 +45,18 @@ class BusinessSupportController extends Controller
     public function evaluationAction()
     {
         return array('user' => $this->getUser());
+    }
+
+
+    /**
+     * @Route("/contactSyndicat", name="contact_syndicat")
+     * @Template()
+     */
+    public function contactSyndicatAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $irp = $em->getRepository('CharlestownCollaboratorBundle:Syndicat')->findAll();
+
+        return array('irp' => $irp, 'user' => $this->getUser());
     }
 }

@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class DefaultController extends Controller
+class CoreController extends Controller
 {
     /**
      * @Route("/", name="index")
@@ -32,5 +32,15 @@ class DefaultController extends Controller
         else {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
+    }
+
+    /**
+     * @Route("/admin/sendmail", name="send_mail")
+     */
+    public function sendMailAction(){
+        $user = $this->getUser();
+        $this->get('charlestown.mailer')->sendTestMail($user);
+
+        var_dump('Test fini');exit;
     }
 }

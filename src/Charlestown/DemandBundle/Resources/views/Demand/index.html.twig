@@ -35,35 +35,35 @@
                         <table class="table table-condensed">
                             <thead>
                             <tr>
-                                <th>Motif</th>
-                                <th>Etat</th>
                                 <th>Date de la demande</th>
+                                <th>Motif</th>
                                 <th>Date de réponse</th>
                                 <th>Réponse</th>
-                                <th>Etat de la réponse</th>
                                 <th>Commentaire</th>
+                                <th>Etat</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for entity in entities %}
                                 <tr>
-                                    <td>{{ entity.reason }}</td>
-                                    <td>{{ entity.status }}</td>
                                     <td>{% if entity.dateDemand %}{{ entity.dateDemand|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                    <td>{{ entity.reason }}</td>
                                     <td>{% if entity.dateResponse %}{{ entity.dateResponse|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                    <td>{{ entity.response }}</td>
                                     <td>{{ entity.responseStatus }}</td>
-                                    <td>{{ entity.comment }}</td>
+                                    <td>{{ entity.response }}</td>
+                                    <td>{{ entity.status }}</td>
                                     <td>
+                                        {% if entity.status == "EN COURS" %}
                                         {% if entity.getClassName == "DemandMeeting" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_meeting_edit', { 'id': entity.id }) }}">modifier</a>
+                                            <a class="btn btn-danger" href="{{ path('demand_meeting_delete', { 'id': entity.id }) }}">supprimer</a>
                                         {% elseif entity.getClassName == "DemandFormation" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_formation_edit', { 'id': entity.id }) }}">modifier</a>
+                                            <a class="btn btn-danger" href="{{ path('demand_formation_delete', { 'id': entity.id }) }}">supprimer</a>
                                         {% elseif entity.getClassName == "DemandMobility" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_mobility_edit', { 'id': entity.id }) }}">modifier</a>
+                                            <a class="btn btn-danger" href="{{ path('demand_mobility_delete', { 'id': entity.id }) }}">supprimer</a>
                                         {% elseif entity.getClassName == "DemandVacancy" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_vacancy_edit', { 'id': entity.id }) }}">modifier</a>
+                                            <a class="btn btn-danger" href="{{ path('demand_vacancy_delete', { 'id': entity.id }) }}">supprimer</a>
+                                        {% endif %}
                                         {% endif %}
                                     </td>
                                 </tr>

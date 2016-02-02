@@ -2,4 +2,20 @@
 
 {% block content %}
     {{ parent() }}
+    <div class="modal-dialog" style="width:25%;">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align:center;font-weight: bold;">
+                <a class="" style="text-align: center;" href="http://www.charlestown.fr/"><img src="{{ asset('images/logo_charlestown.png') }}"/></a><br/><br/><br/>
+                {% if user.gender == "H" %}
+                    Bonjour M.{{ user.lastName |upper}} {{ user.firstName }},
+                {% elseif user.gender == "F" %}
+                    Bonjour Mme.{{ user.lastName }} {{ user.firstName }},
+                {% else %}
+                    Bonjour {{ user.lastName }} {{ user.firstName }},
+                {% endif %}
+                <br/>
+                Bienvenue sur l'Intranet de Charlestown.
+            </div>
+        </div>
+    </div>
 {% endblock %}

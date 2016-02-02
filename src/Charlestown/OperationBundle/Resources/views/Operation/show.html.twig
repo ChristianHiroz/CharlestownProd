@@ -31,7 +31,7 @@
                 {{ operation.customer.phoneNumber }}
             </div>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="margin-bottom: 50px;">
             <h2>L'opération</h2>
             <div style="text-align: center;">
                 Places restantes : {{ operation.rooms }}<br/>
@@ -41,7 +41,7 @@
                 Mission : {{ operation.mission }}<br/>
                 Date de début : {{ operation.dateStart | localizeddate('full', 'none') }}<br/>
                 Date de fin : {{ operation.dateEnd | localizeddate('full', 'none') }}<br/>
-                Brief : <a href="{{ asset(operation.brief.uploadRootDir  ~ operation.brief.id ~ '.' ~ operation.brief.alt) }}"  download="{{operation.brief.nameShow ~ '.' ~ operation.brief.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a>
+                Brief : <a style="font-size: 50px;" href="{{ asset(operation.brief.uploadRootDir  ~ operation.brief.id ~ '.' ~ operation.brief.alt) }}"  download="{{operation.brief.nameShow ~ '.' ~ operation.brief.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a>
 
             </div>
         </div>

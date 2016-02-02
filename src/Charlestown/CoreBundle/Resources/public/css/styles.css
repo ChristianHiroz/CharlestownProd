@@ -39,6 +39,7 @@ body{
     background-color: #FFF;
     background-position: center center;
     background-size:cover;
+    overflow-x: hidden!important;
 }
 
 hr{
@@ -67,16 +68,19 @@ td a {
 .btn-danger{
     background-color: #F00;
 }
+.control-label{ color : white;}
 /* ENCOMMONS */
 
 /*SPACE MENU*/
-.space-menu{top: 50px; right: 12%; position: absolute; width:150px; height:50px; z-index:2;background-color:black; border-radius:30px 10px 10px 30px;}
-.rounded-image{display: block;  margin: 0 auto;  width: 50px;  height: 50px;  -webkit-border-radius: 50%;  -moz-border-radius: 50%;  border-radius: 50%; float:left; }
-.space-menu-txt{width:95px; float:right; line-height:50px;}
-.space-menu-txt:focus{color:white;}
-.space-menu-txt:hover{color:white;}
+.space-menu{top: 50px; right: 12%; position: absolute; width:160px; height:60px; z-index:2;background-color:black; border-radius:30px 10px 10px 30px;}
+.rounded-image{display: block;  margin: 0 auto;  width: 60px;  height: 60px;  -webkit-border-radius: 50%;  -moz-border-radius: 50%;  border-radius: 50%; float:left; }
+.space-menu-txt{width:95px; float:right; line-height:60px;}
+.space-menu-txt:focus{color:black;background-color:white;}
+.space-menu-txt:hover{color:black;background-color:white;}
+.space-menu:hover{background-color: white;}
+.space-menu:focus{background-color: white;}
 .space-menu-link{padding:0; width:150px;}
-.space-menu-der{z-index:1;margin-left:50px;margin-top:-61px;position:unset;}
+.space-menu-der{z-index:1;margin-left:42px;margin-top:-18px;position:unset;}
 /*ENDSPACE MENU*/
 
 .navbar-default .navbar-nav > .open > a { color: black !important; }

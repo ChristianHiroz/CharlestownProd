@@ -10,14 +10,12 @@
                             <ul class="nav navbar-nav" style="width:100%;">
                                 <li class="active" role="presentation"><a href="{{ path('carpooling') }}">Covoiturages</a></li>
                                 <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('mycarpoolings') }}">Mes covoiturages</a></li>
+                                <li class="" role="presentation"><a href="{{ path('mycarpoolings_demand') }}">Mes voyages</a></li>
                                 <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('myapplications') }}">Mes demandes</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('myselections') }}">Mes voyages</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('covoiturage_new') }}">Nouveau</a></li>
-                                <li class="divider-vertical-second"></li>
+
+                                <li class="divider-vertical-second" style="float:right;"></li>
+                                <li class="" style="float:right;" role="presentation"><a href="{{ path('mycarpoolings') }}">Mes covoiturages</a></li>
+                                <li class="divider-vertical-second"style="float:right;"> </li>
                             </ul>
                         </div>
                     </div>
@@ -26,6 +24,7 @@
             </div>
             <div class="modal-body" style="padding-top: 0px; color:black;">
                 {% for carpool in carpoolings%}
+                    {% if carpool.dateTravel > now %}
                     <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
                         <div class="col-md-8" style="height:100%;">
                             <p style="height:100%; line-height: 50px;">{{ carpool.startPlace }} <span class="glyphicon glyphicon-menu-right"></span> {{ carpool.endPlace }} le {{ carpool.dateTravel | localizeddate('full', 'none') }} || Places : {{ carpool.room }} </p>
@@ -44,6 +43,7 @@
                             {% endif %}
                         </div>
                     </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div><!-- /.modal-content -->

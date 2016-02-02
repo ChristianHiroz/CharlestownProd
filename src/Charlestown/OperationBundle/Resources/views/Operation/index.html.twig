@@ -21,9 +21,10 @@
                 {% for operation in operations %}
                     <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
                         <div class="col-md-8" style="height:100%;">
-                                    <a style="line-height: 50px;" href="{{ path('operation_show', {'id':operation.id}) }}">{{ operation.dateStart | localizeddate('full', 'none') }} - {{ operation.localisation }} - {{ operation.customer.companyName }} </a>
+                                    <p style="line-height: 50px;" href="{{ path('operation_show', {'id':operation.id}) }}">{{ operation.dateStart | localizeddate('full', 'none') }} - {{ operation.localisation }} - {{ operation.customer.companyName }} </p>
                         </div>
                         <div class="col-md-4" style="padding:0px; text-align: center; line-height: 50px;">
+                            <a class="btn btn-success" href="{{ path('operation_show', {'id':operation.id}) }}">Afficher</a>
                             <a class="btn btn-success" href="{{ path('operation_apply', {'id':operation.id}) }}">Postuler</a>
                         </div>
                     </div>

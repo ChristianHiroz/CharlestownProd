@@ -17,7 +17,6 @@ class DemandVacancyType extends AbstractType
     {
         $builder
             ->add('reason','text', array('label' => 'Motif'))
-            ->add('status','text', array('label' => 'Statut'))
             ->add('comment','text', array('label' => 'Commentaire'))
             ->add('dateStart','date', array('label' => 'Date début'))
             ->add('dateEnd','date', array('label' => 'Date fin'))

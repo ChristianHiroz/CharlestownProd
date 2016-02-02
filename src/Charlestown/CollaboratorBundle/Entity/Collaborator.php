@@ -4,6 +4,8 @@ namespace Charlestown\CollaboratorBundle\Entity;
 
 use Charlestown\CarpoolingBundle\Entity\Carpooling;
 use Charlestown\CustomerBundle\Entity\Customer;
+use Charlestown\SkillPurseBundle\Entity\Lesson;
+use Charlestown\SkillPurseBundle\Entity\Skill;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Charlestown\UserBundle\Entity\User as User;
@@ -85,11 +87,44 @@ abstract class Collaborator extends User
      */
     private $myCarpoolingsSelection;
 
+
+    /**
+     * @var \Lessons
+     *
+     * @ORM\OneToMany(targetEntity="Charlestown\SkillPurseBundle\Entity\Lesson", mappedBy="teacher")
+     */
+    private $myLessons;
+
+    /**
+     * @var \Skills
+     *
+     * @ORM\OneToMany(targetEntity="Charlestown\SkillPurseBundle\Entity\Skill", mappedBy="owner")
+     */
+    private $skills;
+
+    /**
+     * @var \Lessons
+     *
+     * @ORM\ManyToMany(targetEntity="Charlestown\SkillPurseBundle\Entity\Lesson", mappedBy="studentsApplicants")
+     */
+    private $myLessonsApplication;
+
+    /**
+     * @var \Lessons
+     *
+     * @ORM\ManyToMany(targetEntity="Charlestown\SkillPurseBundle\Entity\Lesson", mappedBy="students")
+     */
+    private $lessons;
+
     public function __construct()
     {
         $this->myCarpoolings = new ArrayCollection();
         $this->myCarpoolingsApplication = new ArrayCollection();
         $this->myCarpoolingsSelection = new ArrayCollection();
+        $this->myLessons = new ArrayCollection();
+        $this->myLessonsApplication = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
+        $this->skills = new ArrayCollection();
         parent::__construct();
     }
 
@@ -239,6 +274,88 @@ abstract class Collaborator extends User
     public function addMyCarpoolingSelection(Carpooling $carpooling){
         $this->myCarpoolings[] = $carpooling;
     }
+
+    public function addSkill(Skill $skill){
+        $this->skill[] = $skill;
+    }
+
+    public function addMyLesson(Lesson $lesson){
+        $this->myLessons[] = $lesson;
+    }
+
+    public function addLesson(Lesson $lesson){
+        $this->myLessons[] = $lesson;
+    }
+
+    public function addLessonApplication(Lesson $lesson){
+        $this->myLessonsApplication[] = $lesson;
+    }
+
+    /**
+     * @return \Lessons
+     */
+    public function getMyLessons()
+    {
+        return $this->myLessons;
+    }
+
+    /**
+     * @param \Lessons $myLessons
+     */
+    public function setMyLessons($myLessons)
+    {
+        $this->myLessons = $myLessons;
+    }
+
+    /**
+     * @return \Skills
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * @param \Skills $skills
+     */
+    public function setSkills($skills)
+    {
+        $this->skills = $skills;
+    }
+
+    /**
+     * @return \Customer
+     */
+    public function getMyLessonsApplication()
+    {
+        return $this->myLessonsApplication;
+    }
+
+    /**
+     * @param \Customer $myLessonsApplication
+     */
+    public function setMyLessonsApplication($myLessonsApplication)
+    {
+        $this->myLessonsApplication = $myLessonsApplication;
+    }
+
+    /**
+     * @return \Customer
+     */
+    public function getLessons()
+    {
+        return $this->lessons;
+    }
+
+    /**
+     * @param \Customer $lessons
+     */
+    public function setLessons($lessons)
+    {
+        $this->lessons = $lessons;
+    }
+
+
 
 
 }
