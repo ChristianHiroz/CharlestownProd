@@ -103,14 +103,14 @@ abstract class Collaborator extends User
     private $skills;
 
     /**
-     * @var \Customer
+     * @var \Lessons
      *
      * @ORM\ManyToMany(targetEntity="Charlestown\SkillPurseBundle\Entity\Lesson", mappedBy="studentsApplicants")
      */
     private $myLessonsApplication;
 
     /**
-     * @var \Customer
+     * @var \Lessons
      *
      * @ORM\ManyToMany(targetEntity="Charlestown\SkillPurseBundle\Entity\Lesson", mappedBy="students")
      */

@@ -39,7 +39,7 @@ body{
     background-color: #FFF;
     background-position: center center;
     background-size:cover;
-    overflow: hidden!important;
+    overflow-x: hidden!important;
 }
 
 hr{

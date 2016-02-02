@@ -1,4 +1,11 @@
 services:
+    sonata.block.service.mailer:
+        class: Charlestown\CoreBundle\Services\MailerBlock
+        arguments:
+            - sonata.block.service.mailer
+            - @templating
+        tags:
+            - { name: sonata.block }
     admin.customer:
         class: Charlestown\CoreBundle\Admin\CustomerAdmin
         arguments: [~, Charlestown\CustomerBundle\Entity\Customer, ~]
@@ -59,3 +66,8 @@ services:
         arguments: [~, Charlestown\OperationBundle\Entity\OperationAppliance, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Candidatures, group: Opérations }
+    admin.syndicat:
+        class: Charlestown\CoreBundle\Admin\SyndicatAdmin
+        arguments: [~, Charlestown\CollaboratorBundle\Entity\Syndicat, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Syndicat, group: Utilisateurs }

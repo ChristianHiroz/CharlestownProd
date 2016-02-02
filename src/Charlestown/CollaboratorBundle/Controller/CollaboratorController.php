@@ -20,17 +20,6 @@ class CollaboratorController extends Controller
         return array('pvs' => $pv, 'user' => $this->getUser());
     }
     /**
-     * @Route("/contactSyndicat", name="contact_syndicat")
-     * @Template()
-     */
-    public function contactSyndicatAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $irp = $em->getRepository('CharlestownCollaboratorBundle:BusinessSupport')->getSyndicat();
-
-        return array('irp' => $irp, 'user' => $this->getUser());
-    }
-    /**
      * @Route("/contact", name="contact")
      * @Template()
      */

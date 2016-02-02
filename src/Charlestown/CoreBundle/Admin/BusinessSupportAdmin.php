@@ -48,7 +48,6 @@ class BusinessSupportAdmin extends Admin
             ->add('agency', 'sonata_type_model', array('property'=>'localisation'))
             ->add('picture', 'sonata_type_model')
             ->add('evaluations')
-            ->add('syndicat')
         ;
     }
 
@@ -61,7 +60,6 @@ class BusinessSupportAdmin extends Admin
             ->add('lastName',null, array('label' => 'Prénom'))
             ->add('position',null, array('label' => 'Poste'))
             ->add('email', null, array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
-            ->add('syndicat')
         ;
     }
 

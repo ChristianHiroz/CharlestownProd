@@ -30,13 +30,6 @@ class BusinessSupport extends Collaborator
      */
     private $evaluations;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="syndicat", type="string", nullable=true)
-     */
-    private $syndicat;
-
     public function __construct()
     {
         $this->evaluations = new ArrayCollection();
@@ -66,22 +59,6 @@ class BusinessSupport extends Collaborator
     public function addEvaluation(File $evaluation)
     {
         $this->evaluations[] = $evaluation;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSyndicat()
-    {
-        return $this->syndicat;
-    }
-
-    /**
-     * @param string $syndicat
-     */
-    public function setSyndicat($syndicat)
-    {
-        $this->syndicat = $syndicat;
     }
 }
 

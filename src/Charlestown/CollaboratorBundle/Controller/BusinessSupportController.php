@@ -46,4 +46,17 @@ class BusinessSupportController extends Controller
     {
         return array('user' => $this->getUser());
     }
+
+
+    /**
+     * @Route("/contactSyndicat", name="contact_syndicat")
+     * @Template()
+     */
+    public function contactSyndicatAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $irp = $em->getRepository('CharlestownCollaboratorBundle:Syndicat')->findAll();
+
+        return array('irp' => $irp, 'user' => $this->getUser());
+    }
 }

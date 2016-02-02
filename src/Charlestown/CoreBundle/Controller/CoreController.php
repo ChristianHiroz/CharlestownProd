@@ -33,4 +33,14 @@ class CoreController extends Controller
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
     }
+
+    /**
+     * @Route("/admin/sendmail", name="send_mail")
+     */
+    public function sendMailAction(){
+        $user = $this->getUser();
+        $this->get('charlestown.mailer')->sendTestMail($user);
+
+        var_dump('Test fini');exit;
+    }
 }
