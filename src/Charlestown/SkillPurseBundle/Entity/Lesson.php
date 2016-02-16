@@ -54,6 +54,27 @@ class Lesson
     /**
      * @var string
      *
+     * @ORM\Column(name="address", type="string")
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="town", type="string")
+     */
+    private $town;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pc", type="string")
+     */
+    private $pc;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
@@ -318,6 +339,54 @@ class Lesson
 
     public function removeSelected(Collaborator $applicant){
         $this->students->removeElement($applicant);
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTown()
+    {
+        return $this->town;
+    }
+
+    /**
+     * @param string $town
+     */
+    public function setTown($town)
+    {
+        $this->town = $town;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPc()
+    {
+        return $this->pc;
+    }
+
+    /**
+     * @param string $pc
+     */
+    public function setPc($pc)
+    {
+        $this->pc = $pc;
     }
 }
 

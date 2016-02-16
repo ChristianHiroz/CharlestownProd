@@ -8,15 +8,14 @@
                     <div class="container-fluid">
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav" style="width:100%;">
-                                <li class="" role="presentation"><a href="{{ path('carpooling') }}">Covoiturages</a></li>
+                                <li class="" role="presentation"><a href="{{ path('lesson') }}">Cours proposés</a></li>
                                 <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('mycarpoolings') }}">Mes covoiturages</a></li>
+                                <li class="" role="presentation"><a href="{{ path('mylesson_applications') }}">Je suis élève</a></li>
                                 <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('myapplications') }}">Mes demandes</a></li>
+                                <li class="" role="presentation"><a href="{{ path('mylessons') }}">Je suis prof</a></li>
                                 <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('myselections') }}">Mes voyages</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="dropdown active">
+                                <li class="divider-vertical-second" style="float:right;"></li>
+                                <li class="dropdown active" style="float:right;">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nouveau<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li class="" role="presentation"><a href="{{ path('lesson_new') }}">Cours</a></li>
@@ -24,7 +23,7 @@
                                         <li class="" role="presentation"><a href="{{ path('skill_new') }}">Compétence</a></li>
                                     </ul>
                                 </li>
-                                <li class="divider-vertical-second"></li>
+                                <li class="divider-vertical-second" style="float:right;"></li>
                             </ul>
                         </div>
                     </div>
@@ -33,6 +32,7 @@
             </div>
             <div class="modal-body" style="padding-top: 0px; color:black;">
                 <div style="text-align:center;">
+                    <p style="color:white;">Si vous souhaitez qu'une salle de réunion soit mis à votre disposition, contactez-nous : <a style="color:red;" href='mailto:collaborateurs@charlestown.fr'>collaborateurs@charlestown.fr</a></p><br/>
                     {{ form(form) }}
                 </div>
             </div>

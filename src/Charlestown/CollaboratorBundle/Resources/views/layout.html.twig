@@ -11,6 +11,11 @@
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
+                                <div class="col-md-10 textAlignCenter mbottom15">
+                                    <a class="btn btn-success" href="{{ asset('images/MANUEL DE BORD 2016 CHW 2.2 SL.pdf') }}" download="{{ asset('images/MANUEL DE BORD 2016 CHW 2.2 SL.pdf') }}">Brochure d'acceuil</a>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-5">
                                     <div id="player1" style="width:100%; height: 100%;"></div>
                                 </div>
@@ -44,7 +49,7 @@
                                     player = new YT.Player('player1', {
                                         height: '390',
                                         width: '640',
-                                        videoId: 'lWFJxhFy_Rw',
+                                        videoId: 'GEMKfpT85m0',
                                         events: {
                                             'onReady': onPlayerReady,
                                             'onStateChange': onPlayerStateChange
@@ -71,7 +76,7 @@
                                     player4 = new YT.Player('player4', {
                                         height: '390',
                                         width: '640',
-                                        videoId: 'iFOmD2NkanA',
+                                        videoId: '9fDHKyvfmJA',
                                         events: {
                                             'onReady': onPlayerReady,
                                             'onStateChange': onPlayerStateChange
@@ -99,9 +104,14 @@
                                     player4.stopVideo();
                                 }
                             </script>
-                            <script src="https://apis.google.com/js/platform.js"></script>
                         </div>
-                        <div class="g-ytsubscribe" data-channel="charlestownaccueil" data-layout="full" data-theme="dark" data-count="default"></div>
+                        <div class="textAlignCenter">
+                            <p>Retrouver toutes nos vidéos de formation sur la chaîne Youtube de Charlestown :</p>
+                        </div>
+                        <script src="https://apis.google.com/js/platform.js"></script>
+
+                        <div class="g-ytsubscribe" data-channel="charlestownaccueil" data-layout="default" data-count="default"></div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
@@ -315,7 +325,9 @@
                                     <ul class="nav navbar-nav">
                                         <li class="active" role="presentation"><a href="#paie" aria-controls="paie" role="tab" data-toggle="tab">La fiche de paie</a></li>
                                         <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#mutuelle" aria-controls="mutuelle" role="tab" data-toggle="tab">Indémnité de panier - mutuelle</a></li>
+                                        <li role="presentation"><a href="#mutuelle" aria-controls="mutuelle" role="tab" data-toggle="tab">Mutuelle</a></li>
+                                        <li class="divider-vertical-second"></li>
+                                        <li role="presentation"><a href="#panier" aria-controls="panier" role="tab" data-toggle="tab">Indemnité de panier</a></li>
                                         <li class="divider-vertical-second"></li>
                                         <li role="presentation"><a href="#transport" aria-controls="transport" role="tab" data-toggle="tab">Titre de transport collectif</a></li>
                                     </ul>
@@ -340,18 +352,6 @@
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="mutuelle">
-                                <h3>L'indemnité de panier</h3><br/>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p>
-                                            {% if is_granted('ROLE_AE') %}
-                                            L’employeur prend en charge une indemnité de panier à hauteur de 5.57 € (montant stipulé sur votre contrat de travail) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
-                                            {% elseif is_granted('ROLE_EVENT') %}
-                                            L’employeur prend en charge une indemnité de panier à hauteur de 8 € (si la durée de la mission est supérieur à 5,99H) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
-                                            {% endif %}
-                                        </p>
-                                    </div>
-                                </div>
                                 <h3>La mutuelle</h3><br/>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -376,6 +376,20 @@
                                                 <p>
                                                     Pour les salariés réalisant des missions évènementielles et souhaitant être affiliés à la mutuelle de Charlestown, merci de bien vouloir faire un mail à l’adresse suivante : communication-rh@charlestown.fr. Par défaut, le salarié est réputé refuser la mutuelle comme indiqué dans les contrats de travail.
                                                 </p>
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="panier">
+                                <h3>L'indemnité de panier</h3><br/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            {% if is_granted('ROLE_AE') %}
+                                            L’employeur prend en charge une indemnité de panier à hauteur de 5.57 € (montant stipulé sur votre contrat de travail) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
+                                            {% elseif is_granted('ROLE_EVENT') %}
+                                            L’employeur prend en charge une indemnité de panier à hauteur de 8 € (si la durée de la mission est supérieur à 5,99H) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
                                             {% endif %}
                                         </p>
                                     </div>
@@ -417,7 +431,7 @@
                             <div class="container-fluid">
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
-                                        <li class="active" role="presentation"><a href="#presentation" aria-controls="presentation" role="tab" data-toggle="tab">Consigne de présentation</a></li>
+                                        <li class="active" role="presentation"><a href="#presentation" aria-controls="presentation" role="tab" data-toggle="tab">Consignes de présentation</a></li>
                                         <li class="divider-vertical-second"></li>
                                         <li role="presentation"><a href="#poste" aria-controls="poste" role="tab" data-toggle="tab">Prise de poste</a></li>
                                         <li class="divider-vertical-second"></li>
@@ -435,15 +449,31 @@
                     <div class="modal-body">
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane " id="poste">
-                                <h3>Les prises de poste</h3><br/><br/>
+                                <h3>La prise de poste</h3><br/><br/>
                                 <div class="row">
                                     <div class="col-md-12">
+                                        {#<p>#}
+                                            {#Le métier d’hôtesse et hôte d’accueil répond à un emploi dit « posté » nécessitant un respect rigoureux des horaires de travail. Notre engagement vis à vis de nos clients est d’assurer l’ouverture de leurs différents accueils ou les missions confiées à l’heure prévue par le contrat avec des collaborateurs formés à leurs procédures et autonomes. <br/>#}
+                                            {#<br/>#}
+                                            {#<span style="font-weight: bold">Pour l’activité « Accueil en Entreprise » de toutes les agences:</span> <br/>#}
+                                            {#<br/>#}
+                                            {#Un système de prise de poste par « badgeage » a été mis en place afin de nous confirmer votre présence sur site et de valider votre ponctualité quelque soit le lieu de votre prestation. La procédure prévoit d’appeler chaque jour à partir de votre poste du site client le pour composer votre matricule : (remis lors de votre embauche) En cas de retard ou de défaillance du système, prévenir directement la veille planning#}
+                                        {#</p>#}
+                                        <p class="textAlignCenter bold">
+                                            La prise de poste doit être effectuée quotidiennement au numéro suivant et ce, dès votre arrivée sur site
+                                        </p>
+                                        <p class="textAlignCenter redUnderline">
+                                            09.70.73.09.84. <br/><br/>
+                                            Vous devez ensuite entrer vos identifiants à 4 chiffres reçus par sms <br/>
+                                        </p>
                                         <p>
-                                            Le métier d’hôtesse et hôte d’accueil répond à un emploi dit « posté » nécessitant un respect rigoureux des horaires de travail. Notre engagement vis à vis de nos clients est d’assurer l’ouverture de leurs différents accueils ou les missions confiées à l’heure prévue par le contrat avec des collaborateurs formés à leurs procédures et autonomes. <br/>
-                                            <br/>
-                                            <span style="font-weight: bold">Pour l’activité « Accueil en Entreprise » de toutes les agences:</span> <br/>
-                                            <br/>
-                                            Un système de prise de poste par « badgeage » a été mis en place afin de nous confirmer votre présence sur site et de valider votre ponctualité quelque soit le lieu de votre prestation. La procédure prévoit d’appeler chaque jour à partir de votre poste du site client le pour composer votre matricule : (remis lors de votre embauche) En cas de retard ou de défaillance du système, prévenir directement la veille planning
+                                        Nous vous rappelons que :<br/>
+                                            <ul>
+                                                <li>Si vous avez un souci dans le déroulement de la prise de poste il convient de le signaler à votre responsable de clientèle ou à sa coordinatrice plannings  </li>
+                                                <li class="bold">La prise de poste est obligatoire.</li>
+                                                <li class="bold">La prise de poste permet de valider le versement de la prime qualité relative à la ponctualité et à l’assiduité.</li>
+                                                <li class="bold">Votre prise de poste automatique ne peut être validée que si elle est effectuée <span class="underline">depuis un poste téléphonique de votre site.</span> En cas de problème, prévenez votre responsable de clientèle ou à sa coordinatrice plannings.</li>
+                                            </ul>
                                         </p>
                                     </div>
                                 </div>
@@ -452,6 +482,7 @@
                                 <h3>La gestion des absences</h3><br/><br/>
                                 <div class="row">
                                     <div class="col-md-12">
+                                        <p class="textAlignCenter"><a class="redUnderline" href="{{ path('my_customer_contact') }}">Contact agence</a></p>
                                         <p>
                                         Lors d’une absence, nous vous demandons de respecter les consignes suivantes car la continuité de service chez nos clients est notre priorité.
                                         <br/>
@@ -468,22 +499,28 @@
                             <div role="tabpanel" class="tab-pane active" id="presentation">
                                 <h3>La présentation</h3><br/><br/>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <p>
-                                        Les consignes de présentation Charlestown®, qui vous ont été transmises lors de votre recrutement et de la formation métier, devront être respectées impérativement.
-                                        <br/>
-                                        Certains clients exigent des tenues spécifiques que nous vous fournirons, vous devrez obligatoirement :
-                                        </p>
-                                        <ul>
-                                            <li>en respecter le port</li>
-                                            <li>les entretenir (état de propreté, recoudre les boutons, faire nettoyer les cravates par un professionnel, …)</li>
-                                        </ul>
-                                        <p>
-                                        Vous devrez restituer ces tenues à la fin de vos missions ou sur demande de votre responsable. Sauf cas de dispositions particulières au site ou à l’agence d’affectation nous vous remboursons vos frais de pressing sur justificatifs (original de la facture impérativement) dans la limite de 45 € par mois (équivalent au nettoyage d’un tailleur par semaine).
-                                        <br/>
-                                        <br/>
-                                        Tous les justificatifs devront être transmis à votre responsable clients avant le 20 de chaque mois.
-                                        </p>
+                                    {#<p>#}
+                                    {#Les consignes de présentation Charlestown®, qui vous ont été transmises lors de votre recrutement et de la formation métier, devront être respectées impérativement.#}
+                                    {#<br/>#}
+                                    {#Certains clients exigent des tenues spécifiques que nous vous fournirons, vous devrez obligatoirement :#}
+                                    {#</p>#}
+                                    {#<ul>#}
+                                    {#<li>en respecter le port</li>#}
+                                    {#<li>les entretenir (état de propreté, recoudre les boutons, faire nettoyer les cravates par un professionnel, …)</li>#}
+                                    {#</ul>#}
+                                    {#<p>#}
+                                    {#Vous devrez restituer ces tenues à la fin de vos missions ou sur demande de votre responsable. Sauf cas de dispositions particulières au site ou à l’agence d’affectation nous vous remboursons vos frais de pressing sur justificatifs (original de la facture impérativement) dans la limite de 45 € par mois (équivalent au nettoyage d’un tailleur par semaine).#}
+                                    {#<br/>#}
+                                    {#<br/>#}
+                                    {#Tous les justificatifs devront être transmis à votre responsable clients avant le 20 de chaque mois.#}
+                                    {#</p>#}
+                                    <div class="col-md-6">
+                                        <img class="imgPresentation" alt="hote" src="{{ asset('images/presentation/Présentation Hôtes.jpg') }}"/>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img class="imgPresentation" alt="hotesse" src="{{ asset('images/presentation/Présentation Hôtesses.jpg') }}"/>
+
                                     </div>
                                 </div>
                             </div>
@@ -548,61 +585,6 @@
                                 </div>
                                 <h3>Les congés pour évènements familiaux</h3><br/><br/>
                                 <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-9">
-                                        <table class="table table-condensed">
-                                            <thead>
-                                            <tr><th colspan="2">Mariage</th>
-                                            </tr></thead>
-                                            <tbody><tr>
-                                                <td>Salarié</td>
-                                                <td>4 jours (5 jours après 1 an d'ancienneté)</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Enfant</td>
-                                                <td>1 jour</td>
-                                            </tr>
-                                            </tbody><thead>
-                                            <tr><th colspan="2">Décès</th>
-                                            </tr></thead>
-                                            <tbody><tr>
-                                                <td>Conjoint, enfant</td>
-                                                <td>4 jours (5 jours après 1 an d'ancienneté)</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Parents, beaux-parents</td>
-                                                <td>2 jours</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Grands Parents</td>
-                                                <td>1 jour</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Frère, soeur, beau-frère, belle-soeur...</td>
-                                                <td>1 jour</td>
-                                            </tr>
-                                            </tbody><thead>
-                                            <tr><th colspan="2">Divers</th>
-                                            </tr></thead>
-                                            <tbody><tr>
-                                                <td>Déménagement</td>
-                                                <td>1 jour (tous les 3 ans)</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Naissance d'un enfant</td>
-                                                <td>3 jours</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Accueil au foyer en vue d'adoption</td>
-                                                <td>3 jours</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Appel à la préparation à la défense</td>
-                                                <td>1 jour</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
                                     <div class="col-md-2"></div>
                                     <div class="col-md-9">
                                         <table class="table table-condensed">
@@ -794,18 +776,24 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <p style="text-align:left; font-size: 16px;">
-                                            <span style="font-weight: bold">Agence de Lille</span> <br/>
-                                            3, rue Esquermoise 59000 <br/>
+                                            <span style="font-weight: bold">Charlestown Nord/Est</span> <br/>
+                                            3, rue Esquermoise<br/>
+                                            59000 Lille<br/>
                                             <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 03.59.81.00.60 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 03.72.27.18.24 <br/><br/>
-                                            <span style="font-weight: bold">Agence de Paris</span> <br/>
-                                            55, rue Fondary 75015 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 03.72.27.18.24 <br/>
+                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> lille@charlestown.fr <br/><br/>
+                                            <span style="font-weight: bold">Charlestown Paris</span> <br/>
+                                            55, rue Fondary<br/>
+                                            75015 Paris <br/>
                                             <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 01.70.91.22.22 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 01.83.71.16.61 <br/><br/>
-                                            <span style="font-weight: bold">Agence de Nantes</span> <br/>
-                                            3, place saint Pierre 44000  <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 01.83.71.16.61 <br/>
+                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@charlestown.fr <br/><br/>
+                                            <span style="font-weight: bold">Charlestown Ouest/Nantes</span> <br/>
+                                            3, place saint Pierre<br/>
+                                            44000 Nantes <br/>
                                             <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 02.72.24.05.05 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 02.34.88.19.28<br/><br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 02.34.88.19.28<br/>
+                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> nantes@charlestown.fr <br/><br/>
                                         </p>
                                     </div>
                                     <div class="col-md-6">
@@ -813,18 +801,24 @@
                                     </div>
                                     <div class="col-md-3">
                                         <p style="text-align:right; font-size: 16px;">
-                                            <span style="font-weight: bold">Agence de Lyon</span> <br/>
-                                            16, rue Crillon 69006 <br/>
+                                            <span style="font-weight: bold">Charlestown Rhône-Alpes</span> <br/>
+                                            16, rue Crillon<br/>
+                                            69006 Lyon <br/>
                                             <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.26.83.80.00 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.84.88.17.88 <br/><br/>
-                                            <span style="font-weight: bold">Agence de Marseille</span> <br/>
-                                            3, place aux huiles 13001 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.84.88.17.88 <br/>
+                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> lyon@charlestown.fr <br/><br/>
+                                            <span style="font-weight: bold">Charlestown Grand Sud</span> <br/>
+                                            3, place aux huiles<br/>
+                                            13001 Marseille <br/>
                                             <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.91.59.85.85 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.91.59.85.86 <br/><br/>
-                                            <span style="font-weight: bold">Agence de Bordeaux</span> <br/>
-                                            20, rue du 19 Mars 1962 33320 <br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.91.59.85.86 <br/>
+                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> marseil@charlestown.fr <br/><br/>
+                                            <span style="font-weight: bold">Charlestown Sud Ouest</span> <br/>
+                                            20, rue du 19 Mars 1962<br/>
+                                            33320 Eysines <br/>
                                             <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 05.40.25.00.70 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 05.32.00.18.87 <br/><br/>
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 05.32.00.18.87 <br/>
+                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> bordx@charlestown.fr <br/><br/>
                                         </p>
                                     </div>
                                 </div>
@@ -841,12 +835,35 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2>Fiche de paie</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2>Fiche de paie</h2>
                     </div>
                     <div class="modal-body">
-                        ICI TEXTE ILLICOFFRE<br/>
-                        <a href="https://illicoffre.safe-access.com/accounts/employee/register/">Connectez vous</a>
+                        <p><span class="redtext bold">Optez pour le bulletin de salaire électronique</span><br/><br/>
+
+
+                        En tant que salarié de Charlestown, vous pouvez choisir de bénéficier du bulletin de salaire électronique. Un service gratuit et sans limitation de durée, utilisable durant votre collaboration et en cas de départ de Charlestown, pour :<br/>
+                        <ul>
+                            <li>Recevoir et conserver dans un coffre-fort personnel vos bulletins de salaire</li>
+                            <li>Archiver jusqu'à 25000 documents personnels (5 Go)</li>
+                        </ul><br/>
+                        <span class="bold bluetext">PRATIQUE</span><br/>
+                        Télécharger, imprimer, partager et envoyer vos documents devient simple.<br/>
+                        Tous vos bulletins de salaire et documents importants sont triés et archivés dans votre coffre-fort personnel et gratuit.<br/>
+                        <br/>
+                        <span class="bold bluetext">SÉCURISÉ</span><br/>
+                        Un coffre-fort strictement personnel.<br/>
+                        Les bulletins de salaire reçus dans votre coffre-fort personnel sont archivés à la Caisse des Dépôts et Consignations, dans les centres d'archivage de CDC Arkhinéo.<br/>
+                        <br/>
+                        <span class="bold bluetext">ECO-RESPONSABLE</span><br/>
+                        En passant au format électronique vous réduisez votre consommation de papier.<br/><br/>
+
+
+                        Pour recevoir vos codes d'activation personnels et confidentiels par e-mail contactez votre Responsable de Clientèle ou Coordinatrice Planning<br/>
+                        </p>
+                        <div class="textAlignCenter">
+                            <a class="btn btn-primary" href="https://illicoffre.safe-access.com/accounts/employee/register/">Connectez vous</a>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>

@@ -66,6 +66,11 @@ services:
         arguments: [~, Charlestown\OperationBundle\Entity\OperationAppliance, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Candidatures, group: Opérations }
+    admin.file_operation:
+        class: Charlestown\CoreBundle\Admin\FileOperationAdmin
+        arguments: [~, Charlestown\OperationBundle\Entity\FileOperation, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Photo, group: Opérations }
     admin.syndicat:
         class: Charlestown\CoreBundle\Admin\SyndicatAdmin
         arguments: [~, Charlestown\CollaboratorBundle\Entity\Syndicat, ~]

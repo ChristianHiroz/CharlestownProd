@@ -3,7 +3,7 @@
 }
 /* MENU */
 .firstNav{width:50%; top:50px; left:125px; border:medium none;z-index:2; }
-.secondNav{width:90%;border:medium none; z-index:1;}
+.secondNav{width:100%;border:medium none; z-index:1;}
 /*.secondNav * {height:25px;}*/
 .container-fluid{ background-color:#000000; opacity: 0.8; border: medium none; border-radius:10px; margin:0px; padding:0px; }
 .logo_header{ width:auto; height:55px; margin-top:-18px; }
@@ -16,6 +16,7 @@
 .navbar-collapse{ margin:0px; padding:0px; }
 .navbar-default .navbar-nav > li > a{color:white;}
 .espace{position: absolute; top: 21px; right: 175px; z-index: 1;}
+.imgPresentation{width:auto; height:500px;}
 
 .menubutton{  width:24%;  text-align: center; }
 .menubuttonEvent{  width:33%;  text-align: center; }
@@ -50,10 +51,17 @@ hr{
 td a {
     color:#F00;
 }
-
-.table-condensed > tbody > tr > td{
-    text-align:center;
-}
+.textAlignCenter{text-align: center;}
+.bold{font-weight: bold;}
+.underline{text-decoration: underline;}
+.redtext{color:red;}
+.bluetext{color:blue;}
+.greenValidate{color:green; position:absolute; top:-15px; left:-10px; font-size: 30px;}
+.mbottom15{margin-bottom: 15px;}
+.width50{width:50px;}
+.height50{height:50px !important;}
+.redUnderline{text-decoration: underline; color:red !important;}
+.table-condensed > tbody > tr > td{text-align:center;}
 
 .table-condensed > thead > tr > th {
     text-align: center;
