@@ -12,17 +12,8 @@
                                 <li class="divider-vertical-second"></li>
                                 <li class="" role="presentation"><a href="{{ path('mylesson_applications') }}">Je suis élève</a></li>
                                 <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('mylessons') }}">Je suis prof</a></li>
-                                <li class="divider-vertical-second"></li>
                                 <li class="divider-vertical-second" style="float:right;"></li>
-                                <li class="dropdown" style="float:right;">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nouveau<span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="" role="presentation"><a href="{{ path('lesson_new') }}">Cours</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li class="" role="presentation"><a href="{{ path('skill_new') }}">Compétence</a></li>
-                                    </ul>
-                                </li>
+                                <li class="" role="presentation" style="float:right"><a href="{{ path('mylessons') }}">Je suis prof</a></li>
                                 <li class="divider-vertical-second" style="float:right;"></li>
                             </ul>
                         </div>
@@ -34,7 +25,7 @@
                 {% for lesson in lessons %}
                     <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
                         <div class="col-md-8" style="height:100%;">
-                            <p style="height:100%; line-height: 50px;">{{ lesson.localisation }} au {{ lesson.address }}, {{ lesson.town }} {{ lesson.pc }} <span class="glyphicon glyphicon-menu-right"></span> de {{ lesson.startAt | localizeddate('full', 'none') }} à {{ lesson.endAt | localizeddate('full', 'none') }} || Places : {{ lesson.room }} || {% for skill in lesson.skills %} {{ skill.name }} {{ skill.level }} {% endfor %} </p>
+                            <p style="height:100%; line-height: 50px;">{{ lesson.localisation }} au {{ lesson.address }}, {{ lesson.town }} {{ lesson.pc }} <span class="glyphicon glyphicon-menu-right"></span> de {{ lesson.startAt | localizeddate('full', 'none') }} à {{ lesson.endAt | localizeddate('full', 'none') }} || Places : {{ lesson.room }} || {{ lesson.type }} </p>
                         </div>
                         <div class="col-md-4" style="padding:0px; text-align: center; line-height: 50px;">
                             {% if lesson.teacher.id != user.id %}

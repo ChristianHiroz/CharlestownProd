@@ -96,13 +96,6 @@ abstract class Collaborator extends User
     private $myLessons;
 
     /**
-     * @var \Skills
-     *
-     * @ORM\OneToMany(targetEntity="Charlestown\SkillPurseBundle\Entity\Skill", mappedBy="owner")
-     */
-    private $skills;
-
-    /**
      * @var \Lessons
      *
      * @ORM\ManyToMany(targetEntity="Charlestown\SkillPurseBundle\Entity\Lesson", mappedBy="studentsApplicants")
@@ -124,7 +117,6 @@ abstract class Collaborator extends User
         $this->myLessons = new ArrayCollection();
         $this->myLessonsApplication = new ArrayCollection();
         $this->lessons = new ArrayCollection();
-        $this->skills = new ArrayCollection();
         parent::__construct();
     }
 
@@ -275,10 +267,6 @@ abstract class Collaborator extends User
         $this->myCarpoolings[] = $carpooling;
     }
 
-    public function addSkill(Skill $skill){
-        $this->skill[] = $skill;
-    }
-
     public function addMyLesson(Lesson $lesson){
         $this->myLessons[] = $lesson;
     }
@@ -305,22 +293,6 @@ abstract class Collaborator extends User
     public function setMyLessons($myLessons)
     {
         $this->myLessons = $myLessons;
-    }
-
-    /**
-     * @return \Skills
-     */
-    public function getSkills()
-    {
-        return $this->skills;
-    }
-
-    /**
-     * @param \Skills $skills
-     */
-    public function setSkills($skills)
-    {
-        $this->skills = $skills;
     }
 
     /**

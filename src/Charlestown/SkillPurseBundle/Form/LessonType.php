@@ -23,7 +23,7 @@ class LessonType extends AbstractType
             ->add('address')
             ->add('pc')
             ->add('description')
-            ->add('skills')
+            ->add('type')
         ;
     }
     
