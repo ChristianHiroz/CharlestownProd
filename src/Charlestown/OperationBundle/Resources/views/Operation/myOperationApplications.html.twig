@@ -34,9 +34,9 @@
                             {% endif %}
                         </div>
                         <div class="col-md-4" style="padding:0px; text-align: center; line-height: 50px; ">
-                            <a class="btn btn-success" href="{{ path('operation_show', {'id':application.id}) }}">Afficher</a>
+                            <a class="btn btn-success" href="{{ path('operation_show', {'id':application.operation.id}) }}">Afficher</a>
                             {% if application.accepted != true %}
-                            <a class="btn btn-success" href="{{ path('operation_apply_remove', {'id':application.id}) }}">Retirer</a>
+                            <a class="btn btn-success" href="{{ path('operation_apply_remove', {'id':application.operation.id}) }}">Retirer</a>
                             {% endif %}
                         </div>
                     </div>

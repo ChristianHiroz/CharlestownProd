@@ -54,17 +54,36 @@ class Lesson
     /**
      * @var string
      *
+     * @ORM\Column(name="address", type="string")
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="town", type="string")
+     */
+    private $town;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pc", type="string")
+     */
+    private $pc;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
-
     /**
-     * @var \Skills
+     * @var string
      *
-     * @ORM\ManyToMany(targetEntity="Charlestown\SkillPurseBundle\Entity\Skill")
-     * @ORM\JoinTable(name="lesson_skills")
+     * @ORM\Column(name="type", type="string", length=255)
      */
-    private $skills;
+    private $type;
 
     /**
      * @var \Collaborator
@@ -93,7 +112,6 @@ class Lesson
     public function __construct(){
         $this->students = new ArrayCollection();
         $this->studentsApplicants = new ArrayCollection();
-        $this->skills = new ArrayCollection();
     }
 
     /**
@@ -213,30 +231,6 @@ class Lesson
     }
 
     /**
-     * Set skills
-     *
-     * @param \stdClass $skills
-     *
-     * @return Lesson
-     */
-    public function setSkills($skills)
-    {
-        $this->skills = $skills;
-
-        return $this;
-    }
-
-    /**
-     * Get skills
-     *
-     * @return \stdClass
-     */
-    public function getSkills()
-    {
-        return $this->skills;
-    }
-
-    /**
      * Set teacher
      *
      * @param \stdClass $teacher
@@ -308,16 +302,76 @@ class Lesson
         $this->students[] = $student;
     }
 
-    public function addSkill(Skill $skill){
-        $this->skills[] = $skill;
-    }
-
     public function removeApplicant(Collaborator $applicant){
         $this->studentsApplicants->removeElement($applicant);
     }
 
     public function removeSelected(Collaborator $applicant){
         $this->students->removeElement($applicant);
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTown()
+    {
+        return $this->town;
+    }
+
+    /**
+     * @param string $town
+     */
+    public function setTown($town)
+    {
+        $this->town = $town;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPc()
+    {
+        return $this->pc;
+    }
+
+    /**
+     * @param string $pc
+     */
+    public function setPc($pc)
+    {
+        $this->pc = $pc;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 }
 

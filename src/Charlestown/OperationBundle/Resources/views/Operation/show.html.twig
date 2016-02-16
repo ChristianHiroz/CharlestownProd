@@ -42,7 +42,12 @@
                 Date de début : {{ operation.dateStart | localizeddate('full', 'none') }}<br/>
                 Date de fin : {{ operation.dateEnd | localizeddate('full', 'none') }}<br/>
                 Brief : <a style="font-size: 50px;" href="{{ asset(operation.brief.uploadRootDir  ~ operation.brief.id ~ '.' ~ operation.brief.alt) }}"  download="{{operation.brief.nameShow ~ '.' ~ operation.brief.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a>
-
+            </div>
+        <div class="modal-body" style="margin-bottom: 50px;">
+            <div style="text-align: center;">
+                {% if form %}
+                    aa
+                {% endif %}
             </div>
         </div>
     </div>

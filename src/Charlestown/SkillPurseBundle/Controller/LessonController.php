@@ -73,6 +73,7 @@ class LessonController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setTeacher($this->getUser());
             $em->persist($entity);
             $em->flush();
 
@@ -255,7 +256,7 @@ class LessonController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $user = $em->getRepository('CharlestownCollaboratorBundle:Collaborator')->find($user);
-        $lesson = $em->getRepository('CharlestownSkillPurse:Lesson')->find($id);
+        $lesson = $em->getRepository('CharlestownSkillPurseBundle:Lesson')->find($id);
 
         $lesson->addStudentApplicant($user);
         $em->flush();
@@ -271,7 +272,7 @@ class LessonController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $user = $em->getRepository('CharlestownCollaboratorBundle:Collaborator')->find($user);
-        $lesson = $em->getRepository('CharlestownSkillPurse:Lesson')->find($id);
+        $lesson = $em->getRepository('CharlestownSkillPurseBundle:Lesson')->find($id);
 
         if($user->getId() == $this->getUser()->getId() OR $this->getUser()->getId() == $lesson->getTeacher()->getId()){
             $lesson->removeApplicant($user);
@@ -291,7 +292,7 @@ class LessonController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $user = $em->getRepository('CharlestownCollaboratorBundle:Collaborator')->find($user);
-        $lesson = $em->getRepository('CharlestownSkillPurse:Lesson')->find($id);
+        $lesson = $em->getRepository('CharlestownSkillPurseBundle:Lesson')->find($id);
 
 
         if($driver->getId() == $lesson->getTeacher()->getId()){
@@ -313,7 +314,7 @@ class LessonController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $user = $em->getRepository('CharlestownCollaboratorBundle:Collaborator')->find($user);
-        $lesson = $em->getRepository('CharlestownSkillPurse:Lesson')->find($id);
+        $lesson = $em->getRepository('CharlestownSkillPurseBundle:Lesson')->find($id);
 
         if($user->getId() == $this->getUser()->getId() OR $this->getUser()->getId() == $lesson->getTeacher()->getId()){
             $lesson->removeSelected($user);

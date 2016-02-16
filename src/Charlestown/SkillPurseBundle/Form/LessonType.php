@@ -19,8 +19,11 @@ class LessonType extends AbstractType
             ->add('endAt')
             ->add('room')
             ->add('localisation')
+            ->add('town')
+            ->add('address')
+            ->add('pc')
             ->add('description')
-            ->add('skills')
+            ->add('type')
         ;
     }
     

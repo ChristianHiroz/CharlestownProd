@@ -2,12 +2,12 @@
     font-family: "Roboto",arial,sans-serif !important;
 }
 /* MENU */
-.firstNav{width:50%; top:50px; left:125px; border:medium none;z-index:2; }
-.secondNav{width:90%;border:medium none; z-index:1;}
+.firstNav{width:50%; top:50px; left:125px; border:medium none;z-index:2;background-color: rgb(192, 192, 192)!important;padding: 1px;}
+.secondNav{width:100%;border:medium none; z-index:1;}
 /*.secondNav * {height:25px;}*/
 .container-fluid{ background-color:#000000; opacity: 0.8; border: medium none; border-radius:10px; margin:0px; padding:0px; }
-.logo_header{ width:auto; height:55px; margin-top:-18px; }
-.dropdown-menu{ background-color: black; }
+.logo_header{ width:auto; height:55px; margin-top:-18px; margin-left: 15px;}
+.dropdown-menu{ background-color: black;box-shadow: 2px 2px 2px gray, -1px -1px 2px white; }
 .navbar-default{ background-color: transparent; background-image: none; box-shadow: none; }
 .dropdown-menu > li > a { color: white; }
 .dropdown-toggle{ color:white !important; }
@@ -16,6 +16,7 @@
 .navbar-collapse{ margin:0px; padding:0px; }
 .navbar-default .navbar-nav > li > a{color:white;}
 .espace{position: absolute; top: 21px; right: 175px; z-index: 1;}
+.imgPresentation{width:auto; height:500px;}
 
 .menubutton{  width:24%;  text-align: center; }
 .menubuttonEvent{  width:33%;  text-align: center; }
@@ -26,7 +27,7 @@
 /* FINMENU */
 
 /* MODALS */
-.modal-dialog{ width:70%; top:100px; }
+.modal-dialog{ width:70%; top:100px; background-color: rgb(192, 192, 192);padding: 1px;box-shadow: 2px 2px 2px gray, -1px -1px 2px white;}
 .modal-content{ background-color: black; color:white; }
 .modal-header > button{ opacity: 1; color:white; text-shadow: none;}
 .modal-header{border: none;}
@@ -50,10 +51,19 @@ hr{
 td a {
     color:#F00;
 }
-
-.table-condensed > tbody > tr > td{
-    text-align:center;
-}
+.textAlignCenter{text-align: center;}
+.bold{font-weight: bold;}
+.underline{text-decoration: underline;}
+.redtext{color:red;}
+.whitetext{color:white;}
+.text20{font-size: 20px;}
+.bluetext{color:blue;}
+.greenValidate{color:green; position:absolute; top:-15px; left:-10px; font-size: 30px;}
+.mbottom15{margin-bottom: 15px;}
+.width50{width:50px;}
+.height50{height:50px !important;}
+.redUnderline{text-decoration: underline; color:red !important;}
+.table-condensed > tbody > tr > td{text-align:center;}
 
 .table-condensed > thead > tr > th {
     text-align: center;
@@ -72,7 +82,7 @@ td a {
 /* ENCOMMONS */
 
 /*SPACE MENU*/
-.space-menu{top: 50px; right: 12%; position: absolute; width:160px; height:60px; z-index:2;background-color:black; border-radius:30px 10px 10px 30px;}
+.space-menu{box-shadow: 2px 2px 2px gray, -1px -1px 2px white;top: 50px; right: 12%; position: absolute; width:160px; height:60px; z-index:2;background-color:black; border-radius:30px 10px 10px 30px;}
 .rounded-image{display: block;  margin: 0 auto;  width: 60px;  height: 60px;  -webkit-border-radius: 50%;  -moz-border-radius: 50%;  border-radius: 50%; float:left; }
 .space-menu-txt{width:95px; float:right; line-height:60px;}
 .space-menu-txt:focus{color:black;background-color:white;}

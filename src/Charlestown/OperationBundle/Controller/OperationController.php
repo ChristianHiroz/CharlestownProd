@@ -47,7 +47,7 @@ class OperationController extends Controller
      */
     public function showAction($id)
     {
-        return array('operation' => $this->getDoctrine()->getManager()->getRepository('CharlestownOperationBundle:Operation')->find($id), 'user' => $this->getUser());
+        return array('operation' => $this->getDoctrine()->getManager()->getRepository('CharlestownOperationBundle:Operation')->find($id),'form' => null, 'user' => $this->getUser());
     }
 
     /**
