@@ -43,7 +43,6 @@ class LessonController extends Controller
      */
     public function myLessonsAction()
     {
-
         return array('lessons' => $this->getUser()->getMyLessons(), 'user' => $this->getUser());
     }
 
@@ -53,7 +52,6 @@ class LessonController extends Controller
      */
     public function myLessonsApplicationsAction()
     {
-
         return array('lessons' => $this->getUser()->getLessons(),'lessonsApplications' => $this->getUser()->getMyLessonsApplication(), 'user' => $this->getUser());
     }
 
@@ -259,6 +257,7 @@ class LessonController extends Controller
         $lesson = $em->getRepository('CharlestownSkillPurseBundle:Lesson')->find($id);
 
         $lesson->addStudentApplicant($user);
+        $em->persist($user);
         $em->flush();
 
         return $this->redirect($this->generateUrl('lesson'));
@@ -276,6 +275,7 @@ class LessonController extends Controller
 
         if($user->getId() == $this->getUser()->getId() OR $this->getUser()->getId() == $lesson->getTeacher()->getId()){
             $lesson->removeApplicant($user);
+            $em->persist($user);
             $em->flush();
         }
 
@@ -298,6 +298,7 @@ class LessonController extends Controller
         if($driver->getId() == $lesson->getTeacher()->getId()){
             $lesson->addStudent($user);
             $lesson->removeApplicant($user);
+            $em->persist($user);
             $em->flush();
         }
 
@@ -318,6 +319,7 @@ class LessonController extends Controller
 
         if($user->getId() == $this->getUser()->getId() OR $this->getUser()->getId() == $lesson->getTeacher()->getId()){
             $lesson->removeSelected($user);
+            $em->persist($user);
             $em->flush();
         }
 

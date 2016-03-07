@@ -4,9 +4,22 @@
     {{ parent() }}
 <div class="modal-dialog">
     <div class="modal-content">
-        <div class="modal-header">
-            <h2>Entretiens annuels</h2>
-        </div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <nav class="navbar navbar-default secondNav">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="divider-vertical-second"></li>
+                                <li class="active" role="presentation"><a>Vos entretiens</a></li>
+                                <li class="" role="presentation"><a href="{{ asset('images/support entretien professionnel  version hôtes et hôtesses v2.doc') }}" download="{{ asset('images/support entretien professionnel  version hôtes et hôtesses v2.doc') }}">Nouveau</a></li>
+                                <li class="divider-vertical-second"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <hr/>
+            </div>
         <div class="modal-body">
             <table class="table table-condensed">
                 <thead>

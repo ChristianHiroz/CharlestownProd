@@ -26,36 +26,28 @@
                     <a class="btn btn-danger" href="{{ path('lesson_new') }}">Nouveau cours</a>
                 </div>
                 {% for lesson in lessons %}
-                    <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
-                        <div class="col-md-8" style="height:100%;">
-                            <p style="height:100%; line-height: 50px;">{{ lesson.localisation }} au {{ lesson.address }}, {{ lesson.town }} {{ lesson.pc }} <span class="glyphicon glyphicon-menu-right"></span> de {{ lesson.startAt | localizeddate('full', 'none') }} à {{ lesson.endAt | localizeddate('full', 'none') }} || Places : {{ lesson.room }} || {{ lesson.type }}
-                        <div class="col-md-4" style="padding:0px; text-align: center; line-height: 50px;">
-                            <a class="btn btn-success" href="{{ path('lesson_edit', {'id' : lesson.id, 'user' : user.id}) }}">Modifier</a>
+                    <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:100px;">
+                        <div class="col-md-12" style="height:100%;">
+                            <p style="line-height: 50px;">{{ lesson.localisation }} au {{ lesson.address }}, {{ lesson.town }} {{ lesson.pc }} <span class="glyphicon glyphicon-menu-right"></span> de {{ lesson.startAt | localizeddate('full', 'none') }} à {{ lesson.endAt | localizeddate('full', 'none') }} || Places : {{ lesson.room }} || {{ lesson.type }} <a class="btn btn-xs btn-success" href="{{ path('lesson_edit', {'id' : lesson.id, 'user' : user.id}) }}">Modifier</a></p>
+                            En attente :
+                    {% if not lesson.studentsApplicants is empty %}
+                        {% for applicant in lesson.studentsApplicants %}
+                            {{ applicant.firstName }} {{ applicant.lastName }}
+                            <a href="{{ path('fos_otheruser_profile_show', {'user': applicant.id}) }}"><span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="{{ path('select_lesson', {'id':lesson.id, 'user': applicant.id}) }}"><span class="glyphicon glyphicon-ok"></span></a>
+                            <a href="{{ path('unapply_lesson', {'id':lesson.id, 'user': applicant.id}) }}"><span class="glyphicon glyphicon-remove"></span></a>
+                        {% endfor %}
+                    {% endif %}
+                            <br/>  Accepter :
+                    {% if not lesson.students is empty %}
+                        {% for selected in lesson.students %}
+                            {{ selected.firstName }} {{ selected.lastName }}
+                            <a href="{{ path('fos_otheruser_profile_show', {'user': selected.id}) }}"><span class="glyphicon glyphicon-zoom-in"></span></a>
+                            <a href="{{ path('unselect_lesson', {'id':lesson.id, 'user': selected.id}) }}"><span class="glyphicon glyphicon-remove"></span></a>
+                        {% endfor %}
+                    {% endif %}
                         </div>
                     </div>
-                    {% for applicant in lesson.studentsApplicants %}
-                        <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
-                            <div class="col-md-8" style="height:100%;">
-                                <p style="height:100%; line-height: 50px;">{{ applicant.username }}</p>
-                            </div>
-                            <div class="col-md-2" style="padding:0px; text-align: center; line-height: 50px;">
-                                <a class="btn btn-success" href="{{ path('select_lesson', {'id':lesson.id, 'user': applicant.id}) }}">Accepter</a>
-                            </div>
-                            <div class="col-md-2" style="padding:0px; text-align: center; line-height: 50px;">
-                                <a class="btn btn-danger" href="{{ path('unapply_lesson', {'id':lesson.id, 'user': applicant.id}) }}">Refuser</a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    {% for selected in lesson.students %}
-                        <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
-                            <div class="col-md-8" style="height:100%;">
-                                <p style="height:100%; line-height: 50px;">{{ selected.username }}</p>
-                            </div>
-                            <div class="col-md-4" style="padding:0px; text-align: center; line-height: 50px;">
-                                <a class="btn btn-danger" href="{{ path('unselect_lesson', {'id':lesson.id, 'user': selected.id}) }}">Retirer</a>
-                            </div>
-                        </div>
-                    {% endfor %}
                 {% endfor %}
             </div>
         </div><!-- /.modal-content -->

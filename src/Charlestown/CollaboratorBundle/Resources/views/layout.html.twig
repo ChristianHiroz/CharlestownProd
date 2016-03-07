@@ -387,9 +387,9 @@
                                     <div class="col-md-12">
                                         <p>
                                             {% if is_granted('ROLE_AE') %}
-                                            L’employeur prend en charge une indemnité de panier à hauteur de 5.57 € (montant stipulé sur votre contrat de travail) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
+                                            L’employeur prend en charge une indemnité de panier à hauteur de 5.57 € (montant stipulé sur votre contrat de travail) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein (plus de 6 heures de travail) ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
                                             {% elseif is_granted('ROLE_EVENT') %}
-                                            L’employeur prend en charge une indemnité de panier à hauteur de 8 € (si la durée de la mission est supérieur à 5,99H) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
+                                            L’employeur prend en charge une indemnité de panier (si la durée de la mission est supérieure à 5,99H) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
                                             {% endif %}
                                         </p>
                                     </div>
@@ -403,12 +403,12 @@
                                             <p>
                                                 Le paiement de votre salaire se fera par l’émission d’un virement l’avant dernier jour de chaque mois, d’un acompte représentant 60% du montant brut (80% du net).<br/><br/>
                                                 Le solde de votre salaire et vos primes éventuelles seront virés le onzième jour du mois suivant (en cas de jour férié ou de 11 tombant un samedi ou dimanche, les salaires pourront n’être virés sur le compte que le 12 ou 13 du mois).<br/><br/>
-                                                Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace personnel illicoffre.
+                                                Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace <a href="https://illicoffre.safe-access.com/accounts/employee/register/">personnel illicoffre</a>.
                                             </p>
                                         {% elseif is_granted('ROLE_EVENT') %}
                                             <p>
                                                 Le paiement de votre salaire se fera par l’émission d’un virement dans les cinqs jours suivant la mission.<br/><br/>
-                                                Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace personnel illicoffre.
+                                                Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace <a href="https://illicoffre.safe-access.com/accounts/employee/register/">personnel illicoffre</a>.
                                             </p>
                                         {% endif %}
                                     </div>
@@ -509,7 +509,7 @@
                                     <li>les entretenir (état de propreté, recoudre les boutons, faire nettoyer les cravates par un professionnel, …)</li>
                                     </ul>
                                     <p>
-                                    Vous devrez restituer ces tenues à la fin de vos missions ou sur demande de votre responsable. Sauf cas de dispositions particulières au site ou à l’agence d’affectation nous vous remboursons vos frais de pressing sur justificatifs (original de la facture impérativement) dans la limite de 45 € par mois (équivalent au nettoyage d’un tailleur par semaine).
+                                    Vous devrez restituer ces tenues à la fin de vos missions ou sur demande de votre responsable. Sauf cas de dispositions particulières au site ou à l’agence d’affectation nous vous remboursons vos frais de pressing sur justificatifs (original de la facture impérativement) selon les conditions définies par votre agence de rattachement.
                                     <br/>
                                     <br/>
                                     Tous les justificatifs devront être transmis à votre responsable clients avant le 20 de chaque mois.

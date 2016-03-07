@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Charlestown\UserBundle\Form\Type;
+namespace Charlestown\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,12 +33,19 @@ class ProfileFormType extends AbstractType
     {
         $this->buildUserForm($builder, $options);
 
-        $builder->add('current_password', 'password', array(
-            'label' => 'form.current_password',
-            'translation_domain' => 'FOSUserBundle',
-            'mapped' => false,
-            'constraints' => new UserPassword(),
-        ));
+        $builder
+            ->add('firstName','text',array('label' => 'Nom'))
+            ->add('lastName','text',array('label' => 'Prénom'))
+            ->add('phoneNumber','text',array('label' => 'Téléphone'))
+            ->add('pc','text',array('label' => 'Code postal'))
+            ->add('address','text',array('label' => 'Adresse'))
+            ->add('town','text',array('label' => 'Ville'));
+//            ->add('current_password', 'password', array(
+//            'label' => 'form.current_password',
+//            'translation_domain' => 'FOSUserBundle',
+//            'mapped' => false,
+//            'constraints' => new UserPassword(),
+//        ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

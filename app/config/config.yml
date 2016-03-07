@@ -96,9 +96,19 @@ pugx_multi_user:
     businessSupport:
         entity:
           class: Charlestown\CollaboratorBundle\Entity\BusinessSupport
+        profile:
+          form:
+            type: Charlestown\UserBundle\Form\ProfileFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
     event:
         entity:
           class: Charlestown\CollaboratorBundle\Entity\Event
+        profile:
+          form:
+            type: Charlestown\UserBundle\Form\ProfileFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
 
 sonata_block:
     default_contexts: [cms]

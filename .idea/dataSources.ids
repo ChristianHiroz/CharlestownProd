@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - charlestown_new@localhost" uuid="278b316c-2ee8-476c-901e-e80264a40119">
+    <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="charlestown_new"/>
+    <table name="agency" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customer_manager_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="event_customer_manager_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="planning_coordinator_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="localisation" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="numero_urgence" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_70C0C6E672AF4774" columns="event_customer_manager_id" ref-table="event" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_70C0C6E685F730E1" columns="customer_manager_id" ref-table="business_support" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_70C0C6E6E3AC423A" columns="planning_coordinator_id" ref-table="business_support" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_1981A66DCDEADB2A" table="operation" schema="" catalog="charlestown_new" columns="agency_id"/>
+      <exported-key name="FK_8D93D649CDEADB2A" table="user" schema="" catalog="charlestown_new" columns="agency_id"/>
+      <index name="UNIQ_70C0C6E672AF4774" unique="true" columns="event_customer_manager_id"/>
+      <index name="UNIQ_70C0C6E685F730E1" unique="true" columns="customer_manager_id"/>
+      <index name="UNIQ_70C0C6E6E3AC423A" unique="true" columns="planning_coordinator_id"/>
+    </table>
+    <table name="business_support" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_DD3750E8BF396750" columns="id" ref-table="user" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="FK_70C0C6E685F730E1" table="agency" schema="" catalog="charlestown_new" columns="customer_manager_id"/>
+      <exported-key name="FK_70C0C6E6E3AC423A" table="agency" schema="" catalog="charlestown_new" columns="planning_coordinator_id"/>
+      <exported-key name="FK_17A18DF0C3B6BCAE" table="business_support_file" schema="" catalog="charlestown_new" columns="business_support_id"/>
+      <exported-key name="FK_1548BCD1C3B6BCAE" table="syndicat_business_support" schema="" catalog="charlestown_new" columns="business_support_id"/>
+    </table>
+    <table name="business_support_file" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="business_support_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="file_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="business_support_id,file_id"/>
+      <foreign-key name="FK_17A18DF093CB796C" columns="file_id" ref-table="file" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_17A18DF0C3B6BCAE" columns="business_support_id" ref-table="business_support" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_17A18DF093CB796C" unique="false" columns="file_id"/>
+      <index name="IDX_17A18DF0C3B6BCAE" unique="false" columns="business_support_id"/>
+    </table>
+    <table name="carpooling" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="driver_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="dateCreation" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="dateTravel" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="room" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="startPlace" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="endPlace" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_6CC153F1C3423909" columns="driver_id" ref-table="collaborator" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_E9B8614EAFB2200A" table="carpooling_application" schema="" catalog="charlestown_new" columns="carpooling_id"/>
+      <exported-key name="FK_957256E6AFB2200A" table="carpooling_selection" schema="" catalog="charlestown_new" columns="carpooling_id"/>
+      <index name="IDX_6CC153F1C3423909" unique="false" columns="driver_id"/>
+    </table>
+    <table name="carpooling_application" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="carpooling_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="collaborator_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="carpooling_id,collaborator_id"/>
+      <foreign-key name="FK_E9B8614E30098C8C" columns="collaborator_id" ref-table="collaborator" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_E9B8614EAFB2200A" columns="carpooling_id" ref-table="carpooling" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_E9B8614E30098C8C" unique="false" columns="collaborator_id"/>
+      <index name="IDX_E9B8614EAFB2200A" unique="false" columns="carpooling_id"/>
+    </table>
+    <table name="carpooling_selection" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="carpooling_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="collaborator_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="carpooling_id,collaborator_id"/>
+      <foreign-key name="FK_957256E630098C8C" columns="collaborator_id" ref-table="collaborator" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_957256E6AFB2200A" columns="carpooling_id" ref-table="carpooling" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_957256E630098C8C" unique="false" columns="collaborator_id"/>
+      <index name="IDX_957256E6AFB2200A" unique="false" columns="carpooling_id"/>
+    </table>
+    <table name="collaborator" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="gender" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="firstName" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="lastName" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="position" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_606D487C9395C3F3" columns="customer_id" ref-table="customer" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_606D487CBF396750" columns="id" ref-table="user" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="FK_6CC153F1C3423909" table="carpooling" schema="" catalog="charlestown_new" columns="driver_id"/>
+      <exported-key name="FK_E9B8614E30098C8C" table="carpooling_application" schema="" catalog="charlestown_new" columns="collaborator_id"/>
+      <exported-key name="FK_957256E630098C8C" table="carpooling_selection" schema="" catalog="charlestown_new" columns="collaborator_id"/>
+      <exported-key name="FK_428D7973A76ED395" table="demand" schema="" catalog="charlestown_new" columns="user_id"/>
+      <exported-key name="FK_F87474F341807E1D" table="lesson" schema="" catalog="charlestown_new" columns="teacher_id"/>
+      <exported-key name="FK_558236CA30098C8C" table="lesson_application" schema="" catalog="charlestown_new" columns="collaborator_id"/>
+      <exported-key name="FK_F286E35D30098C8C" table="lesson_selection" schema="" catalog="charlestown_new" columns="collaborator_id"/>
+      <exported-key name="FK_5E3DE4777E3C61F9" table="skill" schema="" catalog="charlestown_new" columns="owner_id"/>
+      <index name="IDX_606D487C9395C3F3" unique="false" columns="customer_id"/>
+    </table>
+    <table name="customer" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="companyName" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="siret" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_81398E09BF396750" columns="id" ref-table="user" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="FK_606D487C9395C3F3" table="collaborator" schema="" catalog="charlestown_new" columns="customer_id"/>
+      <exported-key name="FK_978E191B9395C3F3" table="file_operation" schema="" catalog="charlestown_new" columns="customer_id"/>
+      <exported-key name="FK_1981A66D9395C3F3" table="operation" schema="" catalog="charlestown_new" columns="customer_id"/>
+    </table>
+    <table name="demand" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="reason" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="dateDemand" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="dateResponse" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="response" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="responseStatus" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="comment" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="discr" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_428D7973A76ED395" columns="user_id" ref-table="collaborator" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_57083FECBF396750" table="demand_formation" schema="" catalog="charlestown_new" columns="id"/>
+      <exported-key name="FK_5A6F0FE0BF396750" table="demand_meeting" schema="" catalog="charlestown_new" columns="id"/>
+      <exported-key name="FK_29F03082BF396750" table="demand_mobility" schema="" catalog="charlestown_new" columns="id"/>
+      <exported-key name="FK_64E8264BF396750" table="demand_vacancy" schema="" catalog="charlestown_new" columns="id"/>
+      <index name="IDX_428D7973A76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="demand_formation" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_57083FECBF396750" columns="id" ref-table="demand" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="demand_meeting" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="disponibility" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_5A6F0FE0BF396750" columns="id" ref-table="demand" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="demand_mobility" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="c_v_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_29F0308252B5672F" columns="c_v_id" ref-table="file" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_29F03082BF396750" columns="id" ref-table="demand" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="UNIQ_29F0308252B5672F" unique="true" columns="c_v_id"/>
+    </table>
+    <table name="demand_vacancy" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="dateStart" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="dateEnd" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_64E8264BF396750" columns="id" ref-table="demand" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="event" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_3BAE0AA7BF396750" columns="id" ref-table="user" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="FK_70C0C6E672AF4774" table="agency" schema="" catalog="charlestown_new" columns="event_customer_manager_id"/>
+      <exported-key name="FK_270A48F271F7E88B" table="operation_appliance" schema="" catalog="charlestown_new" columns="event_id"/>
+    </table>
+    <table name="file" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="alt" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="type_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="name_show" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_8C9F3610C54C8C93" columns="type_id" ref-table="file_type" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_17A18DF093CB796C" table="business_support_file" schema="" catalog="charlestown_new" columns="file_id"/>
+      <exported-key name="FK_29F0308252B5672F" table="demand_mobility" schema="" catalog="charlestown_new" columns="c_v_id"/>
+      <exported-key name="FK_1981A66D757FABFF" table="operation" schema="" catalog="charlestown_new" columns="brief_id"/>
+      <exported-key name="FK_8D93D649EE45BDBF" table="user" schema="" catalog="charlestown_new" columns="picture_id"/>
+      <exported-key name="FK_F61E7AD993CB796C" table="user_file" schema="" catalog="charlestown_new" columns="file_id"/>
+      <index name="IDX_8C9F3610C54C8C93" unique="false" columns="type_id"/>
+    </table>
+    <table name="file_operation" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="operation_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="alt" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name_show" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="accepted" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_978E191B44AC3583" columns="operation_id" ref-table="operation" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_978E191B9395C3F3" columns="customer_id" ref-table="customer" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_978E191B44AC3583" unique="false" columns="operation_id"/>
+      <index name="IDX_978E191B9395C3F3" unique="false" columns="customer_id"/>
+    </table>
+    <table name="file_type" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_8C9F3610C54C8C93" table="file" schema="" catalog="charlestown_new" columns="type_id"/>
+    </table>
+    <table name="lesson" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="teacher_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="startAt" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="endAt" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="room" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="localisation" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="town" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pc" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_F87474F341807E1D" columns="teacher_id" ref-table="collaborator" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_558236CACDF80196" table="lesson_application" schema="" catalog="charlestown_new" columns="lesson_id"/>
+      <exported-key name="FK_F286E35DCDF80196" table="lesson_selection" schema="" catalog="charlestown_new" columns="lesson_id"/>
+      <exported-key name="FK_A6A7E627CDF80196" table="lesson_skills" schema="" catalog="charlestown_new" columns="lesson_id"/>
+      <index name="IDX_F87474F341807E1D" unique="false" columns="teacher_id"/>
+    </table>
+    <table name="lesson_application" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="lesson_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="collaborator_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="lesson_id,collaborator_id"/>
+      <foreign-key name="FK_558236CA30098C8C" columns="collaborator_id" ref-table="collaborator" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_558236CACDF80196" columns="lesson_id" ref-table="lesson" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_558236CA30098C8C" unique="false" columns="collaborator_id"/>
+      <index name="IDX_558236CACDF80196" unique="false" columns="lesson_id"/>
+    </table>
+    <table name="lesson_selection" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="lesson_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="collaborator_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="lesson_id,collaborator_id"/>
+      <foreign-key name="FK_F286E35D30098C8C" columns="collaborator_id" ref-table="collaborator" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_F286E35DCDF80196" columns="lesson_id" ref-table="lesson" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_F286E35D30098C8C" unique="false" columns="collaborator_id"/>
+      <index name="IDX_F286E35DCDF80196" unique="false" columns="lesson_id"/>
+    </table>
+    <table name="lesson_skills" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="lesson_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="skill_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="lesson_id,skill_id"/>
+      <foreign-key name="FK_A6A7E6275585C142" columns="skill_id" ref-table="skill" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_A6A7E627CDF80196" columns="lesson_id" ref-table="lesson" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_A6A7E6275585C142" unique="false" columns="skill_id"/>
+      <index name="IDX_A6A7E627CDF80196" unique="false" columns="lesson_id"/>
+    </table>
+    <table name="operation" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="agency_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="brief_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="dateStart" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="dateEnd" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="rooms" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="dayLength" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="localisation" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="mission" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="urlReport" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_1981A66D757FABFF" columns="brief_id" ref-table="file" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_1981A66D9395C3F3" columns="customer_id" ref-table="customer" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_1981A66DCDEADB2A" columns="agency_id" ref-table="agency" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_978E191B44AC3583" table="file_operation" schema="" catalog="charlestown_new" columns="operation_id"/>
+      <exported-key name="FK_270A48F244AC3583" table="operation_appliance" schema="" catalog="charlestown_new" columns="operation_id"/>
+      <index name="UNIQ_1981A66D757FABFF" unique="true" columns="brief_id"/>
+      <index name="IDX_1981A66D9395C3F3" unique="false" columns="customer_id"/>
+      <index name="IDX_1981A66DCDEADB2A" unique="false" columns="agency_id"/>
+    </table>
+    <table name="operation_appliance" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="event_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="operation_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="accepted" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="dateResp" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_270A48F244AC3583" columns="operation_id" ref-table="operation" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_270A48F271F7E88B" columns="event_id" ref-table="event" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_270A48F244AC3583" unique="false" columns="operation_id"/>
+      <index name="IDX_270A48F271F7E88B" unique="false" columns="event_id"/>
+    </table>
+    <table name="skill" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="owner_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="level" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_5E3DE4777E3C61F9" columns="owner_id" ref-table="collaborator" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_A6A7E6275585C142" table="lesson_skills" schema="" catalog="charlestown_new" columns="skill_id"/>
+      <index name="IDX_5E3DE4777E3C61F9" unique="false" columns="owner_id"/>
+    </table>
+    <table name="syndicat" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_1548BCD18F5ADEED" table="syndicat_business_support" schema="" catalog="charlestown_new" columns="syndicat_id"/>
+    </table>
+    <table name="syndicat_business_support" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="syndicat_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="business_support_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="syndicat_id,business_support_id"/>
+      <foreign-key name="FK_1548BCD18F5ADEED" columns="syndicat_id" ref-table="syndicat" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_1548BCD1C3B6BCAE" columns="business_support_id" ref-table="business_support" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_1548BCD18F5ADEED" unique="false" columns="syndicat_id"/>
+      <index name="IDX_1548BCD1C3B6BCAE" unique="false" columns="business_support_id"/>
+    </table>
+    <table name="user" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="username_canonical" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email_canonical" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="salt" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_login" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="locked" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="expired" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="expires_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="confirmation_token" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password_requested_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="roles" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1" remarks="KERDMlR5cGU6YXJyYXkp"/>
+      <column name="credentials_expired" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="credentials_expire_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="discr" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="town" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pc" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phoneNumber" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="agency_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="picture_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_8D93D649CDEADB2A" columns="agency_id" ref-table="agency" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_8D93D649EE45BDBF" columns="picture_id" ref-table="file" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_DD3750E8BF396750" table="business_support" schema="" catalog="charlestown_new" columns="id"/>
+      <exported-key name="FK_606D487CBF396750" table="collaborator" schema="" catalog="charlestown_new" columns="id"/>
+      <exported-key name="FK_81398E09BF396750" table="customer" schema="" catalog="charlestown_new" columns="id"/>
+      <exported-key name="FK_3BAE0AA7BF396750" table="event" schema="" catalog="charlestown_new" columns="id"/>
+      <exported-key name="FK_F61E7AD9A76ED395" table="user_file" schema="" catalog="charlestown_new" columns="user_id"/>
+      <index name="UNIQ_8D93D64992FC23A8" unique="true" columns="username_canonical"/>
+      <index name="UNIQ_8D93D649A0D96FBF" unique="true" columns="email_canonical"/>
+      <index name="UNIQ_8D93D649EE45BDBF" unique="true" columns="picture_id"/>
+      <index name="IDX_8D93D649CDEADB2A" unique="false" columns="agency_id"/>
+    </table>
+    <table name="user_file" schema="" catalog="charlestown_new" type="TABLE">
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="file_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="user_id,file_id"/>
+      <foreign-key name="FK_F61E7AD993CB796C" columns="file_id" ref-table="file" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_F61E7AD9A76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="charlestown_new" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_F61E7AD993CB796C" unique="false" columns="file_id"/>
+      <index name="IDX_F61E7AD9A76ED395" unique="false" columns="user_id"/>
+    </table>
+  </data-source>
+</component>

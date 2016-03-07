@@ -15,15 +15,15 @@ class LessonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('startAt')
-            ->add('endAt')
-            ->add('room')
-            ->add('localisation')
-            ->add('town')
-            ->add('address')
-            ->add('pc')
-            ->add('description')
-            ->add('type')
+            ->add('startAt', 'date', array('label' => 'Date de début'))
+            ->add('endAt', 'date', array('label' => 'Date de fin'))
+            ->add('room', 'integer', array('label' => 'Places disponibles'))
+            ->add('localisation', 'text', array('label' => 'Lieu'))
+            ->add('town', 'text', array('label' => 'Ville'))
+            ->add('address', 'text', array('label' => 'Adresse'))
+            ->add('pc', 'text', array('label' => 'Code postal'))
+            ->add('description', 'textarea', array('label' => 'Description de la formation'))
+            ->add('type', 'text', array('label' => 'Type de la formation'))
         ;
     }
     
