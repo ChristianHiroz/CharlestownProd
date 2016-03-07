@@ -299,7 +299,7 @@ class Lesson
     }
 
     public function addStudentApplicant(Collaborator $student){
-        $this->students[] = $student;
+        $this->studentsApplicants[] = $student;
     }
 
     public function removeApplicant(Collaborator $applicant){

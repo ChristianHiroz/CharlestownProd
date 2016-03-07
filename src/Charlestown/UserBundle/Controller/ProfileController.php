@@ -39,7 +39,19 @@ class ProfileController extends Controller
         }
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-            'user' => $user
+            'user' => $user,
+        ));
+    }
+
+    public function showOtherAction($user){
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('CharlestownUserBundle:User')->find($user);
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+
+        return $this->render('FOSUserBundle:Profile:showOther.html.twig', array(
+            'user' => $user,
         ));
     }
 
@@ -90,8 +102,9 @@ class ProfileController extends Controller
             return $response;
         }
 
-        return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-            'form' => $form->createView()
+        return $this->render('CharlestownUserBundle:Profile:edit.html.twig', array(
+            'form' => $form->createView(),
+            'user' => $this->getUser(),
         ));
     }
 }
