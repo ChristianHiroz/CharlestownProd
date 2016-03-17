@@ -77,7 +77,6 @@ class OperationController extends Controller
         $em->persist($application);
         $em->flush();
 
-
         return $this->redirect($this->generateUrl('my_operation_applications'));
     }
 
