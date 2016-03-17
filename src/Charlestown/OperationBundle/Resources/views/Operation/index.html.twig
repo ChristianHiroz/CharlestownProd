@@ -27,11 +27,10 @@
                         {% for application in applications %}
                             {% if application.operation == operation %}
                                 {% set applied = true %}
-                            {% else %}
-                                {% set empty = false %}
                             {% endif %}
                         {% endfor %}
                         {% if applied == false %}
+                            {% set empty = false %}
                             <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
                                 <div class="col-md-8" style="height:100%;">
                                     <p style="line-height: 50px;" href="{{ path('operation_show', {'id':operation.id}) }}">{{ operation.name }} du {{ operation.dateStart | localizeddate('full', 'none') }} au {{ operation.dateEnd | localizeddate('full', 'none') }} à {{ operation.localisation }} | {{ operation.customer.companyName }} </p>
