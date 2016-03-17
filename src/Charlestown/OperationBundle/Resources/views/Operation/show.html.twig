@@ -34,6 +34,7 @@
         <div class="modal-body" style="margin-bottom: 50px;">
             <h2>L'opération</h2>
             <div style="text-align: center;">
+                Nom : {{ operation.name }}<br/>
                 Places restantes : {{ operation.rooms }}<br/>
                 Type d'opération : {{ operation.type }}<br/>
                 Lieu : {{ operation.localisation }}<br/>
@@ -43,13 +44,14 @@
                 Date de fin : {{ operation.dateEnd | localizeddate('full', 'none') }}<br/>
                 Brief : <a style="font-size: 50px;" href="{{ asset(operation.brief.uploadRootDir  ~ operation.brief.id ~ '.' ~ operation.brief.alt) }}"  download="{{operation.brief.nameShow ~ '.' ~ operation.brief.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a>
             </div>
-        <div class="modal-body" style="margin-bottom: 50px;">
-            <div style="text-align: center;">
-                {% if form %}
-                    aa
-                {% endif %}
-            </div>
         </div>
+        {# Dunno what this was for, keeping for posterity #}
+        {#<div class="modal-body" style="margin-bottom: 50px;">#}
+            {#<div style="text-align: center;">#}
+                {#{% if form %}#}
+                {#{% endif %}#}
+            {#</div>#}
+        {#</div>#}
     </div>
 </div>
 

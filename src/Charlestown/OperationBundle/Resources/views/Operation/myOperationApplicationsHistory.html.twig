@@ -10,9 +10,9 @@
                             <ul class="nav navbar-nav" style="width:100%;">
                                 <li class="" role="presentation"><a href="{{ path('operation') }}">Opérations</a></li>
                                 <li class="divider-vertical-second"></li>
-                                <li class="active" role="presentation"><a href="{{ path('my_operation_applications') }}">Mes candidatures</a></li>
+                                <li class="" role="presentation"><a href="{{ path('my_operation_applications') }}">Mes candidatures</a></li>
                                 <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('my_operation_applications_history') }}">Historique</a></li>
+                                <li class="active" role="presentation"><a href="{{ path('my_operation_applications_history') }}">Historique</a></li>
                             </ul>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     </thead>
                     <tbody>
                     {% for application in applications %}
-                        {% if application.operation.dateEnd|date('d - m -Y') > 'now'|date('d - m -Y') %}
+                        {% if application.operation.dateEnd|date('d - m -Y') < 'now'|date('d - m -Y') %}
                             {% if application.accepted == true %}
                                 <tr style="background-color: lightskyblue;">
                             {% elseif application.dateResp == null %}
@@ -47,8 +47,8 @@
                                 <td>{{ application.operation.localisation }}</td>
                                 <td>{{ application.operation.dateStart | localizeddate('full', 'none') }}</td>
                                 <td>{{ application.operation.dateEnd | localizeddate('full', 'none') }}</td>
-                                <td><a style="color:black;" href="{{ path('operation_show', {'id':application.operation.id}) }}"><span class="glyphicon glyphicon-list-alt"></span></a></td>
-                                <td><a style="color:black;" href="{{ asset(application.operation.brief.uploadRootDir  ~ application.operation.brief.id ~ '.' ~ application.operation.brief.alt) }}"  download="{{application.operation.brief.nameShow ~ '.' ~ application.operation.brief.alt}}"><span class="glyphicon glyphicon-file"></span></a></td>
+                                <td><a style="color:indianred;" href="{{ path('operation_show', {'id':application.operation.id}) }}"><span class="glyphicon glyphicon-list-alt"></span></a></td>
+                                <td><a style="color:indianred;" href="{{ asset(application.operation.brief.uploadRootDir  ~ application.operation.brief.id ~ '.' ~ application.operation.brief.alt) }}"  download="{{application.operation.brief.nameShow ~ '.' ~ application.operation.brief.alt}}"><span class="glyphicon glyphicon-file"></span></a></td>
                                 <td>
                                     {% if application.accepted == true %}
                                         Accepté

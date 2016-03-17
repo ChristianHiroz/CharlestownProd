@@ -5,25 +5,26 @@
 .firstNav{width:50%; top:50px; left:125px; border:medium none;z-index:2;background-color: rgb(192, 192, 192)!important;padding: 1px;}
 .secondNav{width:100%;border:medium none; z-index:1;}
 /*.secondNav * {height:25px;}*/
-.container-fluid{ background-color:#000000; opacity: 0.8; border: medium none; border-radius:10px; margin:0px; padding:0px; }
-.logo_header{ width:auto; height:55px; margin-top:-18px; margin-left: 15px;}
+.container-fluid{ background-color:#000000; opacity: 0.8; border: medium none; border-radius:10px; margin:0px; padding:0px;}
+.logo_header{ width:auto; height:100%;}
 .dropdown-menu{ background-color: black;box-shadow: 2px 2px 2px gray, -1px -1px 2px white; }
 .navbar-default{ background-color: transparent; background-image: none; box-shadow: none; }
 .dropdown-menu > li > a { color: white; }
 .dropdown-toggle{ color:white !important; }
-.divider-vertical{ border-left: 1px solid #606060; border-right: 1px solid #464646; height: 50px; }
+.divider-vertical{ border-left: 1px solid #606060; border-right: 1px solid #464646; height: 100%; }
 .divider-vertical-second{ border-left: 1px solid #F00; border-right: 1px solid #ff3651; height: 50px; }
 .navbar-collapse{ margin:0px; padding:0px; }
 .navbar-default .navbar-nav > li > a{color:white;}
 .espace{position: absolute; top: 21px; right: 175px; z-index: 1;}
-.imgPresentation{width:auto; height:500px;}
+.imgPresentation{width:100%; height:auto;}
 
-.menubutton{  width:24%;  text-align: center; }
-.menubuttonEvent{  width:33%;  text-align: center; }
+.menubutton{  width:24%;  text-align: center; height: 100%; }
+.menubuttonEvent{  width:32%;  text-align: center; height: 100%; }
 .menubutton:hover, .menubutton:focus { background-color: white;}
 .menubuttonEvent:hover, .menubutton:focus { background-color: white;}
-.menuheader{ width:26%; }
-.menucontainer{ width:74%; }
+.menuheader{ width:25%; height:55px; }
+.menucontainer{ width:100%; height:100%;}
+.menuwrapper{width:75%; height:55px; float:left;}
 /* FINMENU */
 
 /* MODALS */
@@ -99,3 +100,11 @@ td a {
 /* DEMANDS */
 .half{width:50%;display:inline-block;}
 /* ENDDEMANDS */
+
+
+@media (max-width: 1350px) {
+    .logo_header{ width:auto; height:80%;}
+}
+@media (max-width: 1075px) {
+    .logo_header{ width:auto; height:70%;}
+}

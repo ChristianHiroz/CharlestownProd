@@ -13,8 +13,10 @@ class OperationAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('brief')
-            ->add('type')
+            ->add('brief',null,array('label'=>'Brief'))
+            ->add('name',null,array('label'=>'Nom'))
+            ->add('active',null,array('label'=>'Actif'))
+            ->add('type',null,array('label'=>'Type'))
             ->add('dateStart',null,array('label'=>'Date de début'))
             ->add('dateEnd',null,array('label'=>'Date de fin'))
             ->add('rooms',null,array('label'=>'Places'))
@@ -41,6 +43,8 @@ class OperationAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id', null, array('label' => 'Identifiant'))
+            ->add('name',null,array('label'=>'Nom'))
+            ->add('active',null,array('label'=>'Actif'))
             ->add('dateStart',null,array('label'=>'Date de début'))
             ->add('dateEnd',null,array('label'=>'Date de fin'))
             ->add('rooms',null,array('label'=>'Places'))

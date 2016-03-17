@@ -11,6 +11,8 @@
                                 <li class="active" role="presentation"><a href="{{ path('operation') }}">Opérations</a></li>
                                 <li class="divider-vertical-second"></li>
                                 <li class="" role="presentation"><a href="{{ path('my_operation_applications') }}">Mes candidatures</a></li>
+                                <li class="divider-vertical-second"></li>
+                                <li class="" role="presentation"><a href="{{ path('my_operation_applications_history') }}">Historique</a></li>
                             </ul>
                         </div>
                     </div>
@@ -18,17 +20,35 @@
                 <hr/>
             </div>
             <div class="modal-body" style="padding-top: 0px; color:black;">
+                {% set empty = true %}
                 {% for operation in operations %}
-                    <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
-                        <div class="col-md-8" style="height:100%;">
-                                    <p style="line-height: 50px;" href="{{ path('operation_show', {'id':operation.id}) }}">{{ operation.dateStart | localizeddate('full', 'none') }} - {{ operation.localisation }} - {{ operation.customer.companyName }} </p>
-                        </div>
-                        <div class="col-md-4" style="padding:0px; text-align: center; line-height: 50px;">
-                            <a class="btn btn-success" href="{{ path('operation_show', {'id':operation.id}) }}">Afficher</a>
-                            <a class="btn btn-success" href="{{ path('operation_apply', {'id':operation.id}) }}">Postuler</a>
-                        </div>
-                    </div>
+                    {% if operation.active %}
+                        {% set applied = false %}
+                        {% for application in applications %}
+                            {% if application.operation == operation %}
+                                {% set applied = true %}
+                            {% else %}
+                                {% set empty = false %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if applied == false %}
+                            <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
+                                <div class="col-md-8" style="height:100%;">
+                                    <p style="line-height: 50px;" href="{{ path('operation_show', {'id':operation.id}) }}">{{ operation.name }} du {{ operation.dateStart | localizeddate('full', 'none') }} au {{ operation.dateEnd | localizeddate('full', 'none') }} à {{ operation.localisation }} | {{ operation.customer.companyName }} </p>
+                                </div>
+                                <div class="col-md-4" style="padding:0px; text-align: center; line-height: 50px;">
+                                    <a class="btn btn-success" href="{{ path('operation_show', {'id':operation.id}) }}">Afficher</a>
+                                    <a class="btn btn-success" href="{{ path('operation_apply', {'id':operation.id}) }}">Postuler</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
                 {% endfor %}
+                {% if empty == true %}
+                    <div class="textAlignCenter ">
+                        <h4 style="color:white;">Il n'y a pas d'opérations disponible pour le moment, veuillez revenir plus tard.</h4>
+                    </div>
+                {% endif %}
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

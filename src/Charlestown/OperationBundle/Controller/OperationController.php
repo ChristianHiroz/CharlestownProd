@@ -28,8 +28,10 @@ class OperationController extends Controller
     public function indexAction()
     {
         $operations =  $this->getDoctrine()->getManager()->getRepository('CharlestownOperationBundle:Operation')->findAll();
+        $user = $this->getUser();
+        $applications = $user->getAppliances();
 
-        return array('operations' => $operations, 'user' => $this->getUser());
+        return array('operations' => $operations, 'applications' => $applications ,'user' => $user);
     }
 
     /**
@@ -37,6 +39,15 @@ class OperationController extends Controller
      * @Template()
      */
     public function myOperationApplicationsAction()
+    {
+        return array('applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
+    }
+
+    /**
+     * @Route("/historique", name="my_operation_applications_history")
+     * @Template()
+     */
+    public function myOperationApplicationsHistoryAction()
     {
         return array('applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
     }

@@ -12,4 +12,3 @@ $('#dLabel').hover(function() {
 $('#dDrop').hover(function() {
     $("#dDrop").toggle();
 });
-

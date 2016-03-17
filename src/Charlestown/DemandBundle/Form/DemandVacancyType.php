@@ -16,7 +16,9 @@ class DemandVacancyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('reason','text', array('label' => 'Motif'))
+            ->add('reason','choice', array(
+                'choices'   => array('Congé Paternité' => 'Congé Paternité', 'RTT' => 'RTT'),
+                'required'  => true, 'label' => ('Motif')))
             ->add('comment','text', array('label' => 'Commentaire'))
             ->add('dateStart','date', array('label' => 'Date début'))
             ->add('dateEnd','date', array('label' => 'Date fin'))

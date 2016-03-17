@@ -26,6 +26,10 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\CacheBundle\SonataCacheBundle(),
+            new Sonata\SeoBundle\SonataSeoBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Sonata\NotificationBundle\SonataNotificationBundle(),
             new Charlestown\CustomerBundle\CharlestownCustomerBundle(),
             new Charlestown\CollaboratorBundle\CharlestownCollaboratorBundle(),
             new Charlestown\DemandBundle\CharlestownDemandBundle(),
@@ -33,6 +37,7 @@ class AppKernel extends Kernel
             new Charlestown\CarpoolingBundle\CharlestownCarpoolingBundle(),
             new Charlestown\OperationBundle\CharlestownOperationBundle(),
             new Charlestown\SkillPurseBundle\CharlestownSkillPurseBundle(),
+//            new Sonata\PageBundle\SonataPageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

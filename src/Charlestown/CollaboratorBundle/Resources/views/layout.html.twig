@@ -12,23 +12,23 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-10 textAlignCenter mbottom15">
-                                    <a class="btn btn-success" href="{{ asset('images/MANUEL DE BORD 2016 CHW 2.2 SL.pdf') }}" download="{{ asset('images/MANUEL DE BORD 2016 CHW 2.2 SL.pdf') }}">Brochure d'acceuil</a>
+                                    <a class="btn btn-success" href="{{ asset('images/MANUEL DE BORD 2016 CHW 2.2 SL.pdf') }}" download="{{ asset('images/MANUEL DE BORD 2016 CHW 2.2 SL.pdf') }}">Brochure d'accueil</a>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-5">
-                                    <div id="player1" style="width:100%; height: 100%;"></div>
+                                <div class="col-md-6">
+                                    <div id="player1" style="width:100%; height: 400px;"></div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div id="player2" style="width:100%; height: 100%;"></div>
+                                <div class="col-md-6">
+                                    <div id="player2" style="width:100%; height: 400px;"></div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-5">
-                                    <div id="player3" style="width:100%; height: 100%;"></div>
+                                <div class="col-md-6">
+                                    <div id="player3" style="width:100%; height: 400px;"></div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div id="player4" style="width:100%; height: 100%;"></div>
+                                <div class="col-md-6">
+                                    <div id="player4" style="width:100%; height: 400px;"></div>
                                 </div>
                             </div>
                             <script>
@@ -47,7 +47,7 @@
                                 var player4;
                                 function onYouTubeIframeAPIReady() {
                                     player = new YT.Player('player1', {
-                                        height: '390',
+                                        height: '600',
                                         width: '640',
                                         videoId: 'GEMKfpT85m0',
                                         events: {
@@ -56,7 +56,7 @@
                                         }
                                     });
                                     player2 = new YT.Player('player2', {
-                                        height: '390',
+                                        height: '600',
                                         width: '640',
                                         videoId: 'rEjNaEGPrZU',
                                         events: {
@@ -65,7 +65,7 @@
                                         }
                                     });
                                     player3 = new YT.Player('player3', {
-                                        height: '390',
+                                        height: '600',
                                         width: '640',
                                         videoId: 'Pf-neYhm564',
                                         events: {
@@ -74,7 +74,7 @@
                                         }
                                     });
                                     player4 = new YT.Player('player4', {
-                                        height: '390',
+                                        height: '600',
                                         width: '640',
                                         videoId: '9fDHKyvfmJA',
                                         events: {
@@ -106,13 +106,13 @@
                             </script>
                         </div>
                         <div class="textAlignCenter">
-                            <p>Retrouver toutes nos vidéos de formation sur la chaîne Youtube de Charlestown :</p>
+                            <p>Retrouver toutes nos vidéos de formation sur la chaîne Youtube de Charlestown :</p><div class="g-ytsubscribe" data-channel="charlestownaccueil" data-layout="default" data-count="default"></div>
+
                         </div>
-                        <script src="https://apis.google.com/js/platform.js"></script>
+                        </div>
+                    <script src="https://apis.google.com/js/platform.js"></script>
 
-                        <div class="g-ytsubscribe" data-channel="charlestownaccueil" data-layout="default" data-count="default"></div>
 
-                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
                     </div>
@@ -371,7 +371,7 @@
                                                     <li>les salariés à employeurs multiples bénéficiant déjà d’un régime de frais de santé obligatoire dans le cadre d’un autre emploi (+ justificatifs)</li>
                                                     <li>les salariés qui bénéficient par ailleurs, y compris en tant qu’ayants droit, d’une couverture santé collective obligatoire relevant d’un des régimes visés par l’arrêté du 26 mars 2012 (+ justificatifs)</li>
                                                 </ul>
-                                                <p>Pour toute question relative à la mutuelle, nous vous remercions d’adresser un message à l’adresse suivante : communication-rh@charlestown.fr</p>
+                                                <p>Pour toute question relative à la mutuelle, nous vous remercions d’adresser un message à l’adresse suivante : <a href="mailto:communication-rh@charlestown.fr">communication-rh@charlestown.fr</a></p>
                                             {% elseif is_granted('ROLE_EVENT') %}
                                                 <p>
                                                     Pour les salariés réalisant des missions évènementielles et souhaitant être affiliés à la mutuelle de Charlestown, merci de bien vouloir faire un mail à l’adresse suivante : communication-rh@charlestown.fr. Par défaut, le salarié est réputé refuser la mutuelle comme indiqué dans les contrats de travail.
@@ -882,7 +882,8 @@
                 {% if is_granted('ROLE_AE') %}
                     <li><a id="demande"  href="{{ path('demand') }}">Mes demandes</a></li>
                     <li><a id="heae" data-id="heae" href="{{ path('evaluation') }}">Mes entretiens</a></li>
-                {% elseif is_granted('ROLE_EVENT') %}
+                {% endif %}
+                {% if is_granted('ROLE_EVENT') %}
                     <li><a id="operation"  href="{{ path('operation') }}">Mes opérations</a></li>
                 {% endif %}
                 <li><a id="covoiturage" data-id="covoiturage" href="{{ path('carpooling') }}">Le covoiturage </a></li>
@@ -893,92 +894,136 @@
                 <li class="dropdown"><a href="{{ path('fos_user_security_logout') }}">Déconnexion </a></li>
             </ul>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <nav class="navbar navbar-default firstNav">
-                    <div class="container-fluid">
-                        <div class="navbar-header menuheader">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="http://www.charlestown.fr/"><img class="logo_header" src="{{ asset('images/logo_charlestown.png') }}"/></a>
+        <nav class="navbar navbar-default visible-xs">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button id="mobilebutton" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
                         </div>
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav menucontainer">
-                                <li class="divider-vertical"></li>
-                                {% if is_granted('ROLE_AE') %}
-                                <li class="dropdown menubutton">
-                                {% elseif is_granted('ROLE_EVENT') %}
-                                <li class="dropdown menubuttonEvent">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <nav class="navbar navbar-default firstNav hidden-xs">
+            <div class="container-fluid">
+                <div class="navbar-header menuheader textAlignCenter">
+                    <a class="hidden-sm hidden-xs" href="http://www.charlestown.fr/">
+                        <img class="logo_header " src="{{ asset('images/logo_charlestown.png') }}"/>
+                    </a>
+                    <a class="visible-sm" href="http://www.charlestown.fr/">
+                        <img class="logo_header " src="{{ asset('images/logo_smxs.png') }}"/>
+                    </a>
+                </div>
+                <div class=" navbar-collapse menuwrapper">
+                    <ul class="nav navbar-nav menucontainer">
+                        <li class="divider-vertical"></li>
+                        {% if is_granted('ROLE_AE') %}
+                            <li class="dropdown menubutton">
+                        {% elseif is_granted('ROLE_EVENT') %}
+                            <li class="dropdown menubuttonEvent">
+                        {% endif %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a data-toggle="modal" data-target="#presentationModal">Nos activités</a></li>
+                                <li><a data-toggle="modal" data-target="#implantationModal">Nos implantations</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a data-toggle="modal" data-target="#infosModal">Politique salariale</a></li>
+                                <li><a data-toggle="modal" data-target="#fonctionnementModal">Règles d'or</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a data-toggle="modal" data-target="#reglementModal">Règlement intérieur</a></li>
+                            </ul>
+                        </li>
+                        {% if is_granted('ROLE_AE') %}
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown menubutton">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mes missions <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{{ path('my_customer') }}">Mon affectation</a></li>
+                                    <li><a href="{{ path('my_customer_contact') }}">Mes contacts</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                            <li class="divider-vertical"></li>
+                        {% if is_granted('ROLE_AE') %}
+                            <li class="dropdown menubutton">
+                        {% elseif is_granted('ROLE_EVENT') %}
+                            <li class="dropdown menubuttonEvent">
+                        {% endif %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utile <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a data-toggle="modal" data-target="#illicoffreModal">Fiche de paie</a></li>
+                                <li><a href="{{ path('contact') }}">Coordonnées</a></li>
+                                {% if is_granted('ROLE_EVENT') %}
+                                    <li role="separator" class="divider"></li>
+                                    <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
                                 {% endif %}
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a data-toggle="modal" data-target="#presentationModal">Nos activités</a></li>
-                                        <li><a data-toggle="modal" data-target="#implantationModal">Nos implantations</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a data-toggle="modal" data-target="#infosModal">Politique salariale</a></li>
-                                        <li><a data-toggle="modal" data-target="#fonctionnementModal">Règles d'or</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a data-toggle="modal" data-target="#reglementModal">Règlement intérieur</a></li>
-                                    </ul>
-                                </li>
-                                {% if is_granted('ROLE_AE') %}
-                                    <li class="divider-vertical"></li>
-                                    <li class="dropdown menubutton">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mes missions <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="{{ path('my_customer') }}">Mon affectation</a></li>
-                                            <li><a href="{{ path('my_customer_contact') }}">Mes contacts</a></li>
-                                        </ul>
-                                    </li>
-                                {% endif %}
-                                <li class="divider-vertical"></li>
-                                {% if is_granted('ROLE_AE') %}
-                                <li class="dropdown menubutton">
-                            {% elseif is_granted('ROLE_EVENT') %}
-                                <li class="dropdown menubuttonEvent">
-                                    {% endif %}
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utile <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a data-toggle="modal" data-target="#illicoffreModal">Fiche de paie</a></li>
-                                        <li><a href="{{ path('contact') }}">Coordonnées</a></li>
-                                        {% if is_granted('ROLE_EVENT') %}
-                                            <li role="separator" class="divider"></li>
-                                            <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
-                                        {% endif %}
-                                    </ul>
-                                </li>
-                                <li class="divider-vertical"></li>
-                                {% if is_granted('ROLE_AE') %}
-                                <li class="dropdown menubutton">
-                            {% elseif is_granted('ROLE_EVENT') %}
-                                <li class="dropdown menubuttonEvent">
-                                    {% endif %}
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Social <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a data-toggle="modal" data-target="#eleasModal">Soutien psychologique Eleas</a></li>
-                                        <li><a href="https://cecil.cilgere.fr/Cecil/jsp/login.jsp">1% logement</a></li>
-                                        <li class="dropdown">
-                                            <a href="#" id="dLabel" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Comité d'Entreprise<span class="caret"></span></a>
-                                            <ul style="margin-top:-27px; margin-left:200px;" class="dropdown-menu" id="dDrop" aria-labelledby="dLabel">
-                                                <li><a href="{{ path('ce') }}">Procès verbaux</a></li>
-                                                <li><a href="http://www.ce-charlestown.fr/sommaire/auth_user_html.php">Site internet</a></li>
-                                                <li><a href="{{ path('contact_syndicat') }}">Coordonnées</a></li>
-                                            </ul>
-                                        </li>
+                            </ul>
+                        </li>
+                        <li class="divider-vertical"></li>
+                        {% if is_granted('ROLE_AE') %}
+                            <li class="dropdown menubutton">
+                        {% elseif is_granted('ROLE_EVENT') %}
+                            <li class="dropdown menubuttonEvent">
+                        {% endif %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Social <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a data-toggle="modal" data-target="#eleasModal">Soutien psychologique Eleas</a></li>
+                                <li><a href="https://cecil.cilgere.fr/Cecil/jsp/login.jsp">1% logement</a></li>
+                                <li class="dropdown">
+                                    <a href="#" id="dLabel" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Comité d'Entreprise<span class="caret"></span></a>
+                                    <ul style="margin-top:-27px; margin-left:200px;" class="dropdown-menu" id="dDrop" aria-labelledby="dLabel">
+                                        <li><a href="{{ path('ce') }}">Procès verbaux</a></li>
+                                        <li><a href="http://www.ce-charlestown.fr/sommaire/auth_user_html.php">Site internet</a></li>
+                                        <li><a href="{{ path('contact_syndicat') }}">Coordonnées</a></li>
                                     </ul>
                                 </li>
                             </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </div><!-- /.container-fluid -->
-                </nav>
-            </div>
-        </div>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
     {% endblock %}
     {% block content %}
     {% endblock %}

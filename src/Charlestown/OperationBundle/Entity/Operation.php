@@ -24,6 +24,13 @@ class Operation
     /**
      * @var string
      *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="type", type="string", length=255)
      */
     private $type;
@@ -85,6 +92,13 @@ class Operation
     private $urlReport;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="active", type="boolean")
+     */
+    private $active;
+
+    /**
      * @var \Customer
      *
      * @ORM\ManyToOne(targetEntity="Charlestown\CustomerBundle\Entity\Customer")
@@ -114,6 +128,7 @@ class Operation
 
     public function __construct(){
         $this->date = new \DateTime();
+        $this->active = true;
     }
 
     /**
@@ -124,6 +139,22 @@ class Operation
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     /**
@@ -223,6 +254,22 @@ class Operation
     }
 
     /**
+     * @return string
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param string $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
+
+    /**
      * Set rooms
      *
      * @param integer $rooms
@@ -243,13 +290,7 @@ class Operation
      */
     public function getRooms()
     {
-       $room = $this->rooms;
-        foreach($this->appliances as $appliance){
-            if($appliance->isAccepted()){
-                $room --;
-            }
-        }
-        return $room;
+        return $this->rooms;
     }
 
     /**
@@ -453,7 +494,13 @@ class Operation
     }
 
     public function __toString(){
-        return $this->customer->getCompanyName().$this->getId();
+        $roomTaken = 0;
+        foreach($this->appliances as $applicance){
+            if($applicance->isAccepted()){
+                $roomTaken++;
+            }
+        }
+        return $this->name . " (".$roomTaken."/".$this->rooms.")";
     }
 }
 

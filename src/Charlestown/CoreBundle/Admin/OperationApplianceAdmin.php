@@ -23,8 +23,8 @@ class OperationApplianceAdmin extends Admin
     {
         $datagridMapper
             ->add('id', null, array('label' => 'Identifiant'))
-            ->add('event', null, array('label' => 'Event'))
-            ->add('operation', null, array('label' => 'Client'))
+            ->add('event', null, array('label' => 'Collaborateur'))
+            ->add('operation', null, array('label' => 'Opération'))
             ->add('accepted',null,array('label'=>'Accepté'))
         ;
     }
@@ -33,8 +33,8 @@ class OperationApplianceAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id', null, array('label' => 'Identifiant'))
-            ->addIdentifier('event', null, array('label' => 'Event'))
-            ->addIdentifier('operation', null, array('label' => 'Client'))
+            ->addIdentifier('event', null, array('label' => 'Collaborateur'))
+            ->addIdentifier('operation', null, array('label' => 'Opération'))
             ->add('accepted',null,array('label'=>'Accepté'))
         ;
     }
