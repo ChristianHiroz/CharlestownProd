@@ -2,6 +2,7 @@
 
 namespace Charlestown\DemandBundle\Entity;
 
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Charlestown\DemandBundle\Entity\DemandRepository")
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"demand" = "Demand", "formation" = "Charlestown\DemandBundle\Entity\DemandFormation", "meeting" = "Charlestown\DemandBundle\Entity\DemandMeeting", "mobility" = "Charlestown\DemandBundle\Entity\DemandMobility", "meeting" = "Charlestown\DemandBundle\Entity\DemandMeeting", "vacancy" = "Charlestown\DemandBundle\Entity\DemandVacancy"})
@@ -53,9 +55,9 @@ abstract class Demand
     private $dateResponse;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="response", type="string", length=255, nullable=true)
+     * @ORM\Column(name="response", type="boolean", nullable=true)
      */
     private $response;
 
@@ -209,28 +211,22 @@ abstract class Demand
     }
 
     /**
-     * Set response
-     *
-     * @param string $response
-     *
-     * @return Demand
+     * @return boolean
+     */
+    public function isResponse()
+    {
+        return $this->response;
+    }
+
+    /**
+     * @param boolean $response
      */
     public function setResponse($response)
     {
         $this->response = $response;
-
-        return $this;
     }
 
-    /**
-     * Get response
-     *
-     * @return string
-     */
-    public function getResponse()
-    {
-        return $this->response;
-    }
+
 
     /**
      * Set responseStatus

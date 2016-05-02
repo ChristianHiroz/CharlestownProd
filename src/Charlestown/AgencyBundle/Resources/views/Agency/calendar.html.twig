@@ -1,0 +1,17 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom: 0px;">
+            </div>
+            <div class="modal-body" style="padding-top: 0px;">
+                <div class="row">
+                   <div class="col-md-12">
+                       <iframe src="https://calendar.google.com/calendar/embed?src={{ user.agency.calendar }}&ctz=Europe/Paris" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                   </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+{% endblock %}

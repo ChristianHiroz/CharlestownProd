@@ -2,6 +2,7 @@
 
 namespace Charlestown\OperationBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,13 +67,6 @@ class Operation
     /**
      * @var string
      *
-     * @ORM\Column(name="dayLength", type="string", length=255)
-     */
-    private $dayLength;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="localisation", type="string", length=255)
      */
     private $localisation;
@@ -101,9 +95,16 @@ class Operation
     /**
      * @var \Customer
      *
-     * @ORM\ManyToOne(targetEntity="Charlestown\CustomerBundle\Entity\Customer")
+     * @ORM\ManyToOne(targetEntity="Charlestown\CustomerBundle\Entity\Customer", inversedBy="operations")
      */
     private $customer;
+
+    /**
+     * @var \File_operation
+     *
+     * @ORM\OneToMany(targetEntity="Charlestown\OperationBundle\Entity\FileOperation", mappedBy="operation")
+     */
+    private $files;
 
     /**
      * @var \Agency
@@ -126,9 +127,17 @@ class Operation
      */
     private $appliances;
 
+    /**
+     * @var \Timeslot
+     *
+     * @ORM\ManyToMany(targetEntity="Charlestown\OperationBundle\Entity\Timeslot")
+     */
+    private $timeslots;
+
     public function __construct(){
         $this->date = new \DateTime();
         $this->active = true;
+        $this->timeslots = new ArrayCollection();
     }
 
     /**
@@ -291,30 +300,6 @@ class Operation
     public function getRooms()
     {
         return $this->rooms;
-    }
-
-    /**
-     * Set dayLength
-     *
-     * @param string $dayLength
-     *
-     * @return Operation
-     */
-    public function setDayLength($dayLength)
-    {
-        $this->dayLength = $dayLength;
-
-        return $this;
-    }
-
-    /**
-     * Get dayLength
-     *
-     * @return string
-     */
-    public function getDayLength()
-    {
-        return $this->dayLength;
     }
 
     /**
@@ -493,8 +478,38 @@ class Operation
         $this->appliances->removeElement($appliance);
     }
 
+    public function getTimeslots(){
+        return $this->timeslots;
+    }
+
+    public function addTimeslot(Timeslot $timeslot){
+        $this->timeslots[] = $timeslot;
+    }
+
+    public function setTimeslots($timeslots){
+        $this->timeslots = $timeslots;
+    }
+
+    /**
+     * @return \File_operation
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param \File_operation $files
+     */
+    public function setFiles($files)
+    {
+        $this->files = $files;
+    }
+
+
     public function __toString(){
         $roomTaken = 0;
+        if($this->appliances->isEmpty()) return $this->name . " (".$roomTaken."/".$this->rooms.")";
         foreach($this->appliances as $applicance){
             if($applicance->isAccepted()){
                 $roomTaken++;

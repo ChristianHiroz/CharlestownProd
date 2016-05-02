@@ -23,24 +23,38 @@
                 {% set empty = true %}
                 {% for operation in operations %}
                     {% if operation.active %}
-                        {% set applied = false %}
-                        {% for application in applications %}
-                            {% if application.operation == operation %}
-                                {% set applied = true %}
-                            {% endif %}
-                        {% endfor %}
-                        {% if applied == false %}
                             {% set empty = false %}
-                            <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
-                                <div class="col-md-8" style="height:100%;">
-                                    <p style="line-height: 50px;" href="{{ path('operation_show', {'id':operation.id}) }}">{{ operation.name }} du {{ operation.dateStart | localizeddate('full', 'none') }} au {{ operation.dateEnd | localizeddate('full', 'none') }} à {{ operation.localisation }} | {{ operation.customer.companyName }} </p>
-                                </div>
-                                <div class="col-md-4" style="padding:0px; text-align: center; line-height: 50px;">
-                                    <a class="btn btn-success" href="{{ path('operation_show', {'id':operation.id}) }}">Afficher</a>
-                                    <a class="btn btn-success" href="{{ path('operation_apply', {'id':operation.id}) }}">Postuler</a>
-                                </div>
-                            </div>
-                        {% endif %}
+                            <table class="table" style="background-color: #ffffff;border-radius:10px;">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center;">
+                                            {{ operation.name }} pour {{ operation.customer.companyName }} à {{ operation.localisation }}
+                                            {{ operation.dateStart | localizeddate('full', 'none') }} au {{ operation.dateEnd | localizeddate('full', 'none') }}
+                                        </th>
+                                        <th></th>
+                                        <th><a class="btn btn-success" href="{{ path('operation_show', {'id':operation.id}) }}">Afficher</a></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for timeslot in operation.timeslots %}
+                                        {% set applied = false %}
+                                        {% for application in applications %}
+                                            {% if application.operation == operation %}
+                                                {% if application.timeslot == timeslot %}
+                                                    {% set applied = true %}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if applied == false %}
+                                            <tr>
+                                                <td>#{{ loop.index }}</td>
+                                                <td>{{ timeslot }}</td>
+                                                <td><a class="btn btn-success" href="{{ path('operation_apply', {'id':operation.id,'timeslot':timeslot.id}) }}">Postuler</a></td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                     {% endif %}
                 {% endfor %}
                 {% if empty == true %}

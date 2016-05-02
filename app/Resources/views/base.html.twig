@@ -10,6 +10,8 @@
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
+
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body style="height: 100%;  ">
@@ -19,7 +21,6 @@
         </div>
         {% endblock %}
         {% block javascripts %}
-            <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
             <script src="{{ asset('bundles/charlestowncore/js/vegas.min.js.map') }}"></script>
             <script src="{{ asset('bundles/charlestowncore/js/vegas.js') }}"></script>

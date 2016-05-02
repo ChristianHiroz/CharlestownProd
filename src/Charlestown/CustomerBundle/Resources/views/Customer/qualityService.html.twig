@@ -1,0 +1,68 @@
+{% extends 'CharlestownCustomerBundle::layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+
+    <div id="alert" class="alert alert-warning hidden" style="width:70%; top:75px; margin:auto; position: relative;"
+         xmlns="http://www.w3.org/1999/html">
+            Votre message a été transmis au service qualité, nous vous contacterons rapidement.
+        </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <nav class="navbar navbar-default secondNav">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown active">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Service qualité</a>
+                                </li>
+                                <li class="divider-vertical-second"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <hr/>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <label>Nom</label>
+                        <input class="form-control" type="text" id="nom"/><br/>
+                        <label>Titre du message</label>
+                        <input class="form-control" type="text" id="title"/><br/>
+                        <label>Message</label>
+                        <textarea class="form-control" id="body"/></textarea><br/>
+                        <button class="btn-default btn" type="submit" onclick="sendMail()">Envoyer</button>
+
+
+                        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+                        <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+                        <script>
+                            function sendMail(){
+                                var nom = $("#nom").val();
+                                var title = $("#title").val();
+                                var body = $("#body").val();
+                                $("#nom").val("");
+                                $("#title").val("");
+                                $("#body").val("");
+                                $("#alert").removeClass("hidden");
+                                $.ajax({
+                                    url: Routing.generate('quality_submit', {}),
+                                    type: 'POST',
+                                    data: 'title='+title+'&body='+body+'&nom'+nom,
+                                    success: function (data) {
+                                        console.log(data)
+                                    },
+                                    error: function (data) {
+                                        console.log(data)
+                                    }
+                                });
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+{% endblock %}

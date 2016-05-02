@@ -36,25 +36,33 @@ class Agency
     private $numeroUrgence;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="calendar", type="string", length=100, nullable=true)
+     */
+    private $calendar;
+
+    /**
      * @var \BusinessSupport
      *
-     * @ORM\OneToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\BusinessSupport")
+     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Collaborator")
      */
     private $customerManager;
 
     /**
      * @var \Event
      *
-     * @ORM\OneToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Event")
+     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Collaborator")
      */
     private $eventCustomerManager;
 
     /**
      * @var \Collaborator
      *
-     * @ORM\OneToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\BusinessSupport")
+     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Collaborator")
      */
     private $planningCoordinator;
+
 
 
     /**
@@ -178,6 +186,23 @@ class Agency
     {
         $this->numeroUrgence = $numeroUrgence;
     }
+
+    /**
+     * @return string
+     */
+    public function getCalendar()
+    {
+        return $this->calendar;
+    }
+
+    /**
+     * @param string $calendar
+     */
+    public function setCalendar($calendar)
+    {
+        $this->calendar = $calendar;
+    }
+
 
     public function __toString(){
         return $this->localisation;

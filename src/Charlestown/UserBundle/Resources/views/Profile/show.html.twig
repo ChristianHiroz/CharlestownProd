@@ -20,36 +20,35 @@
             </div>
             <div class="modal-body" style="padding-top: 0px;">
                 <div class="row">
-                        <div class="col-md-4" style="text-align:center;"><br/>
-                            Nom d'utilisateur : {{ user.username }} <br/><br/>
-                            Email : {{ user.email }} <br/><br/>
-                            {% if user.phoneNumber %}
-                            Téléphone : {{ user.phoneNumber }} <br/><br/>
-                            {% endif %}
-                            {% if user.agency.localisation %}
-                            Agence : {{ user.agency.localisation }} <br/><br/>
-                            {% endif %}
-                        </div>
-                        {% if user.picture %}
-                        <div class="col-md-4" style="text-align:center;">
-                            <img class="rounded-image" style="width:150px; height:150px; float:none; border-style: solid; border-color:white; border-width:2px;" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
-                        </div>
+                    <div class="col-md-4" style="text-align:center;"><br/>
+                        Nom d'utilisateur : {{ user.username }} <br/><br/>
+                        Email : {{ user.email }} <br/><br/>
+                        {% if user.phoneNumber %}
+                        Téléphone : {{ user.phoneNumber }} <br/><br/>
                         {% endif %}
-
-                        <div class="col-md-4" style="text-align:center;"><br/>
-                            {% if user.lastName %}
-                            Nom : {{ user.lastName }} <br/><br/>
-                            {% endif %}
-                            {% if user.firstName %}
-                            Prénom : {{ user.firstName }} <br/><br/>
-                            {% endif %}
-                            {% if user.position %}
-                            Poste : {{ user.position }} <br/><br/>
-                            {% endif %}
-                            {% if user.address and user.pc and user.town %}
-                            Adresse : {{ user.address }} {{ user.pc }} {{ user.town }} <br/><br/>
-                            {% endif %}
-                        </div>
+                        {% if user.agency %}
+                        Agence : {{ user.agency.localisation }} <br/><br/>
+                        {% endif %}
+                    </div>
+                    {% if user.picture %}
+                    <div class="col-md-4" style="text-align:center;">
+                        <img class="rounded-image" style="margin:auto; width:150px; height:150px; float:none; border-style: solid; border-color:white; border-width:2px;" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
+                    </div>
+                    {% endif %}
+                    <div class="col-md-4" style="text-align:center;"><br/>
+                        {% if user.lastName %}
+                        Nom : {{ user.lastName }} <br/><br/>
+                        {% endif %}
+                        {% if user.firstName %}
+                        Prénom : {{ user.firstName }} <br/><br/>
+                        {% endif %}
+                        {% if user.position %}
+                        Poste : {{ user.position }} <br/><br/>
+                        {% endif %}
+                        {% if user.address and user.pc and user.town %}
+                        Adresse : {{ user.address }} {{ user.pc }} {{ user.town }} <br/><br/>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div><!-- /.modal-content -->

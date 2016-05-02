@@ -2,6 +2,8 @@
 {% block title %} {{ parent() }} - Collaborateur{% endblock %}
 {% block body %}
     {% block header %}
+        {#<button onclick="testSend()">CLIQUER ICI</button>#}
+
         <div class="modal fade" id="formationModal" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -10,12 +12,14 @@
                     </div>
                     <div class="modal-body">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-md-10 textAlignCenter mbottom15">
-                                    <a class="btn btn-success" href="{{ asset('images/MANUEL DE BORD 2016 CHW 2.2 SL.pdf') }}" download="{{ asset('images/MANUEL DE BORD 2016 CHW 2.2 SL.pdf') }}">Brochure d'accueil</a>
+                            {% if is_granted('ROLE_AE') %}
+                                <div class="row">
+                                    <div class="col-md-10 textAlignCenter mbottom15">
+                                        <a class="btn btn-success" href="{{ asset('images/MANUEL DE BORD 2016 CHW 2.2 SL.pdf') }}" download="{{ asset('images/MANUEL DE BORD 2016 CHW 2.2 SL.pdf') }}">Brochure d'accueil</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            {% endif %}
+                            <div class="row" style="width:90%;">
                                 <div class="col-md-6">
                                     <div id="player1" style="width:100%; height: 400px;"></div>
                                 </div>
@@ -23,7 +27,7 @@
                                     <div id="player2" style="width:100%; height: 400px;"></div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" style="width:90%;">
                                 <div class="col-md-6">
                                     <div id="player3" style="width:100%; height: 400px;"></div>
                                 </div>
@@ -31,7 +35,8 @@
                                     <div id="player4" style="width:100%; height: 400px;"></div>
                                 </div>
                             </div>
-                            <script>
+                            {% if is_granted('ROLE_AE') %}
+                                <script>
                                 // 2. This code loads the IFrame Player API code asynchronously.
                                 var tag = document.createElement('script');
 
@@ -47,8 +52,8 @@
                                 var player4;
                                 function onYouTubeIframeAPIReady() {
                                     player = new YT.Player('player1', {
-                                        height: '600',
-                                        width: '640',
+                                        height: '400',
+                                        width: '600',
                                         videoId: 'GEMKfpT85m0',
                                         events: {
                                             'onReady': onPlayerReady,
@@ -56,8 +61,8 @@
                                         }
                                     });
                                     player2 = new YT.Player('player2', {
-                                        height: '600',
-                                        width: '640',
+                                        height: '400',
+                                        width: '600',
                                         videoId: 'rEjNaEGPrZU',
                                         events: {
                                             'onReady': onPlayerReady,
@@ -65,8 +70,8 @@
                                         }
                                     });
                                     player3 = new YT.Player('player3', {
-                                        height: '600',
-                                        width: '640',
+                                        height: '400',
+                                        width: '600',
                                         videoId: 'Pf-neYhm564',
                                         events: {
                                             'onReady': onPlayerReady,
@@ -74,8 +79,8 @@
                                         }
                                     });
                                     player4 = new YT.Player('player4', {
-                                        height: '600',
-                                        width: '640',
+                                        height: '400',
+                                        width: '600',
                                         videoId: '9fDHKyvfmJA',
                                         events: {
                                             'onReady': onPlayerReady,
@@ -104,6 +109,81 @@
                                     player4.stopVideo();
                                 }
                             </script>
+                            {% else %}
+                                <script>
+                                    // 2. This code loads the IFrame Player API code asynchronously.
+                                    var tag = document.createElement('script');
+
+                                    tag.src = "https://www.youtube.com/iframe_api";
+                                    var firstScriptTag = document.getElementsByTagName('script')[0];
+                                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                                    // 3. This function creates an <iframe> (and YouTube player)
+                                    //    after the API code downloads.
+                                    var player;
+                                    var player2;
+                                    var player3;
+                                    var player4;
+                                    function onYouTubeIframeAPIReady() {
+                                        player = new YT.Player('player1', {
+                                            height: '400',
+                                            width: '600',
+                                            videoId: 'Pf-neYhm564',
+                                            events: {
+                                                'onReady': onPlayerReady,
+                                                'onStateChange': onPlayerStateChange
+                                            }
+                                        });
+                                        player2 = new YT.Player('player2', {
+                                            height: '400',
+                                            width: '600',
+                                            videoId: 'rEjNaEGPrZU',
+                                            events: {
+                                                'onReady': onPlayerReady,
+                                                'onStateChange': onPlayerStateChange
+                                            }
+                                        });
+                                        player3 = new YT.Player('player3', {
+                                            height: '400',
+                                            width: '600',
+                                            videoId: 'tCGy3oKk8PE',
+                                            events: {
+                                                'onReady': onPlayerReady,
+                                                'onStateChange': onPlayerStateChange
+                                            }
+                                        });
+                                        player4 = new YT.Player('player4', {
+                                            height: '400',
+                                            width: '600',
+                                            videoId: 'I5bL9cjyQR4',
+                                            events: {
+                                                'onReady': onPlayerReady,
+                                                'onStateChange': onPlayerStateChange
+                                            }
+                                        });
+                                    }
+
+                                    // 4. The API will call this function when the video player is ready.
+                                    function onPlayerReady(event) {
+                                    }
+
+                                    // 5. The API calls this function when the player's state changes.
+                                    //    The function indicates that when playing a video (state=1),
+                                    //    the player should play for six seconds and then stop.
+                                    var done = false;
+                                    function onPlayerStateChange(event) {
+                                        if (event.data == YT.PlayerState.PLAYING && !done) {
+                                            done = true;
+                                        }
+                                    }
+                                    function stopVideo() {
+                                        player.stopVideo();
+                                        player2.stopVideo();
+                                        player3.stopVideo();
+                                        player4.stopVideo();
+                                    }
+                                </script>
+                            {% endif %}
                         </div>
                         <div class="textAlignCenter">
                             <p>Retrouver toutes nos vidéos de formation sur la chaîne Youtube de Charlestown :</p><div class="g-ytsubscribe" data-channel="charlestownaccueil" data-layout="default" data-count="default"></div>
@@ -114,6 +194,110 @@
 
 
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div class="modal fade" id="brochureModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div style="text-align: center;">
+                            <a class="btn btn-danger" href="{{ asset('images/reglement/ri.pdf') }}" download="{{ asset('images/reglement/ri.pdf') }}">Télécharger</a>
+                        </div><br/>
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img alt="ri0" src="{{ asset('images/reglement/ri-0.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri1" src="{{ asset('images/reglement/ri-1.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri2" src="{{ asset('images/reglement/ri-2.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri3" src="{{ asset('images/reglement/ri-3.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri4" src="{{ asset('images/reglement/ri-4.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri5" src="{{ asset('images/reglement/ri-5.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri6" src="{{ asset('images/reglement/ri-6.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri7" src="{{ asset('images/reglement/ri-7.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri8" src="{{ asset('images/reglement/ri-8.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri9" src="{{ asset('images/reglement/ri-9.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri10" src="{{ asset('images/reglement/ri-10.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri11" src="{{ asset('images/reglement/ri-11.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri12" src="{{ asset('images/reglement/ri-12.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri13" src="{{ asset('images/reglement/ri-13.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri14" src="{{ asset('images/reglement/ri-14.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri15" src="{{ asset('images/reglement/ri-15.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri16" src="{{ asset('images/reglement/ri-16.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri17" src="{{ asset('images/reglement/ri-17.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri18" src="{{ asset('images/reglement/ri-18.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri19" src="{{ asset('images/reglement/ri-19.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri20" src="{{ asset('images/reglement/ri-20.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri21" src="{{ asset('images/reglement/ri-21.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri22" src="{{ asset('images/reglement/ri-22.jpg') }}"/>
+                                </div>
+                                <div class="item">
+                                    <img alt="ri23" src="{{ asset('images/reglement/ri-23.jpg') }}"/>
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="text-align:center;">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
                     </div>
                 </div><!-- /.modal-content -->
@@ -328,8 +512,10 @@
                                         <li role="presentation"><a href="#mutuelle" aria-controls="mutuelle" role="tab" data-toggle="tab">Mutuelle</a></li>
                                         <li class="divider-vertical-second"></li>
                                         <li role="presentation"><a href="#panier" aria-controls="panier" role="tab" data-toggle="tab">Indemnité de panier</a></li>
-                                        <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#transport" aria-controls="transport" role="tab" data-toggle="tab">Titre de transport collectif</a></li>
+                                        {% if is_granted('ROLE_AE') %}
+                                            <li class="divider-vertical-second"></li>
+                                            <li role="presentation"><a href="#transport" aria-controls="transport" role="tab" data-toggle="tab">Titre de transport collectif</a></li>
+                                        {% endif %}
                                     </ul>
                                 </div>
                             </div>
@@ -371,7 +557,7 @@
                                                     <li>les salariés à employeurs multiples bénéficiant déjà d’un régime de frais de santé obligatoire dans le cadre d’un autre emploi (+ justificatifs)</li>
                                                     <li>les salariés qui bénéficient par ailleurs, y compris en tant qu’ayants droit, d’une couverture santé collective obligatoire relevant d’un des régimes visés par l’arrêté du 26 mars 2012 (+ justificatifs)</li>
                                                 </ul>
-                                                <p>Pour toute question relative à la mutuelle, nous vous remercions d’adresser un message à l’adresse suivante : <a href="mailto:communication-rh@charlestown.fr">communication-rh@charlestown.fr</a></p>
+                                                <p>Pour toute question relative à la mutuelle, nous vous remercions d’adresser un message à l’adresse suivante : <a style="color:red;" href="mailto:communication-rh@charlestown.fr">communication-rh@charlestown.fr</a></p>
                                             {% elseif is_granted('ROLE_EVENT') %}
                                                 <p>
                                                     Pour les salariés réalisant des missions évènementielles et souhaitant être affiliés à la mutuelle de Charlestown, merci de bien vouloir faire un mail à l’adresse suivante : communication-rh@charlestown.fr. Par défaut, le salarié est réputé refuser la mutuelle comme indiqué dans les contrats de travail.
@@ -389,7 +575,7 @@
                                             {% if is_granted('ROLE_AE') %}
                                             L’employeur prend en charge une indemnité de panier à hauteur de 5.57 € (montant stipulé sur votre contrat de travail) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein (plus de 6 heures de travail) ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
                                             {% elseif is_granted('ROLE_EVENT') %}
-                                            L’employeur prend en charge une indemnité de panier (si la durée de la mission est supérieure à 5,99H) en qualité de contribution repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
+                                            L’employeur prend en charge une indemnité de panier (si la durée de la mission est supérieure à 5,99H) en qualité de contribution repas, sauf en cas de repas fourni lors de l'évènement ou si la mission ne se déroule pas sur un créneau horaire habituel de repas. Cette indemnité est prise en charge par journée complète en temps plein ou par journée travaillée en temps partiel ayant une pause sur une heure habituelle de repas.
                                             {% endif %}
                                         </p>
                                     </div>
@@ -403,12 +589,12 @@
                                             <p>
                                                 Le paiement de votre salaire se fera par l’émission d’un virement l’avant dernier jour de chaque mois, d’un acompte représentant 60% du montant brut (80% du net).<br/><br/>
                                                 Le solde de votre salaire et vos primes éventuelles seront virés le onzième jour du mois suivant (en cas de jour férié ou de 11 tombant un samedi ou dimanche, les salaires pourront n’être virés sur le compte que le 12 ou 13 du mois).<br/><br/>
-                                                Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace <a href="https://illicoffre.safe-access.com/accounts/employee/register/">personnel illicoffre</a>.
+                                                Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace <a  style="color:red;" href="https://illicoffre.safe-access.com/accounts/employee/register/">personnel illicoffre</a>.
                                             </p>
                                         {% elseif is_granted('ROLE_EVENT') %}
                                             <p>
-                                                Le paiement de votre salaire se fera par l’émission d’un virement dans les cinqs jours suivant la mission.<br/><br/>
-                                                Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace <a href="https://illicoffre.safe-access.com/accounts/employee/register/">personnel illicoffre</a>.
+                                                Le paiement de votre salaire se fera par l’émission d’un virement dans les dix jours suivant la mission.<br/><br/>
+                                                Vous avez la possibilité de recevoir vos fiches de payes dématérialisées en vous connectant à votre espace <a  style="color:red;" href="https://illicoffre.safe-access.com/accounts/employee/register/">personnel illicoffre</a>.
                                             </p>
                                         {% endif %}
                                     </div>
@@ -437,10 +623,12 @@
                                         <li class="divider-vertical-second"></li>
                                         <li role="presentation"><a href="#absence" aria-controls="absence" role="tab" data-toggle="tab">En cas d'absence</a></li>
                                         <li class="divider-vertical-second"></li>
+                                        {% if is_granted('ROLE_AE') %}
                                         <li role="presentation"><a href="#conges" aria-controls="conges" role="tab" data-toggle="tab">Congés</a></li>
                                         <li class="divider-vertical-second"></li>
                                         <li role="presentation"><a href="#entretien" aria-controls="entretien" role="tab" data-toggle="tab">Evolution professionnelle</a></li>
-                                    </ul>
+                                        {% endif %}
+                                            </ul>
                                 </div>
                             </div>
                         </nav>
@@ -452,13 +640,7 @@
                                 <h3>La prise de poste</h3><br/><br/>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        {#<p>#}
-                                            {#Le métier d’hôtesse et hôte d’accueil répond à un emploi dit « posté » nécessitant un respect rigoureux des horaires de travail. Notre engagement vis à vis de nos clients est d’assurer l’ouverture de leurs différents accueils ou les missions confiées à l’heure prévue par le contrat avec des collaborateurs formés à leurs procédures et autonomes. <br/>#}
-                                            {#<br/>#}
-                                            {#<span style="font-weight: bold">Pour l’activité « Accueil en Entreprise » de toutes les agences:</span> <br/>#}
-                                            {#<br/>#}
-                                            {#Un système de prise de poste par « badgeage » a été mis en place afin de nous confirmer votre présence sur site et de valider votre ponctualité quelque soit le lieu de votre prestation. La procédure prévoit d’appeler chaque jour à partir de votre poste du site client le pour composer votre matricule : (remis lors de votre embauche) En cas de retard ou de défaillance du système, prévenir directement la veille planning#}
-                                        {#</p>#}
+                                        {% if is_granted('ROLE_AE') %}
                                         <p class="textAlignCenter bold">
                                             La prise de poste doit être effectuée quotidiennement au numéro suivant et ce, dès votre arrivée sur site
                                         </p>
@@ -475,6 +657,15 @@
                                                 <li class="bold">Votre prise de poste automatique ne peut être validée que si elle est effectuée <span class="underline">depuis un poste téléphonique de votre site.</span> En cas de problème, prévenez votre responsable de clientèle ou à sa coordinatrice plannings.</li>
                                             </ul>
                                         </p>
+                                        {% elseif is_granted('ROLE_EVENT') %}
+                                        <p class="textAlignCenter bold">
+                                            La prise de poste doit être effectuée auprès de votre chef d'équipe ou de vos bookeuses aux numéros suivants:
+                                        </p>
+                                        <p class="textAlignCenter redUnderline">
+                                            06.07.14.19.34. <span class="whitetext glyphicon glyphicon-phone-alt"></span> <br/><br/>
+                                            06.07.14.17.79. <span class="whitetext glyphicon glyphicon-phone-alt"></span> <br/><br/>
+                                        </p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -489,31 +680,46 @@
                                         <br/>
                                         </p>
                                         <ul>
+                                            {% if is_granted('ROLE_AE') %}
                                             <li>de prévenir votre responsable Charlestown® et/ou la coordination planning le plus tôt possible,</li>
+                                            {% elseif is_granted('ROLE_EVENT')%}
+                                            <li>de prévenir votre responsable Charlestown® et/ou votre bookeuse le plus tôt possible,</li>
+                                            {% endif %}
                                             <li>de fournir sous 48 heures le justificatif de votre absence à votre responsable hiérarchique</li>
                                         </ul>
-                                        <p class="textAlignCenter text20"><a class="redUnderline" href="{{ path('my_customer_contact') }}">Contactez votre agence, cliquez ici</a></p>
+                                        <p class="textAlignCenter text20"><a class="redUnderline" href="{{ path('my_agency_contact') }}">Contactez votre agence, cliquez ici</a></p>
                                     </div>
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane active" id="presentation">
                                 <h3>La présentation</h3><br/><br/>
                                 <div class="row">
-                                    <p>
-                                    Les consignes de présentation Charlestown®, qui vous ont été transmises lors de votre recrutement et de la formation métier, devront être respectées impérativement.
-                                    <br/>
-                                    Certains clients exigent des tenues spécifiques que nous vous fournirons, vous devrez obligatoirement :
-                                    </p>
-                                    <ul>
-                                    <li>en respecter le port</li>
-                                    <li>les entretenir (état de propreté, recoudre les boutons, faire nettoyer les cravates par un professionnel, …)</li>
-                                    </ul>
-                                    <p>
-                                    Vous devrez restituer ces tenues à la fin de vos missions ou sur demande de votre responsable. Sauf cas de dispositions particulières au site ou à l’agence d’affectation nous vous remboursons vos frais de pressing sur justificatifs (original de la facture impérativement) selon les conditions définies par votre agence de rattachement.
-                                    <br/>
-                                    <br/>
-                                    Tous les justificatifs devront être transmis à votre responsable clients avant le 20 de chaque mois.
-                                    </p>
+                                    <div class="col-md-12">
+                                        <p>
+                                        Les consignes de présentation Charlestown®, qui vous ont été transmises lors de votre recrutement et de la formation métier, devront être respectées impérativement.
+                                        <br/>
+                                        Certains clients exigent des tenues spécifiques que nous vous fournirons, vous devrez obligatoirement :
+                                        </p>
+                                        <ul>
+                                        <li>en respecter le port</li>
+                                        {% if is_granted('ROLE_AE') %}
+                                            <li>les entretenir (état de propreté, recoudre les boutons, faire nettoyer les cravates par un professionnel, …)</li>
+                                        </ul>
+                                        <p>
+                                        Vous devrez restituer ces tenues à la fin de vos missions ou sur demande de votre responsable. Sauf cas de dispositions particulières au site ou à l’agence d’affectation nous vous remboursons vos frais de pressing sur justificatifs (original de la facture impérativement) selon les conditions définies par votre agence de rattachement.
+                                        <br/>
+                                        <br/>
+                                        Tous les justificatifs devront être transmis à votre responsable clients avant le 20 de chaque mois.
+                                        {% elseif is_granted('ROLE_EVENT') %}
+                                        <li>les restituer en bon état</li>
+                                        </ul>
+                                        <p>
+                                            Vous devrez restituer ces tenues 48h après la fin de votre mission.
+                                        {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="background-color: white;">
                                     <div class="col-md-6">
                                         <img class="imgPresentation" alt="hote" src="{{ asset('images/presentation/Présentation Hôtes.jpg') }}"/>
 
@@ -524,6 +730,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {% if is_granted('ROLE_AE') %}
                             <div role="tabpanel" class="tab-pane" id="entretien">
                                 <h3>L'entretien annuel</h3><br/><br/>
                                 <div class="row">
@@ -642,6 +849,7 @@
                                     </div>
                             </div>
                         </div>
+                            {% endif %}
                             </div>
                     </div>
                     <div class="modal-footer">
@@ -831,7 +1039,7 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-        <div class="modal fade" id="illicoffreModal" tabindex="-1" role="dialog">
+        <div class="modal fade" id="paieModal" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -847,15 +1055,15 @@
                             <li>Recevoir et conserver dans un coffre-fort personnel vos bulletins de salaire</li>
                             <li>Archiver jusqu'à 25000 documents personnels (5 Go)</li>
                         </ul><br/>
-                        <span class="bold bluetext">PRATIQUE</span><br/>
+                        <span class="bold redtext">PRATIQUE</span><br/>
                         Télécharger, imprimer, partager et envoyer vos documents devient simple.<br/>
                         Tous vos bulletins de salaire et documents importants sont triés et archivés dans votre coffre-fort personnel et gratuit.<br/>
                         <br/>
-                        <span class="bold bluetext">SÉCURISÉ</span><br/>
+                        <span class="bold redtext">SÉCURISÉ</span><br/>
                         Un coffre-fort strictement personnel.<br/>
                         Les bulletins de salaire reçus dans votre coffre-fort personnel sont archivés à la Caisse des Dépôts et Consignations, dans les centres d'archivage de CDC Arkhinéo.<br/>
                         <br/>
-                        <span class="bold bluetext">ECO-RESPONSABLE</span><br/>
+                        <span class="bold redtext">ECO-RESPONSABLE</span><br/>
                         En passant au format électronique vous réduisez votre consommation de papier.<br/><br/>
 
 
@@ -872,26 +1080,69 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" style="width:25%;">
+                <div class="modal-content">
+                    <div class="modal-body textAlignCenter">
+                        Afin de changer d'interface, il faut vous reconnecter. Souhaitez-vous continuer? <br/><br/>
+                        <a class="btn btn-small btn-danger" href="{{ path('change_role_collaborator') }}">Oui</a>
+                        <button class="btn btn-small btn-warning" data-dismiss="modal" aria-label="Close">Non</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         <div class="dropdown space-menu">
             <a class="dropdown-toggle space-menu-link" data-toggle="dropdown" href="#">
-                <img class="rounded-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
-                <p class="space-menu-txt">Mon compte<span class="caret"></span></p>
+                {% if user.picture %}
+                    <img class="rounded-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
+                {% endif %}
+                <p class="space-menu-txt">{{ user.firstName }}<span class="caret"></span></p>
             </a>
             <ul class="dropdown-menu space-menu-der">
-                <li><a id="vos_informations" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Mes informations</a></li>
-                {% if is_granted('ROLE_AE') %}
-                    <li><a id="demande"  href="{{ path('demand') }}">Mes demandes</a></li>
-                    <li><a id="heae" data-id="heae" href="{{ path('evaluation') }}">Mes entretiens</a></li>
-                {% endif %}
-                {% if is_granted('ROLE_EVENT') %}
-                    <li><a id="operation"  href="{{ path('operation') }}">Mes opérations</a></li>
-                {% endif %}
-                <li><a id="covoiturage" data-id="covoiturage" href="{{ path('carpooling') }}">Le covoiturage </a></li>
-                <li><a id="bourse_competence" data-id="bourse_competence" href="{{ path('lesson') }}">Bourse aux compétences </a></li>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <li><a id="admin"  href="{{ path('sonata_admin_dashboard') }}">Interface administateur</a></li>
-                {% endif %}
-                <li class="dropdown"><a href="{{ path('fos_user_security_logout') }}">Déconnexion </a></li>
+                {#<li class="dropdown">#}
+                    {#<a class="btn dropdown-toggle" style="margin-bottom: -5px; margin-top:-5px; background-color: white; color:black !important;" href="#" id="eLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Réseau social</a>#}
+                    {#<ul style="margin-top:-30px; margin-left:-200px;" class="dropdown-menu" id="eDrop" aria-labelledby="eLabel">#}
+                    {#</ul>#}
+                {#</li>#}
+                {#{% if user.isClubMember %}#}
+                    {#<li><a class="btn btn-danger" style="margin-top: 6px; margin-bottom: 6px;" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Club Charlestown®</a></li>#}
+                {#{% endif %}#}
+                <li class="dropdown">
+                    <a class="btn dropdown-toggle" style="margin-top:-5px;" href="#" id="fLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-chevron-left"></span> Mon espace</a>
+                    <ul style="margin-top:-30px; margin-left:-160px;" class="dropdown-menu" id="fDrop" aria-labelledby="fLabel">
+                        <li><a class="btn" id="vos_informations" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Mes informations</a></li>
+                        {% if is_granted('ROLE_AE') %}
+                            <li><a class="btn" id="demande"  href="{{ path('demand') }}">Mes demandes</a></li>
+                            <li><a class="btn" id="heae" data-id="heae" href="{{ path('evaluation') }}">Mes entretiens</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_EVENT') %}
+                            <li><a class="btn" id="operation"  href="{{ path('operation') }}">Mes opérations</a></li>
+                        {% endif %}
+                        <li><a class="btn" href="{{ path('ideabox_new') }}">Boite à idées</a></li>
+                    </ul>
+                </li>
+                <li><a class="btn" id="covoiturage" data-id="covoiturage" href="{{ path('carpooling') }}">Le covoiturage </a></li>
+                <li><a class="btn" id="bourse_competence" data-id="bourse_competence" href="{{ path('lesson') }}">Bourse aux compétences </a></li>
+                <li><a class="btn" id="announcment" data-id="announcment" href="{{ path('announcment') }}">Petites annonces </a></li>
+                <li class="dropdown">
+                    <a class="btn dropdown-toggle" style="margin-bottom: -5px; margin-top:-5px;" href="#" id="gLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-chevron-left"></span> Options</a>
+                    <ul style="margin-top:-30px; margin-left:-185px;" class="dropdown-menu" id="gDrop" aria-labelledby="gLabel">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a class="btn" id="admin"  href="{{ path('sonata_admin_dashboard') }}">Interface administateur</a></li>
+                        {% endif %}
+                        {% if user.swapable %}
+                            {% if is_granted('ROLE_EVENT') %}
+                                <li class="dropdown"><a class="btn" data-toggle="modal" data-target="#confirmModal">Espace accueil entreprise </a></li>
+                            {% elseif is_granted('ROLE_AE') %}
+                                <li class="dropdown"><a class="btn" data-toggle="modal" data-target="#confirmModal">Espace évènementiel</a></li>
+                            {% endif %}
+                        {% endif %}
+                        <li class="dropdown"><a class="btn" href="{{ path('fos_user_security_logout') }}">Déconnexion </a></li>
+                    </ul>
+                </li>
+
+
             </ul>
         </div>
         <nav class="navbar navbar-default visible-xs">
@@ -943,9 +1194,9 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <nav class="navbar navbar-default firstNav hidden-xs">
+        <nav class="navbar navbar-default firstNavCollab hidden-xs">
             <div class="container-fluid">
-                <div class="navbar-header menuheader textAlignCenter">
+                <div class="navbar-header menuheaderCollab textAlignCenter">
                     <a class="hidden-sm hidden-xs" href="http://www.charlestown.fr/">
                         <img class="logo_header " src="{{ asset('images/logo_charlestown.png') }}"/>
                     </a>
@@ -980,7 +1231,7 @@
                                     <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="{{ path('my_customer') }}">Mon affectation</a></li>
-                                    <li><a href="{{ path('my_customer_contact') }}">Mes contacts</a></li>
+                                    <li><a href="{{ path('my_agency_contact') }}">Mes contacts</a></li>
                                 </ul>
                             </li>
                         {% endif %}
@@ -992,11 +1243,12 @@
                         {% endif %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utile <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a data-toggle="modal" data-target="#illicoffreModal">Fiche de paie</a></li>
+                                <li><a data-toggle="modal" data-target="#paieModal">Fiche de paie</a></li>
                                 <li><a href="{{ path('contact') }}">Coordonnées</a></li>
                                 {% if is_granted('ROLE_EVENT') %}
                                     <li role="separator" class="divider"></li>
                                     <li><a data-toggle="modal" data-target="#formationModal">Me former</a></li>
+                                    <li><a data-toggle="modal" data-target="#brochureModal">Livret de formation</a></li>
                                 {% endif %}
                             </ul>
                         </li>
@@ -1020,22 +1272,178 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="divider-vertical"></li>
+                        {% if is_granted('ROLE_EVENT') %}
+                            <li class="menubuttonEvent "><a href="{{ path('index_collaborator') }}">News</a></li>
+                        {% else %}
+                            <li class="menubutton"><a href="{{ path('index_collaborator') }}">News</a></li>
+                        {% endif %}
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+
+
+        <div id="social_bar" style="position:absolute; right:1%; margin-top:-80px; background-color: black; width:60px; text-align:center; box-shadow: 2px 2px 2px gray, -1px -1px 2px; border-bottom-right-radius: 25px;
+border-bottom-left-radius: 25px;">
+            <a href="https://www.youtube.com/user/charlestownaccueil"><img style="width:50px; height:auto;" src="{{ asset('images/youtube-round.png') }}"></a><br/>
+            <a href="https://www.facebook.com/charlestownrecrutement/?fref=ts"><img style="width:50px; height:auto;" src="{{ asset('images/facebook-round.png') }}"></a><br/>
+            <a href="https://twitter.com/Charlestown_fr"><img style="width:50px; height:auto;" src="{{ asset('images/twitter-round.png') }}"></a><br/>
+            <a href="https://www.linkedin.com/company/1702076?trk=tyah&trkInfo=clickedVertical%3Acompany%2CentityType%3AentityHistoryName%2CclickedEntityId%3Acompany_1702076%2Cidx%3A0"><img style="width:50px; height:auto;" src="{{ asset('images/linkedin-iround.png') }}"></a><br/>
+            <a href="https://fr.pinterest.com/CharlestownFR/"><img style="width:50px; height:auto;" src="{{ asset('images/pinterest-round.png') }}"></a><br/>
+
+            <a href="#" style="color:white;" id="socialClose"><span class="caret"></span></a>
+        </div>
+
+        <div id="social_bar_closed" class="hidden" style="position:absolute; right:1%; margin-top:-80px; background-color: black; width:60px; text-align:center; box-shadow: 2px 2px 2px gray, -1px -1px 2px; border-bottom-right-radius: 25px;
+border-bottom-left-radius: 25px;">
+            <a href="" style="color:white;" id="socialOpen"><span class="caret"></span></a>
+        </div>
+
+        <script> // TODO : move to main.js
+            $("#socialClose").click(function(e) {
+                e.preventDefault();
+                $("#social_bar").addClass("hidden");
+                $("#social_bar_closed").removeClass("hidden");
+            });
+
+            $("#socialOpen").click(function(e) {
+                e.preventDefault();
+                $("#social_bar").removeClass("hidden");
+                $("#social_bar_closed").addClass("hidden");
+            });
+        </script>
+
     {% endblock %}
     {% block content %}
     {% endblock %}
+
+
+    {% block chat %}
+        <div id="chat_container" class="hidden">
+            <button id="chat_close">Chat Charlestown</button>
+            <div id="chat_body">
+                {% for message in messages %}
+                    {% if message.writer == user %}
+                        <div class="message_box_send" id="{{ message.id }}">
+                            <img class="messages-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
+                            <div class="message_send">
+                                 {{ message.message }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="message_box_received" id="{{ message.id }}">
+                            <img class="messages-image" src="{{ asset(message.writer.picture.uploadRootDir  ~ message.writer.picture.id ~ '.' ~ message.writer.picture.alt) }}"/>
+                            <div class="message_received">
+                                 {{ message.writer.firstName }} <br/>    {{ message.message }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <input type="text" placeholder="Ecrivez un message" id="message">
+        </div>
+        <button id="chat_open">Chat en direct</button>
+
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+        <script>
+
+            var myDiv = $("#chat_body");
+            myDiv.animate({ scrollTop: myDiv.prop("scrollHeight") - myDiv.height() }, 3000);
+
+            $("#chat_open").click(function(e){
+                e.preventDefault();
+                $("#chat_container").removeClass("hidden");
+                $("#chat_open").addClass("hidden");
+            }); //open the chatroom
+
+            $("#chat_close").click(function(e){
+                e.preventDefault();
+                $("#chat_container").addClass("hidden");
+                $("#chat_open").removeClass("hidden");
+            }); //close the chatroom
+
+            $("#message").keypress(function(e) {
+                if(e.which == '13'){
+                    var messageIdReceived = $(".message_box_received").last().attr('id');
+                    var messageIdSend = $(".message_box_send").last().attr('id');
+                    var messageId = 0;
+                    if(messageIdReceived > messageIdSend){
+                        messageId = messageIdReceived;
+                    }
+                    else{
+                        messageId = messageIdSend;
+                    }
+                    messageId = parseInt(messageId) + 1;
+                    var message = $("#message").val();
+                    $("#message").val("");
+                    $.ajax({
+                        url: Routing.generate('message_create'),
+                        type: 'POST',
+                        data: 'message='+message,
+                        success: function (data) {
+                            $("#chat_body").append('<div class="message_box_send" id="'+ messageId +'"><img class="messages-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/><div class="message_send">'+ message +'</div></div>');
+                            myDiv.animate({ scrollTop: myDiv.prop("scrollHeight") - myDiv.height() }, 3000);
+                        },
+                        error: function(data){
+                            console.log(data);
+                        }
+                    });
+                }
+            });// send a message
+
+            window.setInterval(reloadMessage, 1000);
+
+            function reloadMessage() {
+                var messageIdReceived = $(".message_box_received").last().attr('id');
+                var messageIdSend = $(".message_box_send").last().attr('id');
+                var messageId = 0;
+                if(messageIdReceived > messageIdSend){
+                    messageId = messageIdReceived;
+                }
+                else{
+                    messageId = messageIdSend;
+                }
+                $.ajax({
+                    url: Routing.generate('message_reload', {'id' : messageId}),
+                    type: 'GET',
+                    success: function (data) {
+                        for(var i = 0; i < data.length ; i++){
+                            if(data[i][writer] != {{ user.id }}){
+                                $("#chat_body").append('<div class="message_box_received" id="'+ data[i]['id'] +'"><img class="messages-image" src="/CharlestownNew/web/uploads/files/'+data[i]['pictureid']+ '.' + data[i]['picturealt']+'"/><div class="message_received">'+ data[i]['message'] +'</div></div>');
+                                myDiv.animate({ scrollTop: myDiv.prop("scrollHeight") - myDiv.height() }, 3000);
+                            }
+                        }
+                    },
+                    error: function(data){
+                    }
+                });
+            }
+
+//            function testSend(){
+//                $.ajax({
+//                    url: Routing.generate('message_create_test'),
+//                    type: 'POST',
+//                    data: 'message=MESSAGEDETESTTTTTTTEEEEE',
+//                    success: function (data) {
+//                    },
+//                    error: function(data){
+//                    }
+//                });
+//            }
+        </script>
+    {% endblock %}
+
     {% block footer %}
         <footer style="position:fixed;left:0px;bottom:0px;height:30px;width:100%;background:black;opacity: 0.8;">
             <div class="container">
                 <div class="row" style="margin-top:8px; text-align:center;">
                     <div class="col-md-3">
-                        <a style="color:white;" href="#">CGU</a>
+                        <a style="color:white;" href="{{ path('cgu') }}">CGU</a>
                     </div>
                     <div class="col-md-6">
-                        <a style="color:white;" href='mailto:collaborateurs@charlestown.fr'>Contacter un administrateur</a>
+                        <a style="color:white;" href='mailto:christian.hiroz@gmail.com'>Contacter un administrateur</a>
                     </div>
                     <div class="col-md-3">
                         <a style="color:white;" href="#">Mentions légales</a>
@@ -1045,25 +1453,3 @@
         </footer>
     {% endblock %}
 {% endblock %}
-
-
-{#<div class="modal fade" id="infosModal" tabindex="-1" role="dialog">#}
-    {#<div class="modal-dialog">#}
-        {#<div class="modal-content">#}
-            {#<div class="modal-header">#}
-                {#<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
-                {#<h2>Infos utiles</h2><br/>#}
-                {#<hr/>#}
-            {#</div>#}
-            {#<div class="modal-body">#}
-                {#<p>Notre agence se trouve à Paris, au 55 rue Fondary (75015). On vous rappelle également que le dressing est ouvert de 9h30 à 18h sans interruption du lundi au vendredi. </p>#}
-                {#<p>Vous pouvez contacter notre équipe en charge des opérations évent ou animations des ventes par téléphone au numéro 06.07.14.19.34 ou également par émail </p>#}
-                {#<div style="float:left; margin-left:15%;"><a href="mailto:afonteny@charlestown.fr">afonteny@charlestown.fr</a></div>#}
-                {#<div style="float:right; margin-right:15%;"><a href="mailto:adominguez@charlestown.fr">adominguez@charlestown.fr</a></div>#}
-            {#</div>#}
-            {#<div class="modal-footer">#}
-                {#<button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>#}
-            {#</div>#}
-        {#</div><!-- /.modal-content -->#}
-    {#</div><!-- /.modal-dialog -->#}
-{#</div><!-- /.modal -->#}

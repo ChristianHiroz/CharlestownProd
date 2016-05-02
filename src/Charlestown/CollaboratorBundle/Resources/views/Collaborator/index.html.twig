@@ -1,0 +1,45 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig'%}
+
+{% block content %}
+    {{ parent() }}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom: 0px;">
+                <nav class="navbar navbar-default secondNav">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav" style="width:100%; text-align: center;">
+                                <li style="float:none;display:inline-block;"><h4>Bonjour {{ user.firstName }}, bienvenue sur l'intranet de Charlestown</h4></li>
+                                {% if idActual == 0 %}
+                                    <li class="active" role="presentation" style="float:right;"><a href="#">News</a></li>
+                                {% else %}
+                                    <li class="" role="presentation"  style="float:right;"><a href="#">News</a></li>
+                                {% endif %}
+                                <li class="divider-vertical-second" style="float:right;"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <hr/>
+            </div>
+            <div class="modal-body" style="padding-top: 0px; color:black;">
+                <div class="container" style="width:100%;">
+                    {% for article in lastsArticles %}
+                        {% if article.visibleCollaborator %}
+                            <div class="row">
+                                <div class="col-md-3 article">
+                                    <img class="articleImage" src="{{ asset(article.picture.uploadRootDir  ~ article.picture.id ~ '.' ~ article.picture.alt) }}"/>
+                                </div>
+                                <div class="col-md-9">
+                                    <h3 class="articleTitle">{{ article.title }}</h3>
+                                    <p class="articleTexte">{{ article.texte }}</p>
+                                    <hr style="margin-top:65px;"/>
+                                </div>
+                            </div><br/>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

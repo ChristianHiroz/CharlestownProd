@@ -6,26 +6,32 @@ services:
             - @templating
         tags:
             - { name: sonata.block }
+
+    admin.operation:
+        class: Charlestown\CoreBundle\Admin\OperationAdmin
+        arguments: [~, Charlestown\OperationBundle\Entity\Operation, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Opération, group: Event }
+    admin.demand_formation:
+        class: Charlestown\CoreBundle\Admin\DemandFormationAdmin
+        arguments: [~, Charlestown\DemandBundle\Entity\DemandFormation, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Formation, group: Demande }
     admin.customer:
         class: Charlestown\CoreBundle\Admin\CustomerAdmin
         arguments: [~, Charlestown\CustomerBundle\Entity\Customer, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Client, group: Utilisateurs }
-    admin.businessSupport:
-        class: Charlestown\CoreBundle\Admin\BusinessSupportAdmin
-        arguments: [~, Charlestown\CollaboratorBundle\Entity\BusinessSupport, ~]
+            - { name: sonata.admin, manager_type: orm, label: Client, group: Admin }
+    admin.collaborator:
+        class: Charlestown\CoreBundle\Admin\CollaboratorAdmin
+        arguments: [~, Charlestown\CollaboratorBundle\Entity\Collaborator, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Accueil Entreprise, group: Utilisateurs }
-    admin.event:
-        class: Charlestown\CoreBundle\Admin\EventAdmin
-        arguments: [~, Charlestown\CollaboratorBundle\Entity\Event, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Event, group: Utilisateurs }
+            - { name: sonata.admin, manager_type: orm, label: Collaborateur, group: Admin }
     admin.agency:
         class: Charlestown\CoreBundle\Admin\AgencyAdmin
         arguments: [~, Charlestown\AgencyBundle\Entity\Agency, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Agence, group: Divers }
+            - { name: sonata.admin, manager_type: orm, label: Agence, group: Admin }
     admin.file:
         class: Charlestown\CoreBundle\Admin\FileAdmin
         arguments: [~, Charlestown\FileBundle\Entity\File, ~]
@@ -36,11 +42,6 @@ services:
         arguments: [~, Charlestown\FileBundle\Entity\FileType, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Type de fichier, group: Divers }
-    admin.demand_formation:
-        class: Charlestown\CoreBundle\Admin\DemandFormationAdmin
-        arguments: [~, Charlestown\DemandBundle\Entity\DemandFormation, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Formation, group: Demande }
     admin.demand_meeting:
         class: Charlestown\CoreBundle\Admin\DemandMeetingAdmin
         arguments: [~, Charlestown\DemandBundle\Entity\DemandMeeting, ~]
@@ -56,23 +57,43 @@ services:
         arguments: [~, Charlestown\DemandBundle\Entity\DemandMobility, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Mobilité, group: Demande }
-    admin.operation:
-        class: Charlestown\CoreBundle\Admin\OperationAdmin
-        arguments: [~, Charlestown\OperationBundle\Entity\Operation, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Opération, group: Opérations }
     admin.operation_appliance:
         class: Charlestown\CoreBundle\Admin\OperationApplianceAdmin
         arguments: [~, Charlestown\OperationBundle\Entity\OperationAppliance, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Candidatures, group: Opérations }
+            - { name: sonata.admin, manager_type: orm, label: Candidatures, group: Event }
     admin.file_operation:
         class: Charlestown\CoreBundle\Admin\FileOperationAdmin
         arguments: [~, Charlestown\OperationBundle\Entity\FileOperation, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Photo, group: Opérations }
+            - { name: sonata.admin, manager_type: orm, label: Photo, group: Event }
+    admin.timeslot:
+        class: Charlestown\CoreBundle\Admin\TimeslotAdmin
+        arguments: [~, Charlestown\OperationBundle\Entity\Timeslot, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Créneau, group: Event }
     admin.syndicat:
         class: Charlestown\CoreBundle\Admin\SyndicatAdmin
         arguments: [~, Charlestown\CollaboratorBundle\Entity\Syndicat, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Syndicat, group: Utilisateurs }
+            - { name: sonata.admin, manager_type: orm, label: Syndicat, group: Admin }
+    admin.mandate:
+        class: Charlestown\CoreBundle\Admin\MandateAdmin
+        arguments: [~, Charlestown\CollaboratorBundle\Entity\Mandate, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Mandat, group: Admin }
+    admin.article:
+        class: Charlestown\CoreBundle\Admin\ArticleAdmin
+        arguments: [~, Charlestown\BlogBundle\Entity\Article, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Article, group: Admin }
+    admin.ideaBox:
+        class: Charlestown\CoreBundle\Admin\IdeaBoxAdmin
+        arguments: [~, Charlestown\CoreBundle\Entity\IdeaBox, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Boite à idées, group: Admin }
+    admin.book:
+        class: Charlestown\CoreBundle\Admin\BookAdmin
+        arguments: [~, Charlestown\CustomerBundle\Entity\Book, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Books event, group: Event }

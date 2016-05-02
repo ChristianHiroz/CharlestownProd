@@ -32,6 +32,7 @@ class CustomerAdmin extends Admin
         }
 
         $formMapper
+            ->add('agency', null, array('label' => 'Agence'))
             ->add('email', 'email', array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
             ->add('roles', 'choice', array(
                     'choices'  => $rolesChoices,
@@ -44,7 +45,21 @@ class CustomerAdmin extends Admin
             ->add('town', 'text', array('label' => 'Ville'))
             ->add('pc', 'text', array('label' => 'Code postal'))
             ->add('phoneNumber', 'text', array('label' => 'Téléphone'))
-            ->add('picture')
+            ->add('isClubMember', 'choice', array(
+                'choices' => array(
+                    0 => 'Non',
+                    1 => 'Oui'
+                ), 'label' => 'Membre club Charlestown'))
+            ->add('picture', 'sonata_type_model', array('label' => 'Photo de profil'))
+            ->add('manual', 'sonata_type_model', array('label' => 'Manuel de bord', 'required' => false))
+            ->add('contract', 'sonata_type_model', array('label' => 'Contrat commercial', 'required' => false))
+            ->add('bills', 'sonata_type_model', array('label' => 'Factures', 'required' => false, 'multiple' => true))
+            ->add('contradictoryControls', 'sonata_type_model', array('label' => 'Contrôles contradictoire', 'required' => false, 'multiple' => true))
+            ->add('siteControls', 'sonata_type_model', array('label' => 'Contrôles site', 'required' => false, 'multiple' => true))
+            ->add('mysteriousCalls', 'sonata_type_model', array('label' => 'Appels mystères', 'required' => false, 'multiple' => true))
+            ->add('mysteriousVisits', 'sonata_type_model', array('label' => 'Visites mystères', 'required' => false, 'multiple' => true))
+            ->add('activityReports', 'sonata_type_model', array('label' => 'Rapports d\'activité', 'required' => false, 'multiple' => true))
+            ->add('investigations', 'sonata_type_model', array('label' => 'Enquêtes satisfaction', 'required' => false, 'multiple' => true))
         ;
     }
 
@@ -53,6 +68,7 @@ class CustomerAdmin extends Admin
         $datagridMapper
             ->add('id', null, array('label' => 'Identifiant'))
             ->add('username',null, array('label' => 'Nom d\'utilisateur'))
+            ->add('isClubMember', null, array('label' => 'Membre club Charlestown'))
             ->add('email', null, array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
         ;
     }

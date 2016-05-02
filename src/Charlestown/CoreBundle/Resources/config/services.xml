@@ -5,19 +5,28 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
         <parameter key="charlestown.mailer.class">Charlestown\CoreBundle\Services\Mailer</parameter>
-        <parameter key="test.template">CharlestownCoreBundle:Mail:test.txt.twig</parameter>
+        <parameter key="demand.template">CharlestownCoreBundle:Mail:demand.txt.twig</parameter>
+        <parameter key="demandResponse.template">CharlestownCoreBundle:Mail:demandResponse.txt.twig</parameter>
+        <parameter key="operation.template">CharlestownCoreBundle:Mail:operation.txt.twig</parameter>
+        <parameter key="operationResponse.template">CharlestownCoreBundle:Mail:operationResponse.txt.twig</parameter>
+        <parameter key="operationNotification.template">CharlestownCoreBundle:Mail:operationNotification.txt.twig</parameter>
+        <parameter key="ideaboxNotification.template">CharlestownCoreBundle:Mail:ideaboxNotification.txt.twig</parameter>
+        <parameter key="uniformNotification.template">CharlestownCoreBundle:Mail:uniformNotification.txt.twig</parameter>
+        <parameter key="quality.template">CharlestownCoreBundle:Mail:quality.txt.twig</parameter>
     </parameters>
     <services>
         <service id="charlestown.mailer" class="%charlestown.mailer.class%">
-            <argument type="service" id="mailer" />
-            <argument type="service" id="router" />
-            <argument type="service" id="templating" />
+            <argument type="service" id="service_container" />
             <argument type="collection">
                 <argument key="template" type="collection">
-                    <argument key="test">%test.template%</argument>
-                </argument>
-                <argument key="from_email" type="collection">
-                    <argument key="charlestown">christian.hiroz@gmail.com</argument>
+                    <argument key="demand">%demand.template%</argument>
+                    <argument key="operation">%operation.template%</argument>
+                    <argument key="demandResponse">%demandResponse.template%</argument>
+                    <argument key="operationResponse">%operationResponse.template%</argument>
+                    <argument key="operationNotification">%operationNotification.template%</argument>
+                    <argument key="ideaboxNotification">%ideaboxNotification.template%</argument>
+                    <argument key="uniformNotification">%uniformNotification.template%</argument>
+                    <argument key="quality">%quality.template%</argument>
                 </argument>
             </argument>
         </service>

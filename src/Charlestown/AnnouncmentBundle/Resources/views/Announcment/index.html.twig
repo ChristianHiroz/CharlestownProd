@@ -1,0 +1,143 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="padding-bottom: 0px;">
+                <nav class="navbar navbar-default secondNav">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav" style="width:100%;">
+                                <li role="presentation" class="active">
+                                    <a href="#buy" id="buy-tab" role="tab" data-toggle="tab" aria-controls="byt" aria-expanded="true">Achat</a>
+                                </li>
+                                <li class="divider-vertical-second"></li>
+                                <li class="" role="presentation">
+                                    <a aria-expanded="false" href="#trade" role="tab" id="trade-tab" data-toggle="tab" aria-controls="trade">Echange</a>
+                                </li>
+                                <li class="divider-vertical-second"></li>
+                                <li class="" role="presentation">
+                                    <a aria-expanded="false" href="#gift" role="tab" id="gift-tab" data-toggle="tab" aria-controls="gift">Don</a>
+                                </li>
+                                <li class="divider-vertical-second"></li>
+                                <li class="" role="presentation">
+                                    <a aria-expanded="false" href="#lookingfor" role="tab" id="lookingfor-tab" data-toggle="tab" aria-controls="lookingfor">Recherche</a>
+                                </li>
+                                <li class="divider-vertical-second" style="float:right;"></li>
+                                <li class="" role="presentation" style="float:right;">
+                                    <a aria-expanded="false" href="#announce" role="tab" id="announce-tab" data-toggle="tab" aria-controls="announce">Mes annonces</a>
+                                </li>
+                                <li class="divider-vertical-second" style="float:right;"></li>
+                                <li class="" role="presentation" style="float:right;">
+                                    <a aria-expanded="false" href="#cart" role="tab" id="cart-tab" data-toggle="tab" aria-controls="cart">Mon panier</a>
+                                </li>
+                                <li class="divider-vertical-second" style="float:right;"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <hr/>
+            </div>
+            <div class="modal-body" style="padding-top: 0px; color:black;">
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="buy" aria-labelledby="buy-tab">
+                        {% for ad in announcments %}
+                            {% if ad.visible %}
+                                {% if ad.type == "buy" %}
+                                    {% if ad.offerer != user %}
+                                        <div class="offer">
+                                            <img class="offer_image" src="{{ asset(ad.picture.uploadRootDir  ~ ad.picture.id ~ '.' ~ ad.picture.alt) }}"/>
+                                            <h3 class="offer_title">{{ ad.title }}</h3>
+                                            <p class="offer_text">{{ ad.description }}</p>
+                                            <a href="{{ path('announcment_apply', {'id': ad.id}) }}" class="offer_accept btn btn-danger">Acheter</a>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="trade" aria-labelledby="trade-tab">
+                        {% for ad in announcments %}
+                            {% if ad.visible %}
+                                {% if ad.type == "trade" %}
+                                    {% if ad.offerer != user %}
+                                        <div class="offer">
+                                            <img class="offer_image" src="{{ asset(ad.picture.uploadRootDir  ~ ad.picture.id ~ '.' ~ ad.picture.alt) }}"/>
+                                            <h3 class="offer_title">{{ ad.title }}</h3>
+                                            <p class="offer_text">{{ ad.description }}</p>
+                                            <a href="{{ path('announcment_apply', {'id': ad.id}) }}" class="offer_accept btn btn-danger">Echanger</a>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="gift" aria-labelledby="gift-tab">
+                        {% for ad in announcments %}
+                            {% if ad.visible %}
+                                {% if ad.type == "gift" %}
+                                    {% if ad.offerer != user %}
+                                        <div class="offer">
+                                            <img class="offer_image" src="{{ asset(ad.picture.uploadRootDir  ~ ad.picture.id ~ '.' ~ ad.picture.alt) }}"/>
+                                            <h3 class="offer_title">{{ ad.title }}</h3>
+                                            <p class="offer_text">{{ ad.description }}</p>
+                                            <a href="{{ path('announcment_apply', {'id': ad.id}) }}" class="offer_accept btn btn-danger">Prendre</a>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="lookingfor" aria-labelledby="lookingfor-tab">
+                        {% for ad in announcments %}
+                            {% if ad.visible %}
+                                {% if ad.type == "lookingfor" %}
+                                    {% if ad.offerer != user %}
+                                        <div class="offer">
+                                            <img class="offer_image" src="{{ asset(ad.picture.uploadRootDir  ~ ad.picture.id ~ '.' ~ ad.picture.alt) }}"/>
+                                            <h3 class="offer_title">{{ ad.title }}</h3>
+                                            <p class="offer_text">{{ ad.description }}</p>
+                                            <a href="{{ path('announcment_apply', {'id': ad.id}) }}" class="offer_accept btn btn-danger">Je l'ai</a>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="cart" aria-labelledby="cart-tab">
+                        {% for ad in announcments %}
+                            {% if ad.applicant.id == user.id %}
+                                <div class="offer">
+                                    <img class="offer_image" src="{{ asset(ad.picture.uploadRootDir  ~ ad.picture.id ~ '.' ~ ad.picture.alt) }}"/>
+                                    <h3 class="offer_title">{{ ad.title }}</h3>
+                                    <p class="offer_text">{{ ad.description }}</p>
+                                    <a href="{{ path('announcment') }}" class="offer_cancel btn btn-warning">Annuler</a>
+                                    <a href="{{ path('fos_otheruser_profile_show', {'user' : ad.offerer.id}) }}" class="offer_accept btn btn-danger">Information vendeur</a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="announce" aria-labelledby="announce-tab">
+                        <div class="textAlignCenter" style="margin-bottom: 10px;">
+                            <a class="btn btn-danger" href="{{ path('announcment_new') }}">Nouveau</a>
+                        </div>
+                        {% for ad in announcments %}
+                            {% if ad.offerer.id == user.id %}
+                                <div class="offer">
+                                    <img class="offer_image" src="{{ asset(ad.picture.uploadRootDir  ~ ad.picture.id ~ '.' ~ ad.picture.alt) }}"/>
+                                    <h3 class="offer_title">{{ ad.title }}</h3>
+                                    <p class="offer_text">{{ ad.description }}</p>
+                                    <a href="{{ path('announcment_delete', {'id':ad.id}) }}" class="offer_cancel btn btn-warning">Supprimer</a>
+                                    <a href="{{ path('announcment_update', {'id':ad.id}) }}" class="offer_update btn btn-warning">Modifier</a>
+                                    <a href="{{ path('announcment') }}" class="offer_reput btn btn-warning">Remmettre en ventre</a>
+                                    {% if ad.applicant %}
+                                        <a href="{{ path('fos_otheruser_profile_show', {'user' : ad.applicant.id}) }}" class="offer_accept2 btn btn-danger">Information acheteur</a>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+{% endblock %}

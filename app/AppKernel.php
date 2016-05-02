@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\CacheBundle\SonataCacheBundle(),
-            new Sonata\SeoBundle\SonataSeoBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new Sonata\NotificationBundle\SonataNotificationBundle(),
             new Charlestown\CustomerBundle\CharlestownCustomerBundle(),
@@ -37,7 +36,10 @@ class AppKernel extends Kernel
             new Charlestown\CarpoolingBundle\CharlestownCarpoolingBundle(),
             new Charlestown\OperationBundle\CharlestownOperationBundle(),
             new Charlestown\SkillPurseBundle\CharlestownSkillPurseBundle(),
-//            new Sonata\PageBundle\SonataPageBundle(),
+            new Charlestown\BlogBundle\CharlestownBlogBundle(),
+            new Charlestown\AnnouncmentBundle\CharlestownAnnouncmentBundle(),
+            new Charlestown\ChatBundle\CharlestownChatBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -45,6 +47,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();
         }
 
         return $bundles;

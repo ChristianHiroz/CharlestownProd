@@ -1,0 +1,51 @@
+{% extends 'CharlestownCustomerBundle::layout.html.twig'%}
+
+{% block content %}
+    {{ parent() }}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 >Nos Actions</h1>
+            </div>
+            <div class="modal-body">
+                <div class="container"  style="color:white;">
+                    <div  class="row content" style="width:90%;">
+                        <p>
+                            Nous rappelons l'estime que nous portons à nos équipes afin de maintenir un sentiment d'appartenance fort.
+                            C'est une occasion pour remercier nos collaborateurs, être cohérent avec notre politique RSE et illustrer notre volonté de faire rayonner un métier qui
+                            offre des opportunités de carrière souvent méconnues.
+                        </p>
+                        {% for article in lastsArticles %}
+                            {% if article.action %}
+                                <div class="col-sm-4">
+                                    <div class="view view-first">
+                                        <img class='img-responsive' id="{{ article.id }}" onclick="showText({{ article.id }})" src="{{ asset(article.picture.uploadRootDir  ~ article.picture.id ~ '.' ~ article.picture.alt) }}" />
+                                        <div onclick="showText({{ article.id }})" class="mask hidden redPink" id="{{ article.id }}mask">
+                                            <h2>{{ article.title }}</h2>
+                                            <p>{{ article.texte }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <script>
+                        var open = 0;
+                        function showText(article){
+                            if(open == 0){
+                                $("#"+article).addClass("op2");
+                                $("#"+article+"mask").removeClass("hidden");
+                                open = 1;
+                            }
+                            else{
+                                $("#"+article).removeClass("op2");
+                                $("#"+article+"mask").addClass("hidden");
+                                open = 0;
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

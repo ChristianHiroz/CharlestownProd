@@ -15,9 +15,11 @@ class DemandMeetingAdmin extends Admin
         $formMapper
             ->add('reason', 'text', array('label' => 'Motif'))
             ->add('status', 'text', array('label' => 'Status'))
-            ->add('dateDemand', 'date', array('label' => 'Date de la demande'))
-            ->add('dateResponse', 'date', array('label' => 'Date de la réponse'))
-            ->add('response', 'text', array('label' => 'Réponse'))
+            ->add('response', 'choice', array(
+                'choices' => array(
+                    0 => 'Non',
+                    1 => 'Oui'
+                ), 'label' => 'Réponse'))
             ->add('responseStatus', 'text', array('label' => 'Réponse status'))
             ->add('comment', 'text', array('label' => 'Commentaire de la réponse'))
             ->add('type', 'text', array('label' => 'Type de réunion'))

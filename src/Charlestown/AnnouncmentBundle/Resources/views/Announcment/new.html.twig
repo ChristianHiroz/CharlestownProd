@@ -1,0 +1,45 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header" style="padding-bottom: 0px;">
+            <nav class="navbar navbar-default secondNav">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav" style="width:100%;">
+                            <li role="presentation" class="">
+                                <a href="#buy" id="buy-tab" role="tab" data-toggle="tab" aria-controls="byt" aria-expanded="true">Achat</a>
+                            </li>
+                            <li class="divider-vertical-second"></li>
+                            <li class="" role="presentation">
+                                <a aria-expanded="false" href="#trade" role="tab" id="trade-tab" data-toggle="tab" aria-controls="trade">Echange</a>
+                            </li>
+                            <li class="divider-vertical-second"></li>
+                            <li class="" role="presentation">
+                                <a aria-expanded="false" href="#gift" role="tab" id="gift-tab" data-toggle="tab" aria-controls="gift">Don</a>
+                            </li>
+                            <li class="divider-vertical-second"></li>
+                            <li class="" role="presentation">
+                                <a aria-expanded="false" href="#lookingfor" role="tab" id="lookingfor-tab" data-toggle="tab" aria-controls="lookingfor">Recherche</a>
+                            </li>
+                            <li class="divider-vertical-second" style="float:right;"></li>
+                            <li class="active" role="presentation" style="float:right;">
+                                <a aria-expanded="false" href="#announce" role="tab" id="announce-tab" data-toggle="tab" aria-controls="announce">Mes annonces</a>
+                            </li>
+                            <li class="divider-vertical-second" style="float:right;"></li>
+                            <li class="" role="presentation" style="float:right;">
+                                <a aria-expanded="false" href="#cart" role="tab" id="cart-tab" data-toggle="tab" aria-controls="cart">Mon panier</a>
+                            </li>
+                            <li class="divider-vertical-second" style="float:right;"></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <hr/>
+        </div>
+        <div class="modal-body" style="padding-top: 0px; color:black;">
+            {{ form(form) }}
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    {% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'CharlestownCustomerBundle::layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+
+    {% if alert %}
+        <div class="alert alert-warning" style="width:70%; top:75px; margin:auto; position: relative;">
+            Merci de votre participation, nous vous contacterons rapidement pour approfondir votre idée.
+        </div>
+    {% endif %}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <nav class="navbar navbar-default secondNav">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown active">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boite à idées</a>
+                                </li>
+                                <li class="divider-vertical-second"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <hr/>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        {{ form(form) }}
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+{% endblock %}

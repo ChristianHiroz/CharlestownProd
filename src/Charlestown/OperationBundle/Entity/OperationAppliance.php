@@ -24,7 +24,7 @@ class OperationAppliance
     /**
      * @var \Event
      *
-     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Event", inversedBy="appliances", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Collaborator", inversedBy="appliances", cascade={"persist"})
      */
     private $event;
 
@@ -55,6 +55,13 @@ class OperationAppliance
      * @ORM\Column(name="dateResp", type="datetime", nullable=true)
      */
     private $dateResp;
+
+    /**
+     * @var \Timeslot
+     *
+     * @ORM\ManyToOne(targetEntity="Charlestown\OperationBundle\Entity\Timeslot")
+     */
+    private $timeslot;
 
     public function __construct(){
         $this->date = new \DateTime();
@@ -191,6 +198,22 @@ class OperationAppliance
     public function getDateResp()
     {
         return $this->dateResp;
+    }
+
+    /**
+     * @return \Timeslot
+     */
+    public function getTimeslot()
+    {
+        return $this->timeslot;
+    }
+
+    /**
+     * @param \Timeslot $timeslot
+     */
+    public function setTimeslot($timeslot)
+    {
+        $this->timeslot = $timeslot;
     }
 }
 

@@ -23,7 +23,7 @@
         <div class="modal-body">
             <h2>Client</h2>
             <div style="text-align: center;">
-                <img class="rounded-image" style="width:150px; height:150px; float:none; border-style: solid; border-color:white; border-width:2px;" src="{{ asset(operation.customer.picture.uploadRootDir  ~ operation.customer.picture.id ~ '.' ~ operation.customer.picture.alt) }}"/><br/>
+                <img class="rounded-image" style="margin:auto; width:150px; height:150px; float:none; border-style: solid; border-color:white; border-width:2px;" src="{{ asset(operation.customer.picture.uploadRootDir  ~ operation.customer.picture.id ~ '.' ~ operation.customer.picture.alt) }}"/><br/>
                 {{ operation.customer.companyName }}<br/>
                 {{ operation.customer.email }}<br/>
                 {{ operation.customer.address }}<br/>
@@ -38,11 +38,12 @@
                 Places restantes : {{ operation.rooms }}<br/>
                 Type d'opération : {{ operation.type }}<br/>
                 Lieu : {{ operation.localisation }}<br/>
-                Horaires : {{ operation.dayLength }}<br/>
                 Mission : {{ operation.mission }}<br/>
                 Date de début : {{ operation.dateStart | localizeddate('full', 'none') }}<br/>
                 Date de fin : {{ operation.dateEnd | localizeddate('full', 'none') }}<br/>
-                Brief : <a style="font-size: 50px;" href="{{ asset(operation.brief.uploadRootDir  ~ operation.brief.id ~ '.' ~ operation.brief.alt) }}"  download="{{operation.brief.nameShow ~ '.' ~ operation.brief.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a>
+                {% if operation.brief %}
+                    Brief : <a style="font-size: 50px;" href="{{ asset(operation.brief.uploadRootDir  ~ operation.brief.id ~ '.' ~ operation.brief.alt) }}"  download="{{operation.brief.nameShow ~ '.' ~ operation.brief.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a>
+                {% endif %}
             </div>
         </div>
         {# Dunno what this was for, keeping for posterity #}

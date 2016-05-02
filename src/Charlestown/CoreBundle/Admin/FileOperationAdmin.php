@@ -20,7 +20,6 @@ class FileOperationAdmin extends Admin
             ->add('accepted')
             ->add('name')
             ->add('operation')
-            ->add('customer')
         ;
     }
 
@@ -36,7 +35,6 @@ class FileOperationAdmin extends Admin
             ->add('nameShow')
             ->add('accepted')
             ->add('operation')
-            ->add('customer')
             ->add('alt')
             ->add('date')
             ->add('_action', 'actions', array(
@@ -82,10 +80,9 @@ class FileOperationAdmin extends Admin
                     ->add('nameShow')
                     ->add('accepted', 'choice', array(
                         'choices' => array(
-                            0 => 'Oui',
-                            1 => 'Non'
+                            1 => 'Oui',
+                            0 => 'Non'
                         )))
-                    ->add('customer')
                     ->add('operation');
     }
 
@@ -97,7 +94,6 @@ class FileOperationAdmin extends Admin
         $showMapper
             ->add('file', 'file')
             ->add('alt')
-            ->add('customer')
             ->add('operation')
             ->add('accepted')
         ;

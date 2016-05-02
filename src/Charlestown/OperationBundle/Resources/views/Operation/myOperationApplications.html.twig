@@ -20,6 +20,14 @@
                 <hr/>
             </div>
             <div class="modal-body" style="padding-top: 0px; color:black;">
+                {% if label is defined %}
+                    {% if label == "success" %}
+                        <div class="alert alert-success" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            La photo a été ajoutée avec succès.
+                        </div>
+                    {% endif %}
+                {% endif %}
                 <table class="table table-bordered">
                     <thead style="background-color: white;">
                         <tr>
@@ -27,15 +35,18 @@
                             <th>Lieu</th>
                             <th>Date début</th>
                             <th>Date fin</th>
+                            <th>Horaire</th>
                             <th>Détail</th>
                             <th>Brief</th>
                             <th>Etat de la demande</th>
                             <th data-toggle="tooltip" data-placement="right" title="Il faut être accepté pour y avoir accès">Url rapport</th>
+                            <th>Upload photo</th>
+                            <th data-toggle="tooltip" data-placement="right" title="Impossible de supprimer si prise en compte">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for application in applications %}
-                        {% if application.operation.dateEnd|date('d - m -Y') > 'now'|date('d - m -Y') %}
+                        {% if application.operation.dateEnd|date('d - m -Y') < 'now'|date('d - m -Y') %}
                             {% if application.accepted == true %}
                                 <tr style="background-color: lightskyblue;">
                             {% elseif application.dateResp == null %}
@@ -47,20 +58,37 @@
                                 <td>{{ application.operation.localisation }}</td>
                                 <td>{{ application.operation.dateStart | localizeddate('full', 'none') }}</td>
                                 <td>{{ application.operation.dateEnd | localizeddate('full', 'none') }}</td>
+                                <td>{{ application.timeslot }}</td>
                                 <td><a style="color:black;" href="{{ path('operation_show', {'id':application.operation.id}) }}"><span class="glyphicon glyphicon-list-alt"></span></a></td>
-                                <td><a style="color:black;" href="{{ asset(application.operation.brief.uploadRootDir  ~ application.operation.brief.id ~ '.' ~ application.operation.brief.alt) }}"  download="{{application.operation.brief.nameShow ~ '.' ~ application.operation.brief.alt}}"><span class="glyphicon glyphicon-file"></span></a></td>
+                                {% if application.operation.brief %}
+                                    <td><a style="color:indianred;" href="{{ asset(application.operation.brief.uploadRootDir  ~ application.operation.brief.id ~ '.' ~ application.operation.brief.alt) }}"  download="{{application.operation.brief.nameShow ~ '.' ~ application.operation.brief.alt}}"><span class="glyphicon glyphicon-file"></span></a></td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
                                 <td>
                                     {% if application.accepted == true %}
-                                        Accepté
+                                        Confirmé
                                     {% elseif application.dateResp == null %}
                                         En attente
                                     {% else %}
-                                        Refusé
+                                        Non retenu
                                     {% endif %}
                                 </td>
                                 <td>
                                     {% if application.accepted == true %}
                                         <a href="{{ application.operation.urlReport }}"><span class="glyphicon glyphicon-folder-open" style="color:red;"></span></a>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if application.accepted == true %}
+                                        <a href="{{ path('fileoperation_new', {'operation' : application.operation.id}) }}"><span class="glyphicon glyphicon-plus" style="color:red;"></span></a>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if application.accepted == false %}
+                                        {% if application.dateResp == null %}
+                                            <a href="{{ path('operation_apply_remove', {'id' : application.id}) }}"><span class="glyphicon glyphicon-remove"></span></a>
+                                        {% endif %}
                                     {% endif %}
                                 </td>
                             </tr>

@@ -1,0 +1,39 @@
+{% extends 'CharlestownCustomerBundle::layout.html.twig'%}
+
+{% block content %}
+    {{ parent() }}
+    <div class="modal-dialog">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h3>Vos factures</h3>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        {% set empty = false %}
+                        {% for bill in user.bills %}
+                            {% set empty = true %}
+                            {% if loop.index % 6 == 0 %}
+                                </div>
+                                <div style="margin-top: 15px;" class="row">
+                            {% endif %}
+                            <div class="col-md-2 textAlignCenter">
+                                <a style="color:white; font-size: 20px;" download="{{ asset(bill.uploadRootDir  ~ bill.id ~ '.' ~ bill.alt) }}" href="{{ asset(bill.uploadRootDir  ~bill.id ~ '.' ~ bill.alt) }}">
+                                    <span style="color:red;" class="glyphicon glyphicon-file"></span><br/>
+                                    {{ bill.nameShow }}
+                                </a>
+                            </div>
+                        {% endfor %}
+                        {% if empty == 0 %}
+                            <div>
+                                <p>Vous n'avez aucune factures, veuillez contacter votre responsable client pour plus d'informations.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

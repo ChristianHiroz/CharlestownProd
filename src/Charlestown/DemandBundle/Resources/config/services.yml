@@ -1,0 +1,6 @@
+services:
+    charlestown.demand.notification:
+        class: Charlestown\DemandBundle\Listeners\DemandNotification
+        arguments: [@service_container]
+        tags:
+            - { name: doctrine.event_listener, event: postUpdate }

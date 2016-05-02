@@ -11,6 +11,7 @@
 
 namespace Charlestown\UserBundle\Form;
 
+use Charlestown\FileBundle\Form\FileType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -31,21 +32,10 @@ class ProfileFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $this->buildUserForm($builder, $options);
+//        $this->buildUserForm($builder, $options);
 
         $builder
-            ->add('firstName','text',array('label' => 'Nom'))
-            ->add('lastName','text',array('label' => 'Prénom'))
-            ->add('phoneNumber','text',array('label' => 'Téléphone'))
-            ->add('pc','text',array('label' => 'Code postal'))
-            ->add('address','text',array('label' => 'Adresse'))
-            ->add('town','text',array('label' => 'Ville'));
-//            ->add('current_password', 'password', array(
-//            'label' => 'form.current_password',
-//            'translation_domain' => 'FOSUserBundle',
-//            'mapped' => false,
-//            'constraints' => new UserPassword(),
-//        ));
+            ->add('picture', new FileType());
     }
 
     public function configureOptions(OptionsResolver $resolver)

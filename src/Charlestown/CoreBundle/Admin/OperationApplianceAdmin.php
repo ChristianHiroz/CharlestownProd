@@ -15,7 +15,12 @@ class OperationApplianceAdmin extends Admin
         $formMapper
             ->add('event')
             ->add('operation')
-            ->add('accepted',null,array('label'=>'Accepté'))
+            ->add('timeslot',null,array('label' => 'Créneau'))
+            ->add('accepted', 'choice', array(
+                'choices' => array(
+                    1 => 'Oui',
+                    0 => 'Non'
+                )))
         ;
     }
 
@@ -33,10 +38,30 @@ class OperationApplianceAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id', null, array('label' => 'Identifiant'))
-            ->addIdentifier('event', null, array('label' => 'Collaborateur'))
-            ->addIdentifier('operation', null, array('label' => 'Opération'))
+            ->add('event', null, array('label' => 'Collaborateur'))
+            ->add('operation', null, array('label' => 'Opération'))
+            ->add('timeslot',null,array('label' => 'Créneau'))
             ->add('accepted',null,array('label'=>'Accepté'))
         ;
+    }
+
+    public function getExportFields() {
+        $exportFields = array();
+
+        $exportFields['Nom'] = 'event.firstName';
+        $exportFields['Prénom'] = 'event.lastName';
+        $exportFields['Téléphone'] = 'event.phoneNumber';
+        $exportFields['Email'] = 'event.email';
+        $exportFields['Horaire'] = 'timeslot';
+
+        return $exportFields;
+    }
+
+    public function getExportFormats()
+    {
+        return array(
+            'xls'
+        );
     }
 
 }

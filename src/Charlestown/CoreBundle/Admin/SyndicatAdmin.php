@@ -14,7 +14,6 @@ class SyndicatAdmin extends Admin
     {
         $formMapper
             ->add('name', 'text', array('label' => 'Nom'))
-            ->add('users', null, array('label' => 'Collaborateurs'))
         ;
     }
 

@@ -13,7 +13,7 @@ use FOS\UserBundle\Model\User as FOSUser;
  * @ORM\Entity(repositoryClass="Charlestown\UserBundle\Entity\UserRepository")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"user" = "User", "customer" = "Charlestown\CustomerBundle\Entity\Customer", "collaborator" = "Charlestown\CollaboratorBundle\Entity\Collaborator"})
+ * @ORM\DiscriminatorMap({"user" = "User", "collaborator" = "Charlestown\CollaboratorBundle\Entity\Collaborator", "customer" = "Charlestown\CustomerBundle\Entity\Customer"})
  */
 abstract class User extends FOSUser
 {
@@ -29,30 +29,37 @@ abstract class User extends FOSUser
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string")
+     * @ORM\Column(name="address", type="string", nullable=true)
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="town", type="string")
+     * @ORM\Column(name="town", type="string", nullable=true)
      */
     private $town;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pc", type="string")
+     * @ORM\Column(name="pc", type="string", nullable=true)
      */
     private $pc;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phoneNumber", type="string")
+     * @ORM\Column(name="phoneNumber", type="string", nullable=true)
      */
     private $phoneNumber;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isClubMember", type="boolean", nullable=true)
+     */
+    private $isClubMember;
 
      /**
       * @var \Agency
@@ -64,7 +71,7 @@ abstract class User extends FOSUser
     /**
       * @var \File
       *
-      * @ORM\OneToOne(targetEntity="Charlestown\FileBundle\Entity\File")
+      * @ORM\OneToOne(targetEntity="Charlestown\FileBundle\Entity\File", cascade={"persist"})
       */
     private $picture;
 
@@ -151,6 +158,23 @@ abstract class User extends FOSUser
     {
         $this->phoneNumber = $phoneNumber;
     }
+
+    /**
+     * @return boolean
+     */
+    public function isIsClubMember()
+    {
+        return $this->isClubMember;
+    }
+
+    /**
+     * @param boolean $isClubMember
+     */
+    public function setIsClubMember($isClubMember)
+    {
+        $this->isClubMember = $isClubMember;
+    }
+
 
     /**
      * @return \Agency

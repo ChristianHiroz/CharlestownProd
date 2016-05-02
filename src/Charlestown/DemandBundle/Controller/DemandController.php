@@ -64,6 +64,8 @@ class DemandController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('charlestown.mailer')->sendDemandMail($this->getUser(), "de rendez-vous");
+
             return $this->redirect($this->generateUrl('demand', array('id' => $entity->getId())));
         }
 
@@ -259,6 +261,8 @@ class DemandController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('charlestown.mailer')->sendDemandMail($this->getUser(), "d'entretien");
+
             return $this->redirect($this->generateUrl('demand', array('id' => $entity->getId())));
         }
 
@@ -453,6 +457,9 @@ class DemandController extends Controller
             $em->persist($entity);
             $em->flush();
 
+
+            $this->get('charlestown.mailer')->sendDemandMail($this->getUser(), "de formation");
+
             return $this->redirect($this->generateUrl('demand', array('id' => $entity->getId())));
         }
 
@@ -646,6 +653,9 @@ class DemandController extends Controller
             $entity->setUser($this->getUser());
             $em->persist($entity);
             $em->flush();
+
+
+            $this->get('charlestown.mailer')->sendDemandMail($this->getUser(), "de congés");
 
             return $this->redirect($this->generateUrl('demand', array('id' => $entity->getId())));
         }

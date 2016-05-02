@@ -29,16 +29,8 @@ class Syndicat
      */
     private $name;
 
-    /**
-     * @var \BusinessSupport
-     *
-     * @ORM\ManyToMany(targetEntity="Charlestown\CollaboratorBundle\Entity\BusinessSupport")
-     */
-    private $users;
-
 
     public function __construct(){
-        $this->users = new ArrayCollection();
     }
 
     /**
@@ -75,28 +67,8 @@ class Syndicat
         return $this->name;
     }
 
-    /**
-     * Set users
-     *
-     * @param \BusinessSupport $users
-     *
-     * @return Syndicat
-     */
-    public function setUsers($users)
-    {
-        $this->users = $users;
-
-        return $this;
-    }
-
-    /**
-     * Get users
-     *
-     * @return \BusinessSupport
-     */
-    public function getUsers()
-    {
-        return $this->users;
+    public function __toString(){
+        return $this->name;
     }
 }
 

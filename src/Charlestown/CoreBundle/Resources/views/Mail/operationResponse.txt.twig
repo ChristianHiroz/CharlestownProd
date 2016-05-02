@@ -1,0 +1,16 @@
+Réponse à dispo
+
+{% if accepted == true %}
+    Bonjour, <br/><br/>
+
+    Nous vous informons que votre inscription à la mission {{ appliance }} a été validée. <br/>
+    Nous vous invitons à prendre contact avec le service événementiel pour la signature de votre contrat. <br/> <br/>
+
+    Cordialement,
+{% else %}
+    Bonjour, <br/><br/>
+
+    Nous sommes au regret de vous informer que votre inscription à la mission {{ appliance }} n'a pu être validée. Nous vous remercions pour votre disponibilité et vous invitons à candidater aux autres opérations à venir. <br/><br/>
+
+    Cordialement,
+{% endif %}

@@ -2,8 +2,10 @@
 
 namespace Charlestown\OperationBundle\Controller;
 
+use Charlestown\OperationBundle\Entity\FileOperation;
 use Charlestown\OperationBundle\Entity\Operation;
 use Charlestown\OperationBundle\Entity\OperationAppliance;
+use Charlestown\OperationBundle\Form\FileOperationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -19,8 +21,6 @@ use Charlestown\CarpoolingBundle\Form\CarpoolingType;
  */
 class OperationController extends Controller
 {
-
-
     /**
      * @Route("/liste", name="operation")
      * @Template()
@@ -38,9 +38,15 @@ class OperationController extends Controller
      * @Route("/demandes", name="my_operation_applications")
      * @Template()
      */
-    public function myOperationApplicationsAction()
+    public function myOperationApplicationsAction(Request $request)
     {
-        return array('applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
+        if($request->getSession()->get('alert') == "success"){
+            $request->getSession()->set('alert', 'nothing');
+            return array('applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser(), 'label' => "success");
+        }
+        else{
+            return array('applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
+        }
     }
 
     /**
@@ -49,6 +55,7 @@ class OperationController extends Controller
      */
     public function myOperationApplicationsHistoryAction()
     {
+
         return array('applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
     }
 
@@ -62,20 +69,26 @@ class OperationController extends Controller
     }
 
     /**
-     * @Route("/apply/{id}", name="operation_apply")
+     * @Route("/apply/{id}/{timeslot}", name="operation_apply")
      * @Template()
      */
-    public function applyOperationAction($id)
+    public function applyOperationAction($id, $timeslot)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $operation = $em->getRepository('CharlestownOperationBundle:Operation')->find($id);
+        $timeslot = $em->getRepository('CharlestownOperationBundle:Timeslot')->find($timeslot);
 
         $application = new OperationAppliance();
         $application->setEvent($user);
         $application->setOperation($operation);
+        $application->setTimeslot($timeslot);
         $em->persist($application);
         $em->flush();
+
+        $this->get('charlestown.mailer')->sendOperationNotificationMail($application);
+
+        $this->get('charlestown.mailer')->sendOperationApplianceMail($application);
 
         return $this->redirect($this->generateUrl('my_operation_applications'));
     }

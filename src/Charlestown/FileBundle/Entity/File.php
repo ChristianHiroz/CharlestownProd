@@ -248,6 +248,11 @@ class File
     }
 
     public function __toString(){
-        return $this->name;
+        if($this->name != ""){
+            return $this->name;
+        }
+        else{
+            return "filerror";
+        }
     }
 }

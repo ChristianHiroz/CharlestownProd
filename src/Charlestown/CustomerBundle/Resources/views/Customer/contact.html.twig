@@ -1,0 +1,30 @@
+{% extends 'CharlestownCustomerBundle::layout.html.twig'%}
+
+{% block content %}
+    {{ parent() }}
+    <div class="modal-dialog">
+        <div class="modal-content" >
+            <div class="modal-header">
+            </div>
+            <div class="container"  style="color:white;  margin-top: 10px; margin-bottom: 50px; margin-left: 35px;">
+                <div class="row content" >
+
+                    <div id="sf" class="row service" >
+                        <h1><span class="glyphicon glyphicon-info-sign"></span> Le service client</h1>
+                        <p>
+                            En cas de non réponse suite à un message, veuillez envoyer un mail à l'adresse suivante : <center><a style="color:red;" href='mailto:clients@charlestown.fr'>clients@charlestown.fr</a></center>
+
+                    </p>
+                </div>
+                <br/>
+                <div  id="srh" class="row service">
+                    <h1><span class="glyphicon glyphicon-info-sign"></span> Le service rh</h1>
+                    <p>
+                        Pour contacter le service des ressources humaines, veuillez envoyer un mail à l'adresse suivante : <center><a  style="color:red;" href='mailto:communication-rh@charlestown.fr'>communication-rh@charlestown.fr</a></center>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

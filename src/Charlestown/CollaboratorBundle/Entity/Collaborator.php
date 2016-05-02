@@ -3,23 +3,24 @@
 namespace Charlestown\CollaboratorBundle\Entity;
 
 use Charlestown\CarpoolingBundle\Entity\Carpooling;
+use Charlestown\ChatBundle\Entity\Chatroom;
 use Charlestown\CustomerBundle\Entity\Customer;
+use Charlestown\FileBundle\Entity\File;
+use Charlestown\OperationBundle\Entity\OperationAppliance;
 use Charlestown\SkillPurseBundle\Entity\Lesson;
 use Charlestown\SkillPurseBundle\Entity\Skill;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Charlestown\UserBundle\Entity\User as User;
 
+
 /**
  * Collaborator
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Charlestown\CollaboratorBundle\Entity\CollaboratorRepository")
- * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"collaborator" = "Collaborator", "businessSupport" = "BusinessSupport", "event" = "Event"})
  */
-abstract class Collaborator extends User
+class Collaborator extends User
 {
     /**
      * @var integer
@@ -33,28 +34,28 @@ abstract class Collaborator extends User
     /**
      * @var string
      *
-     * @ORM\Column(name="gender", type="string")
+     * @ORM\Column(name="gender", type="string", nullable=true)
      */
     private $gender;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string")
+     * @ORM\Column(name="firstName", type="string", nullable=true)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string")
+     * @ORM\Column(name="lastName", type="string", nullable=true)
      */
     private $lastName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="position", type="string")
+     * @ORM\Column(name="position", type="string", nullable=true)
      */
     private $position;
 
@@ -65,6 +66,14 @@ abstract class Collaborator extends User
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", nullable=true)
      */
     private $customer;
+
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="swapable", type="boolean")
+     */
+    private $swapable = false;
 
     /**
      * @var \Customer
@@ -109,6 +118,59 @@ abstract class Collaborator extends User
      */
     private $lessons;
 
+    /**
+     * @var \Syndicat
+     *
+     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Syndicat")
+     * @ORM\JoinColumn(name="syndicat_id", referencedColumnName="id", nullable=true)
+     */
+    private $syndicat;
+
+    /**
+     * @var \Mandate
+     *
+     * @ORM\ManyToMany(targetEntity="Charlestown\CollaboratorBundle\Entity\Mandate")
+     *@ORM\JoinTable(name="user_mandates",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id",nullable=true)},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="mandate_id", referencedColumnName="id",nullable=true)})
+     */
+    private $mandates;
+
+
+    /**
+     * @var \OperationAppliance
+     *
+     * @ORM\OneToMany(targetEntity="Charlestown\OperationBundle\Entity\OperationAppliance", mappedBy="event")
+     */
+    private $appliances;
+
+
+    /**
+     * @var \Announcment
+     *
+     * @ORM\OneToMany(targetEntity="Charlestown\AnnouncmentBundle\Entity\Announcment", mappedBy="offerer")
+     */
+    private $myOffers;
+
+
+    /**
+     * @var \Announcment
+     *
+     * @ORM\OneToMany(targetEntity="Charlestown\AnnouncmentBundle\Entity\Announcment", mappedBy="applicant")
+     */
+    private $myOffersApplications;
+
+
+    /**
+     * @var \Files
+     *
+     * @ORM\ManyToMany(targetEntity="Charlestown\FileBundle\Entity\File")
+     */
+    private $evaluations;
+
+
+
+
     public function __construct()
     {
         $this->myCarpoolings = new ArrayCollection();
@@ -117,6 +179,11 @@ abstract class Collaborator extends User
         $this->myLessons = new ArrayCollection();
         $this->myLessonsApplication = new ArrayCollection();
         $this->lessons = new ArrayCollection();
+        $this->mandates = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
+        $this->appliances = new ArrayCollection();
+        $this->myOffers = new ArrayCollection();
+        $this->myOffersApplications = new ArrayCollection();
         parent::__construct();
     }
 
@@ -327,8 +394,153 @@ abstract class Collaborator extends User
         $this->lessons = $lessons;
     }
 
+    /**
+     * @return \Syndicat
+     */
+    public function getSyndicat()
+    {
+        return $this->syndicat;
+    }
+
+    /**
+     * @param \Syndicat $syndicat
+     */
+    public function setSyndicat($syndicat)
+    {
+        $this->syndicat = $syndicat;
+    }
+
+    /**
+     * @return \Mandate
+     */
+    public function getMandates()
+    {
+        return $this->mandates;
+    }
+
+    /**
+     * @param \Mandate $mandates
+     */
+    public function setMandates($mandates)
+    {
+        $this->mandates = $mandates;
+    }
+
+    /**
+     * Set appliances
+     *
+     * @param \stdClass $appliances
+     *
+     * @return Operation
+     */
+    public function setAppliances($appliances)
+    {
+        $this->appliances = $appliances;
+
+        return $this;
+    }
+
+    /**
+     * Get appliances
+     *
+     * @return \stdClass
+     */
+    public function getAppliances()
+    {
+        return $this->appliances;
+    }
+
+    public function addAppliance(OperationAppliance $appliance){
+        $this->appliances[] = $appliance;
+    }
+
+    public function removeAppliance(OperationAppliance $appliance){
+        $this->appliances->removeElement($appliance);
+    }
+
+    /**
+     * @return \Announcment
+     */
+    public function getMyOffers()
+    {
+        return $this->myOffers;
+    }
+
+    /**
+     * @param \Announcment $myOffers
+     */
+    public function setMyOffers($myOffers)
+    {
+        $this->myOffers = $myOffers;
+    }
+
+    public function addOffer($offer)
+    {
+        $this->myOffers[] = $offer;
+    }
+
+    /**
+     * @return \Announcment
+     */
+    public function getMyOffersApplications()
+    {
+        return $this->myOffersApplications;
+    }
+
+    /**
+     * @param \Announcment $myOffersApplications
+     */
+    public function setMyOffersApplications($myOffersApplications)
+    {
+        $this->myOffersApplications = $myOffersApplications;
+    }
+
+    public function addOfferApplication($offer)
+    {
+        $this->myOffersApplications[] = $offer;
+    }
 
 
+
+    /**
+     * @return \Files
+     */
+    public function getEvaluations()
+    {
+        return $this->evaluations;
+    }
+
+    /**
+     * @param \Files $evaluations
+     */
+    public function setEvaluations($evaluations)
+    {
+        $this->evaluations = $evaluations;
+    }
+
+    /**
+     * @param File $evaluation
+     */
+    public function addEvaluation(File $evaluation)
+    {
+        $this->evaluations[] = $evaluation;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isSwapable()
+    {
+        return $this->swapable;
+    }
+
+    /**
+     * @param boolean $swapable
+     */
+    public function setSwapable($swapable)
+    {
+        $this->swapable = $swapable;
+    }
 
 }
 

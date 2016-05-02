@@ -60,15 +60,15 @@ class FileOperation
     /**
      * @var \FileType
      *
-     * @ORM\ManyToOne(targetEntity="Charlestown\OperationBundle\Entity\Operation")
+     * @ORM\ManyToOne(targetEntity="Charlestown\OperationBundle\Entity\Operation", inversedBy="files")
      */
     private $operation;
     /**
-     * @var \FileType
+     * @var \Event
      *
-     * @ORM\ManyToOne(targetEntity="Charlestown\CustomerBundle\Entity\Customer")
+     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Collaborator")
      */
-    private $customer;
+    private $event;
 
     private $file;
     private $tempFilenom;
@@ -279,18 +279,18 @@ class FileOperation
     }
 
     /**
-     * @return \FileType
+     * @return \Event
      */
-    public function getCustomer()
+    public function getEvent()
     {
-        return $this->customer;
+        return $this->event;
     }
 
     /**
-     * @param \FileType $customer
+     * @param \Event $event
      */
-    public function setCustomer($customer)
+    public function setEvent($event)
     {
-        $this->customer = $customer;
+        $this->event = $event;
     }
 }

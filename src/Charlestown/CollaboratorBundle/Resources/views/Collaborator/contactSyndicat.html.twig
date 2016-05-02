@@ -1,0 +1,60 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig'%}
+
+{% block content %}
+    {{ parent() }}
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Coordonnées</h2>
+        </div>
+        <div class="modal-body">
+                    <table class="table table-condensed">
+                        <thead>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Syndicat</th>
+                        {% for mandate in mandates %}
+                            <th>{{ mandate.name }}</th>
+                        {% endfor %}
+                        </thead>
+                        <tbody>
+                    {% for user in users %}
+                        <tr>
+                            {% if user.lastName %}
+                                <td>{{ user.lastName }}</td>
+                            {% else %}
+                                <td>Non renseigné, contactez Charlestown</td>
+                            {% endif %}
+                            {% if user.firstName %}
+                                <td>{{ user.firstName }}</td>
+                            {% else %}
+                                <td>Non renseigné, contactez Charlestown</td>
+                            {% endif %}
+                            {% if user.email %}
+                                <td>{{ user.email }}</td>
+                            {% else %}
+                                <td>Non renseigné, contactez Charlestown</td>
+                            {% endif %}
+                            <td>{{ user.syndicat.name }}</td>
+                            {% for mandate in mandates %}
+                                {% set same = false %}
+                                {% for usermandate in user.mandates %}
+                                    {% if mandate.name == usermandate.name %}
+                                        {% set same = true %}
+                                        <td>X</td>
+                                    {% endif %}
+                                    {% if same == false %}
+                                        <td></td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
