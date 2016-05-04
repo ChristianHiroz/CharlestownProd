@@ -11,6 +11,7 @@
 
 namespace Charlestown\UserBundle\Controller;
 
+use Charlestown\FileBundle\Entity\File;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
@@ -20,6 +21,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Controller managing the user profile
@@ -33,6 +37,7 @@ class ProfileController extends Controller
      */
     public function showAction()
     {
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -40,17 +45,19 @@ class ProfileController extends Controller
 
         if($user->hasRole('ROLE_CUSTOMER')){
             return $this->render('FOSUserBundle:Profile:showCustomer.html.twig', array(
-                'user' => $user,
+                'user' => $user
             ));
         }
         else{
             return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-                'user' => $user,
+                'user' => $user, 'messages' => $message
             ));
         }
     }
 
     public function showOtherAction($user){
+
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('CharlestownUserBundle:User')->find($user);
         if (!is_object($user) || !$user instanceof UserInterface) {
@@ -58,7 +65,7 @@ class ProfileController extends Controller
         }
 
         return $this->render('FOSUserBundle:Profile:showOther.html.twig', array(
-            'user' => $user,
+            'user' => $user, 'messages' => $message
         ));
     }
 
@@ -67,6 +74,7 @@ class ProfileController extends Controller
      */
     public function editAction(Request $request)
     {
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -112,6 +120,46 @@ class ProfileController extends Controller
         return $this->render('CharlestownUserBundle:Profile:edit.html.twig', array(
             'form' => $form->createView(),
             'user' => $this->getUser(),
+            'messages' => $message
+        ));
+    }
+
+    /**
+     * NIGGA GENPEPLU
+     *
+     * @Route("/submitAvatarNigga", name="upload_avatar", options={"expose"=true})
+     * @Method("POST")
+     */
+    public function uploadAvatarAction(Request $request){
+        $base = $request->get("base");
+
+
+        $file = new File();
+        $file->setAlt("png");
+        $file->setName("avatar_collab.png");
+        $file->setNameShow("avatar_collab.png");
+
+        $this->getUser()->setPicture($file);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($file);
+        $em->persist($this->getUser());
+        $em->flush();
+
+        $id = $file->getId();
+
+        $filename_path = "files/".$id.".png";
+
+        $base64_string = str_replace('data:image/png;base64,', '', $base);
+        $base64_string = str_replace(' ', '+', $base64_string);
+        $base64_string = base64_decode($base64_string);
+        file_put_contents("uploads/".$filename_path,$base64_string);
+
+
+
+        return new JsonResponse(array(
+            "status" => "ok",
+            "message" => "avatar uploaded"
         ));
     }
 }

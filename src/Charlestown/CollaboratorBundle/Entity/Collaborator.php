@@ -67,13 +67,19 @@ class Collaborator extends User
      */
     private $customer;
 
-
     /**
      * @var boolean
      *
      * @ORM\Column(name="swapable", type="boolean")
      */
     private $swapable = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activeChat", type="boolean")
+     */
+    private $activeChat = true;
 
     /**
      * @var \Customer
@@ -542,5 +548,20 @@ class Collaborator extends User
         $this->swapable = $swapable;
     }
 
+    /**
+     * @return boolean
+     */
+    public function isActiveChat()
+    {
+        return $this->activeChat;
+    }
+
+    /**
+     * @param boolean $activeChat
+     */
+    public function setActiveChat($activeChat)
+    {
+        $this->activeChat = $activeChat;
+    }
 }
 

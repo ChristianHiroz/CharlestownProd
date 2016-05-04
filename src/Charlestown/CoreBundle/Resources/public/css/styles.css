@@ -18,9 +18,9 @@
 .espace{position: absolute; top: 21px; right: 175px; z-index: 1;}
 .imgPresentation{width:100%; height:auto;}
 
-.menubutton{  width:19.7%;  text-align: center; height: 100%; }
-.menubuttonEvent{  width:24.7%;  text-align: center; height: 100%; }
-.menubuttonCustomer{  width:24.7%;  text-align: center; height: 100%; }
+.menubutton{  width:19.5%;  text-align: center; height: 100%; }
+.menubuttonEvent{  width:24.5%;  text-align: center; height: 100%; }
+.menubuttonCustomer{  width:24.5%;  text-align: center; height: 100%; }
 .menubutton:hover, .menubutton:focus { background-color: white;}
 .menubuttonEvent:hover, .menubutton:focus { background-color: white;}
 .menuheader{ width:25%; height:55px; }
@@ -139,15 +139,6 @@ td a {
 .message_send{padding-left: 7px; width : 87%; min-height:25px;  background-color: lightgoldenrodyellow; border-radius: 7px; float:right;}
 .message_box_send{width:80%; float:right; margin-bottom: 3px; text-align:left;}
 .messages-image{background-color: white;width: 30px;height: 30px; border-radius:50%;}
-@media (max-width: 1350px) {
-    .logo_header{ width:auto; height:80%;}
-    .image_accueil{ height:auto; width:80%;}
-}
-@media (max-width: 1075px) {
-    .logo_header{ width:auto; height:70%;}
-    .image_accueil{ height:auto; width:70%;}
-
-}
 
 .view {
     width: 300px;
@@ -211,4 +202,21 @@ td a {
     opacity:0.8;
     background-color: indianred;
     height:100%;
+}
+
+
+@media (max-width: 1350px) {
+    .logo_header{ width:auto; height:80%;}
+    .image_accueil{ height:auto; width:80%;}
+}
+@media (max-width: 1075px) {
+    .logo_header{ width:auto; height:70%;}
+    .image_accueil{ height:auto; width:70%;}
+
+}
+@media  (max-width: 765px){
+    .modal-dialog{width:95%;margin:auto;}
+    .space-menu{top:25px;right:30%;}
+    #chat_container{left:27%;}
+    #chat_open{left:27%;}
 }

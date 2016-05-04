@@ -3,6 +3,7 @@
 {% block content %}
     {{ parent() }}
 <div class="alert alert-warning hidden" style="margin:auto; width:80%; top: 60px; text-align:center; position: relative;" id="label_success" role="alert">Demande de devis envoyée avec succès.</div>
+<div class="alert alert-danger hidden" style="margin:auto; width:80%; top: 60px; text-align:center; position: relative;" id="label_fail" role="alert">Un problème est survenu, merci de contacter un administrateur.</div>
 <div class="modal-dialog">
     <div class="modal-content"  style="padding-bottom: 30px;">
         <div class="modal-header" style="padding-bottom: 0px;">
@@ -30,13 +31,13 @@
                     <div class="container" style="width:80%;">
                         <div class="row"  style="color:white; text-align: center; margin:auto;">
                             <label for="duree">Durée</label>
-                            <input placeholder="Ex: 8 jours" class="form-control" type="text" name="duree" id="duree"/><br/>
+                            <input placeholder="Ex: 8 jours" class="form-control" type="text" name="duree" id="duree3"/><br/>
                             <label for="debut">Horaire début</label>
-                            <input placeholder="Ex: 8h" class="form-control" type="text" name="debut" id="debut"/><br/>
+                            <input placeholder="Ex: 8h" class="form-control" type="text" name="debut" id="debut3"/><br/>
                             <label for="fin">Horaire fin</label>
-                            <input placeholder="Ex: 20h" class="form-control" type="text" name="fin" id="fin"/><br/>
+                            <input placeholder="Ex: 20h" class="form-control" type="text" name="fin" id="fin3"/><br/>
                             <label for="nb">Nombre d'hôtes/hôtesses</label>
-                            <input class="form-control"  type="number" name="nb" id="nb"/><br/>
+                            <input class="form-control"  type="number" name="nb" id="nb3"/><br/>
                             <button class="btn btn-danger" type="submit" id="augmentation">Envoyer</button>
                         </div>
                     </div>
@@ -45,13 +46,13 @@
                     <div class="container" style="width:80%;">
                         <div class="row"  style="color:white; text-align: center; margin:auto;">
                             <label for="duree">Durée</label>
-                            <input placeholder="Ex: 8 jours" class="form-control" type="text" name="duree" id="duree"/><br/>
+                            <input placeholder="Ex: 8 jours" class="form-control" type="text" name="duree" id="duree2"/><br/>
                             <label for="debut">Horaire début</label>
-                            <input placeholder="Ex: 8h" class="form-control" type="text" name="debut" id="debut"/><br/>
+                            <input placeholder="Ex: 8h" class="form-control" type="text" name="debut" id="debut2"/><br/>
                             <label for="fin">Horaire fin</label>
-                            <input placeholder="Ex: 20h" class="form-control" type="text" name="fin" id="fin"/><br/>
+                            <input placeholder="Ex: 20h" class="form-control" type="text" name="fin" id="fin2"/><br/>
                             <label for="nb">Nombre d'hôtes/hôtesses</label>
-                            <input class="form-control"  type="number" name="nb" id="nb"/><br/>
+                            <input class="form-control"  type="number" name="nb" id="nb2"/><br/>
                             <button class="btn btn-danger" type="submit" id="complementaire">Envoyer</button>
                         </div>
                     </div>
@@ -78,18 +79,73 @@
                         </div>
                     </div>
                 </div>
+
+                <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+                <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
                 <script>
                     $("#augmentation").click(function(e){
                         e.preventDefault();
-                        $("#label_success").removeClass('hidden');
+                        var duree = $("#duree3").val();
+                        var debut = $("#debut3").val();
+                        var fin = $("#fin3").val();
+                        var nb = $("#nb3").val();
+                        var description = "NA";
+                        var typepresta = "Accueil en entreprise";
+
+                        $.ajax({
+                            url: Routing.generate('devis_create'),
+                            type: 'POST',
+                            data: 'duree='+duree+'&debut='+debut+'&fin='+fin+'&nb='+nb+'&description='+description+'&typepresta='+typepresta+'&type=Augmentation de la prestation',
+                            success: function (data) {
+                                $("#label_success").removeClass('hidden');
+                            },
+                            error: function (data) {
+                                $("#label_fail").removeClass('hidden');
+                            }
+                        });
                     });
                     $("#complementaire").click(function(e){
                         e.preventDefault();
-                        $("#label_success").removeClass('hidden');
+                        var duree = $("#duree2").val();
+                        var debut = $("#debut2").val();
+                        var fin = $("#fin2").val();
+                        var nb = $("#nb2").val();
+                        var description = "NA";
+                        var typepresta = "Accueil en entreprise";
+
+                        $.ajax({
+                            url: Routing.generate('devis_create'),
+                            type: 'POST',
+                            data: 'duree='+duree+'&debut='+debut+'&fin='+fin+'&nb='+nb+'&description='+description+'&typepresta='+typepresta+'&type=Prestation complémentaire',
+                            success: function (data) {
+                                $("#label_success").removeClass('hidden');
+                            },
+                            error: function (data) {
+                                $("#label_fail").removeClass('hidden');
+                            }
+                        });
                     });
                     $("#nouvelle").click(function(e){
                         e.preventDefault();
-                        $("#label_success").removeClass('hidden');
+                        var duree = $("#duree").val();
+                        var debut = $("#debut").val();
+                        var fin = $("#fin").val();
+                        var nb = $("#nb").val();
+                        var description = $("#description").val();
+                        var typepresta = $("#type").val();
+
+                        $.ajax({
+                            url: Routing.generate('devis_create'),
+                            type: 'POST',
+                            data: 'duree='+duree+'&debut='+debut+'&fin='+fin+'&nb='+nb+'&description='+description+'&typepresta='+typepresta+'&type=Nouvelle prestation',
+                            success: function (data) {
+                                $("#label_success").removeClass('hidden');
+                            },
+                            error: function (data) {
+                                $("#label_fail").removeClass('hidden');
+                            }
+                        });
+
                     });
                 </script>
             </div>

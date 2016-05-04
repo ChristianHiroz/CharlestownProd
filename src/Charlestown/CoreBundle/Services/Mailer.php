@@ -7,6 +7,7 @@ use Charlestown\DemandBundle\Entity\Demand;
 use Charlestown\OperationBundle\Entity\Operation;
 use Charlestown\OperationBundle\Entity\OperationAppliance;
 use Charlestown\UserBundle\Entity\User;
+use Charlestown\CustomerBundle\Entity\Devis;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Routing\RouterInterface;
@@ -119,6 +120,15 @@ class Mailer {
         $rendered = $this->templating->render($template, array('appliance' => $appliance));
 
         $this->sendEmailMessage($rendered, "no-reply@charlestown.com", $user->getEmail());
+    }
+
+    public function sendDevisConfirmationMail(Devis $devis){
+
+        $customer = $devis->getCustomer();
+        $template = $this->parameters['template']['devisConfirmation'];
+        $rendered = $this->templating->render($template, array('devis' => $devis));
+
+        $this->sendEmailMessage($rendered, "no-reply@charlestown.com", $customer->getEmail());
     }
 
     /**

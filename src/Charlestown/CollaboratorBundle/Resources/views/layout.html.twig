@@ -1092,12 +1092,17 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
+        <div class="dropdown space-menu visible-xs" style="right: 44%; border-radius: 10px 10px 10px 10px">
+            <a class="dropdown-toggle space-menu-link" href="http://www.charlestown.fr/">
+                <p style="width:150px;" class="space-menu-txt">Charlestown</p>
+            </a>
+        </div>
         <div class="dropdown space-menu">
             <a class="dropdown-toggle space-menu-link" data-toggle="dropdown" href="#">
                 {% if user.picture %}
                     <img class="rounded-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
                 {% endif %}
-                <p class="space-menu-txt">{{ user.firstName }}<span class="caret"></span></p>
+                <p class="space-menu-txt">{{ user.firstName }}<span class="caret hidden-xs"></span></p>
             </a>
             <ul class="dropdown-menu space-menu-der">
                 {#<li class="dropdown">#}
@@ -1145,55 +1150,6 @@
 
             </ul>
         </div>
-        <nav class="navbar navbar-default visible-xs">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button id="mobilebutton" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
         <nav class="navbar navbar-default firstNavCollab hidden-xs">
             <div class="container-fluid">
                 <div class="navbar-header menuheaderCollab textAlignCenter">
@@ -1284,8 +1240,7 @@
         </nav>
 
 
-        <div id="social_bar" style="position:absolute; right:1%; margin-top:-80px; background-color: black; width:60px; text-align:center; box-shadow: 2px 2px 2px gray, -1px -1px 2px; border-bottom-right-radius: 25px;
-border-bottom-left-radius: 25px;">
+        <div id="social_bar" class="hidden-xs" style="position:absolute; right:1%; margin-top:-80px; background-color: black; width:60px; text-align:center; box-shadow: 2px 2px 2px gray, -1px -1px 2px; border-bottom-right-radius: 25px;border-bottom-left-radius: 25px;">
             <a href="https://www.youtube.com/user/charlestownaccueil"><img style="width:50px; height:auto;" src="{{ asset('images/youtube-round.png') }}"></a><br/>
             <a href="https://www.facebook.com/charlestownrecrutement/?fref=ts"><img style="width:50px; height:auto;" src="{{ asset('images/facebook-round.png') }}"></a><br/>
             <a href="https://twitter.com/Charlestown_fr"><img style="width:50px; height:auto;" src="{{ asset('images/twitter-round.png') }}"></a><br/>
@@ -1295,8 +1250,7 @@ border-bottom-left-radius: 25px;">
             <a href="#" style="color:white;" id="socialClose"><span class="caret"></span></a>
         </div>
 
-        <div id="social_bar_closed" class="hidden" style="position:absolute; right:1%; margin-top:-80px; background-color: black; width:60px; text-align:center; box-shadow: 2px 2px 2px gray, -1px -1px 2px; border-bottom-right-radius: 25px;
-border-bottom-left-radius: 25px;">
+        <div id="social_bar_closed" class="hidden" style="position:absolute; right:1%; margin-top:-80px; background-color: black; width:60px; text-align:center; box-shadow: 2px 2px 2px gray, -1px -1px 2px; border-bottom-right-radius: 25px;border-bottom-left-radius: 25px;">
             <a href="" style="color:white;" id="socialOpen"><span class="caret"></span></a>
         </div>
 
@@ -1320,11 +1274,12 @@ border-bottom-left-radius: 25px;">
 
 
     {% block chat %}
+        {% if user.activeChat %}
         <div id="chat_container" class="hidden">
             <button id="chat_close">Chat Charlestown</button>
             <div id="chat_body">
                 {% for message in messages %}
-                    {% if message.writer == user %}
+                    {% if message.writer.id == user.id %}
                         <div class="message_box_send" id="{{ message.id }}">
                             <img class="messages-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
                             <div class="message_send">
@@ -1344,6 +1299,7 @@ border-bottom-left-radius: 25px;">
             <input type="text" placeholder="Ecrivez un message" id="message">
         </div>
         <button id="chat_open">Chat en direct</button>
+        {% endif %}
 
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
@@ -1419,7 +1375,7 @@ border-bottom-left-radius: 25px;">
                     error: function(data){
                     }
                 });
-            }
+            }// reload message every seconds
 
 //            function testSend(){
 //                $.ajax({
@@ -1436,7 +1392,7 @@ border-bottom-left-radius: 25px;">
     {% endblock %}
 
     {% block footer %}
-        <footer style="position:fixed;left:0px;bottom:0px;height:30px;width:100%;background:black;opacity: 0.8;">
+        <footer class="hidden-xs" style="position:fixed;left:0px;bottom:0px;height:30px;width:100%;background:black;opacity: 0.8;">
             <div class="container">
                 <div class="row" style="margin-top:8px; text-align:center;">
                     <div class="col-md-3">

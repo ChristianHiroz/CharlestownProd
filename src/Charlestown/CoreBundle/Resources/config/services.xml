@@ -13,6 +13,7 @@
         <parameter key="ideaboxNotification.template">CharlestownCoreBundle:Mail:ideaboxNotification.txt.twig</parameter>
         <parameter key="uniformNotification.template">CharlestownCoreBundle:Mail:uniformNotification.txt.twig</parameter>
         <parameter key="quality.template">CharlestownCoreBundle:Mail:quality.txt.twig</parameter>
+        <parameter key="devis.template">CharlestownCoreBundle:Mail:devisConfirmation.txt.twig</parameter>
     </parameters>
     <services>
         <service id="charlestown.mailer" class="%charlestown.mailer.class%">
@@ -27,6 +28,7 @@
                     <argument key="ideaboxNotification">%ideaboxNotification.template%</argument>
                     <argument key="uniformNotification">%uniformNotification.template%</argument>
                     <argument key="quality">%quality.template%</argument>
+                    <argument key="devisConfirmation">%devis.template%</argument>
                 </argument>
             </argument>
         </service>

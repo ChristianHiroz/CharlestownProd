@@ -55,6 +55,11 @@ class CollaboratorAdmin extends Admin
                     0 => 'Non',
                     1 => 'Oui'
                 ), 'label' => 'AE et EVENT en même temps?'))
+            ->add('activeChat', 'choice', array(
+                'choices' => array(
+                    0 => 'Non',
+                    1 => 'Oui'
+                ), 'label' => 'Chat actif'))
             ->add('agency', 'sonata_type_model', array('property'=>'localisation'))
             ->add('picture', 'sonata_type_model')
             ->add('evaluations')

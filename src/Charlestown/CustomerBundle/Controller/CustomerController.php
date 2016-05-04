@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Charlestown\CustomerBundle\Entity\Devis;
 
 class CustomerController extends Controller
 
@@ -154,7 +155,7 @@ class CustomerController extends Controller
     }
 
     /**
-     * Creates a new Relance entity with ajax.
+     * Submit a quality form question
      *
      * @Route("/qualitySubmit", name="quality_submit", options={"expose"=true})
      * @Method("POST")
@@ -170,6 +171,44 @@ class CustomerController extends Controller
         return new JsonResponse(array(
             "status" => "ok",
             "message" => "email send"
+        ));
+    }
+
+    /**
+     * Create a devis Entity
+     *
+     * @Route("/createDevis", name="devis_create", options={"expose"=true})
+     * @Method("POST")
+     */
+    public function createDevisAction(Request $request){
+        $type = $request->get("type");
+        $prestationType = $request->get("typepresta");
+        $description = $request->get("description");
+        $startAt = $request->get("debut");
+        $endAt = $request->get("fin");
+        $duree = $request->get("duree");
+        $nb = $request->get("nb");
+
+        $devis = new Devis();
+        $devis->setDescription($description);
+        $devis->setDuree($duree);
+        $devis->setEndAt($endAt);
+        $devis->setStartAt($startAt);
+        $devis->setType($type);
+        $devis->setPrestationType($prestationType);
+        $devis->setCustomer($this->getUser());
+        $devis->setNbHote($nb);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($devis);
+        $em->flush();
+
+        $this->get('charlestown.mailer')->sendDevisConfirmationMail($devis);
+
+
+        return new JsonResponse(array(
+            "status" => "ok",
+            "message" => "devis created"
         ));
     }
 

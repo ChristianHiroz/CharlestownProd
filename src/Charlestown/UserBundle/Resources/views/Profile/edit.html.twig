@@ -1,7 +1,7 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog" style="padding-bottom: 30px;">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="padding-bottom: 0px;">
                 <nav class="navbar navbar-default secondNav">
@@ -10,7 +10,7 @@
                             <ul class="nav navbar-nav" style="width:100%;">
                                 <li class="" role="presentation"><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
                                 <li class="divider-vertical-second"></li>
-                                <li class="active" role="presentation"><a href="{{ path('fos_user_profile_edit') }}">Editer</a></li>
+                                <li class="active" role="presentation"><a href="{{ path('fos_user_profile_edit') }}">Editer photo</a></li>
                                 <li class="divider-vertical-second"></li>
                             </ul>
                         </div>

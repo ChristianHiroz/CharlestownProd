@@ -35,7 +35,7 @@ class ProfileFormType extends AbstractType
 //        $this->buildUserForm($builder, $options);
 
         $builder
-            ->add('picture', new FileType());
+            ->add('picture', new FileType(), array('label' => ' '));
     }
 
     public function configureOptions(OptionsResolver $resolver)

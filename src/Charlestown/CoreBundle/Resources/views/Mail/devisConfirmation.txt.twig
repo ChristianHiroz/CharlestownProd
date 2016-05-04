@@ -1,0 +1,17 @@
+Accusé de réception de demande de devis
+
+<p>Bonjour,<br/><br/>
+
+Nous vous informons que votre demande de devis bien été transmise à nos services.
+<br/><br/>
+Voici les détails de votre demande : <br/><br/>
+    &nbsp;&nbsp;&nbsp;    Type de demande: {{ devis.type }}<br/>
+    &nbsp;&nbsp;&nbsp;    Type de prestation: {{ devis.prestationType }}<br/>
+    &nbsp;&nbsp;&nbsp;    Durée: {{ devis.duree }}<br/>
+    &nbsp;&nbsp;&nbsp;    Heure de début: {{ devis.startAt }}<br/>
+    &nbsp;&nbsp;&nbsp;    Heure de fin: {{ devis.endAt }}<br/>
+    &nbsp;&nbsp;&nbsp;    Nombre d'hôte: {{ devis.nbHote }}<br/>
+    {% if devis.description != "NA" %}
+    &nbsp;&nbsp;&nbsp;    Description de poste: {{ devis.description }}
+    {% endif %}<br/><br/>
+Cordialement,</p>

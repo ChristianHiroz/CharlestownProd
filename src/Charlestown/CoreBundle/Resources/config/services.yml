@@ -12,6 +12,11 @@ services:
         arguments: [~, Charlestown\OperationBundle\Entity\Operation, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Opération, group: Event }
+    admin.devis:
+        class: Charlestown\CoreBundle\Admin\DevisAdmin
+        arguments: [~, Charlestown\CustomerBundle\Entity\Devis, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Devis, group: Client }
     admin.demand_formation:
         class: Charlestown\CoreBundle\Admin\DemandFormationAdmin
         arguments: [~, Charlestown\DemandBundle\Entity\DemandFormation, ~]
@@ -97,3 +102,8 @@ services:
         arguments: [~, Charlestown\CustomerBundle\Entity\Book, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Books event, group: Event }
+    admin.message:
+        class: Charlestown\CoreBundle\Admin\MessageAdmin
+        arguments: [~, Charlestown\ChatBundle\Entity\Message, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Messages, group: Chat }

@@ -1,3 +1,8 @@
+charlestown_notification:
+    resource: "@CharlestownNotificationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 charlestown_chat:
     resource: "@CharlestownChatBundle/Controller/"
     type:     annotation

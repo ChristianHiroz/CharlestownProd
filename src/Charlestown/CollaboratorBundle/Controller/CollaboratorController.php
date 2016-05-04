@@ -16,7 +16,14 @@ class CollaboratorController extends Controller
      */
     public function indexAction()
     {
-        if($this->getUser()->hasRole("ROLE_USER")){
+
+        if($this->getUser() == null) {
+            return $this->redirect($this->generateUrl('index'));
+        }
+        elseif($this->getUser()->hasRole("ROLE_CUSTOMER")){
+        return $this->redirect($this->generateUrl('index'));
+        }
+        elseif($this->getUser()->hasRole("ROLE_USER")){
             $lasts = $this->getDoctrine()->getManager()->getRepository('CharlestownBlogBundle:Article')->findLasts();
             $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
@@ -35,7 +42,8 @@ class CollaboratorController extends Controller
         if($this->getUser()->getCustomer() == null){
             return $this->redirect($this->generateUrl('my_agency_contact'));
         }
-        return array('user' => $this->getUser());
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+        return array('user' => $this->getUser(), 'messages' => $message);
     }
 
     /**
@@ -44,7 +52,8 @@ class CollaboratorController extends Controller
      */
     public function evaluationAction()
     {
-        return array('user' => $this->getUser());
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+        return array('user' => $this->getUser(), 'messages' => $message);
     }
 
     /**
@@ -55,8 +64,9 @@ class CollaboratorController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $pv = $em->getRepository('CharlestownFileBundle:File')->getByFileType("PV CE");
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
-        return array('pvs' => $pv, 'user' => $this->getUser());
+        return array('pvs' => $pv, 'user' => $this->getUser(), 'messages' => $message);
     }
     /**
      * @Route("/contact", name="contact")
@@ -64,7 +74,8 @@ class CollaboratorController extends Controller
      */
     public function contactAction()
     {
-        return array('user' => $this->getUser());
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+        return array('user' => $this->getUser(), 'messages' => $message);
     }
 
     /**
@@ -73,7 +84,8 @@ class CollaboratorController extends Controller
      */
     public function myAgencyContactAction()
     {
-        return array('user' => $this->getUser());
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+        return array('user' => $this->getUser(), 'messages' => $message);
     }
 
     /**
@@ -85,8 +97,9 @@ class CollaboratorController extends Controller
         $em = $this->getDoctrine()->getManager();
         $syndicats = $em->getRepository('CharlestownCollaboratorBundle:Collaborator')->findSyndicated();
         $mandate = $em->getRepository('CharlestownCollaboratorBundle:Mandate')->findAll();
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
-        return array('users' => $syndicats, 'user' => $this->getUser(), 'mandates' => $mandate);
+        return array('users' => $syndicats, 'user' => $this->getUser(), 'mandates' => $mandate, 'messages' => $message);
     }
 
     /**
