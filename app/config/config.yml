@@ -118,7 +118,7 @@ sonata_block:
 #    context_manager: sonata.page.block.context_manager
     default_contexts: [cms]
     blocks:
-        sonata.block.service.mailer:
+        sonata.block.service_notification:
         sonata.admin.block.admin_list:
             contexts: [admin]
 
@@ -130,6 +130,7 @@ sonata_admin:
     dashboard:
         blocks:
 #            - { position: right, type: sonata.block.service.mailer } TODO: activer et faire le service mailer complet
+            - { position: right, type: sonata.block.service_notification }
             - { position: left, type: sonata.admin.block.admin_list }
 #    assets:
 #        javascripts:

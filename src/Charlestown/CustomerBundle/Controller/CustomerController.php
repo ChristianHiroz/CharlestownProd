@@ -2,6 +2,8 @@
 
 namespace Charlestown\CustomerBundle\Controller;
 
+use Charlestown\NotificationBundle\Entity\Notification;
+use Charlestown\NotificationBundle\Entity\NotificationUser;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -69,6 +71,7 @@ class CustomerController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();
+        $notification = new Notification();
         $uniforme = $em->getRepository('CharlestownFileBundle:File')->find($id);
         if($type == "ae"){
             $user->setUniformAE($uniforme);
@@ -78,6 +81,41 @@ class CustomerController extends Controller
         }
 
         $em->persist($user);
+        $em->flush();
+
+        $rcNotification = new NotificationUser();
+        $plNotification = new NotificationUser();
+        $twNotification = new NotificationUser();
+
+        $notification->setType("Uniforme");
+        $notification->setTitle("Changement d'uniforme préféré de " . $user->getCompanyName());
+        if($type == "ae"){
+        $notification->setDescription("L'uniforme choisi est " . $user->getUniformAE()->getNameShow());
+        }
+        else{
+            $notification->setDescription("L'uniforme choisi est " . $user->getUniformEvent()->getNameShow());
+        }
+
+        $notification->setRelativeId($user->getId());
+
+        $agency = $user->getAgency();
+        $rcNotification->setNotification($notification);
+        $plNotification->setNotification($notification);
+        $twNotification->setNotification($notification);
+
+        $rcNotification->setUser($agency->getCustomerManager());
+        $plNotification->setUser($agency->getPlanningCoordinator());
+        $twNotification->setUser($agency->getThirdWellAccount());
+
+        $rcNotification->setState("unread");
+        $plNotification->setState("unread");
+        $twNotification->setState("unread");
+
+        $em->persist($notification);
+        $em->persist($rcNotification);
+        $em->persist($plNotification);
+        $em->persist($twNotification);
+
         $em->flush();
 
         $this->get('charlestown.mailer')->sendUniformSelectionNotificationMail($this->getUser());

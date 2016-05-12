@@ -83,7 +83,8 @@ class FileOperationAdmin extends Admin
                             1 => 'Oui',
                             0 => 'Non'
                         )))
-                    ->add('operation');
+                    ->add('operation')
+                    ->add('event');
     }
 
     /**

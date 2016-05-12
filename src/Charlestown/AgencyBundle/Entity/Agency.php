@@ -54,7 +54,7 @@ class Agency
      *
      * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Collaborator")
      */
-    private $eventCustomerManager;
+    private $thirdWellAccount;
 
     /**
      * @var \Collaborator
@@ -124,27 +124,19 @@ class Agency
     }
 
     /**
-     * Set eventCustomerManager
-     *
-     * @param \Event $eventCustomerManager
-     *
-     * @return Agency
+     * @return \Event
      */
-    public function setEventCustomerManager($eventCustomerManager)
+    public function getThirdWellAccount()
     {
-        $this->eventCustomerManager = $eventCustomerManager;
-
-        return $this;
+        return $this->thirdWellAccount;
     }
 
     /**
-     * Get eventCustomerManager
-     *
-     * @return \Event
+     * @param \Event $thirdWellAccount
      */
-    public function getEventCustomerManager()
+    public function setThirdWellAccount($thirdWellAccount)
     {
-        return $this->eventCustomerManager;
+        $this->thirdWellAccount = $thirdWellAccount;
     }
 
     /**

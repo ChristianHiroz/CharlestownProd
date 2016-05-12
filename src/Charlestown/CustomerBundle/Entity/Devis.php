@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Devis
  *
  * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="Charlestown\CustomerBundle\Entity\DevisRepository")
  */
 class Devis

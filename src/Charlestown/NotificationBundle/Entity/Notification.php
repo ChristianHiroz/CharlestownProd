@@ -2,6 +2,7 @@
 
 namespace Charlestown\NotificationBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,18 +44,11 @@ class Notification
     private $notifiedAt;
 
     /**
-     * @var \stdClass
+     * @var NotificationUser
      *
-     * @ORM\Column(name="user", type="object")
+     * @ORM\OneToMany(targetEntity="Charlestown\NotificationBundle\Entity\NotificationUser", mappedBy="notification")
      */
-    private $user;
-
-    /**
-     * @var \stdClass
-     *
-     * @ORM\Column(name="state", type="object")
-     */
-    private $state;
+    private $users;
 
     /**
      * @var string
@@ -62,6 +56,18 @@ class Notification
      * @ORM\Column(name="type", type="string", length=50)
      */
     private $type;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="relativeId", type="integer")
+     */
+    private $relativeId;
+
+    public function __construct(){
+        $this->user = new ArrayCollection();
+        $this->notifiedAt = new \DateTime();
+    }
 
 
     /**
@@ -171,30 +177,6 @@ class Notification
     }
 
     /**
-     * Set state
-     *
-     * @param \stdClass $state
-     *
-     * @return Notification
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Get state
-     *
-     * @return \stdClass
-     */
-    public function getState()
-    {
-        return $this->state;
-    }
-
-    /**
      * Set type
      *
      * @param string $type
@@ -217,5 +199,44 @@ class Notification
     {
         return $this->type;
     }
-}
+
+    /**
+     * @return NotificationUser
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param NotificationUser $users
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
+    }
+
+    /**
+     * @param NotificationUser $user
+     */
+    public function addUser($user){
+        $this->users[] = $user;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRelativeId()
+    {
+        return $this->relativeId;
+    }
+
+    /**
+     * @param int $relativeId
+     */
+    public function setRelativeId($relativeId)
+    {
+        $this->relativeId = $relativeId;
+    }
+    }
 

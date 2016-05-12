@@ -1,0 +1,185 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="notificationModalLabel">Notifications</h4>
+                </div>
+                <div class="modal-body">
+                {% for notification in settings.notifications %}
+                    {% if notification.state == "unread" %}
+                    <div class="notification_body">
+                        <h3 class="notification_title">{{ notification.notification.title }}</h3>
+                        <p class="notification_date">{{ notification.notification.notifiedAt |  localizeddate('full', 'none') }}</p>
+                        <p class="notification_description">{{ notification.notification.description }}</p>
+                        {% if notification.notification.type == "DemandFormation" %}
+                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            {% if notification.order != "TODO" %}
+                            <a class="btn btn-warning" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
+                            {% endif %}
+                        {% elseif notification.notification.type == "DemandMobility" %}
+                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            {% if notification.order != "TODO" %}
+                                <a class="btn btn-warning" id="{{ notification.id }}" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
+                            {% endif %}
+                        {% elseif notification.notification.type == "DemandMeeting" %}
+                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            {% if notification.order != "TODO" %}
+                                <a class="btn btn-warning" id="{{ notification.id }}" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
+                            {% endif %}
+                        {% elseif notification.notification.type == "DemandVacancy" %}
+                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            {% if notification.order != "TODO" %}
+                                <a class="btn btn-warning" id="{{ notification.id }}" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
+                            {% endif %}
+                        {% elseif notification.notification.type == "Devis" %}
+                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            {% if notification.order != "TODO" %}
+                                <a class="btn btn-warning" id="{{ notification.id }}" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
+                            {% endif %}
+                        {% elseif notification.notification.type == "OperationAppliance" %}
+                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            {% if notification.order != "TODO" %}
+                                <a class="btn btn-warning" id="{{ notification.id }}" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
+                            {% endif %}
+                        {% elseif notification.notification.type == "FileOperation" %}
+                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            {% if notification.order != "TODO" %}
+                                <a class="btn btn-warning"  id="{{ notification.id }}"onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
+                            {% endif %}
+                        {% elseif notification.notification.type == "Uniforme" %}
+                            <a class="btn btn-danger" href="{{ path('admin_charlestown_customer_customer_edit', {'id' : notification.notification.relativeId}) }}">Voir la fiche client</a>
+                            <a class="btn btn-warning" id="{{ notification.id }}" onclick="deleteNotification({{ notification.id }})">Supprimer notification</a>
+                        {% endif %}
+                    </div>
+                    <hr>
+                    {% endif %}
+                {% endfor %}
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div class="modal fade" id="notificationInfoModal" tabindex="-1" role="dialog" aria-labelledby="notificationInfoModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="notificationInfoModalLabel">Notifications infos</h4>
+                </div>
+                <div class="modal-body">
+                {% for notification in settings.notifications %}
+                    {% if notification.state == "info" %}
+                        <div class="notification_body">
+                            <h3 class="notification_title">{{ notification.notification.title }}</h3>
+                            <p class="notification_date">{{ notification.notification.notifiedAt |  localizeddate('full', 'none') }}</p>
+                            <p class="notification_description">{{ notification.notification.description }}</p>
+                            <a class="btn btn-warning" id="{{ notification.id }}" onclick="deleteNotification({{ notification.id }})">Supprimer notification</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="sonata-feeds-container">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Bonjour {{ settings.user.firstName }}</h3>
+            </div>
+            <div class="box-body">
+                <table class="table table-hover">
+                    <tbody>
+                    <tr style="height:52px;">
+                        <td class="sonata-ba-list-label" width="40%" style="font-size: 24px;">
+                            {% if settings.count > 0 %}
+                            <button style="color:red;" class="btn-link btn-flat" data-toggle="modal" data-target="#notificationModal"><span class="glyphicon glyphicon-envelope"><sup id="sup">{{ settings.count }}</sup></span></button>
+                            {% else %}
+                            <button class="btn-link btn-flat" data-toggle="modal" data-target="#notificationModal"><span class="glyphicon glyphicon-envelope"></span></button>
+                            {% endif %}
+                        </td>
+                        <td style="font-size: 24px;">
+                            <div class="btn-group">
+                                <button class="btn-link btn-flat" data-toggle="modal" data-target="#notificationInfoModal"><span class="glyphicon glyphicon-asterisk"></span></button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    <script>
+        function deleteNotification(id){
+            $("#"+id).parent().next().remove();
+            $("#"+id).parent().remove();
+            var supValue = $("#sup").text();
+            supValue = supValue -1;
+            if(supValue != 0){
+                $("#sup").text(supValue);
+            }
+            else{
+                $("#sup").parent().css("color", "blue")
+                $("#sup").remove();
+            }
+
+            $.ajax({
+                url: Routing.generate('notification_delete', {'id' : id}),
+                type: 'GET',
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        }
+        function readNotification(id){
+            $("#"+id).parent().next().remove();
+            $("#"+id).parent().remove();
+            var supValue = $("#sup").text();
+            supValue = supValue -1;
+            if(supValue != 0){
+                $("#sup").text(supValue);
+            }
+            else{
+                $("#sup").parent().css("color", "blue")
+                $("#sup").remove();
+            }
+
+            $.ajax({
+                url: Routing.generate('notification_read', {'id' : id}),
+                type: 'GET',
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        }
+
+        function sendNotif(id){
+            $.ajax({
+                url: Routing.generate('notification_complete', {'id' : id}),
+                type: 'GET',
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+{% endblock %}

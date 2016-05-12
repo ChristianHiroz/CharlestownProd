@@ -138,6 +138,7 @@ class Operation
         $this->date = new \DateTime();
         $this->active = true;
         $this->timeslots = new ArrayCollection();
+        $this->appliances = new ArrayCollection();
     }
 
     /**

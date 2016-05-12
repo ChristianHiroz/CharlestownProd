@@ -6,6 +6,7 @@ use Charlestown\CarpoolingBundle\Entity\Carpooling;
 use Charlestown\ChatBundle\Entity\Chatroom;
 use Charlestown\CustomerBundle\Entity\Customer;
 use Charlestown\FileBundle\Entity\File;
+use Charlestown\NotificationBundle\Entity\NotificationUser;
 use Charlestown\OperationBundle\Entity\OperationAppliance;
 use Charlestown\SkillPurseBundle\Entity\Lesson;
 use Charlestown\SkillPurseBundle\Entity\Skill;
@@ -174,7 +175,12 @@ class Collaborator extends User
      */
     private $evaluations;
 
-
+    /**
+     * @var NotificationUser
+     *
+     * @ORM\OneToMany(targetEntity="Charlestown\NotificationBundle\Entity\NotificationUser", mappedBy="user")
+     */
+    private $notifications;
 
 
     public function __construct()
@@ -190,6 +196,7 @@ class Collaborator extends User
         $this->appliances = new ArrayCollection();
         $this->myOffers = new ArrayCollection();
         $this->myOffersApplications = new ArrayCollection();
+        $this->notifications = new ArrayCollection();
         parent::__construct();
     }
 
@@ -563,5 +570,23 @@ class Collaborator extends User
     {
         $this->activeChat = $activeChat;
     }
+
+    /**
+     * @return NotificationUser
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
+    }
+
+    /**
+     * @param NotificationUser $notification
+     */
+    public function addNotification($notification)
+    {
+        $this->notifications[] = $notification;
+    }
+
+
 }
 

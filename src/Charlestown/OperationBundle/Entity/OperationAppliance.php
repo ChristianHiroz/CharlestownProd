@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * OperationAppliance
  *
  * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="Charlestown\OperationBundle\Entity\OperationApplianceRepository")
  */
 class OperationAppliance

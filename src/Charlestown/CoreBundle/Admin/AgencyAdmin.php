@@ -16,8 +16,8 @@ class AgencyAdmin extends Admin
             ->add('localisation', 'text', array('label' => 'Ville'))
             ->add('calendar', 'text', array('label' => 'Nom du calendrier','required' => false))
             ->add('customerManager', 'sonata_type_model', array('label' => 'Responsable client','property' => 'username'))
-            ->add('eventCustomerManager', 'sonata_type_model', array('label' => 'Responsable client event','property' => 'username'))
-            ->add('planningCoordinator', 'sonata_type_model', array('label' => 'Coordinateur planning','property' => 'username'))
+            ->add('planningCoordinator', 'sonata_type_model', array('label' => 'Coordinateur planning/Bookeur','property' => 'username'))
+            ->add('thirdWellAccount', 'sonata_type_model', array('label' => 'Compte absence','property' => 'username'))
             ->add('numeroUrgence')
         ;
     }

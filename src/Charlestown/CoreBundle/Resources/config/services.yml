@@ -6,6 +6,11 @@ services:
             - @templating
         tags:
             - { name: sonata.block }
+    sonata.block.service_notification:
+        class: Charlestown\NotificationBundle\Services\NotificationBlock
+        arguments: [sonata.block.service_notification,@templating,@service_container]
+        tags:
+            - { name: sonata.block }
 
     admin.operation:
         class: Charlestown\CoreBundle\Admin\OperationAdmin
