@@ -78,4 +78,14 @@ class CoreController extends Controller
             return $this->render("CharlestownCoreBundle:Core:mentionCustomer.html.twig", array("user" => $user));
         }
     }
+
+    /**
+     * @Route("/help", name="help")
+     * @Template()
+     */
+    public function helpAction(){
+        $user = $this->getUser();
+
+        return array("user" => $user);
+    }
 }
