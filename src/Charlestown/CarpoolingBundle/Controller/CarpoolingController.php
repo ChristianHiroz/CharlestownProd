@@ -29,7 +29,8 @@ class CarpoolingController extends Controller
     {
         $carpoolings =  $this->getDoctrine()->getEntityManager()->getRepository('CharlestownCarpoolingBundle:Carpooling')->findAll();
 
-        return array('carpoolings' => $carpoolings, 'user' => $this->getUser(), 'now' => new \DateTime());
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+        return array('carpoolings' => $carpoolings, 'user' => $this->getUser(), 'now' => new \DateTime(), 'messages' => $message);
     }
 
     /**
@@ -38,8 +39,9 @@ class CarpoolingController extends Controller
      */
     public function myCarpoolingsAction()
     {
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
-        return array('carpoolings' => $this->getUser()->getMyCarpoolings(), 'user' => $this->getUser());
+        return array('carpoolings' => $this->getUser()->getMyCarpoolings(), 'user' => $this->getUser(), 'messages' => $message);
     }
 
     /**
@@ -48,8 +50,9 @@ class CarpoolingController extends Controller
      */
     public function myDemandsAction()
     {
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
-        return array('applications' => $this->getUser()->getMyCarpoolingsApplication(), 'selections' => $this->getUser()->getMyCarpoolingsSelection(), 'user' => $this->getUser());
+        return array('applications' => $this->getUser()->getMyCarpoolingsApplication(), 'selections' => $this->getUser()->getMyCarpoolingsSelection(), 'user' => $this->getUser(), 'messages' => $message);
     }
 
     /**
@@ -73,11 +76,13 @@ class CarpoolingController extends Controller
 
             return $this->redirect($this->generateUrl('mycarpoolings'));
         }
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -111,11 +116,13 @@ class CarpoolingController extends Controller
     {
         $entity = new Carpooling();
         $form   = $this->createCreateForm($entity);
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -138,12 +145,14 @@ class CarpoolingController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -191,12 +200,14 @@ class CarpoolingController extends Controller
 
             return $this->redirect($this->generateUrl('covoiturage_edit', array('id' => $id)));
         }
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
     /**
@@ -295,7 +306,7 @@ class CarpoolingController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('carpooling'));
+        return $this->redirect($this->generateUrl('mycarpoolings'));
     }
 
 
@@ -315,6 +326,6 @@ class CarpoolingController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('carpooling'));
+        return $this->redirect($this->generateUrl('mycarpoolings'));
     }
 }

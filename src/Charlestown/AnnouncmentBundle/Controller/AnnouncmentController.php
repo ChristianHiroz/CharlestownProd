@@ -30,10 +30,12 @@ class AnnouncmentController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('CharlestownAnnouncmentBundle:Announcment')->findAll();
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'announcments' => $entities,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -76,16 +78,19 @@ class AnnouncmentController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setOfferer($this->getUser());
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('announcment'));
         }
 
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -119,11 +124,13 @@ class AnnouncmentController extends Controller
     {
         $entity = new Announcment();
         $form   = $this->createCreateForm($entity);
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -147,11 +154,13 @@ class AnnouncmentController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -200,11 +209,14 @@ class AnnouncmentController extends Controller
             return $this->redirect($this->generateUrl('announcment'));
         }
 
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
     /**

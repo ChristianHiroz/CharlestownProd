@@ -31,9 +31,12 @@ class LessonController extends Controller
 
         $entities = $em->getRepository('CharlestownSkillPurseBundle:Lesson')->findAll();
 
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
         return array(
             'lessons' => $entities,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -43,7 +46,9 @@ class LessonController extends Controller
      */
     public function myLessonsAction()
     {
-        return array('lessons' => $this->getUser()->getMyLessons(), 'user' => $this->getUser());
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
+        return array('lessons' => $this->getUser()->getMyLessons(), 'user' => $this->getUser(), 'messages' => $message);
     }
 
     /**
@@ -52,7 +57,9 @@ class LessonController extends Controller
      */
     public function myLessonsApplicationsAction()
     {
-        return array('lessons' => $this->getUser()->getLessons(),'lessonsApplications' => $this->getUser()->getMyLessonsApplication(), 'user' => $this->getUser());
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
+        return array('messages' => $message, 'lessons' => $this->getUser()->getLessons(),'lessonsApplications' => $this->getUser()->getMyLessonsApplication(), 'user' => $this->getUser());
     }
 
 
@@ -78,10 +85,13 @@ class LessonController extends Controller
             return $this->redirect($this->generateUrl('mylessons'));
         }
 
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -116,10 +126,13 @@ class LessonController extends Controller
         $entity = new Lesson();
         $form   = $this->createCreateForm($entity);
 
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -143,11 +156,14 @@ class LessonController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 
@@ -196,11 +212,14 @@ class LessonController extends Controller
             return $this->redirect($this->generateUrl('lesson_edit', array('id' => $id)));
         }
 
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'messages' => $message
         );
     }
     /**

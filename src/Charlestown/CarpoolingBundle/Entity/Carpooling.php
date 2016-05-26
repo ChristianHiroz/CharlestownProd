@@ -5,6 +5,7 @@ namespace Charlestown\CarpoolingBundle\Entity;
 use Charlestown\CollaboratorBundle\Entity\Collaborator;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Carpooling
@@ -84,6 +85,7 @@ class Carpooling
     public function __construct(){
         $this->applicants = new ArrayCollection();
         $this->selected = new ArrayCollection();
+        $this->dateCreation = new \DateTime();
     }
 
     /**

@@ -34,6 +34,10 @@
     <li data-menuanchor="secondPage"><a onclick="setActive('b')" id="b"  style="color:white; padding: 9px 18px;display: block;" href="#secondPage">Menu Charlestown</a></li>
     <li data-menuanchor="3rdPage"><a onclick="setActive('c')" id="c" style="color:white; padding: 9px 18px;display: block;" href="#3rdPage">Mon espace</a></li>
     <li data-menuanchor="4thpage"><a onclick="setActive('d')" id="d"  style="color:white; padding: 9px 18px;display: block;" href="#4thpage">Pied de page</a></li>
+    <li data-menuanchor="4thpage"><a onclick="setActive('e')" id="e"  style="color:white; padding: 9px 18px;display: block;" href="#1ststep">Premiers pas</a></li>
+    <li data-menuanchor="4thpage"><a onclick="setActive('f')" id="f"  style="color:white; padding: 9px 18px;display: block;" href="#covoiturage">Le covoiturage</a></li>
+    <li data-menuanchor="4thpage"><a onclick="setActive('g')" id="g"  style="color:white; padding: 9px 18px;display: block;" href="#bourse">La bourse aux compétences</a></li>
+    <li data-menuanchor="4thpage"><a onclick="setActive('h')" id="h"  style="color:white; padding: 9px 18px;display: block;" href="#annonces">Les petites annonces</a></li>
 </ul>
 <div id="fullpage">
     <div class="section">
@@ -161,12 +165,131 @@
             {% endif %}
     </div>
     <div class="section">
-        <img src="{{ asset("images/presentation/footer.png") }}" style="margin-top: -7%;margin-left: 20%;height: 27px;width: auto;">
+        <img src="{{ asset("images/presentation/footer.png") }}" style="margin-top: -7%;height: 27px;width: auto;">
         <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Pied de page</h1>
         <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
             <h3>Chat en direct: Permet de discuter en direct avec l'ensemble de la communauté Charlestown</h3>
             <h3>Contacter un administrateur: Permet de contacter l'administrateur de l'espace collaborateur Charlestown, en cas de problème technique avec l'utilisateur du site uniquement</h3>
             <h3>Mentions légales de l'espace collaborateur Charlestown, merci d'en prendre note</h3>
+        </div>
+    </div>
+    <div class="section">
+        <img src="{{ asset("images/presentation/firststep.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+        <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Premiers pas</h1>
+        <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+            <p>
+                La première chose à faire quand vous découvrirez votre interface collaborateur est de mettre à jour votre photo de profil. Pour cela il suffit d'aller dans le menu "Mon espace" et l'onglet "Mes informations".<br/>
+                Ensuite, cliquer sur "Editer photo", puis "Parcourir", selectionnez votre photo, replacez le cadre pour qu'il corresponde au résultat voulu, et validez en cliquant sur "Mettre à jour".<br/><br/>
+                Enfin, retournez dans l'onglet "Profil" et vérifiez vos informations, si elles sont éronnées, contactez Charlestown.
+            </p>
+        </div>
+    </div>
+    <div class="section">
+        <div class="slide">
+            <img src="{{ asset("images/presentation/coivoiturage_1.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Coiturages proposés</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des covoiturages proposés par la communauté de Charlestown.<br/>
+                    Chaque covoiturage est décrit pas son lieu de départ, son lieu d'arrivé, la date du voyage et le nombre de places.<br/>
+                    Pour postuler à un covoiturage, il suffit de cliquer se le bouton "Rejoindre"
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/coivoiturage_2.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Je suis passager</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des covoiturages pour lesquels vous avez postuler.<br/>
+                    Chaque covoiturage est décrit pas son lieu de départ, son lieu d'arrivé, la date du voyage et le nombre de places.<br/>
+                    Pour retirer votre candidature à un covoiturage, il suffit de cliquer se le bouton "Retirer"
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/coivoiturage_3.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Je suis conducteur</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des covoiturages que vous avez crée.<br/>
+                    Chaque covoiturage est décrit pas son lieu de départ, son lieu d'arrivé, la date du voyage et le nombre de places.<br/>
+                    Pour le modifier, il suffit de cliquer sur le bouton "Modifier".<br/>
+                    Ensuite il est inscrit la liste des utilisteurs ayant postulé à votre covoiturage, vous pouvez visiter leur profil, accepter ou refuser leur candidature<br/>
+                    Enfin, une seconde liste comprennant les personnes ayant été acceptée pour le covoiturage, avec leur numéro de téléphone pour fixer les détails sur le covoiturage
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="slide">
+            <img src="{{ asset("images/presentation/bourse_1.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Cours proposés</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des cours proposés par la communauté de Charlestown.<br/>
+                    Chaque cours est décrit pas son lieu de déroulement,le nombre de places, les horaires.<br/>
+                    Pour postuler à un cours, il suffit de cliquer se le bouton "Rejoindre"
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/bourse_2.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Je suis élève</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des cours pour lesquels vous avez postuler.<br/>
+                    Chaque cours est décrit pas son lieu de déroulement,le nombre de places, les horaires et le type de cours.<br/>
+                    Deux listes sont disponibles, une qui comprend les cours ou vous avez été acceptés, une autre avec vos candidatures en cours.<br/>
+                    Vous pouvez quitter un cours en cliquant sur le bouton "Quitter".
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/bourse_3.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Je suis prof</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des cours que vous avez crée.<br/>
+                    Chaque cours est décrit pas son lieu de déroulement,le nombre de places, les horaires et le type de cours.<br/>
+                    Pour le modifier, il suffit de cliquer sur le bouton "Modifier".<br/>
+                    Ensuite il est inscrit la liste des utilisteurs ayant postulé à votre cours, vous pouvez visiter leur profil, accepter ou refuser leur candidature<br/>
+                    Enfin, une seconde liste comprennant les personnes ayant été acceptée pour le cours, avec leur numéro de téléphone pour fixer les détails sur le covoiturage
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="slide">
+            <img src="{{ asset("images/presentation/annonce_1.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Achat/Echange/Don/Recherche</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ces pages, vous pouvez voir la liste des objets mis en vente/echange/don ou recherche par un membre de la communauté Charlestown.<br/>
+                    Chaque objet possède un titre et une description, aucun prix n'est affiché, le reste de la transaction devra s'effectuer par un autre moyen que l'espace collaborateur Charlestown.<br/>
+                    Pour accepter une offre, il suffit de cliquer se le bouton adhéquat.
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/annonce_2.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Mon panier</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur cette page, vous pouvez voir la liste des annonces auxquelles vous avez répondu.<br/>
+                    Vous pouvez annuler la réponse à une annonce ou voir les informations sur le vendeur pour le contacter et continuer la transaction.<br/>
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/annonce_3.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Mes annonces</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur cette page vous pouvez gérer vos annonces, les supprimer, les modifiers et voir les informations de la personne ayant répondu à votre annonce.<br/>
+                    Vous pouvez aussi ajouter une nouvelle annonce en cliquant sur le bouton "Nouveau".
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -176,25 +299,81 @@
             $("#b").parent().removeClass("active");
             $("#c").parent().removeClass("active");
             $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
             $("#a").parent().addClass("active");
         }
         else if(variable == 'b'){
             $("#a").parent().removeClass("active");
             $("#c").parent().removeClass("active");
             $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
             $("#b").parent().addClass("active");
         }
         else if(variable == 'c'){
             $("#a").parent().removeClass("active");
             $("#b").parent().removeClass("active");
             $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
             $("#c").parent().addClass("active");
         }
         else if(variable == 'd'){
             $("#a").parent().removeClass("active");
             $("#c").parent().removeClass("active");
             $("#b").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
             $("#d").parent().addClass("active");
+        }
+        else if(variable == 'e'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#e").parent().addClass("active");
+        }
+        else if(variable == 'f'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#f").parent().addClass("active");
+        }
+        else if(variable == 'g'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#g").parent().addClass("active");
+        }
+        else if(variable == 'h'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().addClass("active");
         }
     }
 </script>
@@ -223,10 +402,10 @@
                 //Navigation
                 menu: '#menu',
                 lockAnchors: false,
-                anchors:['firstPage', 'secondPage', '3rdPage', '4thpage'],
+                anchors:['firstPage', 'secondPage', '3rdPage', '4thpage', '1ststep', 'covoiturage', 'bourse', 'annonces'],
                 navigation: false,
                 navigationPosition: 'right',
-                navigationTooltips: ['firstSlide', 'secondSlide', '3rdPage', '4thpage'],
+                navigationTooltips: ['firstSlide', 'secondSlide', '3rdPage', '4thpage', '1ststep', 'covoiturage', 'bourse', 'annonces'],
                 showActiveTooltip: false,
                 slidesNavigation: false,
                 slidesNavPosition: 'bottom',
@@ -258,7 +437,7 @@
                 controlArrows: true,
                 verticalCentered: true,
                 resize : false,
-                sectionsColor : ['#CC5500','#CC5500','#CC5500','#CC5500'],
+                sectionsColor : ['#CC5500','#CC5500','#CC5500','#CC5500','#CC5500','#CC5500','#CC5500','#CC5500'],
                 paddingTop: '3em',
                 paddingBottom: '10px',
                 fixedElements: '#header, .footer',
