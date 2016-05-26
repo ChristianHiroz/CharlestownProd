@@ -80,10 +80,20 @@ class CoreController extends Controller
     }
 
     /**
-     * @Route("/help", name="help")
+     * @Route("/aide", name="help")
      * @Template()
      */
     public function helpAction(){
+        $user = $this->getUser();
+
+        return array("user" => $user);
+    }
+
+    /**
+     * @Route("/help", name="help_customer")
+     * @Template()
+     */
+    public function helpCustomerAction(){
         $user = $this->getUser();
 
         return array("user" => $user);

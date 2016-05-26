@@ -374,6 +374,8 @@ border-bottom-left-radius: 25px;">
             <a href="" style="color:white;" id="socialOpen"><span class="caret"></span></a>
         </div>
 
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
         <script> // TODO : move to main.js
             $("#socialClose").click(function(e) {
                 e.preventDefault();
@@ -405,6 +407,7 @@ border-bottom-left-radius: 25px;">
                     <div class="col-md-3">
                         <a style="color:white;" href="#">Mentions légales</a>
                     </div>
+                    <a href="{{ path('help_customer') }}" style="float:right; font-size:30px; margin-top:-30px; margin-right:-150px; color:red;"><span class="glyphicon glyphicon-bell"></span></a>
                 </div>
             </div>
         </footer>

@@ -43,13 +43,12 @@
     <div class="section">
         <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: -10%;">Guide utilisateur</h1>
         <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
-            <p>Pour accéder à ce guide, il faut cliquer sur le bouton [1] en bas à droite de l'interface</p>
-            <p>Pour quitter à ce guide, il faut cliquer sur le bouton [2] en haut à gauche du guide</p>
-            <p>Pour vous déplacer dans ce guide, il existe trois méthodes :</p>
+            <p>Pour accéder à ce guide, il faut cliquer sur le bouton <span class="glyphicon glyphicon-bell"></span> en bas à droite de l'interface</p>
+            <p>Pour quitter à ce guide, il faut cliquer sur le bouton "Retour au site" en haut à gauche du guide</p>
+            <p>Pour vous déplacer dans ce guide, il existe deux méthodes :</p>
             <ul>
                 <li>Appuyez sur les touches directionnelles de votre clavier</li>
-                <li>Utiliser la molette de la souris</li>
-                <li>Cliquer sur les flèches à gauche [7] ou à droite [8] sur l'écran</li>
+                <li>Cliquer sur les flèches à gauche ou à droite sur l'écran si elle sont présentes</li>
             </ul>
         </div>
     </div>
@@ -133,7 +132,7 @@
     <div class="section">
             {% if is_granted('ROLE_AE') %}
                 <img src="{{ asset("images/presentation/menu_espace_deux.png") }}" style="margin-top: -7%;margin-left: 80%;height: auto;width: 230px;">
-                <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Menu Charlestown</h1>
+                <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Mon espace</h1>
                 <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
                     <p>Ce menu contient vos informations et vous permet d'intéragir avec Charlestown et l'ensemble de la communauté des collaborateurs</p>
                     <h3>Mon espace</h3>
@@ -149,7 +148,7 @@
                 </div>
             {% elseif is_granted('ROLE_EVENT') %}
                 <img src="{{ asset("images/presentation/menu_espace_deux.png") }}" style="margin-top: -7%;margin-left: 80%;height: auto;width: 230px;">
-                <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Menu Charlestown</h1>
+                <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Mon espace</h1>
                 <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
                     <p>Ce menu contient vos informations et vous permet d'intéragir avec Charlestown et l'ensemble de la communauté des collaborateurs</p>
                     <h3>Mon espace</h3>
