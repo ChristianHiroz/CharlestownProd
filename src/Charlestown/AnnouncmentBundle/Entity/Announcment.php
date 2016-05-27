@@ -52,7 +52,7 @@ class Announcment
     /**
      * @var \File
      *
-     * @ORM\OneToOne(targetEntity="Charlestown\FileBundle\Entity\File")
+     * @ORM\OneToOne(targetEntity="Charlestown\FileBundle\Entity\File", cascade={"persist"})
      */
     private $picture;
 

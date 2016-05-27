@@ -66,7 +66,7 @@ class FileAdmin extends Admin
         } else {
             $image = $this->getSubject();
         }
-        $fileFieldOptions = array('required' => false);
+        $fileFieldOptions = array('required' => false, 'label' => 'Fichier');
         if ($image && ($webPath = $image->getAbsolutePath())) {
             // get the container so the full path to the image can be set
             $container = $this->getConfigurationPool()->getContainer();
@@ -77,8 +77,8 @@ class FileAdmin extends Admin
         }
 
         $formMapper->add('file', 'file', $fileFieldOptions)
-                    ->add('nameShow')
-                    ->add('fileType');
+                    ->add('nameShow','text',array('label' => "Nom du fichier"))
+                    ->add('fileType', 'sonata_type_model', array('label' => 'Type de fichier'));
     }
 
     /**

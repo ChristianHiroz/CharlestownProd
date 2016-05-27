@@ -27,8 +27,8 @@
                 </div>
                 {% for lesson in lessons %}
                     <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:100px;">
-                        <div class="col-md-12" style="height:100%;">
-                            <p style="line-height: 50px;">{{ lesson.localisation }} au {{ lesson.address }}, {{ lesson.town }} {{ lesson.pc }} <span class="glyphicon glyphicon-menu-right"></span> de {{ lesson.startAt | localizeddate('full', 'none') }} à {{ lesson.endAt | localizeddate('full', 'none') }} || Places : {{ lesson.room }} || {{ lesson.type }} <a class="btn btn-xs btn-success" href="{{ path('lesson_edit', {'id' : lesson.id, 'user' : user.id}) }}">Modifier</a></p>
+                        <div class="col-md-12" style="height:100%; width:100%;">
+                            <p style="line-height: 25px;">{{ lesson.localisation }} au {{ lesson.address }}, {{ lesson.town }} {{ lesson.pc }} <span class="glyphicon glyphicon-menu-right"></span> de {{ lesson.startAt | localizeddate('full', 'none') }} à {{ lesson.endAt | localizeddate('full', 'none') }} || Places : {{ lesson.room }} || {{ lesson.type }} <a class="btn btn-xs btn-success" href="{{ path('lesson_edit', {'id' : lesson.id, 'user' : user.id}) }}">Modifier</a></p>
                             En attente :
                     {% if not lesson.studentsApplicants is empty %}
                         {% for applicant in lesson.studentsApplicants %}

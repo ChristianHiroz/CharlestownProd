@@ -112,6 +112,11 @@ pugx_multi_user:
     customer:
         entity:
           class: Charlestown\CustomerBundle\Entity\Customer
+        profile:
+          form:
+            type: Charlestown\UserBundle\Form\ProfileFormType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
 
 
 sonata_block:

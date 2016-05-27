@@ -21,7 +21,7 @@ class OperationApplianceAdmin extends Admin
                 'choices' => array(
                     1 => 'Oui',
                     0 => 'Non'
-                )))
+                ), 'label' => 'Accepter'))
         ;
     }
 

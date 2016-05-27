@@ -14,137 +14,15 @@
 
         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="{{ asset('bundles/charlestowncore/js/jquery.fullPage.js') }}"></script>
-        <script>
-            $(document).ready(function() {
-                $('#fullpage').fullpage({
-                    //Navigation
-                    menu: '#menu',
-                    lockAnchors: false,
-                    anchors:['firstPage', 'secondPage'],
-                    navigation: false,
-                    navigationPosition: 'right',
-                    navigationTooltips: ['firstSlide', 'secondSlide'],
-                    showActiveTooltip: false,
-                    slidesNavigation: false,
-                    slidesNavPosition: 'bottom',
-
-                    //Scrolling
-                    css3: true,
-                    scrollingSpeed: 700,
-                    fitToSection: true,
-                    fitToSectionDelay: 1000,
-                    scrollBar: false,
-                    easing: 'easeInOutCubic',
-                    easingcss3: 'ease',
-                    loopBottom: false,
-                    loopTop: false,
-                    loopHorizontal: true,
-                    continuousVertical: false,
-                    normalScrollElements: '#element1, .element2',
-                    scrollOverflow: false,
-                    touchSensitivity: 15,
-                    normalScrollElementTouchThreshold: 5,
-
-                    //Accessibility
-                    keyboardScrolling: true,
-                    animateAnchor: true,
-                    recordHistory: true,
-
-                    //Design
-                    controlArrows: true,
-                    verticalCentered: true,
-                    resize : false,
-                    paddingBottom: '10px',
-                    fixedElements: '#header, .footer',
-                    sectionsColor : ['', '#E91726'],
-                    responsiveWidth: 0,
-                    responsiveHeight: 0,
-
-                    //Custom selectors
-                    sectionSelector: '.section',
-                    slideSelector: '.slide',
-
-                    //events
-                    onLeave: function(index, nextIndex, direction){},
-                    afterLoad: function(anchorLink, index){},
-                    afterRender: function(){},
-                    afterResize: function(){},
-                    afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
-                    onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
-                });
-            });
-        </script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body style="height: 100%; margin:0;">
-    <div id="fullpage">
-        <div class="section active" style="padding-top:0px; !important">
             {% block body %}
             <div class="container">
 
             </div>
             {% endblock %}
-        </div>
-        {% if user is defined %}
-        <div class="section">
-            <style>
-                #menuli li {
-                    display:inline-block;
-                    margin: 10px;
-                    background:#fff;
-                    background: rgba(255,255,255, 0.5);
-                    -webkit-border-radius: 10px;
-                    border-radius: 10px;
-                    position:absolute;
-                    top:0%;
-                }
-                #menuli li.active{
-                    background:#666;
-                    background: rgba(0,0,0, 0.5);
-                    color: #fff;
-                }
-                #menuli li a {
-                    color: white;
-                    font-size:25px;
-                }
-            </style>
-            <div class="slide">
-                <ul id="menuli">
-                    <li data-menuanchor="firstPage"><a href="#firstPage">Retour au site</a></li>
-                </ul>
-                <div style="margin:auto; width:50%; font-size:25px;">
-                    <h1>Bienvenue {{ user.firstName }},</h1>
-                    <p>
-                        Avant de commencer à utiliser l'espace collaborateur de Charlestown, une petite visite guidée s'impose.
-                        <br><br><br><br><br><br>
-                    </p>
-                </div>
-            </div>
-            <div class="slide">
-                <ul id="menuli">
-                    <li data-menuanchor="firstPage"><a href="#firstPage">Retour au site</a></li>
-                </ul>
-                <div style="margin:auto; width:50%; font-size:25px;">
-                    <h1>Le menu Charlestown,</h1>
-                    <p>
-                        Ici vous trouverez toutes les informations sur l'entreprise Charlestown, les règles d'or, le règlement intérieur et bien d'autres que nous vous invitons à découvrir sans plus attendre
-                        <br><br><br><br><br><br>
-                    </p>
-                </div>
-            </div>
-            <div class="slide">
-                <ul id="menuli">
-                    <li data-menuanchor="firstPage"><a href="#firstPage">Retour au site</a></li>
-                </ul>
-            </div>
-            <div class="slide">
-                <ul id="menuli">
-                    <li data-menuanchor="firstPage"><a href="#firstPage">Retour au site</a></li>
-                </ul>
-            </div>
-        </div>
-        {% endif %}
-    </div>
+
         {% block javascripts %}
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.0/cropper.js"></script>
@@ -152,6 +30,7 @@
             <script src="{{ asset('bundles/charlestowncore/js/vegas.js') }}"></script>
             <script src="{{ asset('bundles/charlestowncore/js/vegas.min.js') }}"></script>
             <script src="{{ asset('bundles/charlestowncore/js/main.js') }}"></script>
+            <script src="{{ asset('bundles/charlestowncore/js/jquery.fullPage.js') }}"></script>
             <script>$("body").vegas({
                     delay: 7000,
                     timer: false,

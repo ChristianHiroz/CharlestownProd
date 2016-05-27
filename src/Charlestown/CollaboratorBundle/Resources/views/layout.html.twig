@@ -1274,31 +1274,33 @@
 
 
     {% block chat %}
-        {% if user.activeChat %}
-        <div id="chat_container" class="hidden">
-            <button id="chat_close">Chat Charlestown</button>
-            <div id="chat_body">
-                {% for message in messages %}
-                    {% if message.writer.id == user.id %}
-                        <div class="message_box_send" id="{{ message.id }}">
-                            <img class="messages-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
-                            <div class="message_send">
-                                 {{ message.message }}
+        {% if messages %}
+            {% if user.activeChat %}
+            <div id="chat_container" class="hidden">
+                <button id="chat_close">Chat Charlestown</button>
+                <div id="chat_body">
+                    {% for message in messages %}
+                        {% if message.writer.id == user.id %}
+                            <div class="message_box_send" id="{{ message.id }}">
+                                <img class="messages-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
+                                <div class="message_send">
+                                     {{ message.message }}
+                                </div>
                             </div>
-                        </div>
-                    {% else %}
-                        <div class="message_box_received" id="{{ message.id }}">
-                            <img class="messages-image" src="{{ asset(message.writer.picture.uploadRootDir  ~ message.writer.picture.id ~ '.' ~ message.writer.picture.alt) }}"/>
-                            <div class="message_received">
-                                 {{ message.writer.firstName }} <br/>    {{ message.message }}
+                        {% else %}
+                            <div class="message_box_received" id="{{ message.id }}">
+                                <img class="messages-image" src="{{ asset(message.writer.picture.uploadRootDir  ~ message.writer.picture.id ~ '.' ~ message.writer.picture.alt) }}"/>
+                                <div class="message_received">
+                                     {{ message.writer.firstName }} <br/>    {{ message.message }}
+                                </div>
                             </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <input type="text" placeholder="Ecrivez un message" id="message">
             </div>
-            <input type="text" placeholder="Ecrivez un message" id="message">
-        </div>
-        <button id="chat_open">Chat en direct</button>
+            <button id="chat_open">Chat en direct</button>
+            {% endif %}
         {% endif %}
 
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
@@ -1339,7 +1341,7 @@
                         type: 'POST',
                         data: 'message='+message,
                         success: function (data) {
-                            $("#chat_body").append('<div class="message_box_send" id="'+ messageId +'"><img class="messages-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/><div class="message_send">'+ message +'</div></div>');
+                            $("#chat_body").append('<div class="message_box_send" id="'+ messageId +'"><img class="messages-image" src="{% if user.picture %}{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}{% endif %}"/><div class="message_send">'+ message +'</div></div>');
                             myDiv.animate({ scrollTop: myDiv.prop("scrollHeight") - myDiv.height() }, 3000);
                         },
                         error: function(data){
@@ -1404,6 +1406,7 @@
                     <div class="col-md-3">
                         <a style="color:white;" href="#">Mentions légales</a>
                     </div>
+                    <a href="{{ path('help') }}" style="float:right; font-size:30px; margin-top:-30px; margin-right:-150px; color:red;"><span class="glyphicon glyphicon-bell"></span></a>
                 </div>
             </div>
         </footer>

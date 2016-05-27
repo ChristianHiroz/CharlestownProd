@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Charlestown{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.0/cropper.css">
+        {% stylesheets 'bundles/charlestowncore/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+    <style type="text/css">
+        .mymenu li{
+            display: inline-block;margin: 10px;color: #000;background: #fff;background: rgba(255,255,255, 0.5);-webkit-border-radius: 10px;border-radius: 10px;"
+        }
+        li.active{
+            background: #666;!important;
+            background: rgba(0,0,0, 0.5);!important;
+            color: #fff;!important;
+        }
+        li.active a {
+            color:white;!important;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body style="height: 100%;">
+<ul class="mymenu" style="position: fixed;top: 0px;left: 0;height: 40px;z-index: 70;width: 100%;padding: 0;margin: 0;">
+    <a style="display: inline-block;margin: 10px;background: #fff;background: rgba(255,255,255, 0.5);color: #ffffff;-webkit-border-radius: 10px;border-radius: 10px;  padding: 9px 18px;" href="{{ path('index_collaborator') }}">Retour au site</a>
+    <li data-menuanchor="firstPage" class="active"><a onclick="setActive('a')" id="a" style="color:white; padding: 9px 18px;display: block;" href="#firstPage">Sommaire</a></li>
+    <li data-menuanchor="secondPage"><a onclick="setActive('b')" id="b"  style="color:white; padding: 9px 18px;display: block;" href="#secondPage">Menu Charlestown</a></li>
+    <li data-menuanchor="3rdPage"><a onclick="setActive('c')" id="c" style="color:white; padding: 9px 18px;display: block;" href="#3rdPage">Mon espace</a></li>
+    <li data-menuanchor="4thpage"><a onclick="setActive('d')" id="d"  style="color:white; padding: 9px 18px;display: block;" href="#4thpage">Pied de page</a></li>
+    <li data-menuanchor="4thpage"><a onclick="setActive('e')" id="e"  style="color:white; padding: 9px 18px;display: block;" href="#1ststep">Premiers pas</a></li>
+    <li data-menuanchor="4thpage"><a onclick="setActive('f')" id="f"  style="color:white; padding: 9px 18px;display: block;" href="#covoiturage">Le covoiturage</a></li>
+    <li data-menuanchor="4thpage"><a onclick="setActive('g')" id="g"  style="color:white; padding: 9px 18px;display: block;" href="#bourse">La bourse aux compétences</a></li>
+    <li data-menuanchor="4thpage"><a onclick="setActive('h')" id="h"  style="color:white; padding: 9px 18px;display: block;" href="#annonces">Les petites annonces</a></li>
+</ul>
+<div id="fullpage">
+    <div class="section">
+        <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: -10%;">Guide utilisateur</h1>
+        <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+            <p>Pour accéder à ce guide, il faut cliquer sur le bouton <span class="glyphicon glyphicon-bell"></span> en bas à droite de l'interface</p>
+            <p>Pour quitter à ce guide, il faut cliquer sur le bouton "Retour au site" en haut à gauche du guide</p>
+            <p>Pour vous déplacer dans ce guide, il existe deux méthodes :</p>
+            <ul>
+                <li>Appuyez sur les touches directionnelles de votre clavier</li>
+                <li>Cliquer sur les flèches à gauche ou à droite sur l'écran si elle sont présentes</li>
+            </ul>
+        </div>
+    </div>
+    <div class="section">
+        <div class="slide">
+            {% if is_granted('ROLE_AE') %}
+                <img src="{{ asset("images/presentation/menu_charlestown.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+                <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Menu Charlestown</h1>
+                <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                    <p>Ce menu contient des informations sur la société Charlestown, ainsi que toutes les réponses à vos questions concernant votre poste</p>
+                    <h3>Bienvenue</h3>
+                    <ul>
+                        <li>Nos activités: Présente les différentes activitées de Charlestown</li>
+                        <li>Nos implantations: Présente les différentes agences Charlestown à travers la France</li>
+                        <li>Polique salariale: Contient les informations relatives à la fiche de paie, la mutuelle, les indémnités et le titre de transport</li>
+                        <li>Règles d'or: Contient les informations relatives aux consignes de présentations, la prise de poste, les absences, les congés et l'évolution professionnelle</li>
+                        <li>Règlement intérieur: Vous permet de consulter et télécharger le règlement intérieur</li>
+                    </ul>
+                    <h3>Mes messions</h3>
+                    <ul>
+                        <li>Me former: Contient une liste des vidéos de formation ainsi qu'un lien vers la chaîne Youtube de Charlestown</li>
+                        <li>Mon affectation: Contient les informations sur le client chez qui vous êtes affectés</li>
+                        <li>Mes contacts: Contient une liste des contacts de l'agence qui s'occupe de vous</li>
+                    </ul>
+                </div>
+            {% elseif is_granted('ROLE_EVENT') %}
+                <img src="{{ asset("images/presentation/menu_charlestown_event.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+                <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Menu Charlestown</h1>
+                <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                    <p>Ce menu contient des informations sur la société Charlestown, ainsi que toutes les réponses à vos questions concernant votre poste</p>
+                    <h3>Bienvenue</h3>
+                    <ul>
+                        <li>Nos activités: Présente les différentes activitées de Charlestown</li>
+                        <li>Nos implantations: Présente les différentes agences Charlestown à travers la France</li>
+                        <li>Polique salariale: Contient les informations relatives à la fiche de paie, la mutuelle, les indémnités et le titre de transport</li>
+                        <li>Règles d'or: Contient les informations relatives aux consignes de présentations, la prise de poste, les absences, les congés et l'évolution professionnelle</li>
+                        <li>Règlement intérieur: Vous permet de consulter et télécharger le règlement intérieur</li>
+                    </ul>
+                    <h3>Utile</h3>
+                    <ul>
+                        <li>Fiche de paie: Explique le système illicoffre</li>
+                        <li>Nos implantations: Présente les différentes agences Charlestown à travers la France</li>
+                        <li>Polique salariale: Contient les informations relatives à la fiche de paie, la mutuelle, les indémnités et le titre de transport</li>
+                        <li>Règles d'or: Contient les informations relatives aux consignes de présentations, la prise de poste, les absences, les congés et l'évolution professionnelle</li>
+                        <li>Règlement intérieur: Vous permet de consulter et télécharger le règlement intérieur</li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+        <div class="slide">
+            {% if is_granted('ROLE_AE') %}
+                <img src="{{ asset("images/presentation/menu_charlestown.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+                <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;"></h1>
+                <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                    <h3>Utile</h3>
+                    <ul>
+                        <li>Fiche de paie: Explique le système illicoffre</li>
+                        <li>Coordonées: Contient la liste des coordonées des différents service de Charlestown</li>
+                    </ul>
+                    <h3>Social</h3>
+                    <ul>
+                        <li>Soutien psychologique Eleas: document explicatif du soutien psychologique mis en place chez Charlestown</li>
+                        <li>1% logement: lien vers le site cilgere concernant l'action 1% logement mis en place chez Charlestown</li>
+                        <li>Comité d'entrepris: site internet, PV des CA et coordonnées du C.E de Charlestown</li>
+                    </ul>
+                </div>
+            {% elseif is_granted('ROLE_EVENT') %}
+                <img src="{{ asset("images/presentation/menu_charlestown_event.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+                <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;"></h1>
+                <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                    <h3>Social</h3>
+                    <ul>
+                        <li>Soutien psychologique Eleas: document explicatif du soutien psychologique mis en place chez Charlestown</li>
+                        <li>1% logement: lien vers le site cilgere concernant l'action 1% logement mis en place chez Charlestown</li>
+                        <li>Comité d'entrepris: site internet, PV des CA et coordonnées du C.E de Charlestown</li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="section">
+            {% if is_granted('ROLE_AE') %}
+                <img src="{{ asset("images/presentation/menu_espace_deux.png") }}" style="margin-top: -7%;margin-left: 80%;height: auto;width: 230px;">
+                <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Mon espace</h1>
+                <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                    <p>Ce menu contient vos informations et vous permet d'intéragir avec Charlestown et l'ensemble de la communauté des collaborateurs</p>
+                    <h3>Mon espace</h3>
+                    <ul>
+                        <li>Mes informations: Récapitulatif de vos informations, permet aussi de changer sa photo de profil</li>
+                        <li>Mes demandes: Récapitulatif de vos demandes, permet aussi de faire de nouvelles demandes à Charlestown (congé, rendez-vous, mobilité, formation)</li>
+                        <li>Mes entretiens: Récapitulatif de vos entretiens, permet de télécharger un formulaire de demande de nouvel entretien</li>
+                        <li>Boite à idées: Permet de déposer une idée d'amélioration à Charlestown</li>
+                    </ul>
+                    <h3>Le covoiturage: Permet de proposer ou postuler à un coivoiturage organisé par la communauté de Charlestown</h3>
+                    <h3>Bourse aux compétences: Permet de proposer ou postuler à un cours organisé par la communauté de Charlestown</h3>
+                    <h3>Bourse aux compétences: Permet de proposer ou répondre à une annonce émise par la communauté de Charlestown</h3>
+                </div>
+            {% elseif is_granted('ROLE_EVENT') %}
+                <img src="{{ asset("images/presentation/menu_espace_deux.png") }}" style="margin-top: -7%;margin-left: 80%;height: auto;width: 230px;">
+                <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Mon espace</h1>
+                <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                    <p>Ce menu contient vos informations et vous permet d'intéragir avec Charlestown et l'ensemble de la communauté des collaborateurs</p>
+                    <h3>Mon espace</h3>
+                    <ul>
+                        <li>Mes informations: Récapitulatif de vos informations, permet aussi de changer sa photo de profil</li>
+                        <li>Mes opérations: Récapitulatif de vos opérations, permet aussi de candidaté à de nouvelles opérations</li>
+                        <li>Boite à idées: Permet de déposer une idée d'amélioration à Charlestown</li>
+                    </ul>
+                    <h3>Le covoiturage: Permet de proposer ou postuler à un coivoiturage organisé par la communauté de Charlestown</h3>
+                    <h3>Bourse aux compétences: Permet de proposer ou postuler à un cours organisé par la communauté de Charlestown</h3>
+                    <h3>Bourse aux compétences: Permet de proposer ou répondre à une annonce émise par la communauté de Charlestown</h3>
+                </div>
+            {% endif %}
+    </div>
+    <div class="section">
+        <img src="{{ asset("images/presentation/footer.png") }}" style="margin-top: -7%;height: 27px;width: auto;">
+        <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Pied de page</h1>
+        <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+            <h3>Chat en direct: Permet de discuter en direct avec l'ensemble de la communauté Charlestown</h3>
+            <h3>Contacter un administrateur: Permet de contacter l'administrateur de l'espace collaborateur Charlestown, en cas de problème technique avec l'utilisateur du site uniquement</h3>
+            <h3>Mentions légales de l'espace collaborateur Charlestown, merci d'en prendre note</h3>
+        </div>
+    </div>
+    <div class="section">
+        <img src="{{ asset("images/presentation/firststep.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+        <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Premiers pas</h1>
+        <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+            <p>
+                La première chose à faire quand vous découvrirez votre interface collaborateur est de mettre à jour votre photo de profil. Pour cela il suffit d'aller dans le menu "Mon espace" et l'onglet "Mes informations".<br/>
+                Ensuite, cliquer sur "Editer photo", puis "Parcourir", selectionnez votre photo, replacez le cadre pour qu'il corresponde au résultat voulu, et validez en cliquant sur "Mettre à jour".<br/><br/>
+                Enfin, retournez dans l'onglet "Profil" et vérifiez vos informations, si elles sont éronnées, contactez Charlestown.
+            </p>
+        </div>
+    </div>
+    <div class="section">
+        <div class="slide">
+            <img src="{{ asset("images/presentation/coivoiturage_1.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Coiturages proposés</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des covoiturages proposés par la communauté de Charlestown.<br/>
+                    Chaque covoiturage est décrit pas son lieu de départ, son lieu d'arrivé, la date du voyage et le nombre de places.<br/>
+                    Pour postuler à un covoiturage, il suffit de cliquer se le bouton "Rejoindre"
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/coivoiturage_2.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Je suis passager</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des covoiturages pour lesquels vous avez postuler.<br/>
+                    Chaque covoiturage est décrit pas son lieu de départ, son lieu d'arrivé, la date du voyage et le nombre de places.<br/>
+                    Pour retirer votre candidature à un covoiturage, il suffit de cliquer se le bouton "Retirer"
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/coivoiturage_3.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Je suis conducteur</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des covoiturages que vous avez crée.<br/>
+                    Chaque covoiturage est décrit pas son lieu de départ, son lieu d'arrivé, la date du voyage et le nombre de places.<br/>
+                    Pour le modifier, il suffit de cliquer sur le bouton "Modifier".<br/>
+                    Ensuite il est inscrit la liste des utilisteurs ayant postulé à votre covoiturage, vous pouvez visiter leur profil, accepter ou refuser leur candidature<br/>
+                    Enfin, une seconde liste comprennant les personnes ayant été acceptée pour le covoiturage, avec leur numéro de téléphone pour fixer les détails sur le covoiturage
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="slide">
+            <img src="{{ asset("images/presentation/bourse_1.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Cours proposés</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des cours proposés par la communauté de Charlestown.<br/>
+                    Chaque cours est décrit pas son lieu de déroulement,le nombre de places, les horaires.<br/>
+                    Pour postuler à un cours, il suffit de cliquer se le bouton "Rejoindre"
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/bourse_2.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Je suis élève</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des cours pour lesquels vous avez postuler.<br/>
+                    Chaque cours est décrit pas son lieu de déroulement,le nombre de places, les horaires et le type de cours.<br/>
+                    Deux listes sont disponibles, une qui comprend les cours ou vous avez été acceptés, une autre avec vos candidatures en cours.<br/>
+                    Vous pouvez quitter un cours en cliquant sur le bouton "Quitter".
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/bourse_3.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Je suis prof</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ce menu, vous pouvez voir la liste des cours que vous avez crée.<br/>
+                    Chaque cours est décrit pas son lieu de déroulement,le nombre de places, les horaires et le type de cours.<br/>
+                    Pour le modifier, il suffit de cliquer sur le bouton "Modifier".<br/>
+                    Ensuite il est inscrit la liste des utilisteurs ayant postulé à votre cours, vous pouvez visiter leur profil, accepter ou refuser leur candidature<br/>
+                    Enfin, une seconde liste comprennant les personnes ayant été acceptée pour le cours, avec leur numéro de téléphone pour fixer les détails sur le covoiturage
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="slide">
+            <img src="{{ asset("images/presentation/annonce_1.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Achat/Echange/Don/Recherche</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur ces pages, vous pouvez voir la liste des objets mis en vente/echange/don ou recherche par un membre de la communauté Charlestown.<br/>
+                    Chaque objet possède un titre et une description, aucun prix n'est affiché, le reste de la transaction devra s'effectuer par un autre moyen que l'espace collaborateur Charlestown.<br/>
+                    Pour accepter une offre, il suffit de cliquer se le bouton adhéquat.
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/annonce_2.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Mon panier</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur cette page, vous pouvez voir la liste des annonces auxquelles vous avez répondu.<br/>
+                    Vous pouvez annuler la réponse à une annonce ou voir les informations sur le vendeur pour le contacter et continuer la transaction.<br/>
+                </p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ asset("images/presentation/annonce_3.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+            <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Mes annonces</h1>
+            <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+                <p>
+                    Sur cette page vous pouvez gérer vos annonces, les supprimer, les modifiers et voir les informations de la personne ayant répondu à votre annonce.<br/>
+                    Vous pouvez aussi ajouter une nouvelle annonce en cliquant sur le bouton "Nouveau".
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function setActive(variable){
+        if(variable == 'a'){
+            $("#b").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#a").parent().addClass("active");
+        }
+        else if(variable == 'b'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#b").parent().addClass("active");
+        }
+        else if(variable == 'c'){
+            $("#a").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#c").parent().addClass("active");
+        }
+        else if(variable == 'd'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#d").parent().addClass("active");
+        }
+        else if(variable == 'e'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#e").parent().addClass("active");
+        }
+        else if(variable == 'f'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#f").parent().addClass("active");
+        }
+        else if(variable == 'g'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#g").parent().addClass("active");
+        }
+        else if(variable == 'h'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().addClass("active");
+        }
+    }
+</script>
+
+{% block javascripts %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.0/cropper.js"></script>
+    <script src="{{ asset('bundles/charlestowncore/js/vegas.min.js.map') }}"></script>
+    <script src="{{ asset('bundles/charlestowncore/js/vegas.js') }}"></script>
+    <script src="{{ asset('bundles/charlestowncore/js/vegas.min.js') }}"></script>
+    <script src="{{ asset('bundles/charlestowncore/js/main.js') }}"></script>
+    <script src="{{ asset('bundles/charlestowncore/js/jquery.fullPage.js') }}"></script>
+    <script>$("body").vegas({
+            delay: 7000,
+            timer: false,
+            shuffle: true,
+            transition: 'zoomOut2',
+            transitionDuration: 2000,
+            slides: [
+                { src: "../images/slide/bg1.jpg" },
+            ]
+        });</script>
+    <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                //Navigation
+                menu: '#menu',
+                lockAnchors: false,
+                anchors:['firstPage', 'secondPage', '3rdPage', '4thpage', '1ststep', 'covoiturage', 'bourse', 'annonces'],
+                navigation: false,
+                navigationPosition: 'right',
+                navigationTooltips: ['firstSlide', 'secondSlide', '3rdPage', '4thpage', '1ststep', 'covoiturage', 'bourse', 'annonces'],
+                showActiveTooltip: false,
+                slidesNavigation: false,
+                slidesNavPosition: 'bottom',
+
+                //Scrolling
+                css3: true,
+                scrollingSpeed: 700,
+                autoScrolling: true,
+                fitToSection: true,
+                fitToSectionDelay: 1000,
+                scrollBar: false,
+                easing: 'easeInOutCubic',
+                easingcss3: 'ease',
+                loopBottom: false,
+                loopTop: false,
+                loopHorizontal: true,
+                continuousVertical: false,
+                normalScrollElements: '#element1, .element2',
+                scrollOverflow: false,
+                touchSensitivity: 15,
+                normalScrollElementTouchThreshold: 5,
+
+                //Accessibility
+                keyboardScrolling: true,
+                animateAnchor: true,
+                recordHistory: true,
+
+                //Design
+                controlArrows: true,
+                verticalCentered: true,
+                resize : false,
+                sectionsColor : ['#E91726','#E91726','#E91726','#E91726','#E91726','#E91726','#E91726','#E91726'],
+                paddingTop: '3em',
+                paddingBottom: '10px',
+                fixedElements: '#header, .footer',
+                responsiveWidth: 0,
+                responsiveHeight: 0,
+
+                //Custom selectors
+                sectionSelector: '.section',
+                slideSelector: '.slide',
+
+                //events
+                onLeave: function(index, nextIndex, direction){},
+                afterLoad: function(anchorLink, index){},
+                afterRender: function(){},
+                afterResize: function(){},
+                afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
+                onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+            });
+        });
+    </script>
+{% endblock %}
+</body>
+</html>
+

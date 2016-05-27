@@ -106,14 +106,16 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="cart" aria-labelledby="cart-tab">
                         {% for ad in announcments %}
-                            {% if ad.applicant.id == user.id %}
-                                <div class="offer">
-                                    <img class="offer_image" src="{{ asset(ad.picture.uploadRootDir  ~ ad.picture.id ~ '.' ~ ad.picture.alt) }}"/>
-                                    <h3 class="offer_title">{{ ad.title }}</h3>
-                                    <p class="offer_text">{{ ad.description }}</p>
-                                    <a href="{{ path('announcment') }}" class="offer_cancel btn btn-warning">Annuler</a>
-                                    <a href="{{ path('fos_otheruser_profile_show', {'user' : ad.offerer.id}) }}" class="offer_accept btn btn-danger">Information vendeur</a>
-                                </div>
+                            {% if ad.applicant %}
+                                {% if ad.applicant.id == user.id %}
+                                    <div class="offer">
+                                        <img class="offer_image" src="{{ asset(ad.picture.uploadRootDir  ~ ad.picture.id ~ '.' ~ ad.picture.alt) }}"/>
+                                        <h3 class="offer_title">{{ ad.title }}</h3>
+                                        <p class="offer_text">{{ ad.description }}</p>
+                                        <a href="{{ path('announcment') }}" class="offer_cancel btn btn-warning">Annuler</a>
+                                        <a href="{{ path('fos_otheruser_profile_show', {'user' : ad.offerer.id}) }}" class="offer_accept btn btn-danger">Information vendeur</a>
+                                    </div>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -129,7 +131,6 @@
                                     <p class="offer_text">{{ ad.description }}</p>
                                     <a href="{{ path('announcment_delete', {'id':ad.id}) }}" class="offer_cancel btn btn-warning">Supprimer</a>
                                     <a href="{{ path('announcment_update', {'id':ad.id}) }}" class="offer_update btn btn-warning">Modifier</a>
-                                    <a href="{{ path('announcment') }}" class="offer_reput btn btn-warning">Remmettre en ventre</a>
                                     {% if ad.applicant %}
                                         <a href="{{ path('fos_otheruser_profile_show', {'user' : ad.applicant.id}) }}" class="offer_accept2 btn btn-danger">Information acheteur</a>
                                     {% endif %}

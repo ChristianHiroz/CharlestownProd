@@ -17,6 +17,7 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
+use Proxies\__CG__\Charlestown\CollaboratorBundle\Entity\Collaborator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -117,11 +118,19 @@ class ProfileController extends Controller
             return $response;
         }
 
-        return $this->render('CharlestownUserBundle:Profile:edit.html.twig', array(
-            'form' => $form->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
-        ));
+        if($user->hasRole("ROLE_AE") || $user->hasRole("ROLE_EVENT")){
+            return $this->render('CharlestownUserBundle:Profile:edit.html.twig', array(
+                'form' => $form->createView(),
+                'user' => $this->getUser(),
+                'messages' => $message
+            ));
+        }
+        else{
+            return $this->render('CharlestownUserBundle:Profile:editCustomer.html.twig', array(
+                'form' => $form->createView(),
+                'user' => $this->getUser()
+            ));
+        }
     }
 
     /**
@@ -154,7 +163,6 @@ class ProfileController extends Controller
         $base64_string = str_replace(' ', '+', $base64_string);
         $base64_string = base64_decode($base64_string);
         file_put_contents("uploads/".$filename_path,$base64_string);
-
 
 
         return new JsonResponse(array(
