@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Charlestown{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.0/cropper.css">
+        {% stylesheets 'bundles/charlestowncore/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+    <style type="text/css">
+        .mymenu li{
+            display: inline-block;margin: 10px;color: #000;background: #fff;background: rgba(255,255,255, 0.5);-webkit-border-radius: 10px;border-radius: 10px;"
+        }
+        li.active{
+            background: #666;!important;
+            background: rgba(0,0,0, 0.5);!important;
+            color: #fff;!important;
+        }
+        li.active a {
+            color:white;!important;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body style="height: 100%;">
+<ul class="mymenu" style="position: fixed;top: 0px;left: 0;height: 40px;z-index: 70;width: 100%;padding: 0;margin: 0;">
+    <a style="display: inline-block;margin: 10px;background: #fff;background: rgba(255,255,255, 0.5);color: #ffffff;-webkit-border-radius: 10px;border-radius: 10px;  padding: 9px 18px;" href="{{ path('index_collaborator') }}">Retour au site</a>
+    <li data-menuanchor="firstPage" class="active"><a onclick="setActive('a')" id="a" style="color:white; padding: 9px 18px;display: block;" href="#firstPage">Gestion des demandes</a></li>
+    <li data-menuanchor="secondPage"><a onclick="setActive('b')" id="b"  style="color:white; padding: 9px 18px;display: block;" href="#secondPage">Fichiers clients</a></li>
+    <li data-menuanchor="3rdPage"><a onclick="setActive('c')" id="c" style="color:white; padding: 9px 18px;display: block;" href="#3rdPage">Devis</a></li>
+    <li data-menuanchor="4thpage"><a onclick="setActive('d')" id="d"  style="color:white; padding: 9px 18px;display: block;" href="#4thpage">Uniformes</a></li>
+</ul>
+<div id="fullpage">
+    <div class="section">
+        <img src="{{ asset("images/presentation/demande.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+        <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Gestion des demandes</h1>
+        <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+            <p>
+                Les collaborateurs pourront directement soumettre leurs demandes de congés, de formation, de rendez-vous et de mobilité via leur interface collaborateur<br/><br/>
+                Dès qu'ils feront une demande, votre agence sera notifiée.<br/><br/>
+
+                Pour répondre à une demande, il faut cliquer sur le bouton "Liste", puis sur l'identifiant de la demande et remplir les champs hormis "Motif" et "Utilisateur".<br/>
+                Afin de trouver plus rapidement une demande, vous pouvez utiliser les filtres.<br/>
+                <span style="color:white;">Le bouton "Ajouter" est présent uniquement pour l'administrateur de l'extranet, merci de ne pas créer de demande</span>
+            </p>
+        </div>
+    </div>
+    <div class="section">
+        <img src="{{ asset("images/presentation/client.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+        <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Fichiers clients</h1>
+        <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+            <p>
+                Vous pouvez ajouter des fichiers qui seront ensuite accecibles à vos clients<br/><br/>
+
+                Pour cela il faut cliquer sur "Liste" puis sur l'identifiant du client.<br/>
+                Il est possible d'ajouter 6 types de fichiers en rapport avec la qualité, à savoir "Contrôles contradictoires", "Contrôles sites", "Appels mystères", "Visites mystères", "Rapports d'activités" et "Enquêtes satisfactions".<br/>
+                Il est aussi possible d'ajouter les factures du client.<br/>
+                Enfin, il est recommandé d'ajouter dès que possible le manuel de bord et le contrat commercial du client.<br/>
+                Pour ajouter un de ces fichiers, cliquer sur le bouton ajouter en dessous du champ, et remplissez le formulaire, le champ "Nom du fichier" sera le nom vu par le client, et le type de fichier devra correspondre à ce que vous ajoutez<br/>
+                <span style="color:white;">Le bouton "Ajouter" est présent uniquement pour l'administrateur de l'extranet, merci de ne pas créer de client</span>
+            </p>
+        </div>
+    </div>
+    <div class="section">
+        <img src="{{ asset("images/presentation/devis.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+        <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Devis</h1>
+        <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+            <p>
+                Les clients pourront faire de nouvelles demandes de prestation, des demandes d'augmentation de la prestation actuelle et enfin des demandes de prestations complémentaires<br/>
+                Les client seront automatiquement notifiés par email du traitement de leur demande, et votre agence recevra une notification<br/><br/>
+                Pour consulter les demandes de devis, cliquer sur le bouton "Liste", puis sur l'identifiant du devis. Le détail s'affichera dans le formulaire.<br/>
+                <span style="color:white;">Le bouton "Ajouter" est présent uniquement pour l'administrateur de l'extranet, merci de ne pas créer de devis</span>
+            </p>
+        </div>
+    </div>
+    <div class="section">
+        <img src="{{ asset("images/presentation/fichier.png") }}" style="margin-top: -7%;margin-left: 20%;height: auto;width: 800px;">
+        <h1 style="margin-bottom: 2%;margin-left:8%;margin-top: 0%;">Uniformes</h1>
+        <div style="margin-top:-1%;margin-left:13%;font-size:18px;">
+            <p>
+                Vous pouvez ajouter des uniformes en cliquant sur le bouton "Ajouter" de l'onglet "Fichier".<br/>
+                Le champ "Nom du fichier" représente le nom de l'uniforme.<br/>
+                Le champ "Type de fichier" devra être le type d'uniforme, à savoir "Ancien uniforme AE", "Ancien uniforme Event", "Nouvel uniforme AE" et "Nouvel uniforme Event", sinon il ne sera pas visible pour le client<br/><br/>
+            </p>
+            <img src="{{ asset("images/presentation/books.png") }}" style="margin-left: 8%;height: auto;width: 800px;">
+            <p>
+                Vous pouvez aussi créer un book personnalisé pour votre client, en cliquant sur "Ajouter" de l'onglet "Books".<br/>
+                Le champ "Client" devra correspondre au client auquel vous voulez créer un book personnalisé, et vous devrez sélectionner les fichiers d'uniformes que vous voulez ajouter au book dans le second onglet<br/><br/>
+                Le client peut choisir un uniforme AE et Event comme "Favoris", dès que ce sera fait vous serrez notifier sur votre interface administrateur.
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    function setActive(variable){
+        if(variable == 'a'){
+            $("#b").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#a").parent().addClass("active");
+        }
+        else if(variable == 'b'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#b").parent().addClass("active");
+        }
+        else if(variable == 'c'){
+            $("#a").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#c").parent().addClass("active");
+        }
+        else if(variable == 'd'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#d").parent().addClass("active");
+        }
+        else if(variable == 'e'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#e").parent().addClass("active");
+        }
+        else if(variable == 'f'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#f").parent().addClass("active");
+        }
+        else if(variable == 'g'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#h").parent().removeClass("active");
+            $("#g").parent().addClass("active");
+        }
+        else if(variable == 'h'){
+            $("#a").parent().removeClass("active");
+            $("#c").parent().removeClass("active");
+            $("#b").parent().removeClass("active");
+            $("#d").parent().removeClass("active");
+            $("#e").parent().removeClass("active");
+            $("#f").parent().removeClass("active");
+            $("#g").parent().removeClass("active");
+            $("#h").parent().addClass("active");
+        }
+    }
+</script>
+
+{% block javascripts %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.0/cropper.js"></script>
+    <script src="{{ asset('bundles/charlestowncore/js/vegas.min.js.map') }}"></script>
+    <script src="{{ asset('bundles/charlestowncore/js/vegas.js') }}"></script>
+    <script src="{{ asset('bundles/charlestowncore/js/vegas.min.js') }}"></script>
+    <script src="{{ asset('bundles/charlestowncore/js/main.js') }}"></script>
+    <script src="{{ asset('bundles/charlestowncore/js/jquery.fullPage.js') }}"></script>
+    <script>$("body").vegas({
+            delay: 7000,
+            timer: false,
+            shuffle: true,
+            transition: 'zoomOut2',
+            transitionDuration: 2000,
+            slides: [
+                { src: "../images/slide/bg1.jpg" },
+            ]
+        });</script>
+    <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                //Navigation
+                menu: '#menu',
+                lockAnchors: false,
+                anchors:['firstPage', 'secondPage', '3rdPage', '4thpage', '1ststep', 'covoiturage', 'bourse', 'annonces'],
+                navigation: false,
+                navigationPosition: 'right',
+                navigationTooltips: ['firstSlide', 'secondSlide', '3rdPage', '4thpage', '1ststep', 'covoiturage', 'bourse', 'annonces'],
+                showActiveTooltip: false,
+                slidesNavigation: false,
+                slidesNavPosition: 'bottom',
+
+                //Scrolling
+                css3: true,
+                scrollingSpeed: 700,
+                autoScrolling: true,
+                fitToSection: true,
+                fitToSectionDelay: 1000,
+                scrollBar: false,
+                easing: 'easeInOutCubic',
+                easingcss3: 'ease',
+                loopBottom: false,
+                loopTop: false,
+                loopHorizontal: true,
+                continuousVertical: false,
+                normalScrollElements: '#element1, .element2',
+                scrollOverflow: false,
+                touchSensitivity: 15,
+                normalScrollElementTouchThreshold: 5,
+
+                //Accessibility
+                keyboardScrolling: true,
+                animateAnchor: true,
+                recordHistory: true,
+
+                //Design
+                controlArrows: true,
+                verticalCentered: true,
+                resize : false,
+                sectionsColor : ['#CC5500','#CC5500','#CC5500','#CC5500','#CC5500','#CC5500','#CC5500','#CC5500'],
+                paddingTop: '3em',
+                paddingBottom: '10px',
+                fixedElements: '#header, .footer',
+                responsiveWidth: 0,
+                responsiveHeight: 0,
+
+                //Custom selectors
+                sectionSelector: '.section',
+                slideSelector: '.slide',
+
+                //events
+                onLeave: function(index, nextIndex, direction){},
+                afterLoad: function(anchorLink, index){},
+                afterRender: function(){},
+                afterResize: function(){},
+                afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
+                onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+            });
+        });
+    </script>
+{% endblock %}
+</body>
+</html>
+

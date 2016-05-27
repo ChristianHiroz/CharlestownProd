@@ -98,19 +98,35 @@
                 <table class="table table-hover">
                     <tbody>
                     <tr style="height:52px;">
-                        <td class="sonata-ba-list-label" width="40%" style="font-size: 24px;">
+                        <td class="sonata-ba-list-label" width="100%" style="font-size: 24px; text-align: center;">
                             {% if settings.count > 0 %}
                             <button style="color:red;" class="btn-link btn-flat" data-toggle="modal" data-target="#notificationModal"><span class="glyphicon glyphicon-envelope"><sup id="sup">{{ settings.count }}</sup></span></button>
                             {% else %}
                             <button class="btn-link btn-flat" data-toggle="modal" data-target="#notificationModal"><span class="glyphicon glyphicon-envelope"></span></button>
                             {% endif %}
-                        </td>
-                        <td style="font-size: 24px;">
-                            <div class="btn-group">
-                                <button class="btn-link btn-flat" data-toggle="modal" data-target="#notificationInfoModal"><span class="glyphicon glyphicon-asterisk"></span></button>
-                            </div>
+                            <button class="btn-link btn-flat" data-toggle="modal" data-target="#notificationInfoModal"><span class="glyphicon glyphicon-asterisk"></span></button>
                         </td>
                     </tr>
+                    <tr style="height:52px;">
+                        <td class="sonata-ba-list-label" width="100%" style="font-size: 20px; text-align: center;">
+                            <a class="btn-link btn-flat" href="{{ path("help_event") }}"><span class="glyphicon glyphicon-bell">Aide event</span></a>
+                        </td>
+                    </tr>
+                    <tr style="height:52px;">
+                        <td class="sonata-ba-list-label" width="100%" style="font-size: 20px; text-align: center;">
+                            <a class="btn-link btn-flat" href="{{ path("help_ae") }}"><span class="glyphicon glyphicon-bell">Aide accueil en entreprise</span></a>
+                        </td>
+                    </tr>
+                    {#<tr style="height:52px;">#}
+                        {#<td class="sonata-ba-list-label" width="100%" style="font-size: 20px; text-align: center;">#}
+                            {#<a class="btn-link btn-flat" href="{{ path("help_rh") }}"><span class="glyphicon glyphicon-bell">Aide RH</span></a>#}
+                        {#</td>#}
+                    {#</tr>#}
+                    {#<tr style="height:52px;">#}
+                        {#<td class="sonata-ba-list-label" width="100%" style="font-size: 20px; text-align: center;">#}
+                            {#<a class="btn-link btn-flat" href="{{ path("help_admin") }}"><span class="glyphicon glyphicon-bell">Aide admin</span></a    >#}
+                        {#</td>#}
+                    {#</tr>#}
                     </tbody>
                 </table>
             </div>

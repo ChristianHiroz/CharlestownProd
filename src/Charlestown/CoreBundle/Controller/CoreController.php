@@ -98,4 +98,44 @@ class CoreController extends Controller
 
         return array("user" => $user);
     }
+
+    /**
+     * @Route("/helpEvent", name="help_event")
+     * @Template()
+     */
+    public function helpEventAction(){
+        $user = $this->getUser();
+
+        return array("user" => $user);
+    }
+
+    /**
+     * @Route("/helpAE", name="help_ae")
+     * @Template()
+     */
+    public function helpAEAction(){
+        $user = $this->getUser();
+
+        return array("user" => $user);
+    }
+
+    /**
+     * @Route("/helpRH", name="help_rh")
+     * @Template()
+     */
+    public function helpRHAction(){
+        $user = $this->getUser();
+
+        return array("user" => $user);
+    }
+
+    /**
+     * @Route("/helpAdmin", name="help_admin")
+     * @Template()
+     */
+    public function helpAdminAction(){
+        $user = $this->getUser();
+
+        return array("user" => $user);
+    }
 }

@@ -82,7 +82,7 @@ class FileOperationAdmin extends Admin
                         'choices' => array(
                             1 => 'Oui',
                             0 => 'Non'
-                        )))
+                        ), 'label' => 'Accepter'))
                     ->add('operation')
                     ->add('event');
     }

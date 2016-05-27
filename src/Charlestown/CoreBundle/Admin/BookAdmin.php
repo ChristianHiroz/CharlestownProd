@@ -14,7 +14,7 @@ class BookAdmin extends Admin
     {
         $formMapper
             ->add('customer', 'sonata_type_model' , array('label' => 'Client'))
-            ->add('uniforms', 'sonata_type_model', array('label' => 'Nom du calendrier','multiple' => true))
+            ->add('uniforms', 'sonata_type_model', array('label' => 'Uniformes','multiple' => true))
         ;
     }
 
