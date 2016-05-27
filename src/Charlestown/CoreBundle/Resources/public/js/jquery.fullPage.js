@@ -2799,7 +2799,6 @@
     defaultScrollHandler = slimScrollHandler;
 
 });
-=======
 /*!
  * fullPage 2.7.9
  * https://github.com/alvarotrigo/fullPage.js
