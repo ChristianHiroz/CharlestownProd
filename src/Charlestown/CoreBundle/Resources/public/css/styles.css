@@ -214,7 +214,7 @@ td a {
     .image_accueil{ height:auto; width:70%;}
 
 }
-@media  (max-width: 765px){
+@media  (max-width: 965px){
     .modal-dialog{width:95%;margin:auto;}
     .space-menu{top:25px;right:30%;}
     #chat_container{left:27%;}
