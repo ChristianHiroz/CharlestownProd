@@ -55,10 +55,13 @@ class IdeaBoxController extends Controller
             ));
         }
         else{
+            $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
             return $this->render('CharlestownCoreBundle:IdeaBox:new.html.twig', array(
                 'entity' => $entity,
                 'user' => $this->getUser(),
                 'form'   => $form->createView(),
+                'messages' => $message
             ));
         }
     }
@@ -107,11 +110,14 @@ class IdeaBoxController extends Controller
             ));
         }
         else{
+            $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
             return $this->render('CharlestownCoreBundle:IdeaBox:new.html.twig', array(
                 'entity' => $entity,
                 'user' => $this->getUser(),
                 'form'   => $form->createView(),
-                'alert' => $alert
+                'alert' => $alert,
+                'messages' => $message
             ));
         }
     }
