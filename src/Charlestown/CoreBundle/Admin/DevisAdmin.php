@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class DevisAdmin extends Admin
 {
@@ -41,6 +42,11 @@ class DevisAdmin extends Admin
             ->add('prestationType', null, array('label' => 'Type de préstation'))
             ->add('customer', null, array('label' => 'Client'))
         ;
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('edit', null, array(), array(), array( 'expose' => true ));
     }
 
 }

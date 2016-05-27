@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class OperationApplianceAdmin extends Admin
 {
@@ -62,6 +63,11 @@ class OperationApplianceAdmin extends Admin
         return array(
             'xls'
         );
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('edit', null, array(), array(), array( 'expose' => true ));
     }
 
 }

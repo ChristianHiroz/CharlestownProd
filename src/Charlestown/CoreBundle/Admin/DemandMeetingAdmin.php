@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 class DemandMeetingAdmin extends Admin
@@ -56,5 +57,10 @@ class DemandMeetingAdmin extends Admin
             ->add('disponibility', null, array('label' => 'Disponibilité'))
             ->addIdentifier('user', null, array('label' => 'Utilisateur','property' => 'username'))
         ;
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('edit', null, array(), array(), array( 'expose' => true ));
     }
 }

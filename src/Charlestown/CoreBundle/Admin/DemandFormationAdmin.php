@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 class DemandFormationAdmin extends Admin
@@ -50,5 +51,10 @@ class DemandFormationAdmin extends Admin
             ->add('responseStatus', null, array('label' => 'Réponse status'))
             ->addIdentifier('user', null, array('label' => 'Utilisateur','property' => 'username'))
         ;
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('edit', null, array(), array(), array( 'expose' => true ));
     }
 }

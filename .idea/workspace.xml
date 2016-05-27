@@ -1,123 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DemandFormationAdmin.php" line="33" />
+    <bookmark url="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DemandFormationAdmin.php" line="34" />
+    <bookmark url="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Controller/NotificationController.php" line="126" />
+    <bookmark url="file://$PROJECT_DIR$/app/Resources/views/base.html.twig" line="80" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc7d0a18-d24c-4a65-8195-9ee716238b7e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/robots.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/translations/messages.fr.xlf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Form/ProfileFormType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Tests/Controller/DefaultControllerTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/doc/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/apple-touch-icon.png" />
-      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Entity\Event.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/SymfonyRequirements.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/DependencyInjection/CharlestownCoreExtension.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Resources/config/services.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/services.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Resources/config/services.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Controller/DefaultController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/CollaboratorRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/standard_layout.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/config_prod.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Registration/checkEmail.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/config/services.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/DependencyInjection/Configuration.php" />
-      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Entity\BusinessSupport.php" />
-      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\UserBundle\Controller\DefaultController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/security.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/doc/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/CharlestownCustomerBundle.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/Collaborator.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Entity/CustomerRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Entity/User.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CoreBundle\Admin\EventAdmin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/config/services.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/logo_charlestown.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/translations/messages.fr.xlf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/logs/.gitkeep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Registration/register.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/DependencyInjection/CharlestownAgencyExtension.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Controller/CustomerController.php" />
-      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Entity\EventRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/DependencyInjection/Configuration.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Resources/doc/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/DependencyInjection/CharlestownUserExtension.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Default/index.html.twig" />
-      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Entity\BusinessSupportRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/config_dev.yml" />
-      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Controller\EventController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/check.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Tests/Controller/DefaultControllerTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Tests/Controller/DefaultControllerTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Registration/confirmed.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Resources/translations/messages.fr.xlf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/CharlestownNew.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/doc/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Registration/email.txt.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CoreBundle\Resources\views\Default\index.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Resources/translations/messages.fr.xlf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Entity/UserRepository.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/CharlestownUserBundle.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/DependencyInjection/CharlestownCustomerExtension.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Controller/CoreController.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/DependencyInjection/CharlestownCollaboratorExtension.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/CollaboratorAdmin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Tests/Controller/DefaultControllerTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Registration/register_content.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/CharlestownCollaboratorBundle.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/config/services.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/apple-touch-icon.png" />
+      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CoreBundle\Resources\views\Default\index.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Registration/confirmed.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/DependencyInjection/CharlestownAgencyExtension.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/routing_dev.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Entity/Customer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/AppCache.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/autoload.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/DependencyInjection/Configuration.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/frameworkRootSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/cache/.gitkeep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Resources/views/Default/index.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app_dev.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/DependencyInjection/Configuration.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Tests/Controller/DefaultControllerTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phpunit.xml.dist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Resources/doc/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/views/Collaborator/index.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/parameters.yml.dist" />
+      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Entity\Event.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/CharlestownCoreBundle.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/translations/messages.fr.xlf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/console" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/CustomerAdmin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/DependencyInjection/Configuration.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/doc/index.rst" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/config.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/security.yml" />
+      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\UserBundle\Controller\DefaultController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/CharlestownCustomerBundle.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/CharlestownNew.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Resources/views/Default/index.html.twig" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/config_test.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/config/services.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/Collaborator.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/cache/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Resources/config/services.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Entity/User.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Resources/config/services.xml" />
+      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Entity\EventRepository.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
+      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Entity\BusinessSupportRepository.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/phpunit.xml.dist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Registration/register_content.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/DependencyInjection/CharlestownUserExtension.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/config/services.xml" />
+      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Controller\EventController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/SymfonyRequirements.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Resources/views/Customer/index.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Controller/CustomerController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/parameters.yml.dist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Tests/Controller/DefaultControllerTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/DependencyInjection/Configuration.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Resources/doc/index.rst" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/logs/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/config_prod.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/standard_layout.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/logo_charlestown.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/translations/messages.fr.xlf" />
+      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Entity\BusinessSupport.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/CollaboratorAdmin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/routing_dev.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/DependencyInjection/Configuration.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/translations/messages.fr.xlf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Tests/Controller/DefaultControllerTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Form/RegistrationFormType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/CharlestownCollaboratorBundle.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Tests/Controller/DefaultControllerTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app_dev.php" />
+      <change type="NEW" beforePath="" afterPath="C:\wamp\www\CharlestownNew\src\Charlestown\CoreBundle\Admin\EventAdmin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/config/services.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Entity/Customer.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/services.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Controller/CoreController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Entity/CustomerRepository.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Registration/checkEmail.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/DependencyInjection/Configuration.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/console" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/CharlestownUserBundle.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/DependencyInjection/CharlestownCoreExtension.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/config/services.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/CharlestownAgencyBundle.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Controller/DefaultController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/AppCache.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Tests/Controller/DefaultControllerTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/translations/messages.fr.xlf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/autoload.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/views/Collaborator/index.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/config.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/frameworkRootSettings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/doc/index.rst" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/CustomerAdmin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Form/ProfileFormType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/robots.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/DependencyInjection/Configuration.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/CharlestownCoreBundle.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/Resources/translations/messages.fr.xlf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/check.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/favicon.ico" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Resources/doc/index.rst" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/config/services.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/DependencyInjection/CharlestownCustomerExtension.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/.htaccess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Default/index.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/config/config_dev.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Registration/register.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Resources/translations/messages.fr.xlf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Tests/Controller/DefaultControllerTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Registration/email.txt.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/doc/index.rst" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/CollaboratorRepository.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/UserBundle/Entity/UserRepository.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Charlestown/AgencyBundle/DependencyInjection/Configuration.php" />
     </list>
     <ignored path="CharlestownNew.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -180,77 +182,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NotificationUserRepository.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Entity/NotificationUserRepository.php">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26377296" vertical-offset="148" max-vertical-offset="792">
-              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.50328946" vertical-offset="594" max-vertical-offset="2808">
+              <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
               <folding>
-                <marker date="1463046560386" expanded="true" signature="407:527" placeholder="Select n Fro..CharlestownNotificationBundle..." />
-                <marker date="1463046560386" expanded="true" signature="782:947" placeholder="Select n Fro..CharlestownNotificationBundle..." />
+                <element signature="e#6164#7144#0#Twig" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notification.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Resources/views/Sonata/notification.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0" vertical-offset="1062" max-vertical-offset="3420">
-              <caret line="74" column="64" selection-start-line="74" selection-start-column="64" selection-end-line="74" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dev.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/logs/dev.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="77904" max-vertical-offset="80370">
-              <caret line="3920" column="0" selection-start-line="3920" selection-start-column="0" selection-end-line="3920" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NotificationController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Controller/NotificationController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.0" vertical-offset="1485" max-vertical-offset="2340">
-              <caret line="93" column="33" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
-              <folding>
-                <element signature="e#61#121#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NotificationUser.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Entity/NotificationUser.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="61.0" vertical-offset="2241" max-vertical-offset="2862">
-              <caret line="34" column="72" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Notification.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Entity/Notification.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-141.33333" vertical-offset="486" max-vertical-offset="4446">
-              <caret line="240" column="4" selection-start-line="240" selection-start-column="4" selection-end-line="240" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NotificationBlock.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Services/NotificationBlock.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.185185" vertical-offset="274" max-vertical-offset="1530">
-              <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -268,11 +207,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/Charlestown/FileBundle/Form/FileType.php" />
         <option value="$PROJECT_DIR$/web/bundles/charlestowncore/js/main.js" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/public/js/main.js" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Charlestown/UserBundle/Controller/ProfileController.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Controller/CollaboratorController.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/UserBundle/Resources/views/Profile/show.html.twig" />
@@ -283,13 +220,10 @@
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/MessageAdmin.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Resources/views/Customer/devis.html.twig" />
-        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DevisAdmin.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/config/services.xml" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Services/Mailer.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/views/Mail/devisConfirmation.txt.twig" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/public/css/styles.css" />
-        <option value="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/views/layout.html.twig" />
-        <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Services/MailerBlock.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/Collaborator.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/AgencyAdmin.php" />
@@ -298,7 +232,6 @@
         <option value="$PROJECT_DIR$/src/Charlestown/DemandBundle/Resources/config/services.yml" />
         <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/config/services.yml" />
-        <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Services/NotificationBlock.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Entity/Notification.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Entity/Devis.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/OperationBundle/Entity/OperationAppliance.php" />
@@ -306,10 +239,25 @@
         <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/FileOperationAdmin.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/DemandBundle/Listeners/DemandNotification.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/CustomerBundle/Controller/CustomerController.php" />
-        <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Controller/NotificationController.php" />
         <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Entity/NotificationUser.php" />
-        <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Resources/views/Sonata/notification.html.twig" />
         <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Entity/NotificationUserRepository.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Services/NotificationBlock.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/OperationApplianceAdmin.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Controller/NotificationController.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DemandFormationAdmin.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DemandMeetingAdmin.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DemandMobilityAdmin.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DemandVacancyAdmin.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DevisAdmin.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/FileAdmin.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/CustomerAdmin.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/NotificationBundle/Resources/views/Sonata/notification.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/views/Core/helper.html.twig" />
+        <option value="$PROJECT_DIR$/src/Charlestown/UserBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/Charlestown/CoreBundle/Controller/CoreController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
       </list>
     </option>
   </component>
@@ -367,6 +315,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -416,26 +365,8 @@
               <option name="myItemId" value="Charlestown" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="CharlestownNew" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charlestown" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charlestown" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NotificationBundle" />
+              <option name="myItemId" value="UserBundle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -457,33 +388,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NotificationBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CharlestownNew" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charlestown" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Charlestown" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NotificationBundle" />
+              <option name="myItemId" value="UserBundle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -508,8 +413,138 @@
               <option name="myItemId" value="Charlestown" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NotificationBundle" />
+              <option name="myItemId" value="CharlestownNew" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CharlestownNew" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CharlestownNew" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CharlestownNew" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CharlestownNew" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -545,13 +580,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logs" />
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CharlestownNew" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charlestown" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -575,10 +631,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/public/css" />
+      <recent name="$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/public/js" />
       <recent name="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Resources\views\Collaborator" />
       <recent name="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle\Resources\views\BusinessSupport" />
       <recent name="C:\wamp\www\CharlestownNew\src\Charlestown\CarpoolingBundle" />
-      <recent name="C:\wamp\www\CharlestownNew\src\Charlestown\CollaboratorBundle" />
     </key>
   </component>
   <component name="RunManager">
@@ -589,17 +645,20 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="d4c5ac5f-491b-4a54-9ab5-74ab7fb5231e" server_name="Charlestown">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -608,9 +667,6 @@
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="d4c5ac5f-491b-4a54-9ab5-74ab7fb5231e" server_name="Charlestown">
       <method />
     </configuration>
     <list size="0" />
@@ -635,23 +691,23 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17630854" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297587" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19648094" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2536657" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985657" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -671,9 +727,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31032172" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -699,87 +755,13 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/FileBundle/Form/FileType.php">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3333335" vertical-offset="126" max-vertical-offset="774">
-          <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/UserBundle/Form/ProfileFormType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4347826" vertical-offset="378" max-vertical-offset="1206">
-          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/CollaboratorAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69736844" vertical-offset="584" max-vertical-offset="2142">
-          <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/ChatBundle/Entity/Message.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3768116" vertical-offset="270" max-vertical-offset="2466">
-          <caret line="29" column="19" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/ChatBundle/Resources/config/services.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2808">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26086956" vertical-offset="324" max-vertical-offset="1134">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/MessageAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23188406" vertical-offset="90" max-vertical-offset="738">
-          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/CustomerBundle/Resources/views/Customer/qualityService.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5270271" vertical-offset="515" max-vertical-offset="1314">
-          <caret line="39" column="115" selection-start-line="37" selection-start-column="0" selection-end-line="39" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/CustomerBundle/Resources/views/Customer/devis.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.185185" vertical-offset="1840" max-vertical-offset="2916">
-          <caret line="119" column="54" selection-start-line="119" selection-start-column="54" selection-end-line="119" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DevisAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.333334" vertical-offset="0" max-vertical-offset="864">
-          <caret line="41" column="63" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Services/Mailer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="2952">
-          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Resources/views/Mail/devisConfirmation.txt.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46376812" vertical-offset="0" max-vertical-offset="621">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding>
+            <element signature="e#6164#7144#0#Twig" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -787,7 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.71653545" vertical-offset="3433" max-vertical-offset="4086">
           <caret line="216" column="23" selection-start-line="216" selection-start-column="23" selection-end-line="216" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -798,18 +779,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.333333" vertical-offset="0" max-vertical-offset="882">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="24" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Entity/Collaborator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.333333" vertical-offset="9927" max-vertical-offset="10584">
           <caret line="574" column="28" selection-start-line="574" selection-start-column="28" selection-end-line="574" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,19 +877,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2862">
-          <caret line="133" column="35" selection-start-line="133" selection-start-column="35" selection-end-line="133" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Charlestown/DemandBundle/Entity/Demand.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="5112">
           <caret line="12" column="31" selection-start-line="12" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -924,7 +888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26086956" vertical-offset="18" max-vertical-offset="5076">
           <caret line="10" column="29" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -932,7 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.0" vertical-offset="0" max-vertical-offset="4068">
           <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="10" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -940,7 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6363636" vertical-offset="2124" max-vertical-offset="9486">
           <caret line="140" column="50" selection-start-line="140" selection-start-column="50" selection-end-line="140" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -948,7 +909,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.333333" vertical-offset="765" max-vertical-offset="5436">
           <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -956,7 +916,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.0" vertical-offset="1017" max-vertical-offset="1872">
           <caret line="86" column="32" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -964,7 +923,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-23.333334" vertical-offset="738" max-vertical-offset="7002">
           <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="82" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -972,7 +930,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2268">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -980,7 +937,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3333334" vertical-offset="2484" max-vertical-offset="4752">
           <caret line="140" column="31" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -988,9 +944,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28289473" vertical-offset="1538" max-vertical-offset="4788">
           <caret line="95" column="106" selection-start-line="95" selection-start-column="106" selection-end-line="95" selection-end-column="106" />
-          <folding>
-            <element signature="e#57#112#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -998,12 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.0" vertical-offset="441" max-vertical-offset="1548">
           <caret line="144" column="44" selection-start-line="144" selection-start-column="44" selection-end-line="144" selection-end-column="44" />
-          <folding>
-            <element signature="e#53#97#0#PHP" expanded="true" />
-            <element signature="e#938#3004#0#PHP" expanded="false" />
-            <element signature="e#3013#4435#0#PHP" expanded="false" />
-            <element signature="e#4444#5952#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1011,7 +958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.7828947" vertical-offset="1084" max-vertical-offset="2070">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1019,17 +965,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.333334" vertical-offset="162" max-vertical-offset="900">
           <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
-          <folding>
-            <element signature="e#2181#2205#0#HTML" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/views/layout.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/logs/dev.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.296296" vertical-offset="24173" max-vertical-offset="25488">
-          <caret line="1335" column="42" selection-start-line="1335" selection-start-column="42" selection-end-line="1347" selection-end-column="23" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="73710" max-vertical-offset="83520">
+          <caret line="4095" column="0" selection-start-line="4095" selection-start-column="0" selection-end-line="4095" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Entity/NotificationUserRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.851852" vertical-offset="148" max-vertical-offset="792">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1037,59 +986,136 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-141.33333" vertical-offset="486" max-vertical-offset="4446">
           <caret line="240" column="4" selection-start-line="240" selection-start-column="4" selection-end-line="240" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/logs/dev.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="77904" max-vertical-offset="80370">
-          <caret line="3920" column="0" selection-start-line="3920" selection-start-column="0" selection-end-line="3920" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Entity/NotificationUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="61.0" vertical-offset="2241" max-vertical-offset="2862">
+        <state vertical-scroll-proportion="23.0" vertical-offset="1215" max-vertical-offset="2862">
           <caret line="34" column="72" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Controller/NotificationController.php">
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CollaboratorBundle/Resources/views/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0" vertical-offset="1485" max-vertical-offset="2340">
-          <caret line="93" column="33" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
-          <folding>
-            <element signature="e#61#121#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Resources/views/Sonata/notification.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0" vertical-offset="1062" max-vertical-offset="3420">
-          <caret line="74" column="64" selection-start-line="74" selection-start-column="64" selection-end-line="74" selection-end-column="64" />
-          <folding />
+        <state vertical-scroll-proportion="-9.37037" vertical-offset="24335" max-vertical-offset="25488">
+          <caret line="1366" column="46" selection-start-line="1366" selection-start-column="46" selection-end-line="1367" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Services/NotificationBlock.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.185185" vertical-offset="274" max-vertical-offset="1530">
-          <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+        <state vertical-scroll-proportion="-5.185185" vertical-offset="472" max-vertical-offset="1764">
+          <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/sonata-project/admin-bundle/Admin/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34703946" vertical-offset="8033" max-vertical-offset="48834">
+          <caret line="494" column="23" selection-start-line="494" selection-start-column="23" selection-end-line="494" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Controller/NotificationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.666667" vertical-offset="1935" max-vertical-offset="2556">
+          <caret line="126" column="5" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Entity/NotificationUserRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/OperationApplianceAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26377296" vertical-offset="148" max-vertical-offset="792">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+        <state vertical-scroll-proportion="-14.333333" vertical-offset="711" max-vertical-offset="1332">
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DemandFormationAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8864775" vertical-offset="369" max-vertical-offset="1098">
+          <caret line="55" column="48" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DemandMeetingAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8263773" vertical-offset="477" max-vertical-offset="1206">
+          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DemandMobilityAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85507244" vertical-offset="423" max-vertical-offset="1152">
+          <caret line="58" column="48" selection-start-line="58" selection-start-column="48" selection-end-line="58" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DevisAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.185184" vertical-offset="265" max-vertical-offset="954">
+          <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/FileAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.185184" vertical-offset="1111" max-vertical-offset="1800">
+          <caret line="94" column="42" selection-start-line="94" selection-start-column="42" selection-end-line="94" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/CustomerAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-70.0" vertical-offset="0" max-vertical-offset="2034">
+          <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Admin/DemandVacancyAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.81964576" vertical-offset="499" max-vertical-offset="1206">
+          <caret line="61" column="44" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/NotificationBundle/Resources/views/Sonata/notification.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85855263" vertical-offset="1674" max-vertical-offset="5040">
+          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.333333" vertical-offset="513" max-vertical-offset="2862">
+          <caret line="44" column="43" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/UserBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.333333" vertical-offset="756" max-vertical-offset="3870">
+          <caret line="61" column="26" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Charlestown/CoreBundle/Controller/CoreController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.666666" vertical-offset="891" max-vertical-offset="1512">
+          <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50328946" vertical-offset="594" max-vertical-offset="2808">
+          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
           <folding>
-            <marker date="1463046560386" expanded="true" signature="407:527" placeholder="Select n Fro..CharlestownNotificationBundle..." />
-            <marker date="1463046560386" expanded="true" signature="782:947" placeholder="Select n Fro..CharlestownNotificationBundle..." />
+            <element signature="e#6164#7144#0#Twig" expanded="false" />
           </folding>
         </state>
       </provider>

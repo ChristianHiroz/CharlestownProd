@@ -30,13 +30,26 @@ class NotificationBlock extends BaseBlockService  {
 
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
+        $count = 0;
+        $countInfo = 0;
         $user = $this->container->get('security.context')->getToken()->getUser();
         $notification = $this->container->get('doctrine')->getRepository('CharlestownNotificationBundle:NotificationUser')->getNotificationByUser($user->getId());
+
+        foreach($notification as $notif){
+            if($notif->getState() == "info"){
+                $countInfo++;
+            }
+            elseif($notif->getState() == "unread"){
+                $count++;
+            }
+        }
+
         $resolver->setDefaults(array(
             'url'      => false,
             'user' => $user,
             'notifications' => $notification,
-            'count' => count($notification),
+            'count' => $count,
+            'countInfo' => $countInfo,
             'title'    => 'Notification',
             'template' => 'CharlestownNotificationBundle:Sonata:notification.html.twig',
         ));

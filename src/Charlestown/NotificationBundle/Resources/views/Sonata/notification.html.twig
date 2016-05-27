@@ -8,7 +8,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="notificationModalLabel">Notifications</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="notificationBody">
                 {% for notification in settings.notifications %}
                     {% if notification.state == "unread" %}
                     <div class="notification_body">
@@ -16,37 +16,37 @@
                         <p class="notification_date">{{ notification.notification.notifiedAt |  localizeddate('full', 'none') }}</p>
                         <p class="notification_description">{{ notification.notification.description }}</p>
                         {% if notification.notification.type == "DemandFormation" %}
-                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            <a class="btn btn-danger" href="{{ path('admin_charlestown_demand_demandformation_edit', {'id': notification.notification.relativeId }) }}" onclick="return sendNotif({{ notification.id }})">Je m'en occupe</a>
                             {% if notification.order != "TODO" %}
                             <a class="btn btn-warning" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
                             {% endif %}
                         {% elseif notification.notification.type == "DemandMobility" %}
-                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            <a class="btn btn-danger" href="{{ path('admin_charlestown_demand_demandmobility_edit', {'id': notification.notification.relativeId}) }}" onclick="return sendNotif({{ notification.id }})">Je m'en occupe</a>
                             {% if notification.order != "TODO" %}
                                 <a class="btn btn-warning" id="{{ notification.id }}" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
                             {% endif %}
                         {% elseif notification.notification.type == "DemandMeeting" %}
-                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            <a class="btn btn-danger" href="{{ path('admin_charlestown_demand_demandmeeting_edit', {'id': notification.notification.relativeId}) }}" onclick="return sendNotif({{ notification.id }})">Je m'en occupe</a>
                             {% if notification.order != "TODO" %}
                                 <a class="btn btn-warning" id="{{ notification.id }}" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
                             {% endif %}
                         {% elseif notification.notification.type == "DemandVacancy" %}
-                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            <a class="btn btn-danger" href="{{ path('admin_charlestown_demand_demandvacancy_edit', {'id': notification.notification.relativeId}) }}" onclick="return sendNotif({{ notification.id }})">Je m'en occupe</a>
                             {% if notification.order != "TODO" %}
                                 <a class="btn btn-warning" id="{{ notification.id }}" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
                             {% endif %}
                         {% elseif notification.notification.type == "Devis" %}
-                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            <a class="btn btn-danger" href="{{ path('admin_charlestown_customer_devis_edit', {'id': notification.notification.relativeId}) }}" onclick="return sendNotif({{ notification.id }})">Je m'en occupe</a>
                             {% if notification.order != "TODO" %}
                                 <a class="btn btn-warning" id="{{ notification.id }}" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
                             {% endif %}
                         {% elseif notification.notification.type == "OperationAppliance" %}
-                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            <a class="btn btn-danger" href="{{ path('admin_charlestown_operation_operationappliance_edit', {'id': notification.notification.relativeId}) }}"  onclick="return sendNotif({{ notification.id }})">Je m'en occupe</a>
                             {% if notification.order != "TODO" %}
                                 <a class="btn btn-warning" id="{{ notification.id }}" onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
                             {% endif %}
                         {% elseif notification.notification.type == "FileOperation" %}
-                            <a class="btn btn-danger" onclick="sendNotif({{ notification.id }})">Je m'en occupe</a>
+                            <a class="btn btn-danger" href="{{ path('admin_charlestown_operation_fileoperation_edit', {'id': notification.notification.relativeId}) }}" onclick="return sendNotif({{ notification.id }})">Je m'en occupe</a>
                             {% if notification.order != "TODO" %}
                                 <a class="btn btn-warning"  id="{{ notification.id }}"onclick="readNotification({{ notification.id }})">Mon binôme s'en occupe</a>
                             {% endif %}
@@ -71,7 +71,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="notificationInfoModalLabel">Notifications infos</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="notificationInfoBody">
                 {% for notification in settings.notifications %}
                     {% if notification.state == "info" %}
                         <div class="notification_body">
@@ -100,14 +100,18 @@
                     <tr style="height:52px;">
                         <td class="sonata-ba-list-label" width="40%" style="font-size: 24px;">
                             {% if settings.count > 0 %}
-                            <button style="color:red;" class="btn-link btn-flat" data-toggle="modal" data-target="#notificationModal"><span class="glyphicon glyphicon-envelope"><sup id="sup">{{ settings.count }}</sup></span></button>
+                            <button style="color:red;" class="btn-link btn-flat" data-toggle="modal" data-target="#notificationModal"><span class="glyphicon glyphicon-envelope"><sup class="count" id="sup">{{ settings.count }}</sup></span></button>
                             {% else %}
-                            <button class="btn-link btn-flat" data-toggle="modal" data-target="#notificationModal"><span class="glyphicon glyphicon-envelope"></span></button>
+                            <button class="btn-link btn-flat" data-toggle="modal" data-target="#notificationModal"><span class="glyphicon glyphicon-envelope"><sup class="count" id="sup"></sup></span></button>
                             {% endif %}
                         </td>
                         <td style="font-size: 24px;">
                             <div class="btn-group">
-                                <button class="btn-link btn-flat" data-toggle="modal" data-target="#notificationInfoModal"><span class="glyphicon glyphicon-asterisk"></span></button>
+                                {% if settings.countInfo > 0 %}
+                                <button style="color:red;" class="btn-link btn-flat" data-toggle="modal" data-target="#notificationInfoModal"><span class="glyphicon glyphicon-asterisk"><sup class="countInfo" id="sup">{{ settings.countInfo }}</sup></span></button>
+                                {% else %}
+                                <button class="btn-link btn-flat" data-toggle="modal" data-target="#notificationInfoModal"><span class="glyphicon glyphicon-asterisk"><sup class="countInfo" id="sup"></sup></span></button>
+                                {% endif %}
                             </div>
                         </td>
                     </tr>
@@ -116,22 +120,21 @@
             </div>
         </div>
     </div>
-
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
     <script>
         function deleteNotification(id){
             $("#"+id).parent().next().remove();
             $("#"+id).parent().remove();
-            var supValue = $("#sup").text();
-            supValue = supValue -1;
-            if(supValue != 0){
-                $("#sup").text(supValue);
-            }
-            else{
-                $("#sup").parent().css("color", "blue")
-                $("#sup").remove();
-            }
+//            var supValue = $("#sup").text();
+//            supValue = supValue -1;
+//            if(supValue != 0){
+//                $("#sup").text(supValue);
+//            }
+//            else{
+//                $("#sup").parent().css("color", "blue")
+//                $("#sup").remove();
+//            }
 
             $.ajax({
                 url: Routing.generate('notification_delete', {'id' : id}),
@@ -147,15 +150,15 @@
         function readNotification(id){
             $("#"+id).parent().next().remove();
             $("#"+id).parent().remove();
-            var supValue = $("#sup").text();
-            supValue = supValue -1;
-            if(supValue != 0){
-                $("#sup").text(supValue);
-            }
-            else{
-                $("#sup").parent().css("color", "blue")
-                $("#sup").remove();
-            }
+//            var supValue = $("#sup").text();
+//            supValue = supValue -1;
+//            if(supValue != 0){
+//                $("#sup").text(supValue);
+//            }
+//            else{
+//                $("#sup").parent().css("color", "blue")
+//                $("#sup").remove();
+//            }
 
             $.ajax({
                 url: Routing.generate('notification_read', {'id' : id}),
@@ -168,18 +171,105 @@
                 }
             });
         }
-
         function sendNotif(id){
             $.ajax({
                 url: Routing.generate('notification_complete', {'id' : id}),
                 type: 'GET',
                 success: function (data) {
+                    return true;
+                },
+                error: function(data){
                     console.log(data);
+                    return false;
+                }
+            });
+        }
+
+        window.setInterval(reloadNotification, 3000);
+
+        function reloadNotification(){
+            $.ajax({
+                url: Routing.generate('notification_reload'),
+                type: 'GET',
+                success: function (data) {
+                    if(data["count"] == 0){
+                        $(".count:parent").css("color", "blue");
+                        $(".count").text("");
+                    }else{
+                        $(".count:parent").css("color", "red");
+                        $(".count").text(data['count']);
+                    }
+                    if(data["countInfo"] == 0){
+                        $(".countInfo:parent").css("color", "blue");
+                        $("#countInfo:first-child").text("");
+                    }else{
+                        $(".countInfo:parent").text(data['countInf']);
+                        $(".countInfo").css("color", "red");
+                    }
+
+                    $('#notificationBody').empty();
+                    $('#notificationInfoBody').empty();
+
+                    for(var i = 0; i < data["count"]+data["countInfo"] ; i++){
+                        if(data[i]["state"] == "info"){
+                            $("#notificationInfoBody").append(
+                                "<div class=\"notification_body\">" +
+                                "<h3 class=\"notification_title\">"+data[i]['title']+"</h3>" +
+                                "<p class=\"notification_date\">"+timeConverter(data[i]['notifiedAt'])+"</p>" +
+                                "<p class=\"notification_description\">"+data[i]['description']+"</p>" +
+                                "<a class=\"btn btn-warning\" id=\"data[i]['id']\" onclick=\"deleteNotification(data[i]['id'])\">Supprimer notification</a>" +
+                                "</div>");
+                        }
+                        else if(data[i]["state"] == "unread"){
+                            var appendString =
+                                "<div class=\"notification_body\">" +
+                                "<h3 class=\"notification_title\">" +data[i]['title']+"</h3>" +
+                                "<p class=\"notification_date\">"+timeConverter(data[i]['notifiedAt'])+"</p>" +
+                                "<p class=\"notification_description\">"+data[i]['description']+"</p>";
+
+                                if(data[i]['type'] == "OperationAppliance"){
+                                    appendString +=  "<a class=\"btn btn-danger\" href=\""+Routing.generate('admin_charlestown_operation_operationappliance_edit', {id : data[i]['relativeId']})+"\" onclick=\"return sendNotif("+ data[i]['id']+")\">Je m'en occupe</a>"
+                                }else if(data[i]['type'] == "DemandVacancy"){
+                                    appendString +=  "<a class=\"btn btn-danger\" href=\""+Routing.generate('admin_charlestown_demand_demandvacancy_edit', {id : data[i]['relativeId']})+"\" onclick=\"return sendNotif("+ data[i]['id']+")\">Je m'en occupe</a>"
+                                }else if(data[i]['type'] == "DemandMobility"){
+                                    appendString +=  "<a class=\"btn btn-danger\" href=\""+Routing.generate('admin_charlestown_demand_demandmobility_edit', {id : data[i]['relativeId']})+"\" onclick=\"return sendNotif("+ data[i]['id']+")\">Je m'en occupe</a>"
+                                }else if(data[i]['type'] == "DemandMeeting"){
+                                    appendString +=  "<a class=\"btn btn-danger\" href=\""+Routing.generate('admin_charlestown_demand_demandmeeting_edit', {id : data[i]['relativeId']})+"\" onclick=\"return sendNotif("+ data[i]['id']+")\">Je m'en occupe</a>"
+                                }else if(data[i]['type'] == "DemandFormation"){
+                                    appendString +=  "<a class=\"btn btn-danger\" href=\""+Routing.generate('admin_charlestown_demand_demandformation_edit', {id : data[i]['relativeId']})+"\" onclick=\"return sendNotif("+ data[i]['id']+")\">Je m'en occupe</a>"
+                                }else if(data[i]['type'] == "Devis"){
+                                    appendString +=  "<a class=\"btn btn-danger\" href=\""+Routing.generate('admin_charlestown_customer_devis_edit', {id : data[i]['relativeId']})+"\" onclick=\"return sendNotif("+ data[i]['id']+")\">Je m'en occupe</a>"
+                                }else if(data[i]['type'] == "Uniforme"){
+                                    appendString +=  "<a class=\"btn btn-danger\" href=\""+Routing.generate('admin_charlestown_customer_customer_show', {id : data[i]['relativeId']})+"\" onclick=\"return sendNotif("+ data[i]['id']+")\">Je m'en occupe</a>"
+                                }else if(data[i]['type'] == "FileOperation"){
+                                    appendString +=  "<a class=\"btn btn-danger\" href=\""+Routing.generate('admin_charlestown_operation_fileoperation_edit', {id : data[i]['relativeId']})+"\" onclick=\"return sendNotif("+ data[i]['id']+")\">Je m'en occupe</a>"
+                                }
+                                if(data[i]['todo'] != "TODO"){
+                                    appendString += "<a class=\"btn btn-warning\" id=\"data[i]['id']\" onclick=\"readNotification(data[i]['id'])\">Mon binôme s'en occupe</a>";
+                                }
+                                appendString += "</div>";
+                                $("#notificationBody").append(appendString);
+                        }
+                    }
+
                 },
                 error: function(data){
                     console.log(data);
                 }
             });
+        }
+
+        function timeConverter(date){
+            var a = new Date(date * 1000);
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            var year = a.getFullYear();
+            var month = months[a.getMonth()];
+            var date = a.getDate();
+            var hour = a.getHours();
+            var min = a.getMinutes();
+            var sec = a.getSeconds();
+            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+            return time;
         }
     </script>
 {% endblock %}
