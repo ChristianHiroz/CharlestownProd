@@ -30,8 +30,9 @@ class OperationController extends Controller
         $operations =  $this->getDoctrine()->getManager()->getRepository('CharlestownOperationBundle:Operation')->findAll();
         $user = $this->getUser();
         $applications = $user->getAppliances();
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
-        return array('operations' => $operations, 'applications' => $applications ,'user' => $user);
+        return array('operations' => $operations, 'applications' => $applications ,'user' => $user, 'messages' => $message);
     }
 
     /**
@@ -40,12 +41,14 @@ class OperationController extends Controller
      */
     public function myOperationApplicationsAction(Request $request)
     {
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
         if($request->getSession()->get('alert') == "success"){
             $request->getSession()->set('alert', 'nothing');
-            return array('applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser(), 'label' => "success");
+            return array('messages' => $message, 'applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser(), 'label' => "success");
         }
         else{
-            return array('applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
+            return array('messages' => $message, 'applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
         }
     }
 
@@ -55,8 +58,9 @@ class OperationController extends Controller
      */
     public function myOperationApplicationsHistoryAction()
     {
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
-        return array('applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
+        return array('messages' => $message, 'applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
     }
 
     /**

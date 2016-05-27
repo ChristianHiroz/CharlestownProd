@@ -88,11 +88,13 @@ class FileOperationController extends Controller
 
         $entity = new FileOperation();
         $form   = $this->createCreateForm($entity);
+        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'user' => $this->getUser(),
+            'messages' => $message
         );
     }
 }
