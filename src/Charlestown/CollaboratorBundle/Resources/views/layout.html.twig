@@ -1130,6 +1130,14 @@
                 <li><a class="btn" id="covoiturage" data-id="covoiturage" href="{{ path('carpooling') }}">Le covoiturage </a></li>
                 <li><a class="btn" id="bourse_competence" data-id="bourse_competence" href="{{ path('lesson') }}">Bourse aux compétences </a></li>
                 <li><a class="btn" id="announcment" data-id="announcment" href="{{ path('announcment') }}">Petites annonces </a></li>
+                {% set ul = false %}
+                {% if is_granted("ROLE_ADMIN") %}
+                    {% set ul = true %}
+                {% endif %}
+                {% if user.swapable %}
+                    {% set ul = true %}
+                {% endif %}
+                {% if ul == true %}
                 <li class="dropdown">
                     <a class="btn dropdown-toggle" style="margin-bottom: -5px; margin-top:-5px;" href="#" id="gLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-chevron-left"></span> Options</a>
                     <ul style="margin-top:-30px; margin-left:-185px;" class="dropdown-menu" id="gDrop" aria-labelledby="gLabel">
@@ -1146,6 +1154,9 @@
                         <li class="dropdown"><a class="btn" href="{{ path('fos_user_security_logout') }}">Déconnexion </a></li>
                     </ul>
                 </li>
+                {% else %}
+                    <li><a class="btn" href="{{ path('fos_user_security_logout') }}">Déconnexion </a></li>
+                {% endif %}
 
 
             </ul>
@@ -1406,7 +1417,7 @@
                     <div class="col-md-3">
                         <a style="color:white;" href="#">Mentions légales</a>
                     </div>
-                    <a href="{{ path('help') }}" style="float:right; font-size:30px; margin-top:-30px; margin-right:-150px; color:red;"><span class="glyphicon glyphicon-bell"></span></a>
+                    <a href="{{ path('help') }}" style="float:right; font-size:30px; margin-top:-30px; margin-right:-35px; color:red;"><span class="glyphicon glyphicon-bell"></span></a>
                 </div>
             </div>
         </footer>
