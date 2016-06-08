@@ -1,0 +1,4 @@
+numero_societe;numero_agence;raison_sociale;client_matricule;siren;siret;adresse1;adresse2;code_postal;ville;civilite_contact;nom_prenom_contact;telephone_contact;email_contact;profil;
+008;015;FACILITESS;150073;709800015;00063;52 RUE KLEBER;;92300;LEVALLOIS;MME;JULVE MICHEL;0707070707;MJULVE@sofinord.com;PREC;
+008;018;PHONE REGIE;187932;301251880;00128;3 RUE CAMBRONNE;;75015;PARIS;MR;Mathieu LIORET;0101010101;mathieu.lioret@hotmail.fr;UTIL;
+008;018;PHONE REGIE;187932;301251880;00128;3 RUE CAMBRONNE;;75015;PARIS;MR;VALLET FABIEN;0606060606;fvallet@charlestown.fr;DECI;

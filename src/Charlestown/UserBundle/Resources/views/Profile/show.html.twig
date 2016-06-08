@@ -26,6 +26,9 @@
                         {% if user.phoneNumber %}
                         Téléphone : {{ user.phoneNumber }} <br/><br/>
                         {% endif %}
+                        {% if user.portPhoneNumber %}
+                        Téléphone portable : {{ user.portPhoneNumber }} <br/><br/>
+                        {% endif %}
                         {% if user.agency %}
                         Agence : {{ user.agency.localisation }} <br/><br/>
                         {% endif %}
@@ -42,8 +45,8 @@
                         {% if user.firstName %}
                         Prénom : {{ user.firstName }} <br/><br/>
                         {% endif %}
-                        {% if user.position %}
-                        Poste : {{ user.position }} <br/><br/>
+                        {% if user.birthDate %}
+                        Poste : {{ user.birthDate | date("m/d/Y", "Europe/Paris") }} <br/><br/>
                         {% endif %}
                         {% if user.address and user.pc and user.town %}
                         Adresse : {{ user.address }} {{ user.pc }} {{ user.town }} <br/><br/>

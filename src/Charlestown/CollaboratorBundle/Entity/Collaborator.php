@@ -35,9 +35,9 @@ class Collaborator extends User
     /**
      * @var string
      *
-     * @ORM\Column(name="gender", type="string", nullable=true)
+     * @ORM\Column(name="portPhoneNumber", type="string", nullable=true)
      */
-    private $gender;
+    private $portPhoneNumber;
 
     /**
      * @var string
@@ -56,9 +56,9 @@ class Collaborator extends User
     /**
      * @var string
      *
-     * @ORM\Column(name="position", type="string", nullable=true)
+     * @ORM\Column(name="birthDate", type="datetime", nullable=true)
      */
-    private $position;
+    private $birthDate;
 
     /**
      * @var \Customer
@@ -197,6 +197,8 @@ class Collaborator extends User
         $this->myOffers = new ArrayCollection();
         $this->myOffersApplications = new ArrayCollection();
         $this->notifications = new ArrayCollection();
+        $this->activeChat = true;
+        $this->addRole("ROLE_USER");
         parent::__construct();
     }
 
@@ -212,22 +214,6 @@ class Collaborator extends User
      */
     public function setCustomer(Customer $customer = null){
         $this->customer = $customer;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param string $gender
-     */
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
     }
 
     /**
@@ -260,22 +246,6 @@ class Collaborator extends User
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param string $position
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
     }
 
     /**
@@ -587,6 +557,36 @@ class Collaborator extends User
         $this->notifications[] = $notification;
     }
 
+    /**
+     * @return string
+     */
+    public function getPortPhoneNumber()
+    {
+        return $this->portPhoneNumber;
+    }
 
+    /**
+     * @param string $portPhoneNumber
+     */
+    public function setPortPhoneNumber($portPhoneNumber)
+    {
+        $this->portPhoneNumber = $portPhoneNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * @param string $birthDate
+     */
+    public function setBirthDate($birthDate)
+    {
+        $this->birthDate = $birthDate;
+    }
 }
 

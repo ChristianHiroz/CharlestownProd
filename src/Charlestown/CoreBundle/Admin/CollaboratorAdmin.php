@@ -39,12 +39,12 @@ class CollaboratorAdmin extends Admin
             )
             ->add('firstName', 'text', array('label' => 'Prénom'))
             ->add('lastName', 'text', array('label' => 'Nom'))
-            ->add('gender', 'choice', array('label' => "Sexe", 'choices' => array('H' => 'H', 'F'=>'F')))
-            ->add('position', 'text', array('label' => 'Poste'))
+            ->add('birthDate', 'date', array('label' => 'Date anniversaire'))
             ->add('address', 'text', array('label' => 'Adresse'))
             ->add('town', 'text', array('label' => 'Ville'))
             ->add('pc', 'text', array('label' => 'Code postal'))
             ->add('phoneNumber', 'text', array('label' => 'Téléphone'))
+            ->add('portPhoneNumber', 'text', array('label' => 'Téléphone portable'))
             ->add('isClubMember', 'choice', array(
                 'choices' => array(
                     0 => 'Non',

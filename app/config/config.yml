@@ -155,4 +155,5 @@ services:
        class: Twig_Extensions_Extension_Intl
        tags:
            - { name: twig.extension }
-
+    import.csvtoarray:
+        class: Charlestown\CollaboratorBundle\Services\ConvertCsvToArray
