@@ -1,6 +1,7 @@
 <?php
 namespace Charlestown\CollaboratorBundle\Command;
 
+use Charlestown\CustomerBundle\Entity\Customer;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -38,7 +39,8 @@ class ImportCommand extends ContainerAwareCommand
     protected function import(InputInterface $input, OutputInterface $output)
     {
         // Getting php array of data from CSV
-        $data = $this->get($input, $output);
+        $data = $this->get($input, $output, "collaborator");
+        $dataClient = $this->get($input, $output, "client");
 
         // Getting doctrine manager
         $em = $this->getContainer()->get('doctrine')->getManager();
@@ -49,6 +51,7 @@ class ImportCommand extends ContainerAwareCommand
         $size = count($data);
         $batchSize = 20;
         $i = 1;
+        $j = 1;
 
         // Starting progress
         $progress = new ProgressBar($output, $size);
@@ -101,6 +104,11 @@ class ImportCommand extends ContainerAwareCommand
 
         }
 
+        //Same for Client TODO
+        foreach($dataClient as $row){
+
+        }
+
         // Flushing and clear data on queue
         $em->flush();
         $em->clear();
@@ -109,10 +117,18 @@ class ImportCommand extends ContainerAwareCommand
         $progress->finish();
     }
 
-    protected function get(InputInterface $input, OutputInterface $output)
+    protected function get(InputInterface $input, OutputInterface $output, $type)
     {
         // Getting the CSV from filesystem
-        $fileName = 'web/uploads/import/Charles_users.csv';
+        if($type == "collaborator"){
+            $fileName = 'web/uploads/csv/Charles_users.csv';
+        }
+        elseif($type == "client"){
+            $fileName = 'web/uploads/csv/Charles_clients.csv';
+        }
+        else{
+            return null;
+        }
 
         // Using service for converting CSV to PHP Array
         $converter = $this->getContainer()->get('import.csvtoarray');
