@@ -2,43 +2,385 @@
 
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="padding-bottom: 0px;">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" style="width:100%; text-align: center;">
-                                <li style="float:none;display:inline-block;"><h4>Bonjour {{ user.firstName }}, bienvenue sur l'intranet de Charlestown</h4></li>
-                                {% if idActual == 0 %}
-                                    <li class="active" role="presentation" style="float:right;"><a href="#">News</a></li>
-                                {% else %}
-                                    <li class="" role="presentation"  style="float:right;"><a href="#">News</a></li>
-                                {% endif %}
-                                <li class="divider-vertical-second" style="float:right;"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <hr/>
-            </div>
-            <div class="modal-body" style="padding-top: 0px; color:black;">
-                <div class="container" style="width:100%;">
-                    {% for article in lastsArticles %}
-                        {% if article.visibleCollaborator %}
-                            <div class="row">
-                                <div class="col-md-3 article">
-                                    <img class="articleImage" src="{{ asset(article.picture.uploadRootDir  ~ article.picture.id ~ '.' ~ article.picture.alt) }}"/>
-                                </div>
-                                <div class="col-md-9">
-                                    <h3 class="articleTitle">{{ article.title }}</h3>
-                                    <p class="articleTexte">{{ article.texte }}</p>
-                                    <hr style="margin-top:65px;"/>
-                                </div>
-                            </div><br/>
-                        {% endif %}
-                    {% endfor %}
+    <div class="charlestown-container-3 container">
+        <div class="row charlestown-row-3">
+            <div class="col-md-12 charlestown-col-md-12" id="news">
+                <div class="charlestown-title">
+                    <h2>VOS NEWS</h2>
                 </div>
+                <div class="charlestown-scrollable">
+                {% for article in articles %}
+                    <article class="charlestown-article">
+                        <img class="charlestown-article-image" src="{{ asset(article.picture.uploadRootDir  ~ article.picture.id ~ '.' ~ article.picture.alt) }}" alt="{{ article.title }}">
+                        <p class="charlestown-article-texte">
+                            <span class="charlestown-article-title">{{ article.title }}</span>
+                            <br/>
+                            <br/>
+                            <span class="charlestown-article-description">{{ article.texte }}</span>
+                        </p>
+                    </article>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row charlestown-row-3">
+            <div class="col-md-12 charlestown-col-md-12" id="activity">
+                <div class="charlestown-title">
+                    <h2>NOS ACTIVITES</h2>
+                </div>
+                <div class="charlestown-scrollable">
+                    <div class="container" style="margin-left:0px; width: 100%; padding-bottom: 10px; text-align:left;">
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-12>">
+                                <h2>Accueil en entreprise</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <br/>
+                                Le sourire, la courtoisie, la présentation, le comportement et les compétences des hôte(sse)s d’accueil sont stratégiques pour l’image de marque de nos clients. <br/> <br/>
+
+                                Parmi nos domaines d’expertise, nous comptons : <br/> <br/> <br/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <ul>
+                                    <li>Accueil visiteurs</li>
+                                    <li>Accueil VIP</li>
+                                    <li>Accueil Présidence</li>
+                                    <li>Gestion du standard</li>
+                                    <li>Standard déporté</li>
+                                    <li>Gestion du courrier</li>
+                                    <li>Gestion des salles de réunion</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <img  class="menuFooterLogo" src="{{ asset('bundles/charlestowncore/images/bienvenue_ae_1.jpg') }}">
+                            </div>
+                            <div class="col-md-3">
+                                <ul>
+                                    <li>Gestion des agendas</li>
+                                    <li>Réception des plis et colis</li>
+                                    <li>Gestion des coursiers</li>
+                                    <li>Gestion des voyages</li>
+                                    <li>Tâches administratives</li>
+                                    <li>Gestion des consommables</li>
+                                    <li>Services aux occupants</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <img  class="menuFooterLogo" src="{{ asset('bundles/charlestowncore/images/bienvenue_ae_2.jpg') }}">
+                            </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-md-12>">
+                                <h2>Evenementiel</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                Pour en faire un moment inoubliable, nous sélectionnons des équipes élégantes, dynamiques et professionnelles qui offrent à nos clients un service personnalisé. Souplesse, sérénité, sens du service et haute qualité organisationnelle sont des atouts qui font la différence pour la réussite de nos événements. <br/><br/>
+
+                                Parmi nos domaines d’expertise, nous comptons :  <br/> <br/> <br/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <ul>
+                                    <li>Accueil, Orientation</li>
+                                    <li>Contrôle des invitations</li>
+                                    <li>Pointage listing</li>
+                                    <li>Gestion des flux</li>
+                                    <li>Placement salle/diner</li>
+                                    <li>Vestiaire</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <ul>
+                                    <li>Accueil protocolaire</li>
+                                    <li>Gestion des intervenants</li>
+                                    <li>Remise de badges</li>
+                                    <li>Emargement</li>
+                                    <li>Remise de boitiers de vote</li>
+                                    <li>Remise de casque de traduction</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <ul>
+                                    <li>Voiturier</li>
+                                    <li>Gestion des cars / navettes</li>
+                                    <li>Prise en charge gares/aéroports</li>
+                                    <li>Distribution de cadeaux</li>
+                                    <li>Accueil Presse</li>
+                                    <li>Accompagnement VIP</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img  class="menuFooterLogo" src="{{ asset('bundles/charlestowncore/images/bienvenue_event_1.jpg') }}">
+                            </div>
+                            <div class="col-md-4">
+                                <img  class="menuFooterLogo" src="{{ asset('bundles/charlestowncore/images/bienvenue_event_2.jpg') }}">
+                            </div>
+                            <div class="col-md-4">
+                                <img  class="menuFooterLogo" src="{{ asset('bundles/charlestowncore/images/bienvenue_event_3.jpg') }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12>">
+                                <h2>Promotion des ventes</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <br/>
+                                    Les campagnes d’animation sont uniques : leur réussite doit être totale et immédiate. Pour en faire des moments forts, nous sélectionnons des équipes élégantes, homogènes, expérimentées, consciencieuses et mobiles qui assurent des missions de haute qualité. <br/><br/>
+
+                                    Parmi nos domaines d’expertise, nous comptons :  <br/> <br/> <br/>
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <ul>
+                                    <li>Accueil</li>
+                                    <li>Conseil clientèle</li>
+                                    <li>Présentation produit</li>
+                                    <li>Démonstration produit</li>
+                                    <li>Dégustation produit</li>
+                                    <li>Vente produit</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <img  class="menuFooterLogo" src="{{ asset('bundles/charlestowncore/images/bienvenue_promotion_2.jpg') }}">
+                            </div>
+                            <div class="col-md-3">
+                                <ul>
+                                    <li>Distribution de goodies</li>
+                                    <li>Distribution de cadeaux</li>
+                                    <li>Distribution de flyers</li>
+                                    <li>Animation in-store</li>
+                                    <li>Animation out-store</li>
+                                    <li>Service boissons</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <img  class="menuFooterLogo" src="{{ asset('bundles/charlestowncore/images/bienvenue_promotion_3.jpg') }}">
+                            </div>
+                        </div>
+
+                        <script>
+                            var z = 1;
+                            function changement(x){
+                                if(x == 0){
+                                    $('#collapseEvent').removeClass("in");
+                                    $('#collapsePromo').removeClass("in");
+                                    $('#buttonEvent i').removeClass("fa-minus");
+                                    $('#buttonEvent i').addClass("fa-plus");
+                                    $('#buttonPromo i').removeClass("fa-minus");
+                                    $('#buttonPromo i').addClass("fa-plus");
+                                    $('#buttonAE i').removeClass("fa-plus");
+                                    $('#buttonAE i').addClass("fa-minus");
+                                    if(z == 0){
+                                        $('#collapseAE').removeClass("in");
+                                    }
+                                }
+                                else if (x == 1){
+                                    $('#collapseAE').removeClass("in");
+                                    $('#collapsePromo').removeClass("in");
+                                    $('#buttonAE i').removeClass("fa-minus");
+                                    $('#buttonAE i').addClass("fa-plus");
+                                    $('#buttonPromo i').removeClass("fa-minus");
+                                    $('#buttonPromo i').addClass("fa-plus");
+                                    $('#buttonEvent i').removeClass("fa-plus");
+                                    $('#buttonEvent i').addClass("fa-minus");
+                                    if(z == 1){
+                                        $('#collapseEvent').removeClass("in");
+                                    }
+                                }
+                                else if (x == 2){
+                                    $('#collapseEvent').removeClass("in");
+                                    $('#collapseAE').removeClass("in");
+                                    $('#buttonEvent i').removeClass("fa-minus");
+                                    $('#buttonEvent i').addClass("fa-plus");
+                                    $('#buttonAE i').removeClass("fa-minus");
+                                    $('#buttonAE i').addClass("fa-plus");
+                                    $('#buttonPromo i').removeClass("fa-plus");
+                                    $('#buttonPromo i').addClass("fa-minus");
+                                    if(z == 2){
+                                        $('#collapsePromo').removeClass("in");
+                                    }
+                                }
+                                z = x;
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row charlestown-row-3">
+            <div class="col-md-12 charlestown-col-md-12" id="implantations">
+                <div class="charlestown-title">
+                    <h2>NOS IMPLANTATIONS</h2>
+                </div>
+                <div id="map" style="height: 85%;"></div>
+                <script>
+                    function initMap() {
+                        var myLatLng = {lat: 48.856614, lng: 2.3522219000000177};
+                        var myLatLngLille = {lat: 50.63735870000001, lng: 3.062676099999976};
+                        var myLatLngNantes = {lat: 47.218307, lng: -1.5518079999999372};
+                        var myLatLngLyon = {lat: 45.7703608, lng: 4.8466276000000335};
+                        var myLatLngMarseille = {lat: 43.293329, lng: 5.371914899999979};
+                        var myLatLngBordeaux = {lat: 44.8605799, lng: -0.6552796999999373};
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 5,
+                            center: myLatLng
+                        });
+
+
+                        var contentString = '<div id="content">' +
+                                '<div id="siteNotice" style="text-align: left;">' +
+                                '<div id="bodyContent">' +
+                                '<p><b>Charlestown Paris</b><br>' +
+                                '<span class="glyphicon glyphicon-home"> 55, rue Fondary 75015 Paris</span><br>' +
+                                '<span class="glyphicon glyphicon-phone"> 01.70.91.22.22 </span><br>' +
+                                '<span class="glyphicon glyphicon-print"> 01.83.71.16.61 </span><br>' +
+                                '<span class="glyphicon glyphicon-envelope"> info@charlestown.fr </span>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                        var contentStringLille = '<div id="content">' +
+                                '<div id="siteNotice" style="text-align: left;">' +
+                                '<div id="bodyContent">' +
+                                '<p><b>Charlestown Nord/Est</b><br>' +
+                                '<span class="glyphicon glyphicon-home"> 3, rue Esquermoise 59000 Lille</span><br>' +
+                                '<span class="glyphicon glyphicon-phone"> 03.59.81.00.60 </span><br>' +
+                                '<span class="glyphicon glyphicon-print"> 03.72.27.18.24  </span><br>' +
+                                '<span class="glyphicon glyphicon-envelope"> lille@charlestown.fr </span>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                        var contentStringNantes = '<div id="content">' +
+                                '<div id="siteNotice" style="text-align: left;">' +
+                                '<div id="bodyContent">' +
+                                '<p><b>Charlestown Ouest/Nantes</b><br>' +
+                                '<span class="glyphicon glyphicon-phone"> 3, place Saint-Pierre 44000 Nantes</span><br>' +
+                                '<span class="glyphicon glyphicon-phone"> 02.72.24.05.05  </span><br>' +
+                                '<span class="glyphicon glyphicon-print"> 02.34.88.19.28 </span><br>' +
+                                '<span class="glyphicon glyphicon-envelope"> nantes@charlestown.fr </span>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                        var contentStringLyon = '<div id="content">' +
+                                '<div id="siteNotice" style="text-align: center;">' +
+                                '<div id="bodyContent">' +
+                                '<p><b>Charlestown Rhône-Alpes</b><br>' +
+                                '<span class="glyphicon glyphicon-home"> 16, rue Crillon 69006 Lyon</span><br>' +
+                                '<span class="glyphicon glyphicon-phone"> 04.26.83.80.00  </span><br>' +
+                                '<span class="glyphicon glyphicon-print"> 04.84.88.17.88 </span><br>' +
+                                '<span class="glyphicon glyphicon-envelope"> lyon@charlestown.fr </span>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                        var contentStringMarseille = '<div id="content">' +
+                                '<div id="siteNotice" style="text-align: center;">' +
+                                '<div id="bodyContent">' +
+                                '<p><b>Charlestown Grand Sud</b><br>' +
+                                '<span class="glyphicon glyphicon-home"> 3, place aux Huiles 13001 Marseille </span><br>' +
+                                '<span class="glyphicon glyphicon-phone"> 04.91.59.85.85 </span><br>' +
+                                '<span class="glyphicon glyphicon-print"> 04.91.59.85.86 </span><br>' +
+                                '<span class="glyphicon glyphicon-envelope"> marseil@charlestown.fr </span>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                        var contentStringBordeaux = '<div id="content">' +
+                                '<div id="siteNotice" style="text-align: center;">' +
+                                '<div id="bodyContent">' +
+                                '<p><b>Charlestown Sud Ouest</b><br>' +
+                                '<span class="glyphicon glyphicon-home"> 20, rue du 19 mars 1962 33320 Eysines </span><br>' +
+                                '<span class="glyphicon glyphicon-phone"> 05.40.25.00.70 </span><br>' +
+                                '<span class="glyphicon glyphicon-print"> 05.32.00.18.87 </span><br>' +
+                                '<span class="glyphicon glyphicon-envelope"> bordx@charlestown.fr </span>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+
+
+                        var infowindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
+                        var infowindowLille = new google.maps.InfoWindow({
+                            content: contentStringLille
+                        });
+                        var infowindowLyon = new google.maps.InfoWindow({
+                            content: contentStringLyon
+                        });
+                        var infowindowMarseille = new google.maps.InfoWindow({
+                            content: contentStringMarseille
+                        });
+                        var infowindowNantes = new google.maps.InfoWindow({
+                            content: contentStringNantes
+                        });
+                        var infowindowBordeaux = new google.maps.InfoWindow({
+                            content: contentStringBordeaux
+                        });
+
+                        var marker = new google.maps.Marker({
+                            position: myLatLng,
+                            map: map,
+                            title: 'Charlestown Paris'
+                        });
+                        var markerLille = new google.maps.Marker({
+                            position: myLatLngLille,
+                            map: map,
+                            title: 'Charlestown Nord/Est'
+                        });
+                        var markerNantes = new google.maps.Marker({
+                            position: myLatLngNantes,
+                            map: map,
+                            title: 'Charlestown Ouest/Nantes'
+                        });
+                        var markerLyon = new google.maps.Marker({
+                            position: myLatLngLyon,
+                            map: map,
+                            title: 'Charlestown Rhône-Alpes'
+                        });
+                        var markerMarseille = new google.maps.Marker({
+                            position: myLatLngMarseille,
+                            map: map,
+                            title: 'Charlestown Grand Sud'
+                        });
+                        var markerBordeaux = new google.maps.Marker({
+                            position: myLatLngBordeaux,
+                            map: map,
+                            title: 'Charlestown Sud Ouest'
+                        });
+
+                        marker.addListener('click', function () {
+                            infowindow.open(map, marker);
+                        });
+                        markerLille.addListener('click', function () {
+                            infowindowLille.open(map, markerLille);
+                        });
+                        markerNantes.addListener('click', function () {
+                            infowindowNantes.open(map, markerNantes);
+                        });
+                        markerLyon.addListener('click', function () {
+                            infowindowLyon.open(map, markerLyon);
+                        });
+                        markerMarseille.addListener('click', function () {
+                            infowindowMarseille.open(map, markerMarseille);
+                        });
+                        markerBordeaux.addListener('click', function () {
+                            infowindowBordeaux.open(map, markerBordeaux);
+                        });
+                    }
+
+                </script>
+                <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Nqc7q6X5Ryv4Vyna3eoiwas_9nRKfvk&signed_in=true&callback=initMap"></script>
             </div>
         </div>
     </div>

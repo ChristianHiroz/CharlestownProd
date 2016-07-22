@@ -1,29 +1,24 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="padding-bottom: 0px;">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" style="width:100%;">
-                                <li class="" role="presentation"><a href="{{ path('operation') }}">Opérations</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('my_operation_applications') }}">Mes candidatures</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('my_operation_applications_history') }}">Historique</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="active" role="presentation"><a>Ajout photo</a></li>
-                            </ul>
-                        </div>
+
+    <div class="container" style="width:80%; margin-left:20%; max-width:80%;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="bigTitle" style="text-align: right;">NOUVELLE PHOTO</h2>
+                <hr>
+                <div class="form">
+                    {{ form_start(form)}}
+                    {{ form_widget(form.nameShow, {'attr' : {'class' : 'champ', 'placeholder' : 'Titre de la photo'}}) }}
+                    {{ form_widget(form.file, {'attr' : {'class' : 'champ'}}) }}
+                    <div>
+                        <input class="bouton" style="margin-bottom:150px;"type="submit" value="Envoyer" />
                     </div>
-                </nav>
-                <hr/>
+                    {{ form_end(form) }}
+
+                </div>
             </div>
-            <div class="modal-body" style="padding-top: 0px; color:black;">
-                {{ form(form) }}
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+
+    </div>
 {% endblock %}

@@ -13,7 +13,6 @@ use Charlestown\SkillPurseBundle\Form\LessonType;
 /**
  * Lesson controller.
  *
- * @Route("/lesson")
  */
 class LessonController extends Controller
 {
@@ -21,7 +20,7 @@ class LessonController extends Controller
     /**
      * Lists all Lesson entities.
      *
-     * @Route("/", name="lesson")
+     * @Route("/bourse", name="social_lesson")
      * @Method("GET")
      * @Template()
      */
@@ -41,32 +40,28 @@ class LessonController extends Controller
     }
 
     /**
-     * @Route("s", name="mylessons")
+     * @Route("/bourses", name="social_my_lesson")
      * @Template()
      */
     public function myLessonsAction()
     {
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-
-        return array('lessons' => $this->getUser()->getMyLessons(), 'user' => $this->getUser(), 'messages' => $message);
+        return array('lessons' => $this->getUser()->getMyLessons(), 'user' => $this->getUser());
     }
 
     /**
-     * @Route("/demandes", name="mylesson_applications")
+     * @Route("/bourse_demandes", name="social_lesson_applications")
      * @Template()
      */
     public function myLessonsApplicationsAction()
     {
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-
-        return array('messages' => $message, 'lessons' => $this->getUser()->getLessons(),'lessonsApplications' => $this->getUser()->getMyLessonsApplication(), 'user' => $this->getUser());
+        return array('lessons' => $this->getUser()->getLessons(),'lessonsApplications' => $this->getUser()->getMyLessonsApplication(), 'user' => $this->getUser());
     }
 
 
     /**
      * Creates a new Lesson entity.
      *
-     * @Route("/", name="lesson_create")
+     * @Route("/bourses", name="social_lesson_create")
      * @Method("POST")
      * @Template("CharlestownSkillPurseBundle:Lesson:new.html.twig")
      */
@@ -82,16 +77,13 @@ class LessonController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('mylessons'));
+            return $this->redirect($this->generateUrl('social_my_lesson'));
         }
-
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
 
@@ -105,7 +97,7 @@ class LessonController extends Controller
     private function createCreateForm(Lesson $entity)
     {
         $form = $this->createForm(new LessonType(), $entity, array(
-            'action' => $this->generateUrl('lesson_create'),
+            'action' => $this->generateUrl('social_lesson_create'),
             'method' => 'POST',
         ));
 
@@ -117,7 +109,7 @@ class LessonController extends Controller
     /**
      * Displays a form to create a new Lesson entity.
      *
-     * @Route("/new", name="lesson_new")
+     * @Route("/bourse/new", name="social_lesson_new")
      * @Method("GET")
      * @Template()
      */
@@ -126,20 +118,17 @@ class LessonController extends Controller
         $entity = new Lesson();
         $form   = $this->createCreateForm($entity);
 
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
 
     /**
      * Displays a form to edit an existing Lesson entity.
      *
-     * @Route("/{id}/edit", name="lesson_edit")
+     * @Route("/bourse/{id}/edit", name="social_lesson_edit")
      * @Method("GET")
      * @Template()
      */
@@ -156,14 +145,11 @@ class LessonController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
 
@@ -177,18 +163,16 @@ class LessonController extends Controller
     private function createEditForm(Lesson $entity)
     {
         $form = $this->createForm(new LessonType(), $entity, array(
-            'action' => $this->generateUrl('lesson_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('social_lesson_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Modifier'));
 
         return $form;
     }
     /**
      * Edits an existing Lesson entity.
      *
-     * @Route("/{id}", name="lesson_update")
+     * @Route("/bourse/{id}", name="social_lesson_update")
      * @Method("PUT")
      * @Template("CharlestownSkillPurseBundle:Lesson:edit.html.twig")
      */
@@ -209,23 +193,20 @@ class LessonController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('lesson_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('social_lesson_edit', array('id' => $id)));
         }
-
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
     /**
      * Deletes a Lesson entity.
      *
-     * @Route("/{id}", name="lesson_delete")
+     * @Route("/bourse/{id}", name="social_lesson_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -245,7 +226,7 @@ class LessonController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('lesson'));
+        return $this->redirect($this->generateUrl('social_my_lesson'));
     }
 
     /**
@@ -258,15 +239,15 @@ class LessonController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('lesson_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('social_lesson_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Supprimer'))
+            ->add('submit', 'submit', array('label' => 'Supprimer mon cours', 'attr' => array("class" => "btn btn-large btn-danger", "style" => "width : 100%;")))
             ->getForm()
         ;
     }
 
     /**
-     * @Route("/apply/{id}/{user}", name="apply_lesson")
+     * @Route("/bourse/apply/{id}/{user}", name="apply_lesson")
      * @Template()
      */
     public function applyAction($id, $user){
@@ -279,11 +260,11 @@ class LessonController extends Controller
         $em->persist($user);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('lesson'));
+        return $this->redirect($this->generateUrl('social_lesson_applications'));
     }
 
     /**
-     * @Route("/unapply/{id}/{user}", name="unapply_lesson")
+     * @Route("/bourse/unapply/{id}/{user}", name="unapply_lesson")
      * @Template()
      */
     public function unapplyAction($id, $user){
@@ -298,7 +279,7 @@ class LessonController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('lesson'));
+        return $this->redirect($this->generateUrl('social_lesson_applications'));
     }
 
     /**
@@ -321,7 +302,7 @@ class LessonController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('lesson'));
+        return $this->redirect($this->generateUrl('social_my_lesson'));
     }
 
 
@@ -342,6 +323,25 @@ class LessonController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('lesson'));
+        return $this->redirect($this->generateUrl('social_my_lesson'));
+    }
+
+    /**
+     * Lists all Announcment entities that correspond with search option.
+     *
+     * @Route("/bourse", name="social_lesson_search")
+     * @Method("POST")
+     * @Template()
+     */
+    public function searchAction(Request $request)
+    {
+        $name = $request->get('name');
+        $town = $request->get('town');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('CharlestownSkillPurseBundle:Lesson')->search($name, $town);
+
+        return $this->render('CharlestownSkillPurseBundle:Lesson:index.html.twig', array('lessons' => $entities,'user' => $this->getUser()));
     }
 }

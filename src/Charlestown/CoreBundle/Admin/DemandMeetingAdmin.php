@@ -15,15 +15,13 @@ class DemandMeetingAdmin extends Admin
     {
         $formMapper
             ->add('reason', 'text', array('label' => 'Motif'))
-            ->add('status', 'text', array('label' => 'Status'))
             ->add('response', 'choice', array(
                 'choices' => array(
                     0 => 'Non',
                     1 => 'Oui'
                 ), 'label' => 'Réponse'))
-            ->add('responseStatus', 'text', array('label' => 'Réponse status'))
+            ->add('fixedDate','sonata_type_datetime_picker',array('label'=>'Date du rendez-vous', 'format' => 'dd-MM-yyyy HH:mm', 'required' => false))
             ->add('comment', 'text', array('label' => 'Commentaire de la réponse'))
-            ->add('type', 'text', array('label' => 'Type de réunion'))
             ->add('disponibility', 'text', array('label' => 'Disponibilité'))
             ->add('user', null, array('label' => 'Utilisateur','property' => 'username'))
         ;
@@ -33,12 +31,8 @@ class DemandMeetingAdmin extends Admin
     {
         $datagridMapper
             ->add('reason', null, array('label' => 'Motif'))
-            ->add('status', null, array('label' => 'Status'))
             ->add('dateDemand', null, array('label' => 'Date de la demande'))
-            ->add('dateResponse', null, array('label' => 'Date de la réponse'))
             ->add('response', null, array('label' => 'Réponse'))
-            ->add('responseStatus', null, array('label' => 'Réponse status'))
-            ->add('type', null, array('label' => 'Type de réunion'))
             ->add('disponibility', null, array('label' => 'Disponibilité'))
             ->add('user', null, array('label' => 'Utilisateur','property' => 'username'))
         ;
@@ -48,13 +42,10 @@ class DemandMeetingAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('reason', null, array('label' => 'Motif'))
-            ->add('status', null, array('label' => 'Status'))
             ->add('dateDemand', null, array('label' => 'Date de la demande'))
-            ->add('dateResponse', null, array('label' => 'Date de la réponse'))
             ->add('response', null, array('label' => 'Réponse'))
-            ->add('responseStatus', null, array('label' => 'Réponse status'))
-            ->add('type', null, array('label' => 'Type de réunion'))
             ->add('disponibility', null, array('label' => 'Disponibilité'))
+            ->add('fixedDate', null, array('label' => 'Date du rendez-vous'))
             ->addIdentifier('user', null, array('label' => 'Utilisateur','property' => 'username'))
         ;
     }

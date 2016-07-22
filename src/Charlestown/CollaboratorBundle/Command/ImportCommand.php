@@ -64,7 +64,6 @@ class ImportCommand extends ContainerAwareCommand
             $collaborator = new Collaborator();
             $birthDate = \DateTime::createFromFormat('d/m/Y', $row['Date_Naissance']);
             $agency = $em->getRepository('CharlestownAgencyBundle:Agency')->find($row['group_name']);
-
             //Update is infos
             $collaborator->setUsername($row['users_login']);
             $collaborator->setPlainPassword($row['password']);

@@ -17,8 +17,10 @@ class DemandMeetingType extends AbstractType
         $builder
             ->add('reason','text', array('label' => 'Motif'))
             ->add('comment','text', array('label' => 'Commentaire'))
-            ->add('type','text', array('label' => 'Type'))
-            ->add('disponibility','text', array('label' => 'Disponibilité'))
+            ->add('disponibility','choice', array(
+                'choices'   => array('Pendant temps de travail' => 'Pendant temps de travail',
+                    'Hors du temps de travail' => 'Hors du temps de travail',
+                    'Peut importe' => 'Peut importe'), 'label' => "Disponibilité"))
         ;
     }
     

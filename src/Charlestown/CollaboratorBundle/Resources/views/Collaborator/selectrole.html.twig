@@ -3,15 +3,26 @@
 
 {% block body %}
     {{ parent() }}
-    <div class="container" style="margin-top: 15%; width: 40%; height:25%; border-radius:15px;  padding: 0px; background-color: black; color:white; ">
-        <div class="row" style="margin-top:13%; text-align: center; font-size: 20px;">
-            <div class="col-md-6" style="text-align: center;">
-                <a class="btn btn-large btn-danger" style="font-size: 20px;" href="{{ path('select_role', {'role' : 1}) }}">Espace accueil en entreprise</a>
+    <div class="container charletown-container">
+        <div class="row charlestown-container">
+            <div class="col-md-12 charlestown-col-md-12">
+                <h2 class="charlestown-title">Choix de l'espace</h2>
+                <div class="container"></div>
+                    <div class="row">
+                        <div class="col-md-6" style="text-align: center;">
+                            <a class="btn btn-large btn-danger" style="font-size: 20px;" href="{{ path('select_role', {'role' : 1}) }}">Espace accueil en entreprise</a>
+                        </div>
+                        <div class="col-md-6" style="text-align: center;">
+                            <a class="btn btn-large btn-warning" style="font-size: 20px;" href="{{ path('select_role', {'role' : 2}) }}">Espace évènementiel</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                                Après ce choix il vous sera demandé de vous reconnecter.
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6" style="text-align: center;">
-                <a class="btn btn-large btn-warning" style="font-size: 20px;" href="{{ path('select_role', {'role' : 2}) }}">Espace évènementiel</a>
-            </div><br/><br/>
-            Après ce choix il vous sera demandé de vous reconnecter.
         </div>
     </div>
 {% endblock %}

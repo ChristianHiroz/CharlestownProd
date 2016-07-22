@@ -1,32 +1,33 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="padding-bottom: 0px;">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" style="width:100%;">
-                                <li class="" role="presentation"><a href="{{ path('lesson') }}">Cours proposés</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('mylesson_applications') }}">Je suis élève</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="divider-vertical-second" style="float:right;"></li>
-                                <li class="active" role="presentation" style="float:right"><a href="{{ path('mylessons') }}">Je suis prof</a></li>
-                                <li class="divider-vertical-second" style="float:right;"></li>
-                            </ul>
-                        </div>
+    <div class="container" style="width:80%; margin-left:20%; max-width:80%;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="bigTitle" style="text-align: right;">MON COURS</h2>
+                <hr>
+                <div class="form">
+                    {{ form_start(form)}}
+                    {{ form_widget(form.type, {'attr' : {'class' : 'champ', 'placeholder' : 'Nom'}}) }}
+                    {{ form_widget(form.description, {'attr' : {'class' : 'champ', 'placeholder' : 'Description'}}) }}
+                    {{ form_label(form.startAt) }}
+                    {{ form_widget(form.startAt, {'attr' : {'class' : 'champ', 'placeholder' : 'Début'}}) }}
+                    {{ form_label(form.endAt) }}
+                    {{ form_widget(form.endAt, {'attr' : {'class' : 'champ', 'placeholder' : 'Fin'}}) }}
+                    {{ form_label(form.room) }}
+                    {{ form_widget(form.room, {'attr' : {'class' : 'champ', 'placeholder' : 'Places'}}) }}
+                    {{ form_widget(form.localisation, {'attr' : {'class' : 'champ', 'placeholder' : 'Lieu'}}) }}
+                    {{ form_widget(form.address, {'attr' : {'class' : 'champ', 'placeholder' : 'Adresse'}}) }}
+                    {{ form_widget(form.town, {'attr' : {'class' : 'champ', 'placeholder' : 'Ville'}}) }}
+                    {{ form_widget(form.pc, {'attr' : {'class' : 'champ', 'placeholder' : 'Code postal'}}) }}
+                    <div>
+                        <input class="bouton" style="margin-bottom:150px;"type="submit" value="Envoyer" />
                     </div>
-                </nav>
-                <hr/>
-            </div>
-            <div class="modal-body" style="padding-top: 0px; color:black;">
-                <div style="text-align:center;">
-                    <p style="color:white;">Si vous souhaitez qu'une salle de réunion soit mise à votre disposition, contactez-nous : <a style="color:red;" href='mailto:collaborateurs@charlestown.fr'>collaborateurs@charlestown.fr</a></p><br/>
-                    {{ form(form) }}
+                    {{ form_end(form) }}
+
                 </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+
+    </div>
 {% endblock %}

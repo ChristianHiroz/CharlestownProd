@@ -93,7 +93,8 @@ class FileOperationAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('file', 'file')
+            ->add('file', null, array(
+                'template' => 'CharlestownCoreBundle:Core:image.html.twig'))
             ->add('alt')
             ->add('operation')
             ->add('accepted')

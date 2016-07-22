@@ -20,6 +20,7 @@ class FileAdmin extends Admin
             ->add('id')
             ->add('alt')
             ->add('name')
+
             ->add('fileType')
         ;
     }

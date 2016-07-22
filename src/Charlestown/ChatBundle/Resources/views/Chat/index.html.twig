@@ -1,0 +1,92 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig'%}
+
+{% block content %}
+    {{ parent() }}
+<div class="container" id="chat_body" style="width:80%; margin-left:20%; max-width:80%; min-height:100%; margin-bottom: 5%;">
+    {% if user.activeChat %}
+        {% for message in messages %}
+            {% if message.writer == user %}
+            <div class="row chatRow" id="{{ message.id }}">
+                <div class="col-md-6 myChatCol">
+                    <p class="chatText">{{ message.message }}</p>
+                </div>
+                {% if user.picture %}
+                    <img alt="{{ user.firstName }} {{ user.lastName }}" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}" class="myChatPhoto">
+                {% else %}
+                    <img alt="{{ user.firstName }} {{ user.lastName }}" src="{{ asset('bundles/charlestowncore/images/nophoto.png') }}" class="myChatPhoto">
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="row chatRow" id="{{ message.id }}">
+                <div class="col-md-6 chatCol">
+                    <p class="chatText">{{ message.message }}</p>
+                </div>
+                {% if message.writer.picture %}
+                    <img alt="{{ message.writer.firstName }} {{ message.writer.lastName }}" src="{{ asset(message.writer.picture.uploadRootDir  ~ message.writer.picture.id ~ '.' ~ message.writer.picture.alt) }}" class="chatPhoto">
+                {% else %}
+                    <img alt="{{ message.writer.firstName }} {{ message.writer.lastName }}" src="{{ asset('bundles/charlestowncore/images/nophoto.png') }}" class="chatPhoto">
+                {% endif %}
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+                Votre accès au chat a été bloqué. Pour en connaître la raison, contactez Charlestown.
+    {% endif %}
+    <div class="row chatSendRow" style="position:fixed;">
+        <form>
+            <input class="chatSendInput champ" type="text" id="message" required="required" placeholder="votre message"/>
+            <button class="chatSendButton btn" id="messageSender"><i class="fa fa-send" aria-hidden="true"></i></button>
+        </form>
+    </div>
+</div>
+
+    <script>
+        window.onload = function() {
+            var body = $("html, body");
+            body.animate({scrollTop:body[0].scrollHeight}, '500', 'swing', function() {});
+
+            {% if user.activeChat %}
+            window.setInterval(reloadMessage, 3000);
+            {% endif %}
+            function reloadMessage() {
+                var messageId = $(".chatRow").last().attr('id');
+                $.ajax({
+                    url: Routing.generate('message_reload', {'id': messageId}),
+                    type: 'GET',
+                    success: function (data) {
+                        console.log(data);
+                        var defile = false;
+                        for (i = 0; i < data.length; i++) {
+                            if(data[i]['notmine'] == true){
+                                if(data[i]['pictureid'] != 0){
+                                    $("#chat_body").append('<div class="row chatRow" id="' + data[i]['id'] + '">' +
+                                    '<div class="col-md-6 chatCol">' +
+                                    '<p class="chatText">' + data[i]['message'] +
+                                    '</div>' +
+                                    '<img class="chatPhoto" src="/CharlestownNew/web/uploads/files/' + data[i]['pictureid'] + '.' + data[i]['picturealt'] + '"/>' +
+                                    '</div>');
+                                }
+                                else{
+                                    $("#chat_body").append('<div class="row chatRow" id="' + data[i]['id'] + '">' +
+                                    '<div class="col-md-6 chatCol">' +
+                                    '<p class="chatText">' + data[i]['message'] +
+                                    '</div>' +
+                                    '<img class="chatPhoto" src="/CharlestownNew/web/bundles/charlestowncore/images/nophoto.png"/>' +
+                                    '</div>');
+                                }
+                                defile = true;
+                            }
+                        }
+                        if(defile){
+                            body.animate({scrollTop:body[0].scrollHeight}, '500', 'swing', function() {});
+                            defile = false;
+                        }
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            };// reload message every seconds
+        };
+    </script>
+{% endblock %}

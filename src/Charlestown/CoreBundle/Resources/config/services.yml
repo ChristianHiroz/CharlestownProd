@@ -31,7 +31,7 @@ services:
         class: Charlestown\CoreBundle\Admin\TimeslotAdmin
         arguments: [~, Charlestown\OperationBundle\Entity\Timeslot, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Créneaux, group: Event , show_in_dashboard: false}
+            - { name: sonata.admin, manager_type: orm, label: Créneaux, group: Event , show_in_dashboard: true}
     admin.demand_formation:
         class: Charlestown\CoreBundle\Admin\DemandFormationAdmin
         arguments: [~, Charlestown\DemandBundle\Entity\DemandFormation, ~]

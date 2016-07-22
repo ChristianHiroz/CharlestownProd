@@ -44,7 +44,7 @@ class FileOperationController extends Controller
 
                 $request->getSession()->set('alert', 'success');
             }
-            return $this->redirect($this->generateUrl('my_operation_applications'));
+            return $this->redirect($this->generateUrl('mission_operation'));
         }
 
         return array(
@@ -68,7 +68,6 @@ class FileOperationController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Envoyé'));
 
         return $form;
     }
@@ -76,7 +75,7 @@ class FileOperationController extends Controller
     /**
      * Displays a form to create a new FileOperation entity.
      *
-     * @Route("/new/{operation}", name="fileoperation_new")
+     * @Route("/new/{operation}", name="mission_fileoperation_new")
      * @Method("GET")
      * @Template()
      */

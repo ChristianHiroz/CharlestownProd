@@ -1,37 +1,38 @@
 {% extends 'CharlestownCustomerBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-
-    {% if alert %}
-        <div class="alert alert-warning" style="width:70%; top:75px; margin:auto; position: relative;">
-            Merci de votre participation, nous vous contacterons rapidement pour approfondir votre idée.
-        </div>
-    {% endif %}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown active">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boite à idées</a>
-                                </li>
-                                <li class="divider-vertical-second"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <hr/>
+    <div class="container charlestown-container">
+        <div class="row charlestown-row">
+            <div class="charlestown-title">
+                <h2>BOÎTE À IDÉES</h2>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        {{ form(form) }}
+            <div class="col-md-12 charlestown-col-md-12">
+                {% if alert %}
+                    <div class="alert alert-warning" style="width:70%; margin:auto; margin-top:75px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        Merci de votre participation, nous vous contacterons rapidement pour approfondir votre idée.
                     </div>
+                    <br/>
+                {% else %}
+                    <div class="alert alert-warning" style="width:70%; margin:auto; margin-top:75px; visibility: hidden;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        Merci de votre participation, nous vous contacterons rapidement pour approfondir votre idée.
+                    </div>
+                    <br/>
+                {% endif %}
+                <hr>
+                <div class="form">
+                    {{ form_start(form)}}
+                    {{ form_widget(form.title, {'attr' : {'class' : 'champ', 'placeholder' : 'titre'}}) }}
+                    {{ form_widget(form.description, {'attr' : {'class' : 'champ', 'placeholder' : 'description'}}) }}
+                    <div>
+                        <input class="bouton" style="margin-bottom:150px;"type="submit" value="Envoyer" />
+                    </div>
+                    {{ form_end(form) }}
+
                 </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+
+    </div>
 {% endblock %}

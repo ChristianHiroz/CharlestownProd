@@ -5,6 +5,7 @@ namespace Charlestown\ChatBundle\Controller;
 use Charlestown\ChatBundle\Entity\Chatroom;
 use Charlestown\ChatBundle\Entity\Message;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,6 +13,27 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ChatController extends Controller
 {
+
+    /**
+     * @Route("/chat", name="social_chat_collaborator")
+     * @Template()
+     */
+    public function indexAction()
+    {
+        if($this->getUser() == null) {
+            return $this->redirect($this->generateUrl('index'));
+        }
+        elseif($this->getUser()->hasRole("ROLE_CUSTOMER")){
+            return $this->redirect($this->generateUrl('index'));
+        }
+        elseif($this->getUser()->hasRole("ROLE_USER")){
+            $messages = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+
+            return array('user' => $this->getUser(), 'messages' => $messages);
+        }
+        else return $this->redirect($this->generateUrl('index'));
+    }
+
 
     /**
      * Create a Message entity and add it to his chatroom
@@ -81,19 +103,33 @@ class ChatController extends Controller
             $returnArray[] = $this->messageToJson($message);
         }
 
+
         return new JsonResponse($returnArray);
 
     }
 
 
     public function messageToJson(Message $message){
+        $notmine = true;
+        if($message->getWriter() == $this->getUser()){
+            $notmine = false;
+        }
+        if($message->getWriter()->getPicture()){
+            $pictureid = $message->getWriter()->getPicture()->getId();
+            $picturealt = $message->getWriter()->getPicture()->getAlt();
+        }
+        else{
+            $picturealt = "";
+            $pictureid = 0;
+        }
         return array(
             "id" => $message->getId(),
             "message" => $message->getMessage(),
             "writedAt" => $message->getWritedAt(),
             "writer" => $message->getWriter()->getId(),
-            "pictureid" => $message->getWriter()->getPicture()->getId(),
-            "picturealt" => $message->getWriter()->getPicture()->getAlt(),
+            "pictureid" => $pictureid,
+            "picturealt" => $picturealt,
+            "notmine" => $notmine,
         );
     }
 }

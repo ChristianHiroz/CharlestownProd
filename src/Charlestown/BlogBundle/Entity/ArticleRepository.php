@@ -10,16 +10,41 @@ namespace Charlestown\BlogBundle\Entity;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findLasts(){
+    public function findLastsCollaborator(){
         $em = $this->getEntityManager();
         $query = $em->createQuery(
             'Select a
                     From CharlestownBlogBundle:Article a
+                    Where a.visibleCollaborator = true
                     ');
 
         $result = $query->getResult();
-        $lasts = array_slice($result,sizeof($result) - 15);
 
-        return $lasts;
+        if(sizeof($result) > 5){
+            $lasts = array_slice($result,sizeof($result) - 5);
+            return $lasts;
+        }
+
+        return array_reverse($result);
+
+    }
+
+    public function findLastsCustomer(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'Select a
+                    From CharlestownBlogBundle:Article a
+                    Where a.visibleCustomer = true
+                    ');
+
+        $result = $query->getResult();
+
+        if(sizeof($result) > 5){
+            $lasts = array_slice($result,sizeof($result) - 5);
+            return $lasts;
+        }
+
+        return array_reverse($result);
+
     }
 }

@@ -1,68 +1,162 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="padding-bottom: 0px;">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" style="width:100%;">
-                                <li class="active" role="presentation"><a href="{{ path('operation') }}">Opérations</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('my_operation_applications') }}">Mes candidatures</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('my_operation_applications_history') }}">Historique</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <hr/>
+    <div class="container" style="width:80%; margin-left:20%; max-width:80%; height:100%;">
+        <div class="row" style="height:75%;">
+            <div class="col-md-12" id="demand" style="height:10%;">
+                <div class="legendes">
+                    <span class="legende" style="background-color: white">Opération en cours</span>
+                    <span class="legende" style="background-color: yellow">Candidature en cours</span>
+                    <span class="legende" style="background-color: green">Candidature acceptée</span>
+                    <span class="legende" style="background-color: red">Opération booker</span>
+                </div>
+                <h2 class="bigTitle">VOS OPÉRATIONS</h2>
+                <hr>
+                <div id="calendar" style="height:90%;"></div>
             </div>
-            <div class="modal-body" style="padding-top: 0px; color:black;">
-                {% set empty = true %}
+        </div>
+        <div class="row" style="height:25%; padding: 0;">
+            <div class="col-md-12">
+                <div class="collapse in">
+                    <div class="well center">
+                        <h2>Pour postuler, cliquez sur un élément du calendrier !</h2>
+                    </div>
+                </div>
                 {% for operation in operations %}
-                    {% if operation.active %}
-                            {% set empty = false %}
-                            <table class="table" style="background-color: #ffffff;border-radius:10px;">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align:center;">
-                                            {{ operation.name }} pour {{ operation.customer.companyName }} à {{ operation.localisation }}
-                                            {{ operation.dateStart | localizeddate('full', 'none') }} au {{ operation.dateEnd | localizeddate('full', 'none') }}
-                                        </th>
-                                        <th></th>
-                                        <th><a class="btn btn-success" href="{{ path('operation_show', {'id':operation.id}) }}">Afficher</a></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for timeslot in operation.timeslots %}
-                                        {% set applied = false %}
-                                        {% for application in applications %}
-                                            {% if application.operation == operation %}
-                                                {% if application.timeslot == timeslot %}
-                                                    {% set applied = true %}
-                                                {% endif %}
-                                            {% endif %}
-                                        {% endfor %}
-                                        {% if applied == false %}
-                                            <tr>
-                                                <td>#{{ loop.index }}</td>
-                                                <td>{{ timeslot }}</td>
-                                                <td><a class="btn btn-success" href="{{ path('operation_apply', {'id':operation.id,'timeslot':timeslot.id}) }}">Postuler</a></td>
-                                            </tr>
-                                        {% endif %}
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                    {% endif %}
+                    {% for timeslot in operation.timeslots %}
+                        {% set apply = false %}
+                        {% for appliance in timeslot.appliances %}
+                            {% if appliance.event == user %}
+                                {% if appliance.accepted %}
+                                    <div class="collapse" id="{{ operation.id }}{{ timeslot.id }}">
+                                        <div class="well center">
+                                            <h2>{{ operation.name }}</h2>
+                                            <p>{{ operation.mission }}</p>
+                                            <p>Vous êtes booker sur l'opération !</p>
+                                            <p><a class="btn btn-danger" href="{{ path('mission_fileoperation_new', {'operation' : operation.id}) }}">Ajouter des photos</a></p>
+                                        </div>
+                                    </div>
+                                {% elseif appliance.accepted is null %}
+                                    <div class="collapse" id="{{ operation.id }}{{ timeslot.id }}">
+                                        <div class="well center">
+                                            <h2>{{ operation.name }}</h2>
+                                            <p>{{ operation.mission }}</p>
+                                            <p>Votre demande est en cours de traitement.</p>
+                                            <a class="btn btn-info" href="{{ path('operation_apply_remove', {'id' : appliance.id}) }}">Retirer</a>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="collapse" id="{{ operation.id }}{{ timeslot.id }}">
+                                        <div class="well center">
+                                            <h2>{{ operation.name }}</h2>
+                                            <p>{{ operation.mission }}</p>
+                                            <p>Il ne reste plus de place sur cette opération.</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% set apply = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if apply == false  %}
+                            {% if operation.active  %}
+                            <div class="collapse" id="{{ operation.id }}{{ timeslot.id }}">
+                                <div class="well center">
+                                    <h2>{{ operation.name }}</h2>
+                                    <p>{{ operation.mission }}</p>
+                                    <a class="btn btn-danger" href="{{ path('operation_apply', {'id':operation.id,'timeslot':timeslot.id}) }}">Postuler</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 {% endfor %}
-                {% if empty == true %}
-                    <div class="textAlignCenter ">
-                        <h4 style="color:white;">Il n'y a pas d'opérations disponible pour le moment, veuillez revenir plus tard.</h4>
-                    </div>
-                {% endif %}
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        {% for operation in operations %}
+        {% for timeslot in operation.timeslots %}
+        alert("{{ timeslot.start|date("Y-m-d:H:i") }}");
+        {% endfor %}
+        {% endfor %}
+        jQuery(document).ready(function(){
+            var calendar = $('#calendar').fullCalendar({
+                header:true,
+                height:475,
+                header: {
+                    left: 'prev',
+                    center: 'title',
+                    right: 'agendaDay,basicWeek,month,next'
+                },
+                lang: 'fr',
+                timezone: "Europe/Paris",
+                defaultView: "basicWeek",
+                views: {
+                    week: {
+                        displayEventEnd: true
+                    },
+                    day: {
+                        displayEventEnd: true
+                    },
+                    month: {
+                        displayEventEnd: true
+                    }
+                },
+                events: [
+                    {% for operation in operations %}
+                        {% for timeslot in operation.timeslots %}
+                            {% set apply = false %}
+                            {% for appliance in timeslot.appliances %}
+                                {% if appliance.event == user %}
+                                {
+                                    id: {{ operation.id }}{{ timeslot.id }},
+                                    title: "{{ operation.name }}",
+                                    start: "{{ timeslot.start|date("Y-m-d") }}T{{ timeslot.start|date("H:i") }}",
+                                    end: "{{ timeslot.end|date("Y-m-d")  }}T{{ timeslot.end|date("H:i") }}",
+                                    {% if appliance.accepted %}
+                                    color: "green",
+                                    backgroundColor: "green",
+                                    textColor: "white",
+                                    {% elseif appliance.accepted is null %}
+                                    color: "yellow",
+                                    backgroundColor: "yellow",
+                                    textColor: "black",
+                                    {% else %}
+                                    color: "red",
+                                    backgroundColor: "red",
+                                    textColor: "white",
+                                    {% endif %}
+                                    allDay: false
+                                },
+                                {% set apply = true %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if apply == false %}
+                                {
+                                    id: {{ operation.id }}{{ timeslot.id }},
+                                    title: "{{ operation.name }}",
+                                    start: "{{ timeslot.start|date("Y-m-d") }}T{{ timeslot.start|date("H:i") }}",
+                                    end: "{{ timeslot.end|date("Y-m-d")  }}T{{ timeslot.end|date("H:i") }}",
+                                    color: "black",
+                                    allDay: false,
+                                    backgroundColor: "white",
+                                    textColor: "black"
+                                },
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                ],
+                timeFormat: 'H(:mm)',
+                eventClick: function(calEvent, jsEvent, view) {
+                    $( ".collapse" ).each(function() {
+                        $(this).removeClass("in");
+                    });
+                    $("#"+ calEvent.id).addClass("in");
+                }
+            });
+        });
+    </script>
 {% endblock %}

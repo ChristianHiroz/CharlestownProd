@@ -2,26 +2,22 @@
 
 {% block content %}
     {{ parent() }}
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Mon client</h2>
-        </div>
-        <div class="modal-body">
-            {% if user.customer %}
-            <div style="text-align: center;">
-                <img class="rounded-image" style="width:150px; height:150px; float:none; border-style: solid; border-color:white; border-width:2px;" src="{{ asset(user.customer.picture.uploadRootDir  ~ user.customer.picture.id ~ '.' ~ user.customer.picture.alt) }}"/><br/>
-                {{ user.customer.companyName }}<br/>
-                {{ user.customer.email }}<br/>
-                {{ user.customer.address }}<br/>
-                {{ user.customer.town }} {{ user.customer.PC }} <br/>
-                {{ user.customer.phoneNumber }}
+    <div class="container charlestown-container">
+        <div class="row charlestown-row">
+            <div class="col-md-12 charlestown-col-md-12" id="news">
+                <div class="charlestown-title">
+                    <h2>MON AFFECTATION</h2>
+                </div>
+                <div style="text-align: center">
+                    {% if user.customer.picture %}
+                        <img class="rounded-image" style="width:150px; height:150px; float:none; border-style: solid; border-color:white; border-width:2px;" src="{{ asset(user.customer.picture.uploadRootDir  ~ user.customer.picture.id ~ '.' ~ user.customer.picture.alt) }}"/><br/>
+                    {% else %}
+                        <img src="{{ asset('bundles/charlestowncore/images/nophoto.png') }}" class="beforeNavPhoto">
+                    {% endif %}
+                    <h1>{{ user.customer.companyName }}</h1>
+                    <h3><span class="glyphicon glyphicon-phone">01.15.65.15.78</span></h3>
+                </div>
             </div>
-            {% else %}
-                <p>Vous n'avez pas d'affectation, contactez Charlestown.</p>
-            {% endif %}
         </div>
     </div>
-</div>
-
 {% endblock %}

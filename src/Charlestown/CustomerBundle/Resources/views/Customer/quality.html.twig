@@ -1,9 +1,17 @@
 {% extends 'CharlestownCustomerBundle::layout.html.twig' %}
 {% block content %}
-    {{ parent() }}
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header" style="padding-bottom: 0px;">
+{{ parent() }}
+<style> {# TODO : put in main.css rule only apply here sadly #}
+    div .in{
+        background-color: white !important;
+    }
+</style>
+<div class="container charlestown-container">
+    <div class="row charlestown-row">
+        <div class="col-md-12 charlestown-col-md-12">
+            <div class="charlestown-title">
+                <h2>Compte rendu qualité</h2>
+            </div>
             <nav class="navbar navbar-default secondNav">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -35,10 +43,7 @@
                     </div>
                 </div>
             </nav>
-            <hr/>
-        </div>
-        <div class="modal-body" style="padding-top: 0px; color:black;">
-            <div id="myTabContent" class="tab-content">
+            <div id="myTabContent" class="tab-content charlestown-scrollable">
                 <div role="tabpanel" class="tab-pane fade active in" id="buy" aria-labelledby="buy-tab">
                     <div class="container">
                         <div class="row">
@@ -190,6 +195,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-    {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

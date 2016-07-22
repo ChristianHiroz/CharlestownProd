@@ -19,8 +19,8 @@ class AnnouncmentType extends AbstractType
             ->add('title', 'text', array('label' => 'Titre'))
             ->add('description', 'textarea', array('label' => 'Description'))
             ->add('type','choice', array(
-                                    'choices'   => array('buy' => 'Vente','give' => 'Don', 'lookingfor' => 'Recherche', 'trade' => 'Echange' ),'label' => 'Type'))
-            ->add('picture', new FileType(), array('label' => 'Photo'))
+                                    'choices'   => array('Vente' => 'Vente', 'Achat' => 'Achat', 'Don' => 'Don', 'Echange' => 'Echange' ),'label' => 'Type'))
+            ->add('picture', new FileType(), array('label' => 'Photo', 'required' => false))
         ;
     }
     

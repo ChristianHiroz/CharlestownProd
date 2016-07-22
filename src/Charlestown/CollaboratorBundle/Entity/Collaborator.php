@@ -588,5 +588,9 @@ class Collaborator extends User
     {
         $this->birthDate = $birthDate;
     }
+
+    public function __toString(){
+        return ucfirst(strtolower($this->getFirstName())). " " . ucfirst(strtolower($this->getLastName()));
+    }
 }
 

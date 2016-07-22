@@ -16,7 +16,12 @@ class DemandMobilityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('reason','text', array('label' => 'Motif'))
+            ->add('reason', 'choice', array(
+                'choices' => array(
+                    "Mobilité géographique" => 'Mobilité géographique',
+                    "Évolution professionnelle" => 'Évolution professionnelle',
+                    "Changement de poste" => 'Changement de poste'
+                ), 'label' => 'Motif'))
             ->add('comment','text', array('label' => 'Commentaire'))
             ->add('cV', new FileType(), array('label' => 'Votre CV'))
         ;

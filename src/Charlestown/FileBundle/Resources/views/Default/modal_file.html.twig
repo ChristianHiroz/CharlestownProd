@@ -1,0 +1,61 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modification photo</h4>
+            </div>
+            <div id="crooperContainer" class="modal-body center">
+                <a href="{{ path('fos_user_profile_show') }}" id="showCanvas" class="btn btn-danger" style="color:white;">Mettre à jour</a>
+                <div style="margin:auto; width:100%;">
+                    <form action="{{ path('fos_user_profile_edit') }}" method="POST" class="fos_user_profile_edit">
+                        <input type="file" id="fos_user_profile_form_picture_file" class="champ">
+                    </form>
+                </div>
+                <div id="imgDiv">
+                    <img id="imgInp" class="photoCropper cropper-bg" src="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(document).ready(function() {
+        $("#fos_user_profile_form_picture_file").change(function () {
+            readURL(this);
+        });
+            $("#showCanvas").on('click', function () {
+                var croppedImageDataURL = $('#imgInp').cropper('getCroppedCanvas').toDataURL();
+                $.ajax({
+                    url: Routing.generate('upload_avatar'),
+                    type: 'POST',
+                    data: 'base=' + croppedImageDataURL,
+                    success: function (data) {
+                    },
+                    error: function (data) {
+                    }
+                });
+            });
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("#imgDiv").remove();
+                        $("#crooperContainer").append('<div id="imgDiv"><img id="imgInp" class="photoCropper cropper-bg" src="'+ e.target.result +'"></div>');
+//                        $('#imgInp').attr('src', e.target.result);
+                        $('#imgInp').cropper({
+                            aspectRatio: 1 / 1,
+                            viewMode: 2,
+                            crop: function (e) {
+                            }
+                        });
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            };
+    });
+
+
+
+</script>

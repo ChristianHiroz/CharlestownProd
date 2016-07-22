@@ -2,34 +2,28 @@
 
 {% block content %}
     {{ parent() }}
+    <style> {# TODO : put in main.css rule only apply here sadly #}
+        div .in{
+            background-color: white !important;
+        }
+    </style>
 <div class="alert alert-warning hidden" style="margin:auto; width:80%; top: 60px; text-align:center; position: relative;" id="label_success" role="alert">Demande de devis envoyée avec succès.</div>
 <div class="alert alert-danger hidden" style="margin:auto; width:80%; top: 60px; text-align:center; position: relative;" id="label_fail" role="alert">Un problème est survenu, merci de contacter un administrateur.</div>
-<div class="modal-dialog">
-    <div class="modal-content"  style="padding-bottom: 30px;">
-        <div class="modal-header" style="padding-bottom: 0px;">
-            <nav class="navbar navbar-default secondNav">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav" style="width:100%;">
-                            <li role="presentation" class="active">
-                                <a href="#new" id="new-tab" role="tab" data-toggle="tab" aria-controls="new" aria-expanded="true">Nouvelle demande</a>
-                            </li>
-                            <li role="presentation" class="">
-                                <a href="#buy" id="buy-tab" role="tab" data-toggle="tab" aria-controls="buy" aria-expanded="true">Augmentation de la prestation</a>
-                            </li>
-                            <li role="presentation" class="">
-                                <a href="#comp" id="comp-tab" role="tab" data-toggle="tab" aria-controls="comp" aria-expanded="true">Prestation complémentaire</a>
-                            </li>
-                         </ul>
-                    </div>
-                </div>
-            </nav>
-         </div>
-        <div class="modal-body" style="padding-top: 0px; color:black;">
+<div class="charlestown-container-3 container">
+    <div class="row charlestown-row-3">
+        <div class="col-md-12 charlestown-col-md-12 center" id="news">
+            <div class="charlestown-title">
+                <h2>DEVIS</h2>
+            </div><br/>
+            <a class="btn btn-danger" href="#new" id="new-tab" role="tab" data-toggle="tab" aria-controls="new" aria-expanded="true">Nouvelle demande</a>
+            <a class="btn btn-danger" href="#buy" id="buy-tab" role="tab" data-toggle="tab" aria-controls="buy" aria-expanded="true">Augmentation de la prestation</a>
+            <a class="btn btn-danger" href="#comp" id="comp-tab" role="tab" data-toggle="tab" aria-controls="comp" aria-expanded="true">Prestation complémentaire</a>
+            <br/>
+            <br/>
             <div id="myTabContent" class="tab-content">
                 <div role="tabpanel" class="tab-pane fade" id="buy" aria-labelledby="buy-tab">
                     <div class="container" style="width:80%;">
-                        <div class="row"  style="color:white; text-align: center; margin:auto;">
+                        <div class="row"  style="color:black; text-align: center; margin:auto;">
                             <label for="duree">Durée</label>
                             <input placeholder="Ex: 8 jours" class="form-control" type="text" name="duree" id="duree3"/><br/>
                             <label for="debut">Horaire début</label>
@@ -44,7 +38,7 @@
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="comp" aria-labelledby="comp-tab">
                     <div class="container" style="width:80%;">
-                        <div class="row"  style="color:white; text-align: center; margin:auto;">
+                        <div class="row"  style="color:black; text-align: center; margin:auto;">
                             <label for="duree">Durée</label>
                             <input placeholder="Ex: 8 jours" class="form-control" type="text" name="duree" id="duree2"/><br/>
                             <label for="debut">Horaire début</label>
@@ -59,7 +53,7 @@
                 </div>
                 <div role="tabpanel" class="tab-pane fade active in" id="new" aria-labelledby="new-tab">
                     <div class="container" style="width:80%;">
-                        <div class="row"  style="color:white; text-align: center; margin:auto;">
+                        <div class="row"  style="color:black; text-align: center; margin:auto;">
                             <label for="type">Type</label>
                             <select id="type" name="type" class="form-control">
                                 <option>Evenementiel</option>
@@ -79,6 +73,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
                 <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
@@ -148,9 +146,5 @@
 
                     });
                 </script>
-            </div>
-        </div>
-    </div>
-</div>
 
 {% endblock %}

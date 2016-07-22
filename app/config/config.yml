@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: fr
+    locale: fr_FR
 
 framework:
     #esi:             ~
@@ -36,21 +36,17 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form:
-        resources: ['bootstrap_3_layout.html.twig']
+        resources:
+        - 'bootstrap_3_layout.html.twig'
+        - 'SonataCoreBundle:Form:datepicker.html.twig'
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ CharlestownCoreBundle ]
-    #java: /usr/bin/java
     filters:
         cssrewrite: ~
-        #closure:
-        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
-
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -128,7 +124,7 @@ sonata_block:
             contexts: [admin]
 
 sonata_admin:
-    title: Admin
+    title: Charlestown Admin
     title_logo: favicon.ico
     templates:
             layout:               ::standard_layout.html.twig

@@ -47,21 +47,20 @@ class CollaboratorAdmin extends Admin
             ->add('portPhoneNumber', 'text', array('label' => 'Téléphone portable'))
             ->add('isClubMember', 'choice', array(
                 'choices' => array(
+                    1 => 'Oui',
                     0 => 'Non',
-                    1 => 'Oui'
-                ), 'label' => 'Membre club Charlestown'))
+                ), 'label' => 'Membre club Charlestown', 'required' => false))
             ->add('swapable', 'choice', array(
                 'choices' => array(
+                    1 => 'Oui',
                     0 => 'Non',
-                    1 => 'Oui'
-                ), 'label' => 'AE et EVENT en même temps?'))
+                ), 'label' => 'AE et EVENT en même temps?', 'required' => false))
             ->add('activeChat', 'choice', array(
                 'choices' => array(
                     0 => 'Non',
                     1 => 'Oui'
-                ), 'label' => 'Chat actif'))
+                ), 'label' => 'Chat actif', 'required' => false))
             ->add('agency', 'sonata_type_model', array('property'=>'localisation'))
-            ->add('picture', 'sonata_type_model')
             ->add('evaluations')
             ->add('syndicat', 'sonata_type_model', array('label' => 'Syndicat','required' => false))
             ->add('mandates','sonata_type_model', array('label' => 'Mandats', 'multiple' => true,'required' => false))
@@ -75,7 +74,6 @@ class CollaboratorAdmin extends Admin
             ->add('username',null, array('label' => 'Nom d\'utilisateur'))
             ->add('firstName',null, array('label' => 'Nom'))
             ->add('lastName',null, array('label' => 'Prénom'))
-            ->add('position',null, array('label' => 'Poste'))
             ->add('isClubMember', null, array('label' => 'Membre club Charlestown'))
             ->add('email', null, array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
         ;
@@ -88,7 +86,6 @@ class CollaboratorAdmin extends Admin
             ->add('username', null, array('label' => 'Nom d\'utilisateur'))
             ->add('firstName',null, array('label' => 'Nom'))
             ->add('lastName',null, array('label' => 'Prénom'))
-            ->add('position',null, array('label' => 'Poste'))
             ->add('email', null, array('label' => 'Adresse email', 'attr'=> array('placeholder' => 'Entrez votre adresse email')))
         ;
     }

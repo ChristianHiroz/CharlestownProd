@@ -50,12 +50,11 @@ class CoreController extends Controller
     }
 
     /**
-     * @Route("/CGU", name="cgu")
+     * @Route("/CGU", name="fos_cgu")
      * @Template()
      */
     public function cguAction(){
         $user = $this->getUser();
-
         if($user instanceof Collaborator){
             return array("user" => $user);
         }
@@ -65,7 +64,7 @@ class CoreController extends Controller
     }
 
     /**
-     * @Route("/mention", name="mention")
+     * @Route("/mention", name="fos_mention")
      * @Template()
      */
     public function mentionAction(){

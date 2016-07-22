@@ -12,12 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class DemandMeeting extends Demand
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=255)
-     */
-    private $type;
 
     /**
      * @var string
@@ -27,28 +21,11 @@ class DemandMeeting extends Demand
     private $disponibility;
 
     /**
-     * Set type
+     * @var string
      *
-     * @param string $type
-     *
-     * @return DemandMeeting
+     * @ORM\Column(name="fixedDate", type="datetime", nullable=true)
      */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
+    private $fixedDate;
 
     /**
      * Set disponibility
@@ -74,9 +51,30 @@ class DemandMeeting extends Demand
         return $this->disponibility;
     }
 
+    /**
+     * @return string
+     */
+    public function getFixedDate()
+    {
+        return $this->fixedDate;
+    }
+
+    /**
+     * @param string $fixedDate
+     */
+    public function setFixedDate($fixedDate)
+    {
+        $this->fixedDate = $fixedDate;
+    }
+
+
     public function getClassName()
     {
         return (new \ReflectionClass($this))->getShortName();
+    }
+
+    public function __toString(){
+        return "rendez-vous";
     }
 }
 

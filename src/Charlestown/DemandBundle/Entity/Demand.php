@@ -34,13 +34,6 @@ abstract class Demand
     private $reason;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="status", type="string", length=255)
-     */
-    private $status;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateDemand", type="datetime")
@@ -64,13 +57,6 @@ abstract class Demand
     /**
      * @var string
      *
-     * @ORM\Column(name="responseStatus", type="string", length=255, nullable=true)
-     */
-    private $responseStatus;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="comment", type="string", length=255)
      */
     private $comment;
@@ -84,7 +70,6 @@ abstract class Demand
 
     public function __construct(){
         $this->dateDemand = new \DateTime();
-        $this->status = "EN COURS";
     }
 
     /**
@@ -136,30 +121,6 @@ abstract class Demand
     public function getReason()
     {
         return $this->reason;
-    }
-
-    /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return Demand
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 
     /**
@@ -225,33 +186,6 @@ abstract class Demand
     {
         $this->response = $response;
     }
-
-
-
-    /**
-     * Set responseStatus
-     *
-     * @param string $responseStatus
-     *
-     * @return Demand
-     */
-    public function setResponseStatus($responseStatus)
-    {
-        $this->responseStatus = $responseStatus;
-
-        return $this;
-    }
-
-    /**
-     * Get responseStatus
-     *
-     * @return string
-     */
-    public function getResponseStatus()
-    {
-        return $this->responseStatus;
-    }
-
     /**
      * Set comment
      *

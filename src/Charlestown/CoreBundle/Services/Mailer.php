@@ -65,7 +65,7 @@ class Mailer {
         $template = $this->parameters['template']['operationNotification'];
         $rendered = $this->templating->render($template, array('operation' => $operation->getOperation(), 'user' => $user));
 
-        $this->sendEmailMessage($rendered, "no-reply@charlestown.com", $operation->getOperation()->getAgency()->getEventCustomerManager()->getEmail());
+        $this->sendEmailMessage($rendered, "no-reply@charlestown.com", $operation->getOperation()->getAgency()->getCustomerManager()->getEmail());
     }
 
     public function sendUniformSelectionNotificationMail(Customer $user){

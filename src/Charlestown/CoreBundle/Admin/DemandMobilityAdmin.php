@@ -15,13 +15,11 @@ class DemandMobilityAdmin extends Admin
     {
         $formMapper
             ->add('reason', 'text', array('label' => 'Motif'))
-            ->add('status', 'text', array('label' => 'Status'))
             ->add('response', 'choice', array(
                 'choices' => array(
                     0 => 'Non',
                     1 => 'Oui'
                 ), 'label' => 'Réponse'))
-            ->add('responseStatus', 'text', array('label' => 'Réponse status'))
             ->add('comment', 'text', array('label' => 'Commentaire de la réponse'))
             ->add('cV', 'sonata_type_model', array('label' => 'CV', 'property' => 'name'))
             ->add('user', null, array('label' => 'Utilisateur','property' => 'username'))
@@ -32,11 +30,9 @@ class DemandMobilityAdmin extends Admin
     {
         $datagridMapper
             ->add('reason', null, array('label' => 'Motif'))
-            ->add('status', null, array('label' => 'Status'))
             ->add('dateDemand', null, array('label' => 'Date de la demande'))
             ->add('dateResponse', null, array('label' => 'Date de la réponse'))
             ->add('response', null, array('label' => 'Réponse'))
-            ->add('responseStatus', null, array('label' => 'Réponse status'))
             ->add('cV', null, array('label' => 'CV', 'property' => 'name'))
             ->add('user', null, array('label' => 'Utilisateur','property' => 'username'))
         ;
@@ -46,11 +42,9 @@ class DemandMobilityAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('reason', null, array('label' => 'Motif'))
-            ->add('status', null, array('label' => 'Status'))
             ->add('dateDemand', null, array('label' => 'Date de la demande'))
             ->add('dateResponse', null, array('label' => 'Date de la réponse'))
             ->add('response', null, array('label' => 'Réponse'))
-            ->add('responseStatus', null, array('label' => 'Réponse status'))
             ->add('cV', null, array('label' => 'CV', 'property' => 'name'))
             ->addIdentifier('user', null, array('label' => 'Utilisateur','property' => 'username'))
         ;

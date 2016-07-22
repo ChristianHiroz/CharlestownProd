@@ -1,422 +1,468 @@
 {% extends "::base.html.twig" %}
 {% block title %} {{ parent() }} - Client{% endblock %}
 {% block body %}
-    {% block header %}
-
-        <div class="modal fade" id="eleasModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <img style="width:100%; height:auto;" src="{{ asset('images/bienvenue_eleas.png') }}"/>
-                        <div style="text-align: center; margin-top:15px;">
-                            <a class="btn btn-danger" href="{{ asset('images/bienvenue_eleas.pdf') }}">Télécharger la brochure</a>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        <div class="modal fade" id="implantationModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <nav class="navbar navbar-default secondNav">
-                            <div class="container-fluid">
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav">
-                                        <li class="active" role="presentation"><a href="#implantation" aria-controls="implantation" role="tab" data-toggle="tab">Nos implantations</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                        <hr/>
-                    </div>
-                    <div class="modal-body">
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="implantation">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <p style="text-align:left; font-size: 16px;">
-                                            <span style="font-weight: bold">Charlestown Nord/Est</span> <br/>
-                                            3, rue Esquermoise<br/>
-                                            59000 Lille<br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 03.59.81.00.60 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 03.72.27.18.24 <br/>
-                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> lille@charlestown.fr <br/><br/>
-                                            <span style="font-weight: bold">Charlestown Paris</span> <br/>
-                                            55, rue Fondary<br/>
-                                            75015 Paris <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 01.70.91.22.22 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 01.83.71.16.61 <br/>
-                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@charlestown.fr <br/><br/>
-                                            <span style="font-weight: bold">Charlestown Ouest/Nantes</span> <br/>
-                                            3, place saint Pierre<br/>
-                                            44000 Nantes <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 02.72.24.05.05 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 02.34.88.19.28<br/>
-                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> nantes@charlestown.fr <br/><br/>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="{{ asset('images/carte_presentation.png') }}"/>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <p style="text-align:right; font-size: 16px;">
-                                            <span style="font-weight: bold">Charlestown Rhône-Alpes</span> <br/>
-                                            16, rue Crillon<br/>
-                                            69006 Lyon <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.26.83.80.00 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.84.88.17.88 <br/>
-                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> lyon@charlestown.fr <br/><br/>
-                                            <span style="font-weight: bold">Charlestown Grand Sud</span> <br/>
-                                            3, place aux huiles<br/>
-                                            13001 Marseille <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.91.59.85.85 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.91.59.85.86 <br/>
-                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> marseil@charlestown.fr <br/><br/>
-                                            <span style="font-weight: bold">Charlestown Sud Ouest</span> <br/>
-                                            20, rue du 19 Mars 1962<br/>
-                                            33320 Eysines <br/>
-                                            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 05.40.25.00.70 <br/>
-                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 05.32.00.18.87 <br/>
-                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> bordx@charlestown.fr <br/><br/>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        <div class="modal fade" id="presentationModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <nav class="navbar navbar-default secondNav">
-                            <div class="container-fluid">
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav">
-                                        <li class="active" role="presentation"><a href="#ae" aria-controls="ae" role="tab" data-toggle="tab">Accueil en Entreprise</a></li>
-                                        <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#event" aria-controls="event" role="tab" data-toggle="tab">Accueil Evénementiel</a></li>
-                                        <li class="divider-vertical-second"></li>
-                                        <li role="presentation"><a href="#promotion" aria-controls="promotion" role="tab" data-toggle="tab">Promotion des ventes</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                        <hr/>
-                    </div>
-                    <div class="modal-body">
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="ae">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('images/bienvenue_ae_1.jpg') }}"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('images/bienvenue_ae_2.jpg') }}"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('images/bienvenue_ae_3.jpg') }}"/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        Le sourire, la courtoisie, la présentation, le comportement et les compétences des hôte(sse)s d’accueil sont stratégiques pour l’image de marque de nos clients. <br/> <br/>
-
-                                        Parmi nos domaines d’expertise, nous comptons : <br/> <br/> <br/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>Accueil visiteurs</li>
-                                            <li>Accueil VIP</li>
-                                            <li>Accueil Présidence</li>
-                                            <li>Gestion du standard</li>
-                                            <li>Standard déporté</li>
-                                            <li>Gestion du courrier</li>
-                                            <li>Gestion des salles de réunion</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>Gestion des agendas</li>
-                                            <li>Réception des plis et colis</li>
-                                            <li>Gestion des coursiers</li>
-                                            <li>Gestion des voyages</li>
-                                            <li>Tâches administratives</li>
-                                            <li>Gestion des consommables</li>
-                                            <li>Services aux occupants</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="event">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('images/bienvenue_event_1.jpg') }}"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('images/bienvenue_event_2.jpg') }}"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('images/bienvenue_event_3.jpg') }}"/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        Pour en faire un moment inoubliable, nous sélectionnons des équipes élégantes, dynamiques et professionnelles qui offrent à nos clients un service personnalisé. Souplesse, sérénité, sens du service et haute qualité organisationnelle sont des atouts qui font la différence pour la réussite de nos événements. <br/><br/>
-
-                                        Parmi nos domaines d’expertise, nous comptons :  <br/> <br/> <br/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <ul>
-                                            <li>Accueil, Orientation</li>
-                                            <li>Contrôle des invitations</li>
-                                            <li>Pointage listing</li>
-                                            <li>Gestion des flux</li>
-                                            <li>Placement salle/diner</li>
-                                            <li>Vestiaire</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <ul>
-                                            <li>Accueil protocolaire</li>
-                                            <li>Gestion des intervenants</li>
-                                            <li>Remise de badges</li>
-                                            <li>Emargement</li>
-                                            <li>Remise de boitiers de vote</li>
-                                            <li>Remise de casque de traduction</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <ul>
-                                            <li>Voiturier</li>
-                                            <li>Gestion des cars / navettes</li>
-                                            <li>Prise en charge gares/aéroports</li>
-                                            <li>Distribution de cadeaux</li>
-                                            <li>Accueil Presse</li>
-                                            <li>Accompagnement VIP</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="promotion">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('images/bienvenue_promotion_1.jpg') }}"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('images/bienvenue_promotion_2.jpg') }}"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <img src="{{ asset('images/bienvenue_promotion_3.jpg') }}"/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        Les campagnes d’animation sont uniques : leur réussite doit être totale et immédiate. Pour en faire des moments forts, nous sélectionnons des équipes élégantes, homogènes, expérimentées, consciencieuses et mobiles qui assurent des missions de haute qualité. <br/><br/>
-
-                                        Parmi nos domaines d’expertise, nous comptons :  <br/> <br/> <br/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>Accueil</li>
-                                            <li>Conseil clientèle</li>
-                                            <li>Présentation produit</li>
-                                            <li>Démonstration produit</li>
-                                            <li>Dégustation produit</li>
-                                            <li>Vente produit</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li>Distribution de goodies</li>
-                                            <li>Distribution de cadeaux</li>
-                                            <li>Distribution de flyers</li>
-                                            <li>Animation in-store</li>
-                                            <li>Animation out-store</li>
-                                            <li>Service boissons</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-
-        <div class="dropdown space-menu">
-            <a class="dropdown-toggle space-menu-link" data-toggle="dropdown" href="#">
+    {% include('CharlestownFileBundle:Default:modal_file.html.twig') %}
+    <div id="outer-wrap" style="height:100%;" xmlns="http://www.w3.org/1999/html">
+        <nav class="mainNav">
+            <img  class="menuFooterLogo" src="{{ asset('bundles/charlestowncore/images/logo_charlestown.png') }}">
+            <div class="beforeNav">
                 {% if user.picture %}
-                    <img class="rounded-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
+                    <img id="profilPhoto" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}" class="beforeNavPhoto">
+                    <button id="buttonPhoto" type="button" class="beforeNavPhotoButton btn btn-danger" style="visibility: hidden;border-radius:30px!important;" data-toggle="modal" data-target="#myModal">+</button>
+                {% else %}
+                    <img src="{{ asset('bundles/charlestowncore/images/nophoto.png') }}" class="beforeNavPhoto">
+                    <button type="button" class="beforeNavPhotoButton btn btn-danger" style="border-radius:30px!important;" data-toggle="modal" data-target="#myModal">+</button>
                 {% endif %}
-                <p class="space-menu-txt">{{ user.companyName }} <span class="caret"></span></p>
-            </a>
-            <ul class="dropdown-menu space-menu-der">
-                <li><a class="btn" id="vos_informations" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Mes informations</a></li>
-                <li><a class="btn" id="devis" href="{{ path('customer_devis') }}">Demande de devis</a></li>
-                {#{% if user.isClubMember %}#}
-                {#<li><a class="btn btn-danger" style="" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Club Charlestown®</a></li>#}
-                {#{% endif %}#}
-
-                <li><a class="btn   " style="color:white;" href="{{ path('ideabox_new') }}">Boite à idées</a></li>
-                <li class="dropdown">
-                    <a class="btn dropdown-toggle" style="margin-bottom: 5px; margin-top:5px;" href="#" id="gLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-chevron-left"></span> Mes fichiers</a>
-                    <ul style="margin-top:-30px; margin-left:-185px;" class="dropdown-menu" id="gDrop" aria-labelledby="gLabel">
-                        <li><a class="btn" href="{{ path('customer_operation') }}">Mes opérations event</a></li>
-                        <li><a class="btn" href="{{ path('customer_bills') }}">Mes factures</a></li>
-                        {% if user.manual %}
-                            <li><a class="btn" download="{{ asset(user.manual.uploadRootDir  ~ user.manual.id ~ '.' ~ user.manual.alt) }}" href="{{ asset(user.manual.uploadRootDir  ~ user.manual.id ~ '.' ~ user.manual.alt) }}">Mon manuel de bord</a></li>
-                        {% endif %}
-                        {% if user.contract %}
-                            <li><a class="btn" href="{{ asset(user.contract.uploadRootDir  ~ user.contract.id ~ '.' ~ user.contract.alt) }}">Mon contrat commercial</a></li>
-                        {% endif %}
-                    </ul>
-                </li>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <li><a class="btn" href="{{ path('sonata_admin_dashboard') }}">Interface administrateur</a></li>
-                {% endif %}
-                <li class="dropdown"><a class="btn" href="{{ path('fos_user_security_logout') }}">Déconnexion </a></li>
-                {#<li><a class="btn" style="margin-bottom: -5px; background-color: white; color:black;" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Réseau social</a></li>#}
-            </ul>
-        </div>
-        <nav class="navbar navbar-default firstNav hidden-xs">
-            <div class="container-fluid">
-                <div class="navbar-header menuheader textAlignCenter">
-                    <a class="hidden-sm hidden-xs" href="http://www.charlestown.fr/">
-                        <img class="logo_header " src="{{ asset('images/logo_charlestown.png') }}"/>
-                    </a>
-                    <a class="visible-sm" href="http://www.charlestown.fr/">
-                        <img class="logo_header " src="{{ asset('images/logo_smxs.png') }}"/>
-                    </a>
-                </div>
-                <div class=" navbar-collapse menuwrapper" style="width:75% !important;">
-                    <ul class="nav navbar-nav menucontainer">
-                        <li class="divider-vertical"></li>
-                        <li class="menubuttonCustomer">
-                            <a href="{{ path('index_customer') }}">News</a>
-                        </li>
-                        <li class="divider-vertical"></li>
-                        <li class="dropdown menubuttonCustomer">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Charlestown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a data-toggle="modal" data-target="#implantationModal">Nos implantations</a></li>
-                                <li><a data-toggle="modal" data-target="#presentationModal">Nos activités</a></li>
-                                <li><a href="{{ path('uniform_event') }}">Nos uniformes</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="{{ path('rse') }}">Politique RSE</a></li>
-                                {#<li><a data-toggle="modal" data-target="#eleasModal">Soutien Eleas</a></li>#}
-                            </ul>
-                        </li>
-                        <li class="divider-vertical"></li>
-                        <li class="menubuttonCustomer">
-                            <a href="{{ path('customer_contact') }}">Contacts</a>
-                        </li>
-                        <li class="divider-vertical"></li>
-                        <li class="menubuttonCustomer">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Qualité <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ path('quality') }}">Compte rendu</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="{{ path('quality_service') }}">Contactez-nous</a></li>
-                                {#<li><a data-toggle="modal" data-target="#eleasModal">Soutien Eleas</a></li>#}
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-
-        <div id="social_bar" style="position:absolute; right:1%; margin-top:-80px; background-color: black; width:60px; text-align:center; box-shadow: 2px 2px 2px gray, -1px -1px 2px; border-bottom-right-radius: 25px;
-border-bottom-left-radius: 25px;">
-            <a href="https://www.youtube.com/user/charlestownaccueil"><img style="width:50px; height:auto;" src="{{ asset('images/youtube-round.png') }}"></a><br/>
-            <a href="https://www.facebook.com/charlestownrecrutement/?fref=ts"><img style="width:50px; height:auto;" src="{{ asset('images/facebook-round.png') }}"></a><br/>
-            <a href="https://twitter.com/Charlestown_fr"><img style="width:50px; height:auto;" src="{{ asset('images/twitter-round.png') }}"></a><br/>
-            <a href="https://www.linkedin.com/company/1702076?trk=tyah&trkInfo=clickedVertical%3Acompany%2CentityType%3AentityHistoryName%2CclickedEntityId%3Acompany_1702076%2Cidx%3A0"><img style="width:50px; height:auto;" src="{{ asset('images/linkedin-iround.png') }}"></a><br/>
-            <a href="https://fr.pinterest.com/CharlestownFR/"><img style="width:50px; height:auto;" src="{{ asset('images/pinterest-round.png') }}"></a><br/>
-
-            <a href="#" style="color:white;" id="socialClose"><span class="caret"></span></a>
-        </div>
-
-        <div id="social_bar_closed" class="hidden" style="position:absolute; right:1%; margin-top:-80px; background-color: black; width:60px; text-align:center; box-shadow: 2px 2px 2px gray, -1px -1px 2px; border-bottom-right-radius: 25px;
-border-bottom-left-radius: 25px;">
-            <a href="" style="color:white;" id="socialOpen"><span class="caret"></span></a>
-        </div>
-
-        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-        <script> // TODO : move to main.js
-            $("#socialClose").click(function(e) {
-                e.preventDefault();
-                $("#social_bar").addClass("hidden");
-                $("#social_bar_closed").removeClass("hidden");
-            });
-
-            $("#socialOpen").click(function(e) {
-                e.preventDefault();
-                $("#social_bar").removeClass("hidden");
-                $("#social_bar_closed").addClass("hidden");
-            });
-        </script>
-
-
-    {% endblock %}
-    {% block content %}
-    {% endblock %}
-
-    <div style="position:fixed; top:0; background-color:#E91726; color:white; padding:5px; border-radius: 0 0 10px 0;">
-        <span>Phase de test</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="btn btn-small btn-danger" target="docs.google.com" href="http://goo.gl/forms/9BsP3LLlIvZCfWnZ2">Rapport de bug</a>
-        <a class="btn btn-small btn-danger" target="docs.google.com" href="http://goo.gl/forms/7rWC1HixOAb7nkeU2"   >Donnez votre avis</a>
-    </div>
-
-    {% block footer %}
-        <footer style="position:fixed;left:0px;bottom:0px;height:30px;width:100%;background:black;opacity: 0.8;">
-            <div class="container">
-                <div class="row" style="margin-top:8px; text-align:center;">
-                    <div class="col-md-3">
-                        <a style="color:white;" href="{{ path('cgu') }}">CGU</a>
-                    </div>
-                    <div class="col-md-6">
-                        <a style="color:white;" href='mailto:christian.hiroz@gmail.com'>Contacter un administrateur</a>
-                    </div>
-                    <div class="col-md-3">
-                        <a style="color:white;" href="{{ path('mention') }}">Mentions légales</a>
-                    </div>
-                    <a href="{{ path('help_customer') }}" style="float:right; font-size:30px; margin-top:-30px; margin-right:-35px; color:red;"><span class="glyphicon glyphicon-bell"></span></a>
+                <div class="beforeNavName  hidden-xs">
+                    <p>{{ user.companyName|capitalize }}</p>
                 </div>
             </div>
-        </footer>
-    {% endblock %}
+            <ul id="navigator">
+                <li class="{% if app.request.attributes.get('_route') starts with 'index' %}selected{% endif %}"><a href="#" class="bold"><span class="glyphicon glyphicon-home"></span>&nbsp;   ACCUEIL</a>
+                    <ul>
+                        <li id="newsli"><a href="{{ path('index_customer') }}#news">Vos News</a></li>
+                        <li><a href="{{ path('index_customer') }}#activity">Nos activités</a></li>
+                        <li><a href="{{ path('index_customer') }}#implantations">Nos implantations</a>
+                    </ul>
+                </li>
+                {#<li class="{% if app.request.attributes.get('_route') starts with 'uniforme' %}selected{% endif %}"><a href="#" class="bold"><i class="fa fa-cart-plus"></i>&nbsp;   UNIFORMES</a></li>#}
+                <li class="{% if app.request.attributes.get('_route') starts with 'social' %}selected{% endif %}"><a href="#" class="bold"><i class="fa fa-group"></i>&nbsp;   CONTACTS</a>
+                    <ul>
+                        <li><a href="{{ path('social_customer_devis') }}">Devis</a></li>
+                        <li><a href="{{ path('social_ideabox_new') }}">Boîte à idées</a></li>
+                        <li><a href="{{ path('social_customer_contact') }}">Contacts</a></li>
+                    </ul>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') starts with 'quality' %}selected{% endif %}"><a href="#" class="bold"><i class="fa fa-briefcase"></i>&nbsp;   QUALITÉ</a>
+                    <ul>
+                        <li><a href="{{ path('quality') }}">Compte rendu</a></li>
+                        <li><a href="{{ path('quality_service') }}">Contactez-nous</a></li>
+                    </ul>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') starts with 'fos' %}selected{% endif %}"><a href="#" class="bold"><span class="glyphicon glyphicon-cog"></span>&nbsp;   PARAMÈTRES</a>
+                    <ul>
+                        <li><a href="{{ path('fos_user_profile_show') }}">Mes informations</a></li>
+                        <li><a href="{{ path('fos_cgu') }}">CGU</a></li>
+                        <li><a href="{{ path('fos_mention') }}">Mentions légales</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="menuFooter" style="color:white; bottom:5px;position: absolute; font-size: 26px;">
+                <a style="color:white;" href="https://www.youtube.com/user/charlestownaccueil"><i class="fa fa-youtube" aria-hidden="true" ></i></a>
+                <a style="color:white;" href="https://www.facebook.com/charlestownrecrutement/"><i class="fa fa-facebook" aria-hidden="true" style="margin-left: 15px;"></i></a>
+                <a style="color:white;" href="https://twitter.com/Charlestown_fr"><i class="fa fa-twitter" aria-hidden="true" style="margin-left: 15px;"></i></a>
+                <a style="color:white;" href="https://fr.linkedin.com/company/iss-accueil-et-services-charlestown"><i class="fa fa-linkedin" aria-hidden="true"style="margin-left: 15px;"></i></a>
+                <a style="color:white;" href="https://nl.pinterest.com/CharlestownFR/"><i class="fa fa-pinterest" aria-hidden="true" style="margin-left: 15px;"></i></a>
+            </div>
+        </nav>
+        {% block content %}
+
+        {% endblock %}
+    </div>
 {% endblock %}
+
+
+{#{% extends "::base.html.twig" %}#}
+{#{% block title %} {{ parent() }} - Client{% endblock %}#}
+{#{% block body %}#}
+    {#{% block header %}#}
+
+        {#<div class="modal fade" id="eleasModal" tabindex="-1" role="dialog">#}
+            {#<div class="modal-dialog">#}
+                {#<div class="modal-content">#}
+                    {#<div class="modal-header">#}
+                        {#<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
+                    {#</div>#}
+                    {#<div class="modal-body">#}
+                        {#<img style="width:100%; height:auto;" src="{{ asset('images/bienvenue_eleas.png') }}"/>#}
+                        {#<div style="text-align: center; margin-top:15px;">#}
+                            {#<a class="btn btn-danger" href="{{ asset('images/bienvenue_eleas.pdf') }}">Télécharger la brochure</a>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="modal-footer">#}
+                        {#<button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>#}
+                    {#</div>#}
+                {#</div><!-- /.modal-content -->#}
+            {#</div><!-- /.modal-dialog -->#}
+        {#</div><!-- /.modal -->#}
+        {#<div class="modal fade" id="implantationModal" tabindex="-1" role="dialog">#}
+            {#<div class="modal-dialog">#}
+                {#<div class="modal-content">#}
+                    {#<div class="modal-header">#}
+                        {#<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
+                        {#<nav class="navbar navbar-default secondNav">#}
+                            {#<div class="container-fluid">#}
+                                {#<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">#}
+                                    {#<ul class="nav navbar-nav">#}
+                                        {#<li class="active" role="presentation"><a href="#implantation" aria-controls="implantation" role="tab" data-toggle="tab">Nos implantations</a></li>#}
+                                    {#</ul>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</nav>#}
+                        {#<hr/>#}
+                    {#</div>#}
+                    {#<div class="modal-body">#}
+                        {#<div class="tab-content">#}
+                            {#<div role="tabpanel" class="tab-pane active" id="implantation">#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-3">#}
+                                        {#<p style="text-align:left; font-size: 16px;">#}
+                                            {#<span style="font-weight: bold">Charlestown Nord/Est</span> <br/>#}
+                                            {#3, rue Esquermoise<br/>#}
+                                            {#59000 Lille<br/>#}
+                                            {#<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 03.59.81.00.60 <br/>#}
+                                            {#<span class="glyphicon glyphicon-print" aria-hidden="true"></span> 03.72.27.18.24 <br/>#}
+                                            {#<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> lille@charlestown.fr <br/><br/>#}
+                                            {#<span style="font-weight: bold">Charlestown Paris</span> <br/>#}
+                                            {#55, rue Fondary<br/>#}
+                                            {#75015 Paris <br/>#}
+                                            {#<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 01.70.91.22.22 <br/>#}
+                                            {#<span class="glyphicon glyphicon-print" aria-hidden="true"></span> 01.83.71.16.61 <br/>#}
+                                            {#<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> info@charlestown.fr <br/><br/>#}
+                                            {#<span style="font-weight: bold">Charlestown Ouest/Nantes</span> <br/>#}
+                                            {#3, place saint Pierre<br/>#}
+                                            {#44000 Nantes <br/>#}
+                                            {#<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 02.72.24.05.05 <br/>#}
+                                            {#<span class="glyphicon glyphicon-print" aria-hidden="true"></span> 02.34.88.19.28<br/>#}
+                                            {#<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> nantes@charlestown.fr <br/><br/>#}
+                                        {#</p>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-6">#}
+                                        {#<img src="{{ asset('images/carte_presentation.png') }}"/>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-3">#}
+                                        {#<p style="text-align:right; font-size: 16px;">#}
+                                            {#<span style="font-weight: bold">Charlestown Rhône-Alpes</span> <br/>#}
+                                            {#16, rue Crillon<br/>#}
+                                            {#69006 Lyon <br/>#}
+                                            {#<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.26.83.80.00 <br/>#}
+                                            {#<span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.84.88.17.88 <br/>#}
+                                            {#<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> lyon@charlestown.fr <br/><br/>#}
+                                            {#<span style="font-weight: bold">Charlestown Grand Sud</span> <br/>#}
+                                            {#3, place aux huiles<br/>#}
+                                            {#13001 Marseille <br/>#}
+                                            {#<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 04.91.59.85.85 <br/>#}
+                                            {#<span class="glyphicon glyphicon-print" aria-hidden="true"></span> 04.91.59.85.86 <br/>#}
+                                            {#<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> marseil@charlestown.fr <br/><br/>#}
+                                            {#<span style="font-weight: bold">Charlestown Sud Ouest</span> <br/>#}
+                                            {#20, rue du 19 Mars 1962<br/>#}
+                                            {#33320 Eysines <br/>#}
+                                            {#<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 05.40.25.00.70 <br/>#}
+                                            {#<span class="glyphicon glyphicon-print" aria-hidden="true"></span> 05.32.00.18.87 <br/>#}
+                                            {#<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> bordx@charlestown.fr <br/><br/>#}
+                                        {#</p>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="modal-footer">#}
+                        {#<button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>#}
+                    {#</div>#}
+                {#</div><!-- /.modal-content -->#}
+            {#</div><!-- /.modal-dialog -->#}
+        {#</div><!-- /.modal -->#}
+        {#<div class="modal fade" id="presentationModal" tabindex="-1" role="dialog">#}
+            {#<div class="modal-dialog">#}
+                {#<div class="modal-content">#}
+                    {#<div class="modal-header">#}
+                        {#<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
+                        {#<nav class="navbar navbar-default secondNav">#}
+                            {#<div class="container-fluid">#}
+                                {#<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">#}
+                                    {#<ul class="nav navbar-nav">#}
+                                        {#<li class="active" role="presentation"><a href="#ae" aria-controls="ae" role="tab" data-toggle="tab">Accueil en Entreprise</a></li>#}
+                                        {#<li class="divider-vertical-second"></li>#}
+                                        {#<li role="presentation"><a href="#event" aria-controls="event" role="tab" data-toggle="tab">Accueil Evénementiel</a></li>#}
+                                        {#<li class="divider-vertical-second"></li>#}
+                                        {#<li role="presentation"><a href="#promotion" aria-controls="promotion" role="tab" data-toggle="tab">Promotion des ventes</a></li>#}
+                                    {#</ul>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</nav>#}
+                        {#<hr/>#}
+                    {#</div>#}
+                    {#<div class="modal-body">#}
+                        {#<div class="tab-content">#}
+                            {#<div role="tabpanel" class="tab-pane active" id="ae">#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-4">#}
+                                        {#<img src="{{ asset('images/bienvenue_ae_1.jpg') }}"/>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-4">#}
+                                        {#<img src="{{ asset('images/bienvenue_ae_2.jpg') }}"/>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-4">#}
+                                        {#<img src="{{ asset('images/bienvenue_ae_3.jpg') }}"/>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-12">#}
+                                        {#<br/>#}
+                                        {#<br/>#}
+                                        {#<br/>#}
+                                        {#Le sourire, la courtoisie, la présentation, le comportement et les compétences des hôte(sse)s d’accueil sont stratégiques pour l’image de marque de nos clients. <br/> <br/>#}
+
+                                        {#Parmi nos domaines d’expertise, nous comptons : <br/> <br/> <br/>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-6">#}
+                                        {#<ul>#}
+                                            {#<li>Accueil visiteurs</li>#}
+                                            {#<li>Accueil VIP</li>#}
+                                            {#<li>Accueil Présidence</li>#}
+                                            {#<li>Gestion du standard</li>#}
+                                            {#<li>Standard déporté</li>#}
+                                            {#<li>Gestion du courrier</li>#}
+                                            {#<li>Gestion des salles de réunion</li>#}
+                                        {#</ul>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-6">#}
+                                        {#<ul>#}
+                                            {#<li>Gestion des agendas</li>#}
+                                            {#<li>Réception des plis et colis</li>#}
+                                            {#<li>Gestion des coursiers</li>#}
+                                            {#<li>Gestion des voyages</li>#}
+                                            {#<li>Tâches administratives</li>#}
+                                            {#<li>Gestion des consommables</li>#}
+                                            {#<li>Services aux occupants</li>#}
+                                        {#</ul>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div role="tabpanel" class="tab-pane" id="event">#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-4">#}
+                                        {#<img src="{{ asset('images/bienvenue_event_1.jpg') }}"/>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-4">#}
+                                        {#<img src="{{ asset('images/bienvenue_event_2.jpg') }}"/>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-4">#}
+                                        {#<img src="{{ asset('images/bienvenue_event_3.jpg') }}"/>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-12">#}
+                                        {#<br/>#}
+                                        {#<br/>#}
+                                        {#<br/>#}
+                                        {#Pour en faire un moment inoubliable, nous sélectionnons des équipes élégantes, dynamiques et professionnelles qui offrent à nos clients un service personnalisé. Souplesse, sérénité, sens du service et haute qualité organisationnelle sont des atouts qui font la différence pour la réussite de nos événements. <br/><br/>#}
+
+                                        {#Parmi nos domaines d’expertise, nous comptons :  <br/> <br/> <br/>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-4">#}
+                                        {#<ul>#}
+                                            {#<li>Accueil, Orientation</li>#}
+                                            {#<li>Contrôle des invitations</li>#}
+                                            {#<li>Pointage listing</li>#}
+                                            {#<li>Gestion des flux</li>#}
+                                            {#<li>Placement salle/diner</li>#}
+                                            {#<li>Vestiaire</li>#}
+                                        {#</ul>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-4">#}
+                                        {#<ul>#}
+                                            {#<li>Accueil protocolaire</li>#}
+                                            {#<li>Gestion des intervenants</li>#}
+                                            {#<li>Remise de badges</li>#}
+                                            {#<li>Emargement</li>#}
+                                            {#<li>Remise de boitiers de vote</li>#}
+                                            {#<li>Remise de casque de traduction</li>#}
+                                        {#</ul>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-4">#}
+                                        {#<ul>#}
+                                            {#<li>Voiturier</li>#}
+                                            {#<li>Gestion des cars / navettes</li>#}
+                                            {#<li>Prise en charge gares/aéroports</li>#}
+                                            {#<li>Distribution de cadeaux</li>#}
+                                            {#<li>Accueil Presse</li>#}
+                                            {#<li>Accompagnement VIP</li>#}
+                                        {#</ul>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#<div role="tabpanel" class="tab-pane" id="promotion">#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-4">#}
+                                        {#<img src="{{ asset('images/bienvenue_promotion_1.jpg') }}"/>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-4">#}
+                                        {#<img src="{{ asset('images/bienvenue_promotion_2.jpg') }}"/>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-4">#}
+                                        {#<img src="{{ asset('images/bienvenue_promotion_3.jpg') }}"/>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-12">#}
+                                        {#<br/>#}
+                                        {#<br/>#}
+                                        {#<br/>#}
+                                        {#Les campagnes d’animation sont uniques : leur réussite doit être totale et immédiate. Pour en faire des moments forts, nous sélectionnons des équipes élégantes, homogènes, expérimentées, consciencieuses et mobiles qui assurent des missions de haute qualité. <br/><br/>#}
+
+                                        {#Parmi nos domaines d’expertise, nous comptons :  <br/> <br/> <br/>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-6">#}
+                                        {#<ul>#}
+                                            {#<li>Accueil</li>#}
+                                            {#<li>Conseil clientèle</li>#}
+                                            {#<li>Présentation produit</li>#}
+                                            {#<li>Démonstration produit</li>#}
+                                            {#<li>Dégustation produit</li>#}
+                                            {#<li>Vente produit</li>#}
+                                        {#</ul>#}
+                                    {#</div>#}
+                                    {#<div class="col-md-6">#}
+                                        {#<ul>#}
+                                            {#<li>Distribution de goodies</li>#}
+                                            {#<li>Distribution de cadeaux</li>#}
+                                            {#<li>Distribution de flyers</li>#}
+                                            {#<li>Animation in-store</li>#}
+                                            {#<li>Animation out-store</li>#}
+                                            {#<li>Service boissons</li>#}
+                                        {#</ul>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="modal-footer">#}
+                        {#<button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>#}
+                    {#</div>#}
+                {#</div><!-- /.modal-content -->#}
+            {#</div><!-- /.modal-dialog -->#}
+        {#</div><!-- /.modal -->#}
+
+        {#<div class="dropdown space-menu">#}
+            {#<a class="dropdown-toggle space-menu-link" data-toggle="dropdown" href="#">#}
+                {#{% if user.picture %}#}
+                    {#<img class="rounded-image" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>#}
+                {#{% endif %}#}
+                {#<p class="space-menu-txt">{{ user.companyName }} <span class="caret"></span></p>#}
+            {#</a>#}
+            {#<ul class="dropdown-menu space-menu-der">#}
+                {#<li><a class="btn" id="vos_informations" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Mes informations</a></li>#}
+                {#<li><a class="btn" id="devis" href="{{ path('customer_devis') }}">Demande de devis</a></li>#}
+                {#&#123;&#35;{% if user.isClubMember %}&#35;&#125;#}
+                {#&#123;&#35;<li><a class="btn btn-danger" style="" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Club Charlestown®</a></li>&#35;&#125;#}
+                {#&#123;&#35;{% endif %}&#35;&#125;#}
+
+                {#&#123;&#35;<li><a class="btn   " style="color:white;" href="{{ path('ideabox_new') }}">Boite à idées</a></li>&#35;&#125;#}
+                {#<li class="dropdown">#}
+                    {#<a class="btn dropdown-toggle" style="margin-bottom: 5px; margin-top:5px;" href="#" id="gLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-chevron-left"></span> Mes fichiers</a>#}
+                    {#<ul style="margin-top:-30px; margin-left:-185px;" class="dropdown-menu" id="gDrop" aria-labelledby="gLabel">#}
+                        {#<li><a class="btn" href="{{ path('customer_operation') }}">Mes opérations event</a></li>#}
+                        {#<li><a class="btn" href="{{ path('customer_bills') }}">Mes factures</a></li>#}
+                        {#{% if user.manual %}#}
+                            {#<li><a class="btn" download="{{ asset(user.manual.uploadRootDir  ~ user.manual.id ~ '.' ~ user.manual.alt) }}" href="{{ asset(user.manual.uploadRootDir  ~ user.manual.id ~ '.' ~ user.manual.alt) }}">Mon manuel de bord</a></li>#}
+                        {#{% endif %}#}
+                        {#{% if user.contract %}#}
+                            {#<li><a class="btn" href="{{ asset(user.contract.uploadRootDir  ~ user.contract.id ~ '.' ~ user.contract.alt) }}">Mon contrat commercial</a></li>#}
+                        {#{% endif %}#}
+                    {#</ul>#}
+                {#</li>#}
+                {#{% if is_granted('ROLE_ADMIN') %}#}
+                    {#<li><a class="btn" href="{{ path('sonata_admin_dashboard') }}">Interface administrateur</a></li>#}
+                {#{% endif %}#}
+                {#<li class="dropdown"><a class="btn" href="{{ path('fos_user_security_logout') }}">Déconnexion </a></li>#}
+                {#&#123;&#35;<li><a class="btn" style="margin-bottom: -5px; background-color: white; color:black;" data-id="vos_informations" href="{{ path('fos_user_profile_show') }}">Réseau social</a></li>&#35;&#125;#}
+            {#</ul>#}
+        {#</div>#}
+        {#<nav class="navbar navbar-default firstNav hidden-xs">#}
+            {#<div class="container-fluid">#}
+                {#<div class="navbar-header menuheader textAlignCenter">#}
+                    {#<a class="hidden-sm hidden-xs" href="http://www.charlestown.fr/">#}
+                        {#<img class="logo_header " src="{{ asset('images/logo_charlestown.png') }}"/>#}
+                    {#</a>#}
+                    {#<a class="visible-sm" href="http://www.charlestown.fr/">#}
+                        {#<img class="logo_header " src="{{ asset('images/logo_smxs.png') }}"/>#}
+                    {#</a>#}
+                {#</div>#}
+                {#<div class=" navbar-collapse menuwrapper" style="width:75% !important;">#}
+                    {#<ul class="nav navbar-nav menucontainer">#}
+                        {#<li class="divider-vertical"></li>#}
+                        {#<li class="menubuttonCustomer">#}
+                            {#<a href="{{ path('index_customer') }}">News</a>#}
+                        {#</li>#}
+                        {#<li class="divider-vertical"></li>#}
+                        {#<li class="dropdown menubuttonCustomer">#}
+                            {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Charlestown <span class="caret"></span></a>#}
+                            {#<ul class="dropdown-menu">#}
+                                {#<li><a data-toggle="modal" data-target="#implantationModal">Nos implantations</a></li>#}
+                                {#<li><a data-toggle="modal" data-target="#presentationModal">Nos activités</a></li>#}
+                                {#<li><a href="{{ path('uniform_event') }}">Nos uniformes</a></li>#}
+                                {#<li role="separator" class="divider"></li>#}
+                                {#&#123;&#35;<li><a data-toggle="modal" data-target="#eleasModal">Soutien Eleas</a></li>&#35;&#125;#}
+                            {#</ul>#}
+                        {#</li>#}
+                        {#<li class="divider-vertical"></li>#}
+                        {#<li class="menubuttonCustomer">#}
+                            {#<a href="{{ path('customer_contact') }}">Contacts</a>#}
+                        {#</li>#}
+                        {#<li class="divider-vertical"></li>#}
+                        {#<li class="menubuttonCustomer">#}
+                            {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Qualité <span class="caret"></span></a>#}
+                            {#<ul class="dropdown-menu">#}
+                                {#<li><a href="{{ path('quality') }}">Compte rendu</a></li>#}
+                                {#<li role="separator" class="divider"></li>#}
+                                {#<li><a href="{{ path('quality_service') }}">Contactez-nous</a></li>#}
+                                {#&#123;&#35;<li><a data-toggle="modal" data-target="#eleasModal">Soutien Eleas</a></li>&#35;&#125;#}
+                            {#</ul>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</div><!-- /.navbar-collapse -->#}
+            {#</div><!-- /.container-fluid -->#}
+        {#</nav>#}
+
+        {#<div id="social_bar" style="position:absolute; right:1%; margin-top:-80px; background-color: black; width:60px; text-align:center; box-shadow: 2px 2px 2px gray, -1px -1px 2px; border-bottom-right-radius: 25px;#}
+{#border-bottom-left-radius: 25px;">#}
+            {#<a href="https://www.youtube.com/user/charlestownaccueil"><img style="width:50px; height:auto;" src="{{ asset('images/youtube-round.png') }}"></a><br/>#}
+            {#<a href="https://www.facebook.com/charlestownrecrutement/?fref=ts"><img style="width:50px; height:auto;" src="{{ asset('images/facebook-round.png') }}"></a><br/>#}
+            {#<a href="https://twitter.com/Charlestown_fr"><img style="width:50px; height:auto;" src="{{ asset('images/twitter-round.png') }}"></a><br/>#}
+            {#<a href="https://www.linkedin.com/company/1702076?trk=tyah&trkInfo=clickedVertical%3Acompany%2CentityType%3AentityHistoryName%2CclickedEntityId%3Acompany_1702076%2Cidx%3A0"><img style="width:50px; height:auto;" src="{{ asset('images/linkedin-iround.png') }}"></a><br/>#}
+            {#<a href="https://fr.pinterest.com/CharlestownFR/"><img style="width:50px; height:auto;" src="{{ asset('images/pinterest-round.png') }}"></a><br/>#}
+
+            {#<a href="#" style="color:white;" id="socialClose"><span class="caret"></span></a>#}
+        {#</div>#}
+
+        {#<div id="social_bar_closed" class="hidden" style="position:absolute; right:1%; margin-top:-80px; background-color: black; width:60px; text-align:center; box-shadow: 2px 2px 2px gray, -1px -1px 2px; border-bottom-right-radius: 25px;#}
+{#border-bottom-left-radius: 25px;">#}
+            {#<a href="" style="color:white;" id="socialOpen"><span class="caret"></span></a>#}
+        {#</div>#}
+
+        {#<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>#}
+        {#<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>#}
+        {#<script> // TODO : move to old.js#}
+            {#$("#socialClose").click(function(e) {#}
+                {#e.preventDefault();#}
+                {#$("#social_bar").addClass("hidden");#}
+                {#$("#social_bar_closed").removeClass("hidden");#}
+            {#});#}
+
+            {#$("#socialOpen").click(function(e) {#}
+                {#e.preventDefault();#}
+                {#$("#social_bar").removeClass("hidden");#}
+                {#$("#social_bar_closed").addClass("hidden");#}
+            {#});#}
+        {#</script>#}
+
+
+    {#{% endblock %}#}
+    {#{% block content %}#}
+    {#{% endblock %}#}
+
+    {#<div style="position:fixed; top:0; background-color:#E91726; color:white; padding:5px; border-radius: 0 0 10px 0;">#}
+        {#<span>Phase de test</span>&nbsp;&nbsp;&nbsp;&nbsp;#}
+        {#<a class="btn btn-small btn-danger" target="docs.google.com" href="http://goo.gl/forms/9BsP3LLlIvZCfWnZ2">Rapport de bug</a>#}
+        {#<a class="btn btn-small btn-danger" target="docs.google.com" href="http://goo.gl/forms/7rWC1HixOAb7nkeU2"   >Donnez votre avis</a>#}
+    {#</div>#}
+
+{#{% endblock %}#}

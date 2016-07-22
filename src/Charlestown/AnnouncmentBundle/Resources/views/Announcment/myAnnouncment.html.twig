@@ -1,0 +1,73 @@
+{% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
+{% block content %}
+    {{ parent() }}
+    <style>
+        .row{
+            margin:25px;
+        }
+        .ad{
+            background-color: white;
+        }
+    </style> <!-- TODO: mettre dans main et vérifier compatibilité -->
+    <div class="container" id="announcment" style="width:80%; margin-left:20%; max-width:80%; min-height:100%; background-color: #ededed;">
+        <div class="row" style="text-align:center; background-color: white; position:relative;">
+            <br/>
+            <a class="btn btn-large btn-danger" href="{{ path('social_announcment_new') }}">Nouvelle annonce</a>
+            <br/><br/>
+        </div>
+        <div class="row">
+        {% for ad in announcments %}
+            {% if loop.index % 2 == 1 %}
+                </div>
+                <div class="row" style="margin-top: 25px;">
+            {% endif %}
+            <div class="col-md-2 ad" style="border: 1px solid grey; border-radius: 5px; height: 300px; text-align: center;">
+                {% if ad.type == "Vente" %}
+                    <div style="background-color: forestgreen; width:50%; margin-left: 42px; height:30px; margin-top: -15px; border-radius:5px; margin-bottom: 5px;"><p style="padding-top: 5px;">Vente</p></div>
+                {% elseif ad.type == "Achat" %}
+                    <div style="background-color: lightskyblue; width:50%; margin-left: 42px; height:30px; margin-top: -15px; border-radius:5px; margin-bottom: 5px;"><p style="padding-top: 5px;">Achat</p></div>
+                {% elseif ad.type == "Don" %}
+                    <div style="background-color: orange; width:50%; margin-left: 42px; height:30px; margin-top: -15px; border-radius:5px; margin-bottom: 5px;"><p style="padding-top: 5px;">Don</p></div>
+                {% elseif ad.type == "Echange" %}
+                    <div style="background-color: indianred; width:50%; margin-left: 42px; height:30px; margin-top: -15px; border-radius:5px; margin-bottom: 5px;"><p style="padding-top: 5px;">Échange</p></div>
+                {% endif %}
+                <div style="height:40%;">
+                    <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset(ad.picture.uploadRootDir  ~ ad.picture.id ~ '.' ~ ad.picture.alt) }}">
+                </div>
+                <div style="height:50%;">
+                    <p>{{ ad.title }}</p>
+                    <p>{{ ad.description }}</p>
+                    <p>{{ ad.offerer.agency.localisation }}</p>
+                    <a class="btn btn-danger" href="{{ path('social_announcment_edit', {'id' :  ad.id  }) }}">Modifier</a>
+                </div>
+            </div>
+            <div class="col-md-1"><i style="margin-top: 130px; font-size: 40px;" class="fa fa-arrow-circle-right" aria-hidden="true"></i></div>
+            {% if ad.applicant %}
+                <div class="col-md-2 ad" style="border: 1px solid grey; border-radius: 5px; height: 300px; text-align: center;">
+                    <br/>
+                    {% if ad.applicant.picture %}
+                        <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset(ad.applicant.picture.uploadRootDir  ~ ad.applicant.picture.id ~ '.' ~ ad.applicant.picture.alt) }}">
+                    {% else %}
+                        <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('bundles/charlestowncore/images/nophoto.png') }}">
+                    {% endif %}
+                    {{ ad.applicant.firstName }} {{ ad.applicant.lastName }} <br/>
+                    {% if ad.applicant.phoneNumber != "" %}
+                    <span class="glyphicon glyphicon-phone-alt" style="color:red;"></span> {{ ad.applicant.phoneNumber }} <br/>
+                    {% endif %}
+                    <span class="glyphicon glyphicon-phone" style="color:red;"></span> {{ ad.applicant.portPhoneNumber }} <br/>
+                    <a href="{{ path('social_announcment_delete', {'id' : ad.id }) }}" class="btn btn-danger btn-small" style="margin-bottom:5px; display:inline-block;">Accepter</a>
+                    <a href="{{ path('social_announcment_unapply', {'id' : ad.id }) }}" class="btn btn-warning btn-small" style="display:inline;">Refuser</a>
+                </div>
+            {% else %}
+                <div class="col-md-2 ad" style="border: 1px solid grey; border-radius: 5px; height: 300px; text-align: center;">
+                    <p style="margin-top: 150px">Aucunes offres pour le moment</p>
+                </div>
+            {% endif %}
+            {% if loop.index % 2 == 1 %}
+                <div class="col-md-2"></div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

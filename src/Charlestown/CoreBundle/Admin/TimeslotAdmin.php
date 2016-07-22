@@ -13,8 +13,9 @@ class TimeslotAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('start',null,array('label'=>'Début'))
-            ->add('end',null,array('label'=>'Fin'))
+            ->add('start','sonata_type_datetime_picker',array('label'=>'Début', 'format' => 'dd-MM-yyyy HH:mm'))
+            ->add('end','sonata_type_datetime_picker',array('label'=>'Fin', 'format' => 'dd-MM-yyyy HH:mm'))
+            ->add('rooms','text',array('label'=>'Places'))
         ;
     }
 
@@ -23,7 +24,6 @@ class TimeslotAdmin extends Admin
         $datagridMapper
             ->add('id', null, array('label' => 'Identifiant'))
             ->add('start',null,array('label'=>'Début'))
-            ->add('end',null,array('label'=>'Fin'))
         ;
     }
 
@@ -32,7 +32,8 @@ class TimeslotAdmin extends Admin
         $listMapper
             ->addIdentifier('id', null, array('label' => 'Identifiant'))
             ->add('start',null,array('label'=>'Début'))
-            ->add('end',null,array('label'=>'Fin'))
+            ->add('rooms',null,array('label'=>'Places'))
+
         ;
     }
 

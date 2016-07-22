@@ -1,42 +1,22 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                    <nav class="navbar navbar-default secondNav">
-                        <div class="container-fluid">
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav">
-                                    <li class="dropdown active">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nouvelle demande <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li class="" role="presentation"><a href="{{ path('demand_meeting_new') }}">Rendez-vous</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li class="" role="presentation"><a href="{{ path('demand_mobility_new') }}">Mobilité</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li class="" role="presentation"><a href="{{ path('demand_formation_new') }}">Formation</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li class="" role="presentation"><a href="{{ path('demand_vacancy_new') }}">Congés</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="divider-vertical-second"></li>
-                                    <li class="" role="presentation"><a href="{{ path('demand') }}">Vos demandes</a></li>
-                                    <li class="divider-vertical-second"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                <hr/>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        {{ form(form) }}
+    <div class="container" style="width:80%; margin-left:20%; max-width:80%;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="bigTitle" style="text-align: right;">NOUVELLE DEMANDE</h2>
+                <hr>
+                <div class="form">
+                    {{ form_start(form)}}
+                    {{ form_widget(form, {'attr' : {'class' : 'champ', 'placeholder' : 'titre'}}) }}
+                    <div>
+                        <input class="bouton" style="margin-bottom:150px;"type="submit" value="Envoyer" />
                     </div>
+                    {{ form_end(form) }}
+
                 </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+
+    </div>
 {% endblock %}

@@ -13,15 +13,14 @@ use Charlestown\CoreBundle\Form\IdeaBoxType;
 
 /**
  * IdeaBox controller.
- *
- * @Route("/ideabox")
+
  */
 class IdeaBoxController extends Controller
 {
     /**
      * Creates a new IdeaBox entity.
      *
-     * @Route("/", name="ideabox_create")
+     * @Route("/idee", name="ideabox_create")
      * @Method("POST")
      * @Template("CharlestownCoreBundle:IdeaBox:new.html.twig")
      */
@@ -42,7 +41,7 @@ class IdeaBoxController extends Controller
             $this->get('charlestown.mailer')->sendIdeaBoxNotificationMail($user);
             $request->getSession()->set('alert', true);
 
-            return $this->redirect($this->generateUrl('ideabox_new'));
+            return $this->redirect($this->generateUrl('social_ideabox_new'));
         }
 
 
@@ -80,15 +79,13 @@ class IdeaBoxController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Envoyer'));
-
         return $form;
     }
 
     /**
      * Displays a form to create a new IdeaBox entity.
      *
-     * @Route("/new", name="ideabox_new")
+     * @Route("/idee", name="social_ideabox_new")
      * @Method("GET")
      * @Template()
      */

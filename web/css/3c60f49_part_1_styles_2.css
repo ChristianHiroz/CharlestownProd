@@ -1,0 +1,222 @@
+.p{
+    font-family: "Roboto",arial,sans-serif !important;
+}
+/* MENU */
+.firstNav{width:50%; top:50px; left:125px; border:medium none;z-index:2;background-color: rgb(192, 192, 192)!important;padding: 1px;}
+.firstNavCollab{width:60%; top:50px; left:125px; border:medium none;z-index:2;background-color: rgb(192, 192, 192)!important;padding: 1px;}
+.secondNav{width:100%;border:medium none; z-index:1;}
+.container-fluid{ background-color:#000000; border: medium none; border-radius:10px; margin:0px; padding:0px;}
+.logo_header{ width:auto; height:100%;}
+.dropdown-menu{ background-color: black;box-shadow: 2px 2px 2px gray, -1px -1px 2px white; top:105%; }
+.navbar-default{ background-color: transparent; background-image: none; box-shadow: none; }
+.dropdown-menu > li > a { color: white; }
+.dropdown-toggle{ color:white !important; }
+.divider-vertical{ border-left: 1px solid #606060; border-right: 1px solid #464646; height: 100%; }
+.divider-vertical-second{ border-left: 1px solid #F00; border-right: 1px solid #ff3651; height: 50px; }
+.navbar-collapse{ margin:0px; padding:0px; }
+.navbar-default .navbar-nav > li > a{color:white;}
+.espace{position: absolute; top: 21px; right: 175px; z-index: 1;}
+.imgPresentation{width:100%; height:auto;}
+
+.menubutton{  width:19.5%;  text-align: center; height: 100%; }
+.menubuttonEvent{  width:24.5%;  text-align: center; height: 100%; }
+.menubuttonCustomer{  width:24.5%;  text-align: center; height: 100%; }
+.menubutton:hover, .menubutton:focus { background-color: white;}
+.menubuttonEvent:hover, .menubutton:focus { background-color: white;}
+.menuheader{ width:25%; height:55px; }
+.menuheaderCollab{ width:20%; height:55px; }
+.menucontainer{ width:100%; height:100%;}
+.menuwrapper{width:80%; height:55px; float:left;}
+.menuwrapperCustomer{width:75%; height:55px; float:left;}
+/* FINMENU */
+
+/* MODALS */
+.modal-dialog{ width:70%; top:100px; background-color: rgb(192, 192, 192);padding: 1px;box-shadow: 2px 2px 2px gray, -1px -1px 2px white;}
+.modal-content{ background-color: black; color:white; }
+.modal-header > button{ opacity: 1; color:white; text-shadow: none;}
+.modal-header{border: none;}
+.modal-footer{border: none;}
+/* FINMODALS */
+
+/* COMMONS */
+body{
+    background-image: url("../../images/slide/bg1.jpg");
+    background-color: #FFF;
+    background-position: center center;
+    background-size:cover;
+    overflow-x: hidden!important;
+}
+
+hr{
+    border-color: rgb(255, 0, 0);
+    border-width: 1px;
+    margin-top:-20px;
+}
+td a {
+    color:#F00;
+}
+.textAlignCenter{text-align: center;}
+.bold{font-weight: bold;}
+.underline{text-decoration: underline;}
+.redtext{color:red;}
+.whitetext{color:white;}
+.text20{font-size: 20px;}
+.bluetext{color:blue;}
+.greenValidate{color:green; position:absolute; top:-15px; left:-10px; font-size: 30px;}
+.mbottom15{margin-bottom: 15px;}
+.width50{width:50px;}
+.height50{height:50px !important;}
+.redUnderline{text-decoration: underline; color:red !important;}
+.table-condensed > tbody > tr > td{text-align:center;}
+.nav-tabs > li > a { color:white; }
+.nav-tabs > li:hover{ color:black !important; }
+.nav-tabs > li:focus{ color:black !important; }
+.uniformResize{width:100%;height:auto;}
+
+.hidden{
+    display:none;
+}
+
+.table-condensed > thead > tr > th {
+    text-align: center;
+    background-color: black;
+    color:white;
+}
+
+.table-condensed {
+    background-color: white;
+    color:black;
+}
+.btn-danger{
+    background-color: #F00;
+}
+.control-label{ color : white;}
+/* ENCOMMONS */
+
+/*SPACE MENU*/
+.space-menu{box-shadow: 2px 2px 2px gray, -1px -1px 2px white;top: 50px; right: 12%; position: absolute; width:160px; height:60px; z-index:2;background-color:black; border-radius:30px 10px 10px 30px;}
+.rounded-image{display: block; background-color: white;  margin: 0 auto;  width: 60px;  height: 60px;  -webkit-border-radius: 50%;  -moz-border-radius: 50%;  border-radius: 50%; float:left; margin-left: -1px;}
+.space-menu-txt{width:95px; float:right; line-height:60px;}
+.space-menu-txt:focus{color:black;background-color:white; border-radius:30px 10px 10px 30px;}
+.space-menu-txt:hover{color:black;background-color:white; border-radius:30px 10px 10px 30px;}
+.space-menu:hover{background-color: white;}
+.space-menu:focus{background-color: white;}
+.space-menu-link{padding:0; width:150px;}
+.space-menu-der{z-index:1;margin-left:42px;margin-top:-10px;position:unset;}
+/*ENDSPACE MENU*/
+
+.navbar-default .navbar-nav > .open > a { color: black !important; }
+.dropdown-toggle:focus { color: black !important; }
+.dropdown-toggle:hover { color: black !important; }
+/* DEMANDS */
+.half{width:50%;display:inline-block;}
+/* ENDDEMANDS */
+
+.article{height:200px;}
+.articleImage{width:auto;height:100%;}
+.articleButton{float:left;margin-top:-210px;}
+.articleTitle{color:white;}
+.articleTexte{color:white;}
+
+.offer{height:150px;}
+.offer_image{height:100%;width:auto;}
+.offer_title{color: white;margin-top: -150px;margin-left: 150px;}
+.offer_text{color: white; margin-left: 150px;}
+.offer_accept{margin-top:50px; float:right;}
+.offer_accept2{margin-top:50px; float:right;margin-right:-80px;}
+.offer_cancel{margin-top:-65px; float:right;}
+.offer_update{margin-top:-30px; float:right;}
+.offer_reput{margin-top:5px; float:right; margin-right:-75px;}
+
+
+#chat_container{position:fixed;bottom: 0;left:10px; z-index:1;}
+#chat_body{bottom:15px; background-color: black; width:350px; height: 400px;  border-color: red; overflow : auto;}
+#chat_open{width:350px; bottom:0; left:10px; position:fixed; border-color: red; background-color: black; color:white; z-index:1;}
+#chat_close{width:350px; border-color: red; background-color: black; color:white;}
+#message{width:350px;}
+.message_received{padding-left: 7px;  width : 87%; min-height:25px; background-color: white; border-radius: 7px; float:right; text-align:left;}
+.message_box_received{width:80%; float:left; margin-bottom: 3px;}
+.message_send{padding-left: 7px; width : 87%; min-height:25px;  background-color: lightgoldenrodyellow; border-radius: 7px; float:right;}
+.message_box_send{width:80%; float:right; margin-bottom: 3px; text-align:left;}
+.messages-image{background-color: white;width: 30px;height: 30px; border-radius:50%;}
+
+.view {
+    width: 300px;
+    margin: 10px;
+    float: left;
+    border: 10px solid #fff;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    box-shadow: 1px 1px 2px #e6e6e6;
+    cursor: default;
+}
+.view .mask, .view .content {
+    width: 100%;//300px;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0
+}
+.view img {
+    display: block;
+    position: relative
+}
+.view h2 {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 20px 0 0 0
+}
+.view p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    position: relative;
+    color: #fff;
+    padding: 10px 20px 20px;
+    text-align: center
+}
+.view a.info {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000
+}
+.view a.info:hover {
+    box-shadow: 0 0 5px #000
+}
+
+.op2{
+    opacity: 0.2;
+}
+
+.redPink{
+    opacity:0.8;
+    background-color: indianred;
+    height:100%;
+}
+
+
+@media (max-width: 1350px) {
+    .logo_header{ width:auto; height:80%;}
+    .image_accueil{ height:auto; width:80%;}
+}
+@media (max-width: 1075px) {
+    .logo_header{ width:auto; height:70%;}
+    .image_accueil{ height:auto; width:70%;}
+
+}
+@media  (max-width: 965px){
+    .modal-dialog{width:95%;margin:auto;}
+    .space-menu{top:25px;right:30%;}
+    #chat_container{left:27%;}
+    #chat_open{left:27%;}
+}

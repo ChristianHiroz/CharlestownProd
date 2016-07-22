@@ -25,23 +25,23 @@ class OperationAppliance
     /**
      * @var \Event
      *
-     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Collaborator", inversedBy="appliances", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Charlestown\CollaboratorBundle\Entity\Collaborator", inversedBy="appliances",cascade={"all"})
      */
     private $event;
 
     /**
      * @var \Operation
      *
-     * @ORM\ManyToOne(targetEntity="Charlestown\OperationBundle\Entity\Operation", inversedBy="appliances", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Charlestown\OperationBundle\Entity\Operation", inversedBy="appliances",cascade={"all"})
      */
     private $operation;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="accepted", type="boolean")
+     * @ORM\Column(name="accepted", type="boolean", nullable=true)
      */
-    private $accepted = false;
+    private $accepted;
 
     /**
      * @var \DateTime
@@ -60,7 +60,7 @@ class OperationAppliance
     /**
      * @var \Timeslot
      *
-     * @ORM\ManyToOne(targetEntity="Charlestown\OperationBundle\Entity\Timeslot")
+     * @ORM\ManyToOne(targetEntity="Charlestown\OperationBundle\Entity\Timeslot", inversedBy="appliances",cascade={"all"})
      */
     private $timeslot;
 
@@ -215,6 +215,7 @@ class OperationAppliance
     public function setTimeslot($timeslot)
     {
         $this->timeslot = $timeslot;
+        $timeslot->addAppliance($this);
     }
 }
 

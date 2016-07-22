@@ -1,59 +1,42 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="padding-bottom: 0px;">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" style="width:100%;">
-                                <li class="active" role="presentation"><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('fos_user_profile_edit') }}">Editer photo</a></li>
-                                <li class="divider-vertical-second"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <hr/>
+    <div class="container charlestown-container">
+        <div class="row charlestown-row">
+            <div class="charlestown-title">
+                <h2>VOS INFORMATIONS</h2>
             </div>
-            <div class="modal-body" style="padding-top: 0px;">
-                <div class="row">
-                    <div class="col-md-4" style="text-align:center;"><br/>
-                        Nom d'utilisateur : {{ user.username }} <br/><br/>
-                        Email : {{ user.email }} <br/><br/>
-                        {% if user.phoneNumber %}
-                        Téléphone : {{ user.phoneNumber }} <br/><br/>
-                        {% endif %}
-                        {% if user.portPhoneNumber %}
-                        Téléphone portable : {{ user.portPhoneNumber }} <br/><br/>
-                        {% endif %}
-                        {% if user.agency %}
-                        Agence : {{ user.agency.localisation }} <br/><br/>
-                        {% endif %}
-                    </div>
-                    {% if user.picture %}
-                    <div class="col-md-4" style="text-align:center;">
-                        <img class="rounded-image" style="margin:auto; width:150px; height:150px; float:none; border-style: solid; border-color:white; border-width:2px;" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}"/>
-                    </div>
-                    {% endif %}
-                    <div class="col-md-4" style="text-align:center;"><br/>
-                        {% if user.lastName %}
-                        Nom : {{ user.lastName }} <br/><br/>
-                        {% endif %}
-                        {% if user.firstName %}
-                        Prénom : {{ user.firstName }} <br/><br/>
-                        {% endif %}
-                        {% if user.birthDate %}
-                        Poste : {{ user.birthDate | date("m/d/Y", "Europe/Paris") }} <br/><br/>
-                        {% endif %}
-                        {% if user.address and user.pc and user.town %}
-                        Adresse : {{ user.address }} {{ user.pc }} {{ user.town }} <br/><br/>
-                        {% endif %}
-                    </div>
-                </div>
+            <div class="col-md-6" style="text-align:right;"><br/>
+                Matricule : {{ user.username }} <span class="glyphicon glyphicon-user" style="color:red;"></span> <br/><br/>
+                Email : {{ user.email }} <i class="fa fa-at" style="color:red;"></i> <br/><br/>
+                {% if user.phoneNumber %}
+                    Téléphone : {{ user.phoneNumber }} <span class="glyphicon glyphicon-phone-alt" style="color:red;"></span>  <br/><br/>
+                {% endif %}
+                {% if user.portPhoneNumber %}
+                   Téléphone portable : {{ user.portPhoneNumber }} <span class="glyphicon glyphicon-phone" style="color:red;"></span>  <br/><br/>
+                {% endif %}
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+            <div class="col-md-6" style="text-align:left;"><br/>
+                {% if user.lastName %}
+                <span class="glyphicon glyphicon-tree-conifer" style="color:red;"></span> Nom : {{ user.lastName }} <br/><br/>
+                {% endif %}
+                {% if user.firstName %}
+                <span class="glyphicon glyphicon-apple" style="color:red;"></span> Prénom : {{ user.firstName }} <br/><br/>
+                {% endif %}
+                {% if user.birthDate %}
+                <i class="fa fa-birthday-cake" style="color:red;"></i> Anniversaire : {{ user.birthDate | date("m/d/Y", "Europe/Paris") }} <br/><br/>
+                {% endif %}
+                {% if user.address and user.pc and user.town %}
+                <i class="fa fa-home" style="color:red;"></i> Adresse : {{ user.address }} {{ user.pc }} {{ user.town }} <br/><br/>
+                {% endif %}
+            </div>
+            <div class="col-md-12">
+                {% if user.picture %}
+                    <img id="profilPhoto" src="{{ asset(user.picture.uploadRootDir  ~ user.picture.id ~ '.' ~ user.picture.alt) }}" class="beforeNavPhoto">
+                {% else %}
+                    <img src="{{ asset('bundles/charlestowncore/images/nophoto.png') }}" class="beforeNavPhoto">
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

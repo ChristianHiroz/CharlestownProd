@@ -29,40 +29,13 @@ class Operation
      */
     private $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=255)
-     */
-    private $type;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      */
-    private $date;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateStart", type="datetime")
-     */
-    private $dateStart;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateEnd", type="datetime")
-     */
-    private $dateEnd;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="rooms", type="integer")
-     */
-    private $rooms;
+    private $createdAt;
 
     /**
      * @var string
@@ -81,12 +54,12 @@ class Operation
     /**
      * @var string
      *
-     * @ORM\Column(name="urlReport", type="string", length=255)
+     * @ORM\Column(name="urlReport", type="string", length=255, nullable=true)
      */
     private $urlReport;
 
     /**
-     * @var string
+     * @var boolean
      *
      * @ORM\Column(name="active", type="boolean")
      */
@@ -117,6 +90,7 @@ class Operation
      * @var \File
      *
      * @ORM\OneToOne(targetEntity="Charlestown\FileBundle\Entity\File")
+     * @ORM\JoinColumn(name="brief_id", referencedColumnName="id", nullable=true)
      */
     private $brief;
 
@@ -130,12 +104,12 @@ class Operation
     /**
      * @var \Timeslot
      *
-     * @ORM\ManyToMany(targetEntity="Charlestown\OperationBundle\Entity\Timeslot")
+     * @ORM\OneToMany(targetEntity="Charlestown\OperationBundle\Entity\Timeslot", mappedBy="operation", cascade={"all"}, orphanRemoval=true)
      */
     private $timeslots;
 
     public function __construct(){
-        $this->date = new \DateTime();
+        $this->createdAt = new \DateTime();
         $this->active = true;
         $this->timeslots = new ArrayCollection();
         $this->appliances = new ArrayCollection();
@@ -168,99 +142,19 @@ class Operation
     }
 
     /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Operation
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return Operation
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
      * @return \DateTime
      */
-    public function getDate()
+    public function getCreatedAt()
     {
-        return $this->date;
+        return $this->createdAt;
     }
 
     /**
-     * Set dateStart
-     *
-     * @param \DateTime $dateStart
-     *
-     * @return Operation
+     * @param \DateTime $createdAt
      */
-    public function setDateStart($dateStart)
+    public function setCreatedAt($createdAt)
     {
-        $this->dateStart = $dateStart;
-
-        return $this;
-    }
-
-    /**
-     * Get dateStart
-     *
-     * @return \DateTime
-     */
-    public function getDateStart()
-    {
-        return $this->dateStart;
-    }
-
-    /**
-     * Set dateEnd
-     *
-     * @param \DateTime $dateEnd
-     *
-     * @return Operation
-     */
-    public function setDateEnd($dateEnd)
-    {
-        $this->dateEnd = $dateEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get dateEnd
-     *
-     * @return \DateTime
-     */
-    public function getDateEnd()
-    {
-        return $this->dateEnd;
+        $this->createdAt = $createdAt;
     }
 
     /**
@@ -277,30 +171,6 @@ class Operation
     public function setActive($active)
     {
         $this->active = $active;
-    }
-
-    /**
-     * Set rooms
-     *
-     * @param integer $rooms
-     *
-     * @return Operation
-     */
-    public function setRooms($rooms)
-    {
-        $this->rooms = $rooms;
-
-        return $this;
-    }
-
-    /**
-     * Get rooms
-     *
-     * @return integer
-     */
-    public function getRooms()
-    {
-        return $this->rooms;
     }
 
     /**
@@ -485,9 +355,17 @@ class Operation
 
     public function addTimeslot(Timeslot $timeslot){
         $this->timeslots[] = $timeslot;
+        $timeslot->setOperation($this);
+    }
+
+    public function removeTimeslot($timeslot){
+        $this->timeslots->removeElement($timeslot);
     }
 
     public function setTimeslots($timeslots){
+        foreach($timeslots as $timeslot){
+            $timeslot->setOperation($this);
+        }
         $this->timeslots = $timeslots;
     }
 
@@ -509,14 +387,7 @@ class Operation
 
 
     public function __toString(){
-        $roomTaken = 0;
-        if($this->appliances->isEmpty()) return $this->name . " (".$roomTaken."/".$this->rooms.")";
-        foreach($this->appliances as $applicance){
-            if($applicance->isAccepted()){
-                $roomTaken++;
-            }
-        }
-        return $this->name . " (".$roomTaken."/".$this->rooms.")";
+        return $this->name;
     }
 }
 

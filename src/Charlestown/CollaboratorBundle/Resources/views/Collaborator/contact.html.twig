@@ -1,30 +1,244 @@
-{% extends 'CharlestownCollaboratorBundle::layout.html.twig'%}
+    {% extends 'CharlestownCollaboratorBundle::layout.html.twig'%}
 
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content" >
-            <div class="modal-header">
+
+<div class="container charlestown-container-3">
+    <div class="row charlestown-row-3">
+        <div class="col-md-12 charlestown-col-md-12" id="agency">
+            <div class="charlestown-title">
+                <h2>VOTRE AGENCE</h2>
             </div>
-            <div class="container"  style="color:white;  margin-top: 10px; margin-bottom: 50px; margin-left: 35px;">
-                <div class="row content" >
-
-                    <div id="sf" class="row service" >
-                        <h1><span class="glyphicon glyphicon-info-sign"></span> Le service collaborateurs</h1>
-                        <p>
-                            En cas de non réponse suite à un message envoyé à votre hiérarchie, veuillez envoyer un mail à l'adresse suivante : <center><a style="color:red;" href='mailto:collaborateurs@charlestown.fr'>collaborateurs@charlestown.fr</a></center>
-
+            <div class="center">
+                {% if user.agency %}
+                    <h2 style="text-align: center;"><span style="color:#821d1d; font-size: 42px;">A</span>gence <span style="color:#821d1d;  font-size: 42px;">{{ user.agency.id }}</span></h2>
+                    Numéro d'urgence <span class="glyphicon glyphicon-phone" style="color:#821d1d;">{{ user.agency.numeroUrgence }}</span>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Responsable client</h3>
+                                {% if user.agency.customerManager.picture %}
+                            <img src="{{ asset(user.agency.customerManager.picture.uploadRootDir  ~ user.agency.customerManager.picture.id ~ '.' ~ user.agency.customerManager.picture.alt) }}" class="beforeNavPhoto">
+                            {% else %}
+                                <img src="{{ asset('bundles/charlestowncore/images/nophoto.png') }}" class="beforeNavPhoto">
+                                {% endif %}<br/>
+                                {{ user.agency.customerManager.firstName }}
+                                {{ user.agency.customerManager.lastName }}<br/>
+                                {{ user.agency.customerManager.email }}
+                                {{ user.agency.customerManager.phoneNumber }}
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Coordinateur planning</h3>
+                                {% if user.agency.planningCoordinator.picture %}
+                            <img src="{{ asset(user.agency.planningCoordinator.picture.uploadRootDir  ~ user.agency.planningCoordinator.picture.id ~ '.' ~ user.agency.planningCoordinator.picture.alt) }}" class="beforeNavPhoto">
+                            {% else %}
+                                <img src="{{ asset('bundles/charlestowncore/images/nophoto.png') }}" class="beforeNavPhoto">
+                                {% endif %}<br/>
+                                {{ user.agency.planningCoordinator.firstName }}
+                                {{ user.agency.planningCoordinator.lastName }}<br/>
+                                {{ user.agency.planningCoordinator.email }}
+                                {{ user.agency.customerManager.phoneNumber }}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    Vous n'avez pas d'agence attribué, c'est surement une erreure, contactez l'administrateur.
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row charlestown-row-3">
+        <div class="col-md-12 charlestown-col-md-12" id="contact">
+            <div class="charlestown-title">
+                <h2>VOS CONTACTS</h2>
+            </div>
+            <div class="content center charlestown-scrollable">
+                <div id="sf" class="row service" >
+                    <h1><span class="glyphicon glyphicon-info-sign"></span> Le service collaborateurs</h1>
+                    <p>
+                        En cas de non réponse suite à un message envoyé à votre hiérarchie, veuillez envoyer un mail à l'adresse suivante : <center><a style="color:red;" href='mailto:collaborateurs@charlestown.fr'>collaborateurs@charlestown.fr</a></center>
                     </p>
                 </div>
-                <br/>
-                <div  id="srh" class="row service">
+                <div  id="srhd" class=" service">
                     <h1><span class="glyphicon glyphicon-info-sign"></span> Le service rh</h1>
                     <p>
                         Pour contacter le service des ressources humaines, veuillez envoyer un mail à l'adresse suivante : <center><a  style="color:red;" href='mailto:communication-rh@charlestown.fr'>communication-rh@charlestown.fr</a></center>
                     </p>
                 </div>
+                <div  id="srh" class=" service">
+                    <h1><span class="glyphicon glyphicon-info-sign"></span> Le service formation</h1>
+                    <p>
+                        Pour contacter le service formation, veuillez envoyer un mail à l'adresse suivante : <center><a  style="color:red;" href='mailto:formation@charlestown.fr'>formation@charlestown.fr</a></center>
+                    </p>
+                </div>
+                <div  id="srhs" class=" service">
+                    <h1><span class="glyphicon glyphicon-info-sign"></span> Le service recrutement/mobilité</h1>
+                    <p>
+                        Pour contacter le service recrutement, veuillez envoyer un mail à l'adresse suivante : <center><a  style="color:red;" href='mailto:recrutement@charlestown.fr'>recrutement@charlestown.fr</a></center>
+                    </p>
+                </div>
+                <div  id="srha" class=" service">
+                    <h1><span class="glyphicon glyphicon-info-sign"></span> Le service dressing</h1>
+                    <p>
+                        Pour contacter le service dressing, veuillez envoyer un mail à l'adresse suivante : <center><a  style="color:red;" href='mailto:dressing@charlestown.fr'>dressing@charlestown.fr</a></center>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+    <div class="row charlestown-row-3">
+        <div class="col-md-12 charlestown-col-md-12" id="personnel">
+            <div class="charlestown-title">
+                <h2>VOS REPRÉSENTANTS</h2>
+            </div>
+            <div class="charlestown-scrollable">
+                <br/>
+                <div class="center">
+                    <a class="btn btn-danger" href="http://www.ce-charlestown.fr/login_site.php?back_url=%2F">Site internet CE</a>
+                </div>
+                <h3>Coordonnées</h3>
+
+                <table class="table table-condensed">
+                    <thead>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Syndicat</th>
+                    {% for mandate in mandates %}
+                        <th>{{ mandate.name }}</th>
+                    {% endfor %}
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            {% if user.lastName %}
+                                <td>{{ user.lastName }}</td>
+                            {% else %}
+                                <td>Non renseigné, contactez Charlestown</td>
+                            {% endif %}
+                            {% if user.firstName %}
+                                <td>{{ user.firstName }}</td>
+                            {% else %}
+                                <td>Non renseigné, contactez Charlestown</td>
+                            {% endif %}
+                            {% if user.email %}
+                                <td>{{ user.email }}</td>
+                            {% else %}
+                                <td>Non renseigné, contactez Charlestown</td>
+                            {% endif %}
+                            <td>{{ user.syndicat.name }}</td>
+                            {% for mandate in mandates %}
+                                {% set same = false %}
+                                {% for usermandate in user.mandates %}
+                                    {% if mandate.name == usermandate.name %}
+                                        {% set same = true %}
+                                        <td>X</td>
+                                    {% endif %}
+                                    {% if same == false %}
+                                        <td></td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <h3>P.V C.E</h3>
+                <table class="table table-condensed">
+                    <thead>
+                    <th>Nom</th>
+                    <th>Date</th>
+                    <th>Fichier</th>
+                    </thead>
+                    <tbody>
+                    {% for pv in pvsCE %}
+                        <tr>
+                            <td>{{ pv.nameShow }}</td>
+                            <td>{{ pv.date | date }}</td>
+                            <td><a href="{{ asset(pv.uploadRootDir  ~ pv.id ~ '.' ~ pv.alt) }}"  download="{{pv.nameShow ~ '.' ~ pv.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <h3>P.V D.P</h3>
+                <table class="table table-condensed">
+                    <thead>
+                    <th>Nom</th>
+                    <th>Date</th>
+                    <th>Ville</th>
+                    <th>Fichier</th>
+                    </thead>
+                    <tbody>
+                    {% for pv in pvsDPParis %}
+                        <tr>
+                            <td>{{ pv.nameShow }}</td>
+                            <td>{{ pv.date | date }}</td>
+                            <td>Paris</td>
+                            <td><a href="{{ asset(pv.uploadRootDir  ~ pv.id ~ '.' ~ pv.alt) }}"  download="{{pv.nameShow ~ '.' ~ pv.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                        </tr>
+                    {% endfor %}
+                    {% for pv in pvsDPNantes %}
+                        <tr>
+                            <td>{{ pv.nameShow }}</td>
+                            <td>{{ pv.date | date }}</td>
+                            <td>Nantes</td>
+                            <td><a href="{{ asset(pv.uploadRootDir  ~ pv.id ~ '.' ~ pv.alt) }}"  download="{{pv.nameShow ~ '.' ~ pv.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                        </tr>
+                    {% endfor %}
+                    {% for pv in pvsDPBordeaux %}
+                        <tr>
+                            <td>{{ pv.nameShow }}</td>
+                            <td>{{ pv.date | date }}</td>
+                            <td>Bordeaux</td>
+                            <td><a href="{{ asset(pv.uploadRootDir  ~ pv.id ~ '.' ~ pv.alt) }}"  download="{{pv.nameShow ~ '.' ~ pv.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                        </tr>
+                    {% endfor %}
+                    {% for pv in pvsDPLille %}
+                        <tr>
+                            <td>{{ pv.nameShow }}</td>
+                            <td>{{ pv.date | date }}</td>
+                            <td>Lille</td>
+                            <td><a href="{{ asset(pv.uploadRootDir  ~ pv.id ~ '.' ~ pv.alt) }}"  download="{{pv.nameShow ~ '.' ~ pv.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                        </tr>
+                    {% endfor %}
+                    {% for pv in pvsDPLyon %}
+                        <tr>
+                            <td>{{ pv.nameShow }}</td>
+                            <td>{{ pv.date | date }}</td>
+                            <td>Lyon</td>
+                            <td><a href="{{ asset(pv.uploadRootDir  ~ pv.id ~ '.' ~ pv.alt) }}"  download="{{pv.nameShow ~ '.' ~ pv.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                        </tr>
+                    {% endfor %}
+                    {% for pv in pvsDPMarseille %}
+                        <tr>
+                            <td>{{ pv.nameShow }}</td>
+                            <td>{{ pv.date | date }}</td>
+                            <td>Marseille</td>
+                            <td><a href="{{ asset(pv.uploadRootDir  ~ pv.id ~ '.' ~ pv.alt) }}"  download="{{pv.nameShow ~ '.' ~ pv.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <h3>P.V CHSCT</h3>
+                <table class="table table-condensed">
+                    <thead>
+                    <th>Nom</th>
+                    <th>Date</th>
+                    <th>Fichier</th>
+                    </thead>
+                    <tbody>
+                    {% for pv in pvsCHSCT %}
+                        <tr>
+                            <td>{{ pv.nameShow }}</td>
+                            <td>{{ pv.date | date }}</td>
+                            <td><a href="{{ asset(pv.uploadRootDir  ~ pv.id ~ '.' ~ pv.alt) }}"  download="{{pv.nameShow ~ '.' ~ pv.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

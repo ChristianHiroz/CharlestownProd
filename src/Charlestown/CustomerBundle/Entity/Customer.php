@@ -380,5 +380,11 @@ class Customer extends User
     {
         $this->mysteriousVisits = $mysteriousVisits;
     }
+
+
+
+    public function __toString(){
+        return ucfirst(strtolower($this->getCompanyName()));
+    }
 }
 

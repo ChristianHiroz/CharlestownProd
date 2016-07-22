@@ -2,41 +2,38 @@
 
 {% block content %}
     {{ parent() }}
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-content">
-            <div class="modal-header">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="divider-vertical-second"></li>
-                                <li class="active" role="presentation"><a>Vos entretiens</a></li>
-                                <li class="" role="presentation"><a href="{{ asset('images/support entretien professionnel  version hôtes et hôtesses v2.doc') }}" download="{{ asset('images/support entretien professionnel  version hôtes et hôtesses v2.doc') }}">Nouveau</a></li>
-                                <li class="divider-vertical-second"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <hr/>
+
+<div class="container charlestown-container">
+    <div class="row charlestown-row">
+        <div class="col-md-12 charlestown-col-md-12">
+            <div class="charlestown-title">
+                <h2>VOS ENTRETIENS</h2>
             </div>
-        <div class="modal-body">
-            <table class="table table-condensed">
-                <thead>
-                <th>Nom</th>
-                <th>Date</th>
-                <th>Fichier</th>
-                </thead>
-                <tbody>
-                {% for evaluation in user.evaluations %}
-                    <tr>
-                        <td>{{ evaluation.nameShow }}</td>
-                        <td>{{ evaluation.date | date }}</td>
-                        <td><a href="{{ asset(evaluation.uploadRootDir  ~ evaluation.id ~ '.' ~ evaluation.alt) }}"  download="{{evaluation.nameShow ~ '.' ~ evaluation.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            <div class="container charlestown-scrollable">
+                <div class="row" style="text-align:left; background-color: white; position:relative; margin:15px; border-radius:15px; padding:15px;">
+                    <div class="col-md-12" style="margin-bottom: 35px;">
+                        <div class="center">
+                            <a class="btn btn-danger" href="{{ asset('images/support entretien professionnel  version hôtes et hôtesses v2.doc') }}" download="{{ asset('images/support entretien professionnel  version hôtes et hôtesses v2.doc') }}">Nouveau</a>
+                        </div>
+                        <table class="table table-condensed">
+                            <thead>
+                            <th>Nom</th>
+                            <th>Date</th>
+                            <th>Fichier</th>
+                            </thead>
+                            <tbody>
+                            {% for evaluation in user.evaluations %}
+                                <tr>
+                                    <td>{{ evaluation.nameShow }}</td>
+                                    <td>{{ evaluation.date | date }}</td>
+                                    <td><a href="{{ asset(evaluation.uploadRootDir  ~ evaluation.id ~ '.' ~ evaluation.alt) }}"  download="{{evaluation.nameShow ~ '.' ~ evaluation.alt}}"><span class="glyphicon glyphicon-file" style="color:red;"></span></a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

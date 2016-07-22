@@ -1,57 +1,102 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog"  style=" height: 100%!important;">
-        <div class="modal-content"  style=" height: 100%!important;">
-            <div class="modal-header" style="padding-bottom: 0px;">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" style="width:100%;">
-                                <li class="" role="presentation"><a href="{{ path('carpooling') }}">Covoiturages proposés</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('mycarpoolings_demand') }}">Je suis passager</a></li>
-                                <li class="divider-vertical-second"></li>
-
-                                <li class="divider-vertical-second" style="float:right;"></li>
-                                <li class="active" style="float:right;" role="presentation"><a href="{{ path('mycarpoolings') }}">Je suis conducteur</a></li>
-                                <li class="divider-vertical-second"style="float:right;"> </li>
-                            </ul>
-                        </div>
+    <style>
+        .row{
+            margin:25px;
+        }
+        .ad{
+            background-color: white;
+        }
+    </style> <!-- TODO: mettre dans main et vérifier compatibilité -->
+    <div class="container" id="announcment" style="width:80%; margin-left:20%; max-width:80%; min-height:100%; background-color: #ededed;">
+        <div class="row" style="text-align:center; background-color: white; position:relative;">
+            <br/>
+            <a class="btn btn-large btn-danger" href="{{ path('social_carpooling') }}">Retour</a>
+            <a class="btn btn-large btn-danger" href="{{ path('social_carpooling_new') }}">Nouveau covoiturage</a>
+            <br/><br/>
+        </div>
+        {% for carpool in carpoolings %}
+            <div class="row">
+                <div class="col-md-2 ad" style="border: 1px solid grey; border-radius: 5px; height: 425px; text-align: center;">
+                    <br/>
+                    <div style="height:30%;">
+                        {% set random = random(4) %}
+                        {% if random == 0 %}
+                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/car1.png') }}">
+                        {% elseif random == 1 %}
+                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/car2.png') }}">
+                        {% elseif random == 2 %}
+                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/car3.png') }}">
+                        {% elseif random == 3 %}
+                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/car4.png') }}">
+                        {% elseif random == 4 %}
+                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/car5.png') }}">
+                        {% endif %}
                     </div>
-                </nav>
-                <hr/>
-            </div>
-            <div class="modal-body" style="padding-top: 0px; color:black;">
-
-                <div class="textAlignCenter">
-                    <a class="btn btn-danger" href="{{ path('covoiturage_new') }}">Nouveau</a>
+                    <div style="height:50%;">
+                        <br/>
+                        <p>{{ carpool.startPlace }}</p>
+                        <i class="fa fa-chevron-circle-down"></i>
+                        <p>{{ carpool.endPlace }}</p>
+                        <p>{{ carpool.room }} places</p>
+                        <p>{{ carpool.dateTravel | localizeddate('full', 'none') }}</p>
+                        <a class="btn btn-success" href="{{ path('social_carpooling_edit', {'id' : carpool.id}) }}">Modifier</a>
+                    </div>
                 </div>
-                {% for carpool in carpoolings %}
-                    <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:100px;">
-                        <div class="col-md-12" style="height:100%;">
-                            <p style="line-height: 50px;">{{ carpool.startPlace }} <span class="glyphicon glyphicon-menu-right"></span> {{ carpool.endPlace }} le {{ carpool.dateTravel | localizeddate('full', 'none') }} || Places : {{ carpool.room }} <a class="btn btn-xs btn-success" href="{{ path('covoiturage_edit', {'id' : carpool.id}) }}">Modifier</a></p>
-                                 En attente :
-                                {% if not carpool.applicants is empty %}
-                                    {% for applicant in carpool.applicants %}
-                                        {{ applicant.firstName }} {{ applicant.lastName }} {{ applicant.phoneNumber }}
-                                        <a href="{{ path('fos_otheruser_profile_show', {'user': applicant.id}) }}"><span class="glyphicon glyphicon-zoom-in"></span></a>
-                                        <a href="{{ path('select_carpooling', {'id':carpool.id, 'user': applicant.id}) }}"><span class="glyphicon glyphicon-ok"></span></a>
-                                        <a href="{{ path('unapply_carpooling', {'id':carpool.id, 'user': applicant.id}) }}"><span class="glyphicon glyphicon-remove"></span></a>
-                                    {% endfor %}
-                                {% endif %}
-                                <br/>  Accepter :
-                                {% if not carpool.selected is empty %}
-                                    {% for selected in carpool.selected %}
-                                        {{ selected.firstName }} {{ selected.lastName }} {{ selected.phoneNumber }}
-                                        <a href="{{ path('fos_otheruser_profile_show', {'user': selected.id}) }}"><span class="glyphicon glyphicon-zoom-in"></span></a>
-                                        <a href="{{ path('unselect_carpooling', {'id':carpool.id, 'user': selected.id}) }}"><span class="glyphicon glyphicon-remove"></span></a>
-                                    {% endfor %}
-                                {% endif %}
+                <div class="col-md-1"><i style="margin-top: 130px; font-size: 40px;" class="fa fa-arrow-circle-right" aria-hidden="true"></i></div>
+                <div class="col-md-8" style="height: 425px; text-align: center;">
+                    <div class="container" style="height: 100%; width: 100%;">
+                        <div class="row" style="height: 50%; margin:2px;">
+                            {% set emptyOne = true %}
+                            {% for applicant in carpool.applicants %}
+                                {% set emptyOne = false %}
+                                <div class="col-md-3 ad" style="height:425px; border: 1px solid grey; border-radius: 5px; text-align: center;">
+                                    <br/>
+                                    {% if applicant.picture %}
+                                        <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset(applicant.picture.uploadRootDir  ~ applicant.picture.id ~ '.' ~ applicant.picture.alt) }}">
+                                    {% else %}
+                                        <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('bundles/charlestowncore/images/nophoto.png') }}">
+                                    {% endif %}
+                                    {{ applicant.firstName }} {{ applicant.lastName }} <br/>
+                                    {% if applicant.phoneNumber != "" %}
+                                        <span class="glyphicon glyphicon-phone-alt" style="color:red;"></span> {{ applicant.phoneNumber }} <br/>
+                                    {% endif %}
+                                    <span class="glyphicon glyphicon-phone" style="color:red;"></span> {{ applicant.portPhoneNumber }} <br/>
+
+                                    <a href="{{ path('select_carpooling', {'id' : carpool.id, 'user' : applicant.id }) }}" class="btn btn-danger btn-small" style="margin-bottom:5px; display:inline-block;">Accepter</a>
+                                    <a href="{{ path('unapply_carpooling', {'id' : carpool.id, 'user' : applicant.id }) }}" class="btn btn-warning btn-small" style="display:inline;">Refuser</a>
+                                </div>
+                            {% endfor %}
+                            {% if emptyOne == true %}
+                                <div class="col-md-3 ad" style="height:425px; border: 1px solid grey; border-radius: 5px; text-align: center;">
+                                    <p style="margin-top: 150px;">Vous n'avez aucunes candidatures pour le moment</p>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
-                {% endfor %}
+                </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+            <div class="row">
+                <div class="col-md-12 ad" style="border: 1px solid grey; border-radius: 5px; text-align: center;">
+                    {% set empty = true %}
+                    {% for select in carpool.selected %}
+                        {% set empty = false %}
+                        <div style="width:100%;">
+                            <p style="margin:5px;">{{ select.firstName }} {{ select.lastName }}
+                                {% if select.phoneNumber != "" %}
+                                    <span class="glyphicon glyphicon-phone-alt" style="color:red;"></span> {{ select.phoneNumber }}
+                                {% endif %}
+                                <span class="glyphicon glyphicon-phone" style="color:red;"></span> {{ select.portPhoneNumber }}
+                                <a href="{{ path('unselect_carpooling', {'id' : carpool.id, 'user' : select.id }) }}" class="btn btn-warning btn-small" style="display:inline; padding: 2px 16px;">Retirer</a>
+                            </p>
+                        </div>
+                    {% endfor %}
+                    {% if empty == true %}
+                        <p style="margin:10px;">Vous n'avez pas encore de candidature acceptée pour le moment</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

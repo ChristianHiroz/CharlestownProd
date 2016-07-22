@@ -38,7 +38,7 @@ class AppKernel extends Kernel
             new Charlestown\AnnouncmentBundle\CharlestownAnnouncmentBundle(),
             new Charlestown\ChatBundle\CharlestownChatBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new Charlestown\NotificationBundle\CharlestownNotificationBundle(),
+            new Charlestown\NotificationBundle\CharlestownNotificationBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

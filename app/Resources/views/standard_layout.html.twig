@@ -89,7 +89,7 @@
                 {% endblock %}
                 {% block logo %}
                     {% spaceless %}
-                    <a class="logo" href="{{ url('sonata_admin_dashboard') }}">
+                    <a class="logo" href="{{ url('index_collaborator') }}">
                         {% if 'single_image' == admin_pool.getOption('title_mode') or 'both' == admin_pool.getOption('title_mode') %}
                             <img src="{{ asset(admin_pool.titlelogo) }}" alt="{{ admin_pool.title }}">
                         {% endif %}
@@ -231,7 +231,7 @@
                                     {% endif %}
                                 {% endblock side_bar_nav %}
                                 {% block side_bar_after_nav %}
-                                    <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 10px"><a href="http://charlestown.fr" rel="noreferrer" target="_blank">Charlestown</a></p>
+                                    <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 10px"><a href="{{ path('index_collaborator') }}" rel="noreferrer" target="_blank">Charlestown</a></p>
                                 {% endblock %}
                             {% endblock sonata_side_nav %}
                         </section>

@@ -20,7 +20,6 @@ use Charlestown\DemandBundle\Form\DemandVacancyType;
 /**
  * Demand controller.
  *
- * @Route("/demand")
  */
 class DemandController extends Controller
 {
@@ -28,7 +27,7 @@ class DemandController extends Controller
     /**
      * Lists all Demand entities.
      *
-     * @Route("/", name="demand")
+     * @Route("/demande", name="mission_demande")
      * @Method("GET")
      * @Template()
      */
@@ -36,13 +35,11 @@ class DemandController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('CharlestownDemandBundle:Demand')->findAll();
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+        $entities = $em->getRepository('CharlestownDemandBundle:Demand')->findBy(array('user' => $this->getUser()->getId()));
 
         return array(
             'entities' => $entities,
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -59,7 +56,6 @@ class DemandController extends Controller
         $entity = new DemandMeeting();
         $form = $this->createCreateMeetingForm($entity);
         $form->handleRequest($request);
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -69,14 +65,13 @@ class DemandController extends Controller
 
             $this->get('charlestown.mailer')->sendDemandMail($this->getUser(), "de rendez-vous");
 
-            return $this->redirect($this->generateUrl('demand', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('mission_demande', array('id' => $entity->getId())));
         }
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -94,7 +89,6 @@ class DemandController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -110,13 +104,11 @@ class DemandController extends Controller
     {
         $entity = new DemandMeeting();
         $form   = $this->createCreateMeetingForm($entity);
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -131,7 +123,6 @@ class DemandController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $entity = $em->getRepository('CharlestownDemandBundle:DemandMeeting')->find($id);
 
         if (!$entity) {
@@ -146,7 +137,6 @@ class DemandController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -181,7 +171,6 @@ class DemandController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CharlestownDemandBundle:DemandMeeting')->find($id);
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find DemandMeeting entity.');
@@ -202,7 +191,6 @@ class DemandController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -229,7 +217,7 @@ class DemandController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('demand'));
+        return $this->redirect($this->generateUrl('mission_demande'));
     }
 
     /**
@@ -263,7 +251,6 @@ class DemandController extends Controller
     {
         $entity = new DemandMobility();
         $form = $this->createCreateMobilityForm($entity);
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -274,14 +261,13 @@ class DemandController extends Controller
 
             $this->get('charlestown.mailer')->sendDemandMail($this->getUser(), "d'entretien");
 
-            return $this->redirect($this->generateUrl('demand', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('mission_demande', array('id' => $entity->getId())));
         }
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -299,7 +285,6 @@ class DemandController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -314,14 +299,12 @@ class DemandController extends Controller
     public function newMobilityAction()
     {
         $entity = new DemandMobility();
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $form   = $this->createCreateMobilityForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -337,7 +320,6 @@ class DemandController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CharlestownDemandBundle:DemandMobility')->find($id);
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Demand entity.');
@@ -351,7 +333,6 @@ class DemandController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -385,7 +366,6 @@ class DemandController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $entity = $em->getRepository('CharlestownDemandBundle:DemandMobility')->find($id);
 
         if (!$entity) {
@@ -407,7 +387,6 @@ class DemandController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -434,7 +413,7 @@ class DemandController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('demand'));
+        return $this->redirect($this->generateUrl('mission_demande'));
     }
 
     /**
@@ -466,7 +445,6 @@ class DemandController extends Controller
     public function createFormationAction(Request $request)
     {
         $entity = new DemandFormation();
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $form = $this->createCreateFormationForm($entity);
         $form->handleRequest($request);
 
@@ -479,14 +457,13 @@ class DemandController extends Controller
 
             $this->get('charlestown.mailer')->sendDemandMail($this->getUser(), "de formation");
 
-            return $this->redirect($this->generateUrl('demand', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('mission_demande', array('id' => $entity->getId())));
         }
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -504,7 +481,6 @@ class DemandController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -519,14 +495,12 @@ class DemandController extends Controller
     public function newFormationAction()
     {
         $entity = new DemandFormation();
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $form   = $this->createCreateFormationForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'user' => $this->getUser(),
-            'messages'=> $message
         );
     }
 
@@ -540,7 +514,6 @@ class DemandController extends Controller
     public function editFormationAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         $entity = $em->getRepository('CharlestownDemandBundle:DemandFormation')->find($id);
 
@@ -556,7 +529,6 @@ class DemandController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -590,7 +562,6 @@ class DemandController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $entity = $em->getRepository('CharlestownDemandBundle:DemandFormation')->find($id);
 
         if (!$entity) {
@@ -612,7 +583,6 @@ class DemandController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -639,7 +609,7 @@ class DemandController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('demand'));
+        return $this->redirect($this->generateUrl('mission_demande'));
     }
 
     /**
@@ -672,7 +642,6 @@ class DemandController extends Controller
     {
         $entity = new DemandVacancy();
         $form = $this->createCreateVacancyForm($entity);
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -684,14 +653,13 @@ class DemandController extends Controller
 
             $this->get('charlestown.mailer')->sendDemandMail($this->getUser(), "de congés");
 
-            return $this->redirect($this->generateUrl('demand', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('mission_demande', array('id' => $entity->getId())));
         }
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -709,7 +677,6 @@ class DemandController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -724,14 +691,12 @@ class DemandController extends Controller
     public function newVacancyAction()
     {
         $entity = new DemandVacancy();
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $form   = $this->createCreateVacancyForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -746,7 +711,6 @@ class DemandController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $entity = $em->getRepository('CharlestownDemandBundle:DemandVacancy')->find($id);
 
         if (!$entity) {
@@ -761,7 +725,6 @@ class DemandController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -795,7 +758,6 @@ class DemandController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         $entity = $em->getRepository('CharlestownDemandBundle:DemandVacancy')->find($id);
 
         if (!$entity) {
@@ -817,7 +779,6 @@ class DemandController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
@@ -844,7 +805,7 @@ class DemandController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('demand'));
+        return $this->redirect($this->generateUrl('mission_demande'));
     }
 
     /**

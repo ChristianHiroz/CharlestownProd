@@ -15,50 +15,46 @@ use Symfony\Component\Validator\Constraints\DateTime;
 /**
  * Carpooling controller.
  *
- * @Route("/covoiturage")
  */
 class CarpoolingController extends Controller
 {
 
 
     /**
-     * @Route("/liste", name="carpooling")
+     * @Route("/covoiturage", name="social_carpooling")
      * @Template()
      */
     public function indexAction()
     {
         $carpoolings =  $this->getDoctrine()->getEntityManager()->getRepository('CharlestownCarpoolingBundle:Carpooling')->findAll();
 
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-        return array('carpoolings' => $carpoolings, 'user' => $this->getUser(), 'now' => new \DateTime(), 'messages' => $message);
+        return array('carpoolings' => $carpoolings, 'user' => $this->getUser(), 'now' => new \DateTime());
     }
 
     /**
-     * @Route("s", name="mycarpoolings")
+     * @Route("/covoiturages", name="social_my_carpooling")
      * @Template()
      */
     public function myCarpoolingsAction()
     {
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
-        return array('carpoolings' => $this->getUser()->getMyCarpoolings(), 'user' => $this->getUser(), 'messages' => $message);
+        return array('carpoolings' => $this->getUser()->getMyCarpoolings(), 'user' => $this->getUser());
     }
 
     /**
-     * @Route("/demandes", name="mycarpoolings_demand")
+     * @Route("/covoiturage/demande", name="social_demand_carpooling")
      * @Template()
      */
     public function myDemandsAction()
     {
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
-        return array('applications' => $this->getUser()->getMyCarpoolingsApplication(), 'selections' => $this->getUser()->getMyCarpoolingsSelection(), 'user' => $this->getUser(), 'messages' => $message);
+        return array('applications' => $this->getUser()->getMyCarpoolingsApplication(), 'selections' => $this->getUser()->getMyCarpoolingsSelection(), 'user' => $this->getUser());
     }
 
     /**
      * Creates a new Carpooling entity.
      *
-     * @Route("/", name="covoiturage_create")
+     * @Route("/covoiturage/create", name="social_carpooling_create")
      * @Method("POST")
      * @Template("CharlestownCarpoolingBundle:Carpooling:new.html.twig")
      */
@@ -67,22 +63,18 @@ class CarpoolingController extends Controller
         $entity = new Carpooling();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setDriver($this->getUser());
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('mycarpoolings'));
+            return $this->redirect($this->generateUrl('social_my_carpooling'));
         }
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
 
@@ -96,11 +88,10 @@ class CarpoolingController extends Controller
     private function createCreateForm(Carpooling $entity)
     {
         $form = $this->createForm(new CarpoolingType(), $entity, array(
-            'action' => $this->generateUrl('covoiturage_create'),
+            'action' => $this->generateUrl('social_carpooling_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -108,7 +99,7 @@ class CarpoolingController extends Controller
     /**
      * Displays a form to create a new Carpooling entity.
      *
-     * @Route("/new", name="covoiturage_new")
+     * @Route("/covoiturage/new", name="social_carpooling_new")
      * @Method("GET")
      * @Template()
      */
@@ -116,20 +107,18 @@ class CarpoolingController extends Controller
     {
         $entity = new Carpooling();
         $form   = $this->createCreateForm($entity);
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
 
     /**
      * Displays a form to edit an existing Carpooling entity.
      *
-     * @Route("/{id}/edit", name="covoiturage_edit")
+     * @Route("/covoiturage/{id}/edit", name="social_carpooling_edit")
      * @Method("GET")
      * @Template()
      */
@@ -145,14 +134,12 @@ class CarpoolingController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
 
@@ -166,18 +153,17 @@ class CarpoolingController extends Controller
     private function createEditForm(Carpooling $entity)
     {
         $form = $this->createForm(new CarpoolingType(), $entity, array(
-            'action' => $this->generateUrl('covoiturage_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('social_carpooling_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Modifier'));
 
         return $form;
     }
     /**
      * Edits an existing Carpooling entity.
      *
-     * @Route("/{id}", name="covoiturage_update")
+     * @Route("/covoiturage/{id}", name="social_carpooling_update")
      * @Method("PUT")
      * @Template("CharlestownCarpoolingBundle:Carpooling:edit.html.twig")
      */
@@ -198,22 +184,20 @@ class CarpoolingController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('covoiturage_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('social_carpooling_edit', array('id' => $id)));
         }
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
     /**
      * Deletes a Carpooling entity.
      *
-     * @Route("/{id}", name="covoiturage_delete")
+     * @Route("/covoiturage/{id}", name="social_carpooling_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -233,7 +217,7 @@ class CarpoolingController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('covoiturage'));
+        return $this->redirect($this->generateUrl('social_carpooling'));
     }
 
     /**
@@ -246,15 +230,15 @@ class CarpoolingController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('covoiturage_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('social_carpooling_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Supprimer'))
+            ->add('submit', 'submit', array('label' => 'Supprimer mon covoiturage', 'attr' => array("class" => "btn btn-large btn-danger", "style" => "width : 100%;")))
             ->getForm()
         ;
     }
 
     /**
-     * @Route("/apply/{id}/{user}", name="apply_carpooling")
+     * @Route("/covoiturage/apply/{id}/{user}", name="apply_carpooling")
      * @Template()
      */
     public function applyAction($id, $user){
@@ -266,11 +250,11 @@ class CarpoolingController extends Controller
         $carpooling->addApplicant($user);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('carpooling'));
+        return $this->redirect($this->generateUrl('social_carpooling'));
     }
 
     /**
-     * @Route("/unapply/{id}/{user}", name="unapply_carpooling")
+     * @Route("/covoiturage/unapply/{id}/{user}", name="unapply_carpooling")
      * @Template()
      */
     public function unapplyAction($id, $user){
@@ -288,7 +272,7 @@ class CarpoolingController extends Controller
     }
 
     /**
-     * @Route("/select/{id}/{user}", name="select_carpooling")
+     * @Route("/covoiturage/select/{id}/{user}", name="select_carpooling")
      * @Template()
      */
     public function selectAction($id, $user){
@@ -306,13 +290,13 @@ class CarpoolingController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('mycarpoolings'));
+        return $this->redirect($this->generateUrl('social_my_carpooling'));
     }
 
 
 
     /**
-     * @Route("/unselect/{id}/{user}", name="unselect_carpooling")
+     * @Route("/covoiturage/unselect/{id}/{user}", name="unselect_carpooling")
      * @Template()
      */
     public function unselectAction($id, $user){
@@ -326,6 +310,6 @@ class CarpoolingController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('mycarpoolings'));
+        return $this->redirect($this->generateUrl('social_my_carpooling'));
     }
 }

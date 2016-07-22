@@ -24,17 +24,34 @@ class CollaboratorController extends Controller
         return $this->redirect($this->generateUrl('index'));
         }
         elseif($this->getUser()->hasRole("ROLE_USER")){
-            $lasts = $this->getDoctrine()->getManager()->getRepository('CharlestownBlogBundle:Article')->findLasts();
-            $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+            $articles = $this->getDoctrine()->getManager()->getRepository('CharlestownBlogBundle:Article')->findLastsCollaborator();
 
-
-            return array('user' => $this->getUser(), 'lastsArticles' => $lasts, 'idActual' => 0, 'messages' => $message);
+            return array('user' => $this->getUser(), 'articles' => $articles);
         }
         else return $this->redirect($this->generateUrl('index'));
     }
 
     /**
-     * @Route("/collaborateur/client", name="my_customer")
+     * @Route("/mission", name="mission_collaborator")
+     * @Template()
+     */
+    public function missionAction()
+    {
+        if($this->getUser() == null) {
+            return $this->redirect($this->generateUrl('index'));
+        }
+        elseif($this->getUser()->hasRole("ROLE_CUSTOMER")){
+        return $this->redirect($this->generateUrl('index'));
+        }
+        elseif($this->getUser()->hasRole("ROLE_USER")){
+
+            return array('user' => $this->getUser());
+        }
+        else return $this->redirect($this->generateUrl('index'));
+    }
+
+    /**
+     * @Route("/affectation", name="mission_client")
      * @Template()
      */
     public function myCustomerAction()
@@ -42,50 +59,48 @@ class CollaboratorController extends Controller
         if($this->getUser()->getCustomer() == null){
             return $this->redirect($this->generateUrl('my_agency_contact'));
         }
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-        return array('user' => $this->getUser(), 'messages' => $message);
+        return array('user' => $this->getUser());
     }
 
     /**
-     * @Route("/collaborateur/evaluations", name="evaluation")
+     * @Route("/evaluations", name="mission_evaluation")
      * @Template()
      */
     public function evaluationAction()
     {
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-        return array('user' => $this->getUser(), 'messages' => $message);
+        return array('user' => $this->getUser());
     }
 
     /**
-     * @Route("/CE", name="ce")
-     * @Template()
-     */
-    public function ceAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $pv = $em->getRepository('CharlestownFileBundle:File')->getByFileType("PV CE");
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-
-        return array('pvs' => $pv, 'user' => $this->getUser(), 'messages' => $message);
-    }
-    /**
-     * @Route("/contact", name="contact")
+     * @Route("/infos", name="info_contact")
      * @Template()
      */
     public function contactAction()
     {
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-        return array('user' => $this->getUser(), 'messages' => $message);
-    }
-
-    /**
-     * @Route("/agency_contact", name="my_agency_contact")
-     * @Template()
-     */
-    public function myAgencyContactAction()
-    {
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-        return array('user' => $this->getUser(), 'messages' => $message);
+        $em = $this->getDoctrine()->getManager();
+        $pvsCE = $em->getRepository('CharlestownFileBundle:File')->getByFileType("PV CE");
+        $pvsCHSCT = $em->getRepository('CharlestownFileBundle:File')->getByFileType("PV CHSCT");
+        $pvsDPParis = $em->getRepository('CharlestownFileBundle:File')->getByFileType("PV CE");
+        $pvsDPLyon = $em->getRepository('CharlestownFileBundle:File')->getByFileType("PV DP Lyon");
+        $pvsDPNantes = $em->getRepository('CharlestownFileBundle:File')->getByFileType("PV DP Nantes");
+        $pvsDPBordeaux = $em->getRepository('CharlestownFileBundle:File')->getByFileType("PV DP Bordeaux");
+        $pvsDPMarseille = $em->getRepository('CharlestownFileBundle:File')->getByFileType("PV DP Marseille");
+        $pvsDPLille = $em->getRepository('CharlestownFileBundle:File')->getByFileType("PV DP Lille");
+        $syndicats = $em->getRepository('CharlestownCollaboratorBundle:Collaborator')->findSyndicated();
+        $mandate = $em->getRepository('CharlestownCollaboratorBundle:Mandate')->findAll();
+        return array(
+            'user' => $this->getUser(),
+            'mandates' => $mandate,
+            'users' => $syndicats,
+            "pvsCE" => $pvsCE,
+            "pvsDPLyon" => $pvsDPLyon,
+            "pvsDPParis" => $pvsDPParis,
+            "pvsDPNantes" => $pvsDPNantes,
+            "pvsDPMarseille" => $pvsDPMarseille,
+            "pvsDPBordeaux" => $pvsDPBordeaux,
+            "pvsDPLille" => $pvsDPLille,
+            "pvsCHSCT" => $pvsCHSCT,
+            );
     }
 
     /**

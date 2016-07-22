@@ -24,24 +24,10 @@ class CustomerController extends Controller
         if($this->getUser() == null){
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
-        if($this->getUser()->hasRole("ROLE_USER")){
-            $lasts = $this->getDoctrine()->getManager()->getRepository('CharlestownBlogBundle:Article')->findLasts();
+        if($this->getUser()->hasRole("ROLE_CUSTOMER")){
+            $lasts = $this->getDoctrine()->getManager()->getRepository('CharlestownBlogBundle:Article')->findLastsCustomer();
 
-            return array('user' => $this->getUser(), 'lastsArticles' => $lasts, 'idActual' => 0);
-        }
-        else return $this->redirect($this->generateUrl('index'));
-    }
-
-    /**
-     * @Route("/rse", name="rse")
-     * @Template()
-     */
-    public function rseAction()
-    {
-        if($this->getUser()->hasRole("ROLE_USER")){
-            $lasts = $this->getDoctrine()->getManager()->getRepository('CharlestownBlogBundle:Article')->findLasts();
-
-            return array('user' => $this->getUser(), 'lastsArticles' => $lasts, 'idActual' => 0);
+            return array('user' => $this->getUser(), 'articles' => $lasts);
         }
         else return $this->redirect($this->generateUrl('index'));
     }
@@ -175,7 +161,7 @@ class CustomerController extends Controller
     }
 
     /**
-     * @Route("/customer/contact", name="customer_contact")
+     * @Route("/contact", name="social_customer_contact")
      * @Template()
      */
     public function contactAction()
@@ -215,7 +201,7 @@ class CustomerController extends Controller
     /**
      * Create a devis Entity
      *
-     * @Route("/createDevis", name="devis_create", options={"expose"=true})
+     * @Route("/createDevis", name="social_devis_create", options={"expose"=true})
      * @Method("POST")
      */
     public function createDevisAction(Request $request){
@@ -251,7 +237,7 @@ class CustomerController extends Controller
     }
 
     /**
-     * @Route("/devis", name="customer_devis")
+     * @Route("/devis", name="social_customer_devis")
      * @Template()
      */
     public function devisAction(){

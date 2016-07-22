@@ -1,78 +1,59 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nouvelle demande <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="" role="presentation"><a href="{{ path('demand_meeting_new') }}">Rendez-vous</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li class="" role="presentation"><a href="{{ path('demand_mobility_new') }}">Mobilité</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li class="" role="presentation"><a href="{{ path('demand_formation_new') }}">Formation</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li class="" role="presentation"><a href="{{ path('demand_vacancy_new') }}">Congés</a></li>
-                                    </ul>
-                                </li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="active" role="presentation"><a>Vos demandes</a></li>
-                                <li class="divider-vertical-second"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <hr/>
+    <div class="container charlestown-container">
+        <div class="row charlestown-row">
+            <div class="charlestown-title">
+                <h2>VOS DEMANDES</h2>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-condensed">
-                            <thead>
-                            <tr>
-                                <th>Date de la demande</th>
-                                <th>Motif</th>
-                                <th>Date de réponse</th>
-                                <th>Réponse</th>
-                                <th>Commentaire</th>
-                                <th>Etat</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for entity in entities %}
-                                <tr>
-                                    <td>{% if entity.dateDemand %}{{ entity.dateDemand|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                    <td>{{ entity.reason }}</td>
-                                    <td>{% if entity.dateResponse %}{{ entity.dateResponse|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                    <td>{{ entity.responseStatus }}</td>
-                                    <td>{{ entity.response }}</td>
-                                    <td>{{ entity.status }}</td>
-                                    <td>
-                                        {% if entity.status == "EN COURS" %}
-                                        {% if entity.getClassName == "DemandMeeting" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_meeting_delete', { 'id': entity.id }) }}">supprimer</a>
-                                        {% elseif entity.getClassName == "DemandFormation" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_formation_delete', { 'id': entity.id }) }}">supprimer</a>
-                                        {% elseif entity.getClassName == "DemandMobility" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_mobility_delete', { 'id': entity.id }) }}">supprimer</a>
-                                        {% elseif entity.getClassName == "DemandVacancy" %}
-                                            <a class="btn btn-danger" href="{{ path('demand_vacancy_delete', { 'id': entity.id }) }}">supprimer</a>
+            <div class="col-md-12 charlestown-col-md-12">
+                <div class="center" style="margin-top:20px; margin-bottom:20px;">
+                    <a class="btn btn-danger" href="{{ path('demand_meeting_new') }}">Rendez-vous</a>
+                    <a class="btn btn-danger" href="{{ path('demand_vacancy_new') }}">Congès</a>
+                    <a class="btn btn-danger" href="{{ path('demand_mobility_new') }}">Mobilité</a>
+                    <a class="btn btn-danger" href="{{ path('demand_formation_new') }}">Formation</a>
+                </div>
+                <div class="charlestown-scrollable">
+                    <div class="container" style="padding: 0; width:100%">
+                        <div class="row charlestown-row">
+                            {% for demand in entities %}
+                                <div class="col-md-2" style="height:250px; margin-bottom: 30px; border-radius:4px;box-shadow: 2px 2px 9px rgb(170, 170, 170) !important; background-color:#821d1d; color:white;">
+                                    {% if demand == "rendez-vous" %}
+                                        <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px; margin-top:5px;" src="{{ asset('images/rendez-vous.png') }}">
+                                    {% elseif demand == "mobilité" %}
+                                        <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px; margin-top:5px;" src="{{ asset('images/mobilite.png') }}">
+                                    {% elseif demand == "congés" %}
+                                        <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px; margin-top:5px;" src="{{ asset('images/conges.png') }}">
+                                    {% elseif demand == "formation" %}
+                                        <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px; margin-top:5px;" src="{{ asset('images/formation.png') }}">
+                                    {% endif %}
+                                    Demande du {{ demand.dateDemand|date('m-d') }} <br/>
+                                    {{ demand.comment }} <br/>
+                                    {% if demand.fixedDate is defined %}
+                                        {% if demand.fixedDate %}
+                                            Rendez-vous: {{ demand.fixedDate|date('m-d') }}
                                         {% endif %}
-                                        {% endif %}
-                                    </td>
-                                </tr>
+                                    {% endif %}
+                                    <br/><br/>
+                                    {% if demand.response is null %}
+                                        <span style="padding: 5px 17px; font-size: 18px; border-radius: 2px; background-color: dodgerblue; color:white;">En cours</span>
+                                    {% elseif demand.response %}
+                                        <span style="padding: 5px 17px; font-size: 18px; border-radius: 2px; background-color: darkgreen; color:white;">Accepté</span>
+                                    {% elseif demand.response == false %}
+                                        <span style="padding: 5px 17px; font-size: 18px; border-radius: 2px; background-color: orange; color:white;">Refusé</span>
+                                    {% endif %}
+                                </div>
+                                {% if loop.index % 4  ==  0 %}
+                                {% elseif loop.index % 2 == 0 %}
+                                <div class="col-md-2"></div>
+                                {% else %}
+                                <div class="col-md-1"></div>
+                                {% endif %}
                             {% endfor %}
-                            </tbody>
-                        </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-    {% endblock %}
+        </div>
+    </div>
+{% endblock %}

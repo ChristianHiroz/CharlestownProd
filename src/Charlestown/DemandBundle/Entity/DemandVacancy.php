@@ -80,5 +80,9 @@ class DemandVacancy extends Demand
     {
         return (new \ReflectionClass($this))->getShortName();
     }
+
+    public function __toString(){
+        return "congés";
+    }
 }
 

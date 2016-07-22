@@ -17,63 +17,28 @@ use Charlestown\CarpoolingBundle\Form\CarpoolingType;
 /**
  * Operation controller.
  *
- * @Route("/operation")
  */
 class OperationController extends Controller
 {
     /**
-     * @Route("/liste", name="operation")
+     * @Route("/operation", name="mission_operation")
      * @Template()
      */
     public function indexAction()
     {
-        $operations =  $this->getDoctrine()->getManager()->getRepository('CharlestownOperationBundle:Operation')->findAll();
+        $operations =  $this->getDoctrine()->getManager()->getRepository('CharlestownOperationBundle:Operation')->findBy(array('agency' => $this->getUser()->getAgency()->getId()));
         $user = $this->getUser();
-        $applications = $user->getAppliances();
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-
-        return array('operations' => $operations, 'applications' => $applications ,'user' => $user, 'messages' => $message);
-    }
-
-    /**
-     * @Route("/demandes", name="my_operation_applications")
-     * @Template()
-     */
-    public function myOperationApplicationsAction(Request $request)
-    {
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-
-        if($request->getSession()->get('alert') == "success"){
-            $request->getSession()->set('alert', 'nothing');
-            return array('messages' => $message, 'applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser(), 'label' => "success");
+        $appliances = $user->getAppliances();
+        $arrayTimeslot = [];
+        foreach($appliances as $appliance){
+                $arrayTimeslot[] = $appliance->getId().$appliance->getTimeslot()->getId();
         }
-        else{
-            return array('messages' => $message, 'applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
-        }
+
+        return array('operations' => $operations, 'appliances' => $appliances ,'user' => $user, 'arrayTimeslots' => $arrayTimeslot);
     }
 
     /**
-     * @Route("/historique", name="my_operation_applications_history")
-     * @Template()
-     */
-    public function myOperationApplicationsHistoryAction()
-    {
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
-
-        return array('messages' => $message, 'applications' => $this->getUser()->getAppliances(), 'user' => $this->getUser());
-    }
-
-    /**
-     * @Route("/show/{id}", name="operation_show")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        return array('operation' => $this->getDoctrine()->getManager()->getRepository('CharlestownOperationBundle:Operation')->find($id),'form' => null, 'user' => $this->getUser());
-    }
-
-    /**
-     * @Route("/apply/{id}/{timeslot}", name="operation_apply")
+     * @Route("/operation/apply/{id}/{timeslot}", name="operation_apply")
      * @Template()
      */
     public function applyOperationAction($id, $timeslot)
@@ -87,18 +52,22 @@ class OperationController extends Controller
         $application->setEvent($user);
         $application->setOperation($operation);
         $application->setTimeslot($timeslot);
+
         $em->persist($application);
         $em->flush();
+//        $ope = $em->getRepository('CharlestownOperationBundle:OperationAppliance')->find($application->getId());
+//        var_dump($ope->getId());exit;
+
 
         $this->get('charlestown.mailer')->sendOperationNotificationMail($application);
 
         $this->get('charlestown.mailer')->sendOperationApplianceMail($application);
 
-        return $this->redirect($this->generateUrl('my_operation_applications'));
+        return $this->redirect($this->generateUrl('mission_operation'));
     }
 
     /**
-     * @Route("/removeapply/{id}", name="operation_apply_remove")
+     * @Route("/operation/removeapply/{id}", name="operation_apply_remove")
      * @Template()
      */
     public function removeApplyOperationAction($id)
@@ -106,16 +75,16 @@ class OperationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $appliance = $em->getRepository('CharlestownOperationBundle:OperationAppliance')->find($id);
-        $operation = $appliance->getOperation();
+        $timeslot = $appliance->getTimeslot();
 
-        $operation->removeAppliance($appliance);
+        $timeslot->removeAppliance($appliance);
         $user->removeAppliance($appliance);
 
         $em->remove($appliance);
         $em->persist($user);
-        $em->persist($operation);
+        $em->persist($timeslot);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('my_operation_applications'));
+        return $this->redirect($this->generateUrl('mission_operation'));
     }
 }

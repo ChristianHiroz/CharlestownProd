@@ -1,48 +1,88 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="padding-bottom: 0px;">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" style="width:100%;">
-                                <li class="active" role="presentation"><a href="{{ path('lesson') }}">Cours proposés</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('mylesson_applications') }}">Je suis élève</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="divider-vertical-second" style="float:right;"></li>
-                                <li class="" role="presentation" style="float:right"><a href="{{ path('mylessons') }}">Je suis prof</a></li>
-                                <li class="divider-vertical-second" style="float:right;"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <hr/>
-            </div>
-            <div class="modal-body" style="padding-top: 0px; color:black;">
-                {% for lesson in lessons %}
-                    <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:50px;">
-                        <div class="col-md-8" style="height:100%; width:80%;">
-                            <p style="width:100%; line-height: 25px;">{{ lesson.localisation }} au {{ lesson.address }}, {{ lesson.town }} {{ lesson.pc }} <span class="glyphicon glyphicon-menu-right"></span> de {{ lesson.startAt | localizeddate('full', 'none') }} à {{ lesson.endAt | localizeddate('full', 'none') }} || Places : {{ lesson.room }} || {{ lesson.type }} </p>
-                        </div>
-                        <div class="col-md-4" style="padding:0px; text-align: center; line-height: 50px;">
-                            {% if lesson.teacher.id != user.id %}
-                                {% set ok = true %}
-                                {% for applicant in lesson.studentsApplicants %}
-                                    {% if applicant.id == user.id %}
-                                        {% set ok = false %}
-                                    {% endif %}
-                                {% endfor %}
-                                {% if ok == true %}
-                                    <a class="btn btn-success" href="{{ path('apply_lesson', {'id' : lesson.id, 'user' : user.id}) }}">Rejoindre</a>
+    <style>
+        .row{
+            margin:25px;
+        }
+        .ad{
+            background-color: white;
+        }
+    </style> <!-- TODO: mettre dans main et vérifier compatibilité -->
+    <div class="container" id="announcment" style="width:80%; margin-left:20%; max-width:80%; min-height:100%; background-color: #ededed;">
+        <div class="row" style="text-align:center; background-color: white; position:relative;">
+            <br/>
+            <a class="btn btn-large btn-danger" href="{{ path('social_my_lesson') }}">Mes cours</a>
+            <a class="btn btn-large btn-danger" href="{{ path('social_lesson_applications') }}">Mes candidatures</a>
+            <br/><br/>
+            <form  action="{{ path("social_lesson_search") }}" method="post">
+                <select name="town" class="champ" style="width: 30%;">
+                    <option>Paris</option>
+                    <option>Bordeaux</option>
+                    <option>Nantes</option>
+                    <option>Lille</option>
+                    <option>Marseille</option>
+                    <option>Lyon</option>
+                </select>
+                <input style="width: 30%;" class="champ" type="text" id="lieu" name="name" placeholder="nom du cours"/>
+                <button class="btn" type="submit" style="background-color: lightgrey; padding: 15px;"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+        <div class="row">
+            {% set i = 0 %}
+            {% for lesson in lessons %}
+                {% if lesson.teacher.id != user.id %}
+                    {% set ok = true %}
+                    {% for applicant in lesson.studentsApplicants %}
+                        {% if applicant.id == user.id %}
+                            {% set ok = false %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for student in lesson.students %}
+                        {% if student.id == user.id %}
+                            {% set ok = false %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if ok == true %}
+                        {% set i = i + 1 %}
+                        <div class="col-md-2 ad" style="border: 1px solid grey; border-radius: 5px; height: 425px; text-align: center;">
+                            <br/>
+                            <div style="height:30%;">
+                                {% set random = random(4) %}
+                                {% if random == 0 %}
+                                <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/book1.png') }}">
+                                {% elseif random == 1 %}
+                                    <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/book2.png') }}">
+                                {% elseif random == 2 %}
+                                <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/book3.png') }}">
+                                {% elseif random == 3 %}
+                                <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/book4.png') }}">
+                                {% elseif random == 4 %}
+                                <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/book5.png') }}">
                                 {% endif %}
-                            {% endif %}
+                            </div>
+                            <div style="height:50%;">
+                                <p>{{ lesson.type }}</p>
+                                <p>{{ lesson.description }}</p>
+                                <p>{{ lesson.room }} places</p>
+                                <p>{{ lesson.startAt | localizeddate('full', 'none') }}</p>
+                                <p>{{ lesson.endAt | localizeddate('full', 'none') }}</p>
+                                <p>{{ lesson.address }}</p>
+                                <p>{{ lesson.town }} {{ lesson.pc }}</p>
+                                <a class="btn btn-success" href="{{ path('apply_lesson', {'id' : lesson.id, 'user' : user.id}) }}">Rejoindre</a>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+                        {% if i % 4 == 0 %}
+                            <div class="row" style="margin-top:25px;"></div>
+                        {% elseif i % 2 == 0 %}
+                            <div class="col-md-2"></div>
+                        {% else %}
+                            <div class="col-md-1"></div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
+

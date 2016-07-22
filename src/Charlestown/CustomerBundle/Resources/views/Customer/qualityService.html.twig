@@ -1,43 +1,31 @@
 {% extends 'CharlestownCustomerBundle::layout.html.twig' %}
 {% block content %}
-    {{ parent() }}
-
-    <div id="alert" class="alert alert-warning hidden" style="width:70%; top:75px; margin:auto; position: relative;"
-         xmlns="http://www.w3.org/1999/html">
-            Votre message a été transmis au service qualité, nous vous contacterons rapidement.
-        </div>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown active">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Service qualité</a>
-                                </li>
-                                <li class="divider-vertical-second"></li>
-                            </ul>
+{{ parent() }}
+<div class="container charlestown-container">
+    <div class="row charlestown-row">
+        <div class="col-md-12 charlestown-col-md-12">
+            <div class="charlestown-title">
+                <h2>VOS CONTACTS</h2>
+            </div>
+            <div class="container charlestown-scrollable">
+                <div class="row" style="text-align:left; background-color: white; position:relative; margin:15px; border-radius:15px; padding:15px;">
+                    <div class="col-md-12" style="margin-bottom: 35px;">
+                        <div id="alert" class="alert alert-warning hidden" style="width:70%; top:75px; margin:auto; position: relative;">
+                                Votre message a été transmis au service qualité, nous vous contacterons rapidement.
                         </div>
                     </div>
-                </nav>
-                <hr/>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <label>Nom</label>
-                        <input class="form-control" type="text" id="nom"/><br/>
-                        <label>Titre du message</label>
-                        <input class="form-control" type="text" id="title"/><br/>
-                        <label>Message</label>
-                        <textarea class="form-control" id="body"/></textarea><br/>
-                        <button class="btn-default btn" type="submit" onclick="sendMail()">Envoyer</button>
+                </div>
+                <div class="row" style="text-align:left; background-color: white; position:relative; margin:15px; border-radius:15px; padding:15px;">
+                    <div class="col-md-12" style="margin-bottom: 35px;">
 
+                            <input class="champ" type="text" id="nom" required="required" placeholder="nom" />
 
-                        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-                        <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+                            <input class="champ" type="password" id="title" name="_password" required="required" placeholder="titre"  />
+
+                            <textarea class="champ" type="password" id="body" name="_password" required="required" placeholder="message"  /></textarea>
+
+                            <button class="bouton" type="submit" onclick="sendMail()">Envoyer</button>
+
                         <script>
                             function sendMail(){
                                 var nom = $("#nom").val();
@@ -63,6 +51,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+    </div>
+</div>
 {% endblock %}

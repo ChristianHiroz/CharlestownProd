@@ -10,4 +10,29 @@ namespace Charlestown\SkillPurseBundle\Entity;
  */
 class LessonRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function search($name, $town){
+        $em = $this->getEntityManager();
+        if($name == ""){
+            $query = $em->createQuery(
+                'Select l
+                    From CharlestownSkillPurseBundle:Lesson l
+                    WHERE l.town = ?1
+
+                    ');
+            $query->setParameter(1, $town);
+        }
+        else{
+            $query = $em->createQuery(
+                'Select l
+                    From CharlestownSkillPurseBundle:Lesson l
+                    WHERE l.type = ?1
+                    AND l.type = ?2
+
+                    ');
+            $query->setParameter(1, $town);
+            $query->setParameter(2, $name);
+        }
+
+        return $query->getResult();
+    }
 }

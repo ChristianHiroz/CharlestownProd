@@ -16,5 +16,9 @@ class DemandFormation extends Demand
     {
         return (new \ReflectionClass($this))->getShortName();
     }
+
+    public function __toString(){
+        return "formation";
+    }
 }
 

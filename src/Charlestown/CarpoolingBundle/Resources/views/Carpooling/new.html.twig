@@ -1,31 +1,27 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="padding-bottom: 0px;">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" style="width:100%;">
-                                <li class="" role="presentation"><a href="{{ path('carpooling') }}">Covoiturages proposés</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('mycarpoolings_demand') }}">Je suis passager</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="divider-vertical-second" style="float:right;"></li>
-                                <li class="active" style="float:right;" role="presentation"><a href="{{ path('mycarpoolings') }}">Je suis conducteur</a></li>
-                                <li class="divider-vertical-second"style="float:right;"> </li>
-                            </ul>
-                        </div>
+    <div class="container" style="width:80%; margin-left:20%; max-width:80%;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="bigTitle" style="text-align: right;">MON COURS</h2>
+                <hr>
+                <div class="form">
+                    {{ form_start(form)}}
+                    {{ form_widget(form.startPlace, {'attr' : {'class' : 'champ', 'placeholder' : 'Lieu de départ... ex: 5 rue Fondary 75015 Paris'}}) }}
+                    {{ form_widget(form.endPlace, {'attr' : {'class' : 'champ', 'placeholder' : 'Lieu d\'arivée'}}) }}
+                    {{ form_label(form.room) }}
+                    {{ form_widget(form.room, {'attr' : {'class' : 'champ', 'placeholder' : 'Places'}}) }}
+                    {{ form_label(form.dateTravel) }}
+                    {{ form_widget(form.dateTravel, {'attr' : {'class' : 'champ', 'placeholder' : 'Heure de départ'}}) }}
+                    <div>
+                        <input class="bouton" style="margin-bottom:150px;" type="submit" value="Envoyer" />
                     </div>
-                </nav>
-                <hr/>
-            </div>
-            <div class="modal-body" style="padding-top: 0px; color:black;">
-                <div style="text-align:center;">
-                    {{ form(form) }}
+                    {{ form_end(form) }}
+
                 </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+
+    </div>
 {% endblock %}

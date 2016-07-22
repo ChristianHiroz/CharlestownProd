@@ -1,55 +1,103 @@
 {% extends 'CharlestownCollaboratorBundle::layout.html.twig' %}
 {% block content %}
     {{ parent() }}
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="padding-bottom: 0px;">
-                <nav class="navbar navbar-default secondNav">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav" style="width:100%;">
-                                <li class="" role="presentation"><a href="{{ path('lesson') }}">Cours proposés</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="" role="presentation"><a href="{{ path('mylesson_applications') }}">Je suis élève</a></li>
-                                <li class="divider-vertical-second"></li>
-                                <li class="divider-vertical-second" style="float:right;"></li>
-                                <li class="active" role="presentation" style="float:right"><a href="{{ path('mylessons') }}">Je suis prof</a></li>
-                                <li class="divider-vertical-second" style="float:right;"></li>
-                            </ul>
-                        </div>
+    <style>
+        .row{
+            margin:25px;
+        }
+        .ad{
+            background-color: white;
+        }
+    </style> <!-- TODO: mettre dans main et vérifier compatibilité -->
+    <div class="container" id="announcment" style="width:80%; margin-left:20%; max-width:80%; min-height:100%; background-color: #ededed;">
+        <div class="row" style="text-align:center; background-color: white; position:relative;">
+            <br/>
+            <a class="btn btn-large btn-danger" href="{{ path('social_lesson') }}">Retour</a>
+            <a class="btn btn-large btn-danger" href="{{ path('social_lesson_new') }}">Nouveau cours</a>
+            <br/><br/>
+        </div>
+        {% for lesson in lessons %}
+            <div class="row">
+                <div class="col-md-2 ad" style="border: 1px solid grey; border-radius: 5px; height: 425px; text-align: center;">
+                    <br/>
+                    <div style="height:30%;">
+                        {% set random = random(4) %}
+                        {% if random == 0 %}
+                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/book1.png') }}">
+                        {% elseif random == 1 %}
+                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/book2.png') }}">
+                        {% elseif random == 2 %}
+                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/book3.png') }}">
+                        {% elseif random == 3 %}
+                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/book4.png') }}">
+                        {% elseif random == 4 %}
+                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('images/book5.png') }}">
+                        {% endif %}
                     </div>
-                </nav>
-                <hr/>
-            </div>
-            <div class="modal-body" style="padding-top: 0px; color:black;">
-                <div class="textAlignCenter">
-                    <a class="btn btn-danger" href="{{ path('lesson_new') }}">Nouveau cours</a>
+                    <div style="height:50%;">
+                        <p>{{ lesson.type }}</p>
+                        <p>{{ lesson.description }}</p>
+                        <p>{{ lesson.room }} places</p>
+                        <p>{{ lesson.startAt | localizeddate('full', 'none') }}</p>
+                        <p>{{ lesson.endAt | localizeddate('full', 'none') }}</p>
+                        <p>{{ lesson.address }}</p>
+                        <p>{{ lesson.town }} {{ lesson.pc }}</p>
+                        <a class="btn btn-success" href="{{ path('social_lesson_edit', {'id' : lesson.id}) }}">Modifier</a>
+                    </div>
                 </div>
-                {% for lesson in lessons %}
-                    <div class="row" style="margin:15px; background-color: white; border-radius: 8px; height:100px;">
-                        <div class="col-md-12" style="height:100%; width:100%;">
-                            <p style="line-height: 25px;">{{ lesson.localisation }} au {{ lesson.address }}, {{ lesson.town }} {{ lesson.pc }} <span class="glyphicon glyphicon-menu-right"></span> de {{ lesson.startAt | localizeddate('full', 'none') }} à {{ lesson.endAt | localizeddate('full', 'none') }} || Places : {{ lesson.room }} || {{ lesson.type }} <a class="btn btn-xs btn-success" href="{{ path('lesson_edit', {'id' : lesson.id, 'user' : user.id}) }}">Modifier</a></p>
-                            En attente :
-                    {% if not lesson.studentsApplicants is empty %}
-                        {% for applicant in lesson.studentsApplicants %}
-                            {{ applicant.firstName }} {{ applicant.lastName }}
-                            <a href="{{ path('fos_otheruser_profile_show', {'user': applicant.id}) }}"><span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="{{ path('select_lesson', {'id':lesson.id, 'user': applicant.id}) }}"><span class="glyphicon glyphicon-ok"></span></a>
-                            <a href="{{ path('unapply_lesson', {'id':lesson.id, 'user': applicant.id}) }}"><span class="glyphicon glyphicon-remove"></span></a>
-                        {% endfor %}
-                    {% endif %}
-                            <br/>  Accepter :
-                    {% if not lesson.students is empty %}
-                        {% for selected in lesson.students %}
-                            {{ selected.firstName }} {{ selected.lastName }}
-                            <a href="{{ path('fos_otheruser_profile_show', {'user': selected.id}) }}"><span class="glyphicon glyphicon-zoom-in"></span></a>
-                            <a href="{{ path('unselect_lesson', {'id':lesson.id, 'user': selected.id}) }}"><span class="glyphicon glyphicon-remove"></span></a>
-                        {% endfor %}
-                    {% endif %}
+                <div class="col-md-1"><i style="margin-top: 130px; font-size: 40px;" class="fa fa-arrow-circle-right" aria-hidden="true"></i></div>
+                <div class="col-md-8" style="height: 425px; text-align: center;">
+                    <div class="container" style="height: 100%; width: 100%;">
+                        <div class="row" style="height: 50%; margin:2px;">
+                            {% set emptyOne = true %}
+                            {% for student in lesson.studentsApplicants %}
+                                {% set emptyOne = false %}
+                                <div class="col-md-3 ad" style="height:425px; border: 1px solid grey; border-radius: 5px; text-align: center;">
+                                        <br/>
+                                        {% if student.picture %}
+                                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset(student.picture.uploadRootDir  ~ student.picture.id ~ '.' ~ student.picture.alt) }}">
+                                        {% else %}
+                                            <img class=" beforeNavPhoto menuFooterLogo" style="margin-left: 20px;" src="{{ asset('bundles/charlestowncore/images/nophoto.png') }}">
+                                        {% endif %}
+                                        {{ student.firstName }} {{ student.lastName }} <br/>
+                                        {% if student.phoneNumber != "" %}
+                                            <span class="glyphicon glyphicon-phone-alt" style="color:red;"></span> {{ student.phoneNumber }} <br/>
+                                        {% endif %}
+                                        <span class="glyphicon glyphicon-phone" style="color:red;"></span> {{ student.portPhoneNumber }} <br/>
+
+                                        <a href="{{ path('select_lesson', {'id' : lesson.id, 'user' : student.id }) }}" class="btn btn-danger btn-small" style="margin-bottom:5px; display:inline-block;">Accepter</a>
+                                        <a href="{{ path('unapply_lesson', {'id' : lesson.id, 'user' : student.id }) }}" class="btn btn-warning btn-small" style="display:inline;">Refuser</a>
+                                    </div>
+                            {% endfor %}
+                            {% if emptyOne == true %}
+                                <div class="col-md-3 ad" style="height:425px; border: 1px solid grey; border-radius: 5px; text-align: center;">
+                                    <p style="margin-top: 150px;">Vous n'avez aucunes candidatures pour le moment</p>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
-                {% endfor %}
+                </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+            <div class="row">
+                <div class="col-md-12 ad" style="border: 1px solid grey; border-radius: 5px; text-align: center;">
+                    {% set empty = true %}
+                    {% for student in lesson.students %}
+                        {% set empty = false %}
+                        <div style="width:100%;">
+                            <p style="margin:5px;">{{ student.firstName }} {{ student.lastName }}
+                                {% if student.phoneNumber != "" %}
+                                    <span class="glyphicon glyphicon-phone-alt" style="color:red;"></span> {{ student.phoneNumber }}
+                                {% endif %}
+                                <span class="glyphicon glyphicon-phone" style="color:red;"></span> {{ student.portPhoneNumber }}
+                                <a href="{{ path('unselect_lesson', {'id' : lesson.id, 'user' : student.id }) }}" class="btn btn-warning btn-small" style="display:inline; padding: 2px 16px;">Retirer</a>
+                            </p>
+                        </div>
+                    {% endfor %}
+                    {% if empty == true %}
+                        <p style="margin:10px;">Vous n'avez pas encore de candidature acceptée pour le moment</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

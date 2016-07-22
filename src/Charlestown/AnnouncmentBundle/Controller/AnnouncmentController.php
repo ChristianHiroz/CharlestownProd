@@ -9,11 +9,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Charlestown\AnnouncmentBundle\Entity\Announcment;
 use Charlestown\AnnouncmentBundle\Form\AnnouncmentType;
+use Charlestown\AnnouncmentBundle\Form\AnnouncmentAddType;
 
 /**
  * Announcment controller.
  *
- * @Route("/annonce")
  */
 class AnnouncmentController extends Controller
 {
@@ -21,7 +21,7 @@ class AnnouncmentController extends Controller
     /**
      * Lists all Announcment entities.
      *
-     * @Route("/", name="announcment")
+     * @Route("/annonce", name="social_announcment")
      * @Method("GET")
      * @Template()
      */
@@ -29,21 +29,58 @@ class AnnouncmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('CharlestownAnnouncmentBundle:Announcment')->findAll();
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
+        $entities = $em->getRepository('CharlestownAnnouncmentBundle:Announcment')->findLasts();
 
         return array(
             'announcments' => $entities,
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
-
 
     /**
      * Lists all Announcment entities.
      *
-     * @Route("/apply/{id}", name="announcment_apply")
+     * @Route("/mes_annonces", name="social_my_announcment")
+     * @Method("GET")
+     * @Template()
+     */
+    public function myAnnouncmentAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('CharlestownAnnouncmentBundle:Announcment')->findBy(array('offerer' => $this->getUser()->getId()));
+
+        return array(
+            'announcments' => $entities,
+            'user' => $this->getUser()
+        );
+    }
+
+    /**
+     * Lists all Announcment entities that correspond with search option.
+     *
+     * @Route("/annonce", name="social_announcment_search")
+     * @Method("POST")
+     * @Template()
+     */
+    public function searchAction(Request $request)
+    {
+        $type = $request->get('type');
+        $name = $request->get('name');
+        $town = $request->get('town');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('CharlestownAnnouncmentBundle:Announcment')->search($type, $name, $town);
+
+        return $this->render('CharlestownAnnouncmentBundle:Announcment:index.html.twig', array('announcments' => $entities,'user' => $this->getUser()));
+    }
+
+
+    /**
+     * Apply to an Announcment entities.
+     *
+     * @Route("/annonce/apply/{id}", name="social_announcment_apply")
      */
     public function applyAction($id)
     {
@@ -60,13 +97,36 @@ class AnnouncmentController extends Controller
         $em->persist($entity);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('announcment'));
+        return $this->redirect($this->generateUrl('social_announcment'));
+    }
+
+
+
+    /**
+     * Cancel an apply.
+     *
+     * @Route("/annonce/unapply/{id}", name="social_announcment_unapply")
+     */
+    public function unapplyAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('CharlestownAnnouncmentBundle:Announcment')->find($id);
+
+        if($this->getUser() == $entity->getOfferer()){
+            $entity->setApplicant(null);
+            $entity->setVisible(true);
+            $em->persist($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('social_my_announcment'));
     }
 
     /**
      * Creates a new Announcment entity.
      *
-     * @Route("/", name="announcment_create")
+     * @Route("/annonce", name="social_announcment_create")
      * @Method("POST")
      * @Template("CharlestownAnnouncmentBundle:Announcment:new.html.twig")
      */
@@ -82,15 +142,13 @@ class AnnouncmentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('announcment'));
+            return $this->redirect($this->generateUrl('social_announcment'));
         }
 
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
 
@@ -103,12 +161,10 @@ class AnnouncmentController extends Controller
      */
     private function createCreateForm(Announcment $entity)
     {
-        $form = $this->createForm(new AnnouncmentType(), $entity, array(
-            'action' => $this->generateUrl('announcment_create'),
+        $form = $this->createForm(new AnnouncmentAddType(), $entity, array(
+            'action' => $this->generateUrl('social_announcment_create'),
             'method' => 'POST',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -116,7 +172,7 @@ class AnnouncmentController extends Controller
     /**
      * Displays a form to create a new Announcment entity.
      *
-     * @Route("/new", name="announcment_new")
+     * @Route("/annonce/new", name="social_announcment_new")
      * @Method("GET")
      * @Template()
      */
@@ -124,20 +180,18 @@ class AnnouncmentController extends Controller
     {
         $entity = new Announcment();
         $form   = $this->createCreateForm($entity);
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'user' => $this->getUser(),
-            'messages' => $message
         );
     }
 
     /**
      * Displays a form to edit an existing Announcment entity.
      *
-     * @Route("/{id}/edit", name="announcment_edit")
+     * @Route("/annonce/{id}/edit", name="social_announcment_edit")
      * @Method("GET")
      * @Template()
      */
@@ -152,15 +206,11 @@ class AnnouncmentController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
 
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
 
@@ -174,18 +224,17 @@ class AnnouncmentController extends Controller
     private function createEditForm(Announcment $entity)
     {
         $form = $this->createForm(new AnnouncmentType(), $entity, array(
-            'action' => $this->generateUrl('announcment_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('social_announcment_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Mettre à jour'));
 
         return $form;
     }
     /**
      * Edits an existing Announcment entity.
      *
-     * @Route("/{id}", name="announcment_update")
+     * @Route("/annonce/{id}", name="social_announcment_update")
      * @Method("PUT")
      * @Template("CharlestownAnnouncmentBundle:Announcment:edit.html.twig")
      */
@@ -199,66 +248,36 @@ class AnnouncmentController extends Controller
             throw $this->createNotFoundException('Unable to find Announcment entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('announcment'));
+            return $this->redirect($this->generateUrl('social_announcment'));
         }
-
-        $message = $this->getDoctrine()->getManager()->getRepository('CharlestownChatBundle:Message')->findAll();
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-            'user' => $this->getUser(),
-            'messages' => $message
+            'user' => $this->getUser()
         );
     }
     /**
      * Deletes a Announcment entity.
      *
-     * @Route("/{id}", name="announcment_delete")
-     * @Method("DELETE")
+     * @Route("/annonce/{id}", name="social_announcment_delete")
+     * @Method("GET")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction($id)
     {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('CharlestownAnnouncmentBundle:Announcment')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Announcment entity.');
-            }
-
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CharlestownAnnouncmentBundle:Announcment')->find($id);
+        if($this->getUser() == $entity->getOfferer()){
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('announcment'));
-    }
-
-    /**
-     * Creates a form to delete a Announcment entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('announcment_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Supprimer'))
-            ->getForm()
-        ;
+        return $this->redirect($this->generateUrl('social_my_announcment'));
     }
 }
